@@ -8,5 +8,6 @@ chapters:
 - file: system
 - file: missions
 - file: processing
+- file: baseline
 - file: changes
 

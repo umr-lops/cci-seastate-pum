@@ -31,6 +31,10 @@ mamba install Cython pyresample
 git clone https://gitlab.ifremer.fr/cerbere/cerinterp.git
 pip install cerinterp/
 
+mamba install statsmodels
+git clone https://gitlab.ifremer.fr/ceremd/ceremd.git
+pip install ceremd/
+
 git clone https://gitlab.ifremer.fr/cciseastate/cciseastate.git
 pip install cciseastate/
 ```
