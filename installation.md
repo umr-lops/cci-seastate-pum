@@ -24,8 +24,11 @@ git clone https://gitlab.ifremer.fr/cerbere/cerbercontrib-altimeter.git
 pip install cerbercontrib-altimeter/
 
 mamba install gdal
-git clone https://gitlab.ifremer.fr/cerbere/ceraux.git@cerbere3
+git clone https://gitlab.ifremer.fr/cerbere/ceraux.git
 pip install ceraux/
+
+git clone https://gitlab.ifremer.fr/cerbere/cerform.git
+pip install cerform/
 
 mamba install Cython pyresample
 git clone https://gitlab.ifremer.fr/cerbere/cerinterp.git
