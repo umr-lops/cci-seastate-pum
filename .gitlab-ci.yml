@@ -1,0 +1,20 @@
+stages:
+  - build
+  - deploy
+build:
+    stage: build
+    image: gitlab-registry.ifremer.fr/ifremer-commons/docker/internal-images/jupyter-book:1.0.2
+    script: jupyter-book build .
+    artifacts:
+      paths:
+          - _build/
+pages:
+    stage: deploy
+    image: busybox
+    script:
+      - mv _build/html public
+    artifacts:
+        paths:
+            - public
+    only:
+        - main
