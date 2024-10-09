@@ -181,13 +181,12 @@ Jobarray submission to batch schedulers is generally easy, but monitoring the jo
 and accessing to the error logs of a few tasks among thousands is the same as finding a
 needle in a haystack... This wrapper was created to avoid spending more time in manual
 “logfile-mining” (grep, tail...) than the processing time itself. Some other needs it addresses:
-● listing management avoids too big jobarrays (which crashes some batch
-schedulers)
-● list the tasks in errors to ease their reprocessing
-● allowing several execution modes : sequential, streaming (pipe)
-● allowing multiple batch scheduler as backend
-● having tasks status reporting and real-time monitoring
-● having job history, meta-data &amp; log files organization
+- listing management avoids too big jobarrays (which crashes some batch schedulers)
+- list the tasks in errors to ease their reprocessing
+- allowing several execution modes : sequential, streaming (pipe)
+- allowing multiple batch scheduler as backend
+- having tasks status reporting and real-time monitoring
+- having job history, meta-data &amp; log files organization
 
 The Ifremer supercomputer, Datarmor, provides scalable capabilities for:
 - CPU intensive or memory demanding applications and processing

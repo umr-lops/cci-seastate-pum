@@ -70,6 +70,12 @@ agencies were used instead.
 | Sentinel-3 B Version 005 | sig0_ocean_20_plrm_ku |                                          |
 |                          | sig0_ocean_20_c      |                                          |
 
+```
+S-band sigma0 were discared for Envisat as it was found they were systematically
+flagged as bad in the SGDR product.
+```
+
+
 ### L2P Processing
 
 #### Ancillary weather model output
