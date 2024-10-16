@@ -8,7 +8,7 @@
 
 ---
 
-**End of life date** : March 10, 2000
+**End of life date** : March 31, 2000
 
 ---
 
@@ -16,20 +16,22 @@
 
 ---
 
-**Orbit** : 
+**Instrument** : RA
+
+---
+
+**Orbit characteristics** : 
 - Orbit type : Sun-synchronous near-circular polar orbit
-- Inclination : 98.5 degrees
-- Altitude : 782 - 785km
+- Inclination : 98.52 degrees
+- Altitude : 785km
 - Nodal Period : approximately 100min (14,3 orbits per day)
 - Repeat Cycle : 35 days
 
 ---
 
-**Coverage cycle**:
-- Reference Orbit (3-day cycle): used during the commissioning phase.
-- Ice-Orbit (3-day cycle): similarity to the Reference Orbit, but with a slightly different longitudinal phase.
-- Mapping-Orbit: (35-day cycle): cycle allowing complete coverage of the Earth.
-
+**Orbit life**:
+- Tandem phase : from August 17, 1995 to June 6, 1996
+- Degraded status : from June 2, 1996 to March 11, 2000
 
 
 
@@ -39,11 +41,15 @@
 
 ---
 
-**End of life date** : January 18, 2006
+**End of life date** : January 18, 2005
 
 ---
 
-**Agency** : Cnes/NASA
+**Agency** : CNES/NASA
+
+---
+
+**Instrument** : NRA-SSALT
 
 ---
 
@@ -51,16 +57,14 @@
 - Orbit type : Non-heliosynchronous (prograde orbit)
 - Inclination : 66 degrees
 - Altitude : 1336 km
-- Nodal Period : approximately 112min 
-- Repeat Cycle : 10 days
+- Nodal Period : 6745.72s
+- Repeat Cycle : 9.9156 days
 
 ---
 
 **Orbit life** :
-- From August 2008 to September 2002 : in its original orbit.
-- Orbit change in September 2002 : shifted to an orbit midway between its original tracks and those of Jason-1, forming a tandem phase.
-- Tandem phase (2002) : operated in tandem with Jason-1, providing measurements from two altimeters on similar orbits with an equatorial separation of 158 km.
-- Altitude maintened at 1336 km unntil mid-Septmeber 2002 and then adjusted to a new orbit.
+- From August 2008 to September 2002 : in its nominal orbit.
+- Interleaved orbit from September 16, 2002 to October 18, 2005
 
 
 
@@ -72,7 +76,7 @@
 
 ---
 
-**End of life date** : July 4, 2011
+**End of life date** : July 6, 2011
 
 ---
 
@@ -80,45 +84,22 @@
 
 ---
 
-**Orbit** : 
-- Orbit type : Sun-synchronous polar orbit (retrograde orbit)
-- Inclination : 98.5 degrees
-- Altitude : 780 km (mean)
-- Nodal Period : approximately 100min (14,3 orbits per day)
-- Repeat Cycle : 35 days
-2000
-
-
-
-
-### GFO (GEOSAT Follow-ON)
-
-**Launch date** : February 10, 1998
-
----
-
-**End of life date** : November 26, 2008
-
----
-
-**Agency** : US Navy
+**Instrument** : RA
 
 ---
 
 **Orbit characteristics** : 
-- Orbit type : Non-sun-synchronous polar orbit 
-- Inclination : 108 degrees
-- Altitude : 800 km
-- Nodal Period : 101 minutes
-- Repeat Cycle : 17 days
+- Orbit type : Sun-synchronous polar orbit (retrograde orbit)
+- Inclination : 98.52 degrees
+- Altitude : 785 km 
+- Nodal Period : approximately 100min (14,3 orbits per day)
+- Repeat Cycle : 35 days
 
 ---
 
 **Orbit life** :
-- From February 1998 to November 2008 : in its original orbit.
-
-
-
+- Tandem phase : from August 17, 1995 to June 2, 1996 
+- Degraded phase : from June 1, 2003 to July 6, 2011
 
 
 
@@ -132,7 +113,11 @@
 
 ---
 
-**Agency** : Cnes/NASA
+**Agency** : CNES/NASA
+
+---
+
+**Instrument** : Poseidon-2
 
 ---
 
@@ -140,16 +125,16 @@
 - Orbit type : Non-heliosynchronous (prograde orbit)
 - Inclination : 66 degrees
 - Altitude : 1336 km
-- Nodal Period : approximately 112min 
-- Repeat Cycle : 10 days
+- Nodal Period : 6745.72s
+- Repeat Cycle : 9.9156 days
 
 ---
 
 **Orbit life** :
 - Same orbit as Topex/Poseidon
-- Orbit change in 2009: At the end of the OSTM/Jason-2 calibration phase in February 2009, the orbit of Jason-1 was changed to be positioned between its original tracks.
-- Orbit Reduction in 2012: Due to an anomaly in February-March 2012, Jason-1 was placed in Safe Hold mode, followed by maneuvers to reduce orbit.
-
+- Tandem phase : end on August 15, 2002 
+- Interleaved orbit : from February 10, 2009 to May 7, 2012 
+- Geodetic orbit : from May 7, 2012 to July 1, 2013
 
 
 
@@ -160,11 +145,15 @@
 
 ---
 
-**End of life date** : October 10, 2019
+**End of life date** : October 1, 2019
 
 ---
 
-**Agency** : Cnes/NASA
+**Agency** : CNES/NASA/EUMETSAT/NOAA
+
+---
+
+**Instrument** : Poseidon-3
 
 ---
 
@@ -172,17 +161,14 @@
 - Orbit type : Non-heliosynchronous (prograde orbit)
 - Inclination : 66 degrees
 - Altitude : 1336 km
-- Nodal Period : approximately 112min 
-- Repeat Cycle : 10 days
+- Nodal Period : 6745.72s
 
 ---
 
 **Orbit life** :
-- From June 2008 to October 2016 : in its original orbit.
-- Orbit shifted in October 2016 to join the intercalated orbit previously followed by Topex (2002-2005) and Jason-1 (2009-2012)
-- Orbit change in July 2017 : Jason-2 was placed in a lower orbit at around 1309km, called LRO (Long Repeat Orbit).
-- Since July 2018, it has been operating in an interspersed orbit called i-LRO (interleaved Long Repeat Orbit).
-
+- From June 2008 to October 2016 : in its nominal orbit.
+- Interleaved orbit : from October 14, 2016 to January 1, 2017
+- Geodetic orbit : from July 10, 2017 to October 1, 2019
 
 
 
@@ -197,7 +183,11 @@
 
 ---
 
-**Agency** : Cnes/NASA
+**Agency** : CNES/NASA/EUMETSAT/NOAA
+
+---
+
+**Instrument** : Poseidon-3B
 
 ---
 
@@ -205,56 +195,188 @@
 - Orbit type : Non-heliosynchronous (prograde orbit)
 - Inclination : 66 degrees
 - Altitude : 1336 km
-- Nodal Period : approximately 112min 
-- Repeat Cycle : 10 days
+- Nodal Period : 6745.72s
+- Repeat Cycle : 9.9156 days
 
 ---
 
 **Orbit life** :
-- From January 2016 to April 2022 : in its original orbit.
-- Orbit shifted in April 2022 to join the intercalated orbit previously followed by Topex (2002-2005), Jason-1 (2009-2012) and Jason-2 (2016-2017).
-
-
-
-
-
-### JASON-3
-
-**Launch date** : January 17, 2016
-
----
-
-**End of life date** : Active mission
-
----
-
-**Agency** : Cnes/NASA
-
----
-
-**Orbit characteristics** : 
-- Orbit type : Non-heliosynchronous (prograde orbit)
-- Inclination : 66 degrees
-- Altitude : 1336 km
-- Nodal Period : approximately 112min 
-- Repeat Cycle : 10 days
-
----
-
-**Orbit life** :
-- From January 2016 to April 2022 : in its original orbit.
-- Orbit shifted in April 2022 to join the intercalated orbit previously followed by Topex (2002-2005), Jason-1 (2009-2012) and Jason-2 (2016-2017).
-
-
-
+- From January 2016 to April 2022 : in its nominal orbit.
+- Interleaved orbit : from April 25, 2022
 
 
 ### ENVISAT
-### CRYOSAT
-### SARAL
-### SENTINEL-3A
-### SENTINEL-3B
-### CFOSAT
-### SENTINEL-6 MF
 
-## SAR missions
+**Launch date** : March 1, 2002
+
+---
+
+**End of life date** : June 8, 2012
+
+---
+
+**Agency** : ESA 
+
+---
+
+**Instrument** : RA-2
+
+---
+
+**Orbit characteristics** : 
+- Orbit type : Sun-synchronous (near-polar orbit)
+- Inclination: 98.55 degrees
+- Altitude: 799.38 km
+- Repeat cycle: 35 days
+
+---
+
+**Orbit life** :
+
+- From March 2002 to April 2012: Operated in its nominal orbit.
+- Tandem phase : from June 18, 2003 to October 20, 2003
+
+
+### CRYOSAT-2
+
+**Launch date** : April 8, 2010
+
+---
+
+**End of life date** : Still operational
+
+--- 
+
+**Agency** : ESA
+
+---
+
+**Instrument** : SIRAL
+
+---
+
+**Orbit characteristics** :
+
+- Orbit type: Non-sun-synchronous (prograde orbit)
+- Inclination: 92 degrees
+- Altitude: 717 km
+- Repeat cycle: 369 days
+
+
+### SARAL
+
+**Launch date** : February 25, 2013
+
+--- 
+
+**End of life date** : Still operational 
+
+---
+
+**Agency** : CNES/ISRO 
+
+---
+
+**Instrument** : AltiKa
+
+---
+
+**Orbit characteristics** :
+        
+- Orbit type: Sun-synchronous (near-polar orbit)
+- Inclination: 98.55 degrees
+- Altitude: 800 km
+- Repeat cycle: 35 days
+
+
+
+### SENTINEL-3A
+
+**Launch date** : February 16, 2016
+
+---
+
+**End of life date** : Still operational
+
+---
+
+**Agency** : ESA 
+
+---
+
+**Instrument** : SRAL
+
+---
+
+**Orbit characteristics** :
+        
+- Orbit type: Sun-synchronous (near-polar orbit)
+- Inclination: 98.65 degrees
+- Altitude: 814.5 km
+- Repeat cycle: 27 days 
+
+---
+
+**Orbit life** :
+- Tandem phase : from June 7, 2018 to October 16, 2018
+
+
+
+### SENTINEL-3B
+
+**Launch date** : April 25, 2018
+
+---
+
+**End of life date** : Still operational
+
+--- 
+
+**Agency** : ESA 
+
+---
+
+**Instrument** : SRAL
+
+---
+
+**Orbit characteristics** :
+
+- Orbit type: Sun-synchronous (near-polar orbit)
+- Inclination: 98.65 degrees
+- Altitude: 814.5 km
+- Repeat cycle: 27 days (in tandem with Sentinel-3A)
+
+---
+
+**Orbit life** :
+        
+- Operating in tandem with Sentinel-3A for better spatial and temporal coverage.
+- Tandem phase : from June 7, 2018 to October 16, 2018
+
+
+### SENTINEL-6A
+
+**Launch date** : November 21, 2020
+
+---
+
+**End of life date** : Still operational
+
+---
+
+**Agency** : ESA/EUMETSAT/EU/CNES/NOAA/NASA
+
+---
+
+**Instrument** : Poseidon-4
+
+---
+
+**Orbit characteristics** :
+
+- Orbit type: Non-sun-synchronous (prograde orbit)
+- Inclination: 66 degrees
+- Altitude: 1336 km
+- Repeat cycle: 9.9156 days
+

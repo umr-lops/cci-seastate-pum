@@ -9,6 +9,8 @@ production of CCI Sea State Datasets. The processing steps in light blue are
 purely computational steps whereas the steps in orange also require expertise 
 and interaction among the partners.
 
+![diagram_cciseastate.png](diagram_cciseastate.png)
+
 The different steps of this workflow are detailed in the following subsections:
 
 ### L1 to L2 algorithm selection
@@ -40,7 +42,7 @@ This step (and the following computational steps) involves the usage of
 dedicated tools for job array multiprocessing and monitoring of reprocessing 
 progress and status.
 
-### 1 Hz Averaging 
+### 1Hz Averaging 
 Averaging of the full resolution altimeter measurements to 1 Hz values.
 
 ### Adding ancillary 
@@ -54,7 +56,7 @@ data colocation and addition of complementary fields including:
 - weather model fields (wind speed, pressure, air temperature)
 - wave mode fields (SWH)
 
-### denoising 
+### Denoising 
 EMD-filter based denoising processing for along-track altimeter data. 
 Provides EMD-filtered significant wave height, an adjusted and denoised 
 significant wave height estimated by CCI Sea State project and based on 
@@ -148,7 +150,7 @@ table, with the corresponding source control repository:
 | cciseastate | https://gitlab.ifremer.fr/cciseastate/cciseastate                                                               | the python post processing layer to generate full L2P, L3 and L4 products|
 | prun | a python tool to run distributed jobs on a HPC cluster in job array - used for parallel reprocessing.           |
 
-## source code control
+## Source code control
 The processing software used for CCI Sea State production is versioned under source
 control on gitlab or github, and openly accessible whenever it is possible. When restrictions
 apply, they are mentioned in above table.
@@ -158,6 +160,27 @@ The processing of CCI Sea State Dataset is distributed over multiple platforms, 
 on the availability of the input data or how easy it is to migrate the processing software,
 though most of the processing was completed on Ifremer / Datarmor infrastructure. The used
 platform for each dataset is detailed in the following table:
+
+| CCI Sea State product | Production Platform  | Processing step                            | Motivation                                                                                           |
+|-----------------------|----------------------|--------------------------------------------|------------------------------------------------------------------------------------------------------|
+| **Dataset v1.1**      |
+| Altimeter L2P         | Ifremer / Datarmor   | All processing                             |                                                                                                      |
+| Altimeter L3          | Ifremer / Datarmor   | All processing                             |                                                                                                      |
+| Altimeter L4          | Ifremer / Datarmor   | All processing                             |                                                                                                      |
+| **Dataset v2**        |
+| Altimeter L2P         | Ifremer / Datarmor   |                                            |                                                                                                      |
+|                       | TUM                  |                                            | Data were already preprocessed at TUM. Next extensions will be processed on Ifremer / Datarmor.      |
+| Altimeter L3          | Ifremer / Datarmor   | All processing                             |                                                                                                      |
+| Altimeter L4          | Ifremer / Datarmor   | All processing                             |                                                                                                      |
+| SAR L2P S1A&B         | DLR                  | L1 to L2 for ISSW product                  |                                                                                                      |
+|                       | Ifremer / Datarmor   | L1 to L2 for SWH product. Post-processing. |                                                                                                      |
+| SAR L2P Envisat       | CAS / AIRI           | L1 to L2 for ISSW product                  |                                                                                                      |  
+| **Dataset v3**        |
+| Altimeter L2P         | Ifremer / Datarmor   | All processing except S3A                  |                                                                                                      |
+|                       | CNES / HAL           | L1 to L2 S3A                               | High cost to extract the LR-RMC retracker from the whole altimeter processing framework at CNES/CLS. |
+| Altimeter L3          | Ifremer / Datarmor   | All processing                             |                                                                                                      |
+| Altimeter L4          | Ifremer / Datarmor   | All processing                             |                                                                                                      |
+
 
 
 ### Ifremer *Datarmor* platform
@@ -207,6 +230,8 @@ applications
     infrastructure which is deemed to be sufficient for the CCI Sea State 
     requirements.
 
+![Configuration_global_datarmor.png](Configuration_global_datarmor.png)
+
 
 ## Product distribution
 The CCI Sea State Datasets are available on three different servers for different stages of
@@ -246,4 +271,4 @@ the CCI Data Portal’s Technical Team (e.. for CCI Sea State Dataset version
 2, specific DOIs are minted  independently for L2P, L3 and L4 products).
 
 The data organization follows the recommendation of CCI Data Standards 
-version 2.0 and are described in the Product Specification Document.
+
