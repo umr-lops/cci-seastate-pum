@@ -7,6 +7,13 @@ Some missions were retracked specifically for the CCI Sea State dataset,
 using WHALES retracker, whereas in some cases the data retracked by other 
 agencies were used instead. 
 
+{numref}`swh_retrackers` summarized the retracker used for each 
+mission for significant wave height, whether the retracking was performed by 
+CCI Sea State production team (WHALES) or a third party agency:
+
+```{table} Retracker used for each mission for retrieving the significant wave height
+:name: swh_retrackers
+
 | source                   | period             | retracker     | comment |
 |--------------------------|--------------------|---------------|---------|
 | ERS-1                    | 07/1991 to 03/2000 | REAPER (MLE3) |         |
@@ -17,7 +24,7 @@ agencies were used instead.
 | Jason-3 Version D        | 09/2016 to 06/2019 | WHALES        |         |
 | Jason-3 Version F        | 06/2019 to now     | WHALES        |         |
 | Jason-3 Version T        | 02/2016 to 09/2016 | WHALES        |         |
-| Topex Version F          | 08/1992 to 01/2006 |               |         |
+| Topex Version F          | 08/1992 to 01/2006 | MLE3          |         |
 | Envisat Version 3        | 03/2002 to 04/2012 | WHALES        |         |
 | CryoSat-2  Version E     | 04/2010 to now     | WHALES        |         |
 | SARAL Version T          | 02/2013 to now     | WHALES        |         |
@@ -25,19 +32,28 @@ agencies were used instead.
 | Sentinel-6 A Version F09 | 12/2023 to now     |               |         |
 | Sentinel-3 A Version 005 | 02/2016 to now     |               |         |
 | Sentinel-3 B Version 005 | 04/2018 to now     |               |         |
-
+```
 
 ### Compression to 1 Hz
+
+This section summarizes how the full resolution  (20/40 Hz) measurements are 
+edited and compressed into 1 Hz measurements.
 
 #### Land detection
 - full resolution (20/40 Hz) SWH and sigma0 values are flagged as land when 
   their distance to coast is **greater than 1000m**, based on the Goddard Space 
-  Flight Center 1km resolution grid of distance to coast
+  Flight Center 1km resolution grid of distance to coast. They are ignored 
+  in the compression process.
 
-#### Significant wave height
+#### Significant wave height (SWH)
 
-- SWH for uncompressed (20/40 Hz) measurements are discared if not in the 
+- SWH for uncompressed (20/40 Hz) measurements are discarded if not in the 
   range: [-0.5, 30]
+- when available, the full resolution quality flag is also used to discard 
+  invalid full resolution measurements, as summarized in {numref}`fullres_swh`  
+
+```{table} selected variable for SWH in each full resolution dataset, and the corresponding quality flag variable used to discard invalid measurements
+:name: fullres_swh
 
 | Source                  | SWH                    | SWH quality                         |
 |-------------------------|------------------------|-------------------------------------|
@@ -56,13 +72,12 @@ agencies were used instead.
 | Sentinel-6A Version F09 | swh_ocean              | swh_ocean_qual ==1                  |
 | Sentinel-3A Version 005 | swh_ocean_20_plrm_ku   | swh_ocean_qual_20_plrm_ku == 0      |
 | Sentinel-3B Version 005 | swh_ocean_20_plrm_ku   | swh_ocean_qual_20_plrm_ku == 0      |
-
-
+```
 
 
 #### Sigma0
-- sigma0 are **always taken from SGDR**, in C and Ku band (Ka for SARAL) - 
-  using MLE3 Ku band sigma0 when available
+- sigma0 are **always taken from third party (agency) SGDR**, in C and Ku band 
+  (Ka for SARAL) - using MLE3 Ku band sigma0 when available.
 
 | Source                   | Sigma0                | Sigma0 quality                           |
 |--------------------------|-----------------------|------------------------------------------|
@@ -90,13 +105,14 @@ agencies were used instead.
 | Sentinel-3 B Version 005 | sig0_ocean_20_plrm_ku |                                          |
 |                          | sig0_ocean_20_c       |                                          |
 
-```
-S-band sigma0 were discared for Envisat as it was found they were systematically
-flagged as bad in the SGDR product.
-```
+> **S-band sigma0** were discarded for **Envisat** as it was found they were 
+> systematically flagged as bad in the SGDR product.
 
 
 ### L2P Processing
+
+The base 1 Hz compressed files are enriched with additional variables and 
+consolidated into L2P products.
 
 #### Ancillary atmosphere model output
 
@@ -114,7 +130,7 @@ flagged as bad in the SGDR product.
 
 #### Ancillary wave model output
 
-**ERA5 model**
+**ERA5 (WAM) model**
 
 | Variable   | Long name                                           |
 |------------|-----------------------------------------------------|
