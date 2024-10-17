@@ -145,8 +145,7 @@ table, with the corresponding source control repository:
 | felyx | https://gitlab.ifremer.fr/felyx/ a python framework to extract match-ups between satellite and in situ data     |
 | whales | https://gitlab.ifremer.fr/cciseastate/whales                                                                    | the selected retracker for LRM altimetry missions, written in python                                                |                                              |
 | ceremd | https://gitlab.ifremer.fr/cerbere/ceremd                                                                        | a python package to denoise data using EMD filter                                                                   |
-| quach2020 | https://github.com/agrouaze/sar_hs_nn                                                                           | a python processor to produce the Sentinel-1 SAR SWH L2P                                                            |
-| DLR2020 | https://gitlab.com/dlr-earth-observation-center/cci-sea-state                                                   | a processor to produce the Sentinel-1 SAR ISSP L2P                                                                  |
+| DLR | https://gitlab.com/dlr-earth-observation-center/cci-sea-state                                                   | a processor to produce the Sentinel-1 SAR ISSP L2P                                                                  |
 | cciseastate | https://gitlab.ifremer.fr/cciseastate/cciseastate                                                               | the python post processing layer to generate full L2P, L3 and L4 products|
 | prun | a python tool to run distributed jobs on a HPC cluster in job array - used for parallel reprocessing.           |
 
@@ -161,25 +160,12 @@ on the availability of the input data or how easy it is to migrate the processin
 though most of the processing was completed on Ifremer / Datarmor infrastructure. The used
 platform for each dataset is detailed in the following table:
 
-| CCI Sea State product | Production Platform  | Processing step                            | Motivation                                                                                           |
-|-----------------------|----------------------|--------------------------------------------|------------------------------------------------------------------------------------------------------|
-| **Dataset v1.1**      |
-| Altimeter L2P         | Ifremer / Datarmor   | All processing                             |                                                                                                      |
-| Altimeter L3          | Ifremer / Datarmor   | All processing                             |                                                                                                      |
-| Altimeter L4          | Ifremer / Datarmor   | All processing                             |                                                                                                      |
-| **Dataset v2**        |
-| Altimeter L2P         | Ifremer / Datarmor   |                                            |                                                                                                      |
-|                       | TUM                  |                                            | Data were already preprocessed at TUM. Next extensions will be processed on Ifremer / Datarmor.      |
-| Altimeter L3          | Ifremer / Datarmor   | All processing                             |                                                                                                      |
-| Altimeter L4          | Ifremer / Datarmor   | All processing                             |                                                                                                      |
-| SAR L2P S1A&B         | DLR                  | L1 to L2 for ISSW product                  |                                                                                                      |
-|                       | Ifremer / Datarmor   | L1 to L2 for SWH product. Post-processing. |                                                                                                      |
-| SAR L2P Envisat       | CAS / AIRI           | L1 to L2 for ISSW product                  |                                                                                                      |  
-| **Dataset v3**        |
-| Altimeter L2P         | Ifremer / Datarmor   | All processing except S3A                  |                                                                                                      |
-|                       | CNES / HAL           | L1 to L2 S3A                               | High cost to extract the LR-RMC retracker from the whole altimeter processing framework at CNES/CLS. |
-| Altimeter L3          | Ifremer / Datarmor   | All processing                             |                                                                                                      |
-| Altimeter L4          | Ifremer / Datarmor   | All processing                             |                                                                                                      |
+| CCI Sea State product | Production Platform | Processing step | Motivation                    |
+| --------------------- | ------------------- | --------------- |-------------------------------|
+| SAR L2P S1A&B         | DLR / LRZ           | L1 to L2 for ISSW product | Location of IW/EW archive     |
+| Altimeter L2P         | Ifremer / Datarmor  | All processing  | Location of altimeter archive |
+| Altimeter L3          | Ifremer / Datarmor  | All processing  |                               |
+| Altimeter L4          | Ifremer / Datarmor  | All processing  |                               |
 
 
 
@@ -230,7 +216,17 @@ applications
     infrastructure which is deemed to be sufficient for the CCI Sea State 
     requirements.
 
-![Configuration_global_datarmor.png](Configuration_global_datarmor.png)
+![Datarmor cluster for Ifremer processing](Configuration_global_datarmor.png)
+
+### LRZ HPC Linux Cluster (DLR processing)
+DLR uses of the High Performance Computing (HPC) Linux Cluster of 
+Leibniz Supercomputing Centre (LRZ). Usage of the LRZ HPC Linux Cluster is 
+enabled by framework contract between DLR and LRZ.
+
+![LRZ Cluster for DLR Processing](./images/lrz_cluster.jpg)
+
+Detailed information about the LRZ HPC Linux Cluster can be found here:
+https://doku.lrz.de/linux-cluster-10745672.html 
 
 
 ## Product distribution
