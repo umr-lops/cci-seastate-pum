@@ -134,20 +134,25 @@ covering the different processing functions:
 - estimating the error and uncertainties
 - running the different processing steps in parallel
 
-The different packages used in each layer are referenced in the following 
-table, with the corresponding source control repository: 
+The different packages used in each layer are referenced in 
+{numref}`processing_packages`, with the corresponding source control 
+repositories: 
 
-| package | source control repository                                                                                       | description                                                                                                         |
-| ------- |-----------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------|
-| cerbere | https://gitlab.ifremer.fr/cerbere/cerbere                                                                       | a python unified data access API to read L1 and ancillary products in various formats                               |
-| ceraux | https://gitlab.ifremer.fr/cerbere/ceraux                                                                        | a python package to colocate with ancillary data such as sea-ice masks, bathymetry, land mask and distance to coast |
-| naiad | https://gitlab.ifremer.fr/naiad/ a python framework to extract cross-overs between different satellite missions |
-| felyx | https://gitlab.ifremer.fr/felyx/ a python framework to extract match-ups between satellite and in situ data     |
-| whales | https://gitlab.ifremer.fr/cciseastate/whales                                                                    | the selected retracker for LRM altimetry missions, written in python                                                |                                              |
-| ceremd | https://gitlab.ifremer.fr/cerbere/ceremd                                                                        | a python package to denoise data using EMD filter                                                                   |
-| DLR | https://gitlab.com/dlr-earth-observation-center/cci-sea-state                                                   | a processor to produce the Sentinel-1 SAR ISSP L2P                                                                  |
-| cciseastate | https://gitlab.ifremer.fr/cciseastate/cciseastate                                                               | the python post processing layer to generate full L2P, L3 and L4 products|
-| prun | a python tool to run distributed jobs on a HPC cluster in job array - used for parallel reprocessing.           |
+```{table} Processing packages for the different CCI Sea State datasets
+:name: processing_packages
+
+| package     | source control repository                                     | description                                                                                                         |
+|-------------|---------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------|
+| cerbere     | https://gitlab.ifremer.fr/cerbere/cerbere                     | a python unified data access API to read L1 and ancillary products in various formats                               |
+| ceraux      | https://gitlab.ifremer.fr/cerbere/ceraux                      | a python package to colocate with ancillary data such as sea-ice masks, bathymetry, land mask and distance to coast |
+| naiad       | https://gitlab.ifremer.fr/naiad/                              | a python framework to extract cross-overs between different satellite missions                                      |
+| felyx       | https://gitlab.ifremer.fr/felyx/                              | a python framework to extract match-ups between satellite and in situ data                                          |
+| whales      | https://gitlab.ifremer.fr/cciseastate/whales                  | the selected retracker for LRM altimetry missions, written in python                                                |                                              |
+| ceremd      | https://gitlab.ifremer.fr/cerbere/ceremd                      | a python package to denoise data using EMD filter                                                                   |
+| DLR         | https://gitlab.com/dlr-earth-observation-center/cci-sea-state | a processor to produce the Sentinel-1 SAR ISSP L2P                                                                  |
+| cciseastate | https://gitlab.ifremer.fr/cciseastate/cciseastate             | the python post processing layer to generate full L2P, L3 and L4 products                                           |
+| prun        |                                                               | a python tool to run distributed jobs on a HPC cluster in job array - used for parallel reprocessing.               |
+```
 
 ## Source code control
 The processing software used for CCI Sea State production is versioned under source
@@ -158,7 +163,10 @@ apply, they are mentioned in above table.
 The processing of CCI Sea State Dataset is distributed over multiple platforms, depending
 on the availability of the input data or how easy it is to migrate the processing software,
 though most of the processing was completed on Ifremer / Datarmor infrastructure. The used
-platform for each dataset is detailed in the following table:
+platform for each dataset is detailed in {numref}`processing_location`:
+
+```{table} Processing location of the different CCI Sea State datasets
+:name: processing_location
 
 | CCI Sea State product | Production Platform | Processing step | Motivation                    |
 | --------------------- | ------------------- | --------------- |-------------------------------|
@@ -166,7 +174,7 @@ platform for each dataset is detailed in the following table:
 | Altimeter L2P         | Ifremer / Datarmor  | All processing  | Location of altimeter archive |
 | Altimeter L3          | Ifremer / Datarmor  | All processing  |                               |
 | Altimeter L4          | Ifremer / Datarmor  | All processing  |                               |
-
+```
 
 
 ### Ifremer *Datarmor* platform
