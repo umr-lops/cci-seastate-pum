@@ -114,9 +114,10 @@ edited and compressed into 1 Hz measurements.
 The base 1 Hz compressed files are enriched with additional variables and 
 consolidated into L2P products.
 
-#### Ancillary atmosphere model output
+#### Ancillary atmospheric model variables
 
-**ERA5 model**
+```{table} ERA5 atmospheric model variables added to each 1 Hz measurement in L2P
+:name: ancillary_era5
 
 | Variable | Long name                       |
 |----------|---------------------------------|
@@ -126,11 +127,12 @@ consolidated into L2P products.
 | u10      | 10 metre U wind component       |
 | v10      | 10 metre V wind component       |
 | sp       | Surface pressure                |
+```
 
+#### Ancillary wave model variables
 
-#### Ancillary wave model output
-
-**ERA5 (WAM) model**
+```{table} ERA5/WAM wave model variables added to each 1 Hz measurement in L2P
+:name: ancillary_era5wam
 
 | Variable   | Long name                                           |
 |------------|-----------------------------------------------------|
@@ -144,9 +146,10 @@ consolidated into L2P products.
 | shww       | Significant height of wind waves                    |
 | mdww       | Mean direction of wind waves                        |
 | mpww       | Mean period of wind waves                           |
+```
 
-
-**WW3 model**
+```{table} Ifremer/WW3 hindcast wave model variables added to each 1 Hz measurement in L2P
+:name: ancillary_ifrww3
 
 | Variable   | Long name                                  |
 |------------|--------------------------------------------|
@@ -159,11 +162,19 @@ consolidated into L2P products.
 | dir        | Wave mean direction                        |
 | skw        | skewness                                   | 
 | qkk        | k-peakedness                               |
+```
 
-#### Ancillary sea ice concentration output
+#### Ancillary sea ice concentration
 
-|                      | Variable | Long name                                                                                                              |
-|----------------------|----------|------------------------------------------------------------------------------------------------------------------------|
-| OSISAF-ICDR-v2p0     | ice_conc | Fully filtered concentration of sea ice using atmospheric correction of brightness temperatures and open water filters |
-| OSISAF-AMSR-CDR-v3p0 | ice_conc | Fully filtered concentration of sea ice using atmospheric correction of brightness temperatures and open water filters |
+Different sources are combined for sea ice concentration, as the best 
+resolution datasets (25 km) do not cover the full CCI Sea State temporal 
+coverage.
 
+```{table} sources for sea ice concentration (SIC) CDR, by order of priority
+:name: ancillary_sic
+
+|                      | Variable | Temporal Coverage     | Description                                                                                                                                                 |
+|----------------------|----------|-----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| OSISAF-AMSR-CDR-v3p0 | ice_conc | 2002-2020 (ext: 2024) | AMSR Sea Ice Concentration <br/>Climate Data Record from OSI SAF (doi: 10.15770/EUM_SAF_OSI_0015)                                                           |
+| SICCI-HR-SIC         | ice_conc | 1991-2020             | High(er) Resolution Sea Ice Concentration Climate Data Record Version 3 from CCI Sea Ice+ (SSM/I and SSMIS) (doi: 10.5285/eade27004395466aaa006135e1b2ad1a) |
+```

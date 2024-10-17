@@ -1,6 +1,6 @@
 # Processing procedures
 
-## Retracking <a name="retracking"></a>
+## Retracking
 
 **Step 1 :** Retrieving SGDR Files
 
@@ -68,7 +68,7 @@ Paths to SGDR data to put as input in the script :
 | SENTINEL-3A | /home/datawork-cersat-public/provider/aviso/satellite/l2/sentinel-3_a/sral/peachi/sgdr/                 |
 | TOPEX       | /home/datawork-cersat-public/provider/aviso/satellite/l2/topex-poseidon/topex/gdr/version_f/            |
 
-## Average to 1Hz <a name="average"></a>
+## Average to 1Hz
 
 **Step 1:** Git Environment
 
