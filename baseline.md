@@ -14,24 +14,24 @@ CCI Sea State production team (WHALES) or a third party agency:
 ```{table} Retracker used for each mission for retrieving the significant wave height
 :name: swh_retrackers
 
-| source                   | period             | retracker     | comment |
-|--------------------------|--------------------|---------------|---------|
-| ERS-1                    | 07/1991 to 03/2000 | REAPER (MLE3) |         |
-| ERS-2                    | 04/1995 to 07/2011 | REAPER (MLE3) |         |
-| Jason-1 Version E        | 01/2002 to 07/2013 | WHALES        |         |
-| Jason-2 Version D        | 06/2008 to 10/2019 | WHALES        |         |
-|                          |                    | WHALES        |         |
-| Jason-3 Version D        | 09/2016 to 06/2019 | WHALES        |         |
-| Jason-3 Version F        | 06/2019 to now     | WHALES        |         |
-| Jason-3 Version T        | 02/2016 to 09/2016 | WHALES        |         |
-| Topex Version F          | 08/1992 to 01/2006 | MLE3          |         |
-| Envisat Version 3        | 03/2002 to 04/2012 | WHALES        |         |
-| CryoSat-2  Version E     | 04/2010 to now     | WHALES        |         |
-| SARAL Version T          | 02/2013 to now     | WHALES        |         |
-| Sentinel-6 A Version F08 | 03/2020 to 12/2023 |               |         |
-| Sentinel-6 A Version F09 | 12/2023 to now     |               |         |
-| Sentinel-3 A Version 005 | 02/2016 to now     |               |         |
-| Sentinel-3 B Version 005 | 04/2018 to now     |               |         |
+| source                   | period             | retracker     | 
+|--------------------------|--------------------|---------------|
+| ERS-1                    | 07/1991 to 03/2000 | REAPER (MLE3) | 
+| ERS-2                    | 04/1995 to 07/2011 | REAPER (MLE3) | 
+| Jason-1 Version E        | 01/2002 to 07/2013 | WHALES        | 
+| Jason-2 Version D        | 06/2008 to 10/2019 | WHALES        | 
+| Jason-3 Version D        | 09/2016 to 06/2019 | WHALES        | 
+| Jason-3 Version F        | 06/2019 to now     | WHALES        | 
+| Jason-3 Version T        | 02/2016 to 09/2016 | WHALES        | 
+| Topex Version F          | 08/1992 to 01/2006 | MLE3          |
+| Envisat Version 3        | 03/2002 to 04/2012 | WHALES        | 
+| CryoSat-2  Version D     | 07/2010 to 12/2020 | WHALES        |  
+| CryoSat-2  Version E     | 01/2021 to now     | WHALES        | 
+| SARAL Version T          | 02/2013 to now     | WHALES        |
+| Sentinel-6 A Version F08 | 03/2020 to 12/2023 |               |   
+| Sentinel-6 A Version F09 | 12/2023 to now     |               | 
+| Sentinel-3 A Version 005 | 02/2016 to now     |               |
+| Sentinel-3 B Version 005 | 04/2018 to now     |               |
 ```
 
 ### Compression to 1 Hz
@@ -66,7 +66,8 @@ edited and compressed into 1 Hz measurements.
 | Envisat Version 3       | swh_WHALES_20hz        | swh_WHALES_qual_20hz                |
 | ERS-1 REAPER            | swh_20hz               | swh_used_20hz == 0                  |
 | ERS-2 REAPER            | swh_20hz               | swh_used_20hz == 0                  |
-| CryoSat-2 Vesrion E     |                        |                                     |
+| CryoSat-2 Version D     | swh_WHALES_20hz        | swh_WHALES_fitting_error_20hz > 0.3 |
+| CryoSat-2 Version E     | swh_WHALES_20hz        | swh_WHALES_fitting_error_20hz > 0.3 |
 | Saral Version T         |                        |                                     |
 | Sentinel-6A Version F08 | swh_ocean              | swh_ocean_qual == 1                 |
 | Sentinel-6A Version F09 | swh_ocean              | swh_ocean_qual ==1                  |
@@ -91,10 +92,11 @@ edited and compressed into 1 Hz measurements.
 |                          | c_sig0_ocean          | c_sig0_ocean_compression_qual == 0       |
 | Jason-3 Version T        |                       |                                          |
 | Topex Version F          | sig0_20hz_ku_mle3     | sig0_used_20hz_ku == 0                   |
-| Envisat Version 3        |                       |                                          |
+| Envisat Version 3        | sig0_ocean_20_ku      | sig0_ocean_qual_20_ku == 0               |
 | ERS-1 REAPER             | ocean_sig0_20hz       | ocean_sig0_used_20hz                     |
 | ERS-2 REAPER             | ocean_sig0_20hz       | ocean_sig0_used_20hz                     |
-| CryoSat-2  Version E     |                       |                                          |
+| CryoSat-2  Version D     | sig0_1_20_ku          |                                          |
+| CryoSat-2  Version E     | sig0_1_20_ku          |                                          |
 | SARAL Version T          | sig0_40hz             | sig0_used_40hz == 0                      |
 | Sentinel-6 A Version F08 | ku_sig0_ocean_mle3    | c_sig0_ocean_qual != 1                   |
 |                          | c_sig0_ocean          | ku_sig0_ocean_mle3_qual != 1             |
