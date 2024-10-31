@@ -70,6 +70,21 @@ According to TOPEX version F documentation:
   coverage until the end of the mission.
 ```
 
+```{admonition} Note on Jason-3
+Two versions of SGDR were used as input : **version D** and **Version F**. 
+Version F replaced version D in the course of the mission. However a large 
+amount of data in version D had already retracked with WHALES in CCI Sea State. 
+It was decided not to replace this already completed segment of the Jason-3 
+data archive.
+
+Data processed in version D and version F were however separated in CCI 
+processing to ensure that possible inconsistencies between the two versions are 
+addressed.
+
+Jason-3 SGDR data during the cal/val period are labelled as **version T**.
+Version T method and algorithms are consistent with version D. The two versions 
+are merged into the version D segment of the CCI processing.
+```
 
 ### Compression to 1 Hz
 
