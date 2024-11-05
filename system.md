@@ -6,7 +6,7 @@ previous chapter.
 ## Production workflow
 The following diagram describes the overall workflow for the development and 
 production of CCI Sea State Datasets. The processing steps in light blue are 
-purely computational steps whereas the steps in orange also require expertise 
+purely computational steps whereas the steps in dark blue also require expertise 
 and interaction among the partners.
 
 ![diagram_cciseastate.png](diagram_cciseastate.png)
@@ -180,8 +180,7 @@ platform for each dataset is detailed in {numref}`processing_location`:
 
 Physically, the CCI production platform is mainly based on the Datarmor platform
 operated by Ifremer IT department (refer to the facility section in the
-management proposal), though a few reprocessing tasks were delegated to other platforms (
-refer to above table).
+management proposal), though a few reprocessing tasks were delegated to other platforms (see Table 2.2).
 The current storage capability is about 20 PB and the available capacity largely
 exceeds the need for CCI products.
 
