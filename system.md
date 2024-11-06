@@ -68,8 +68,9 @@ https://doi.org/10.1016/j.asr.2020.01.005]
 
 ### In Situ data selection and QC
 
-selection of buoys measuring SWH from Copernicus CMEMS In SItu TAC, applying 
-additional quality control procedures to detect:
+selection of buoys measuring SWH from Copernicus Marine Service In SItu Thematic 
+Assembly Center (INS TAC), applying additional quality control procedures to 
+detect:
 - wrong positions
 - stationary measurements
 - low resolution measurements (&gt;=0.5 meter for SWH)
@@ -77,7 +78,8 @@ additional quality control procedures to detect:
 The data are saved into a format compatible with the match-up extraction system.
 
 ### Cross-over extraction
-cross-overs between altimeter missions, against the reference mission (jason-2) 
+cross-overs between altimeter missions, in particular against the successive 
+reference mission (jason-2) 
 for intercalibration or other pairs for verification.
 
 cross-over extraction system uses Naiad open-source software: 
@@ -180,7 +182,9 @@ platform for each dataset is detailed in {numref}`processing_location`:
 
 Physically, the CCI production platform is mainly based on the Datarmor platform
 operated by Ifremer IT department (refer to the facility section in the
-management proposal), though a few reprocessing tasks were delegated to other platforms (see Table 2.2).
+management proposal), though a few reprocessing tasks were delegated to other 
+platforms (see {numref}`processing_location`).
+
 The current storage capability is about 20 PB and the available capacity largely
 exceeds the need for CCI products.
 
