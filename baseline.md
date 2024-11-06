@@ -34,57 +34,6 @@ CCI Sea State production team (WHALES) or a third party agency:
 | Sentinel-3 B Version 005 | 04/2018 to now     |               |
 ```
 
-```{admonition} Note on TOPEX-POSEIDON
-According to TOPEX version F documentation:
-- From launch through repeat cycle 16, various changes to the sensors were 
-  performed. Data up to repeat cycle 16 have varying quality and should not be 
-  used for climate studies. They are ignored in CCI Dataset.
-- TOPEX Side A was active from September 22, 1992 to February 10, 1999, and 
-  Side B was active from February 10, 1999 to end of mission. Users are advised 
-  to treat the data from Side A and Side B as two independent time series. 
-  No effort has been made to enforce continuity between Side A and Side B in 
-  this reprocessed data. They are separated in CCI processing.
-- TOPEX Side A calibration data have a jump on April 1, 1996. This very likely 
-  causes a jump in all TOPEX altimeter geophysical measurements at this time. 
-  Users are advised to treat data from Side A1 (Launch – April 1, 1996) and Side
-  A2 (April 1, 1996 – February 10, 1999) as two independent time series. 
-  No effort has been made to enforce continuity between Sides A1 and A2.  They 
-  are separated in CCI processing.
-- Sweep Calibration measurements to monitor the TOPEX point target response only
-  started from September 8, 1998 onward for both Side A and Side B. Users are 
-  cautioned that this may cause larger errors in the reprocessed Side A data. 
-  The Sweep Calibration data available for Side A from September 8, 1998 to 
-  February 10, 1999 are not used by themselves to process the Side A data in 
-  this product. Instead, for Side A, the available Sweep Calibrations have been 
-  used to generate a model for oversampled calibrations. The nominal Cal-1 data 
-  are used with this model to process all of Side A data to generate a 
-  consistent Side A time series.
-- Three 8-track tape recorders (TR A, B, C) were utilized to continuously record
-  the 16K data stream, acquiring over 99.9% of all spacecraft and science data. 
-  However, after 5 years of excellent performance the recorders, starting with 
-  TRB, slowly started to degrade. Work arounds involving recording and playback 
-  speed restored some performance for periods. TRB was deactivated in September 
-  2001 and TRA in October 2002. Real time acquisition through TDRSS filled much 
-  of the loss allowing approximately 90% data coverage. Finally, in October 2004
-  TRC failed. Real time data acquisition provided approximately 82% data 
-  coverage until the end of the mission.
-```
-
-```{admonition} Note on Jason-3
-Two versions of SGDR were used as input : **version D** and **Version F**. 
-Version F replaced version D in the course of the mission. However a large 
-amount of data in version D had already retracked with WHALES in CCI Sea State. 
-It was decided not to replace this already completed segment of the Jason-3 
-data archive.
-
-Data processed in version D and version F were however separated in CCI 
-processing to ensure that possible inconsistencies between the two versions are 
-addressed.
-
-Jason-3 SGDR data during the cal/val period are labelled as **version T**.
-Version T method and algorithms are consistent with version D. The two versions 
-are merged into the version D segment of the CCI processing.
-```
 
 ### Compression to 1 Hz
 
@@ -269,6 +218,13 @@ consolidated into L2P products.
 | dir        | Wave mean direction                        |
 | skw        | skewness                                   | 
 | qkk        | k-peakedness                               |
+```
+
+```{note}
+The WW3 model configuration ran for this ancillary source uses surface currents 
+(from CMEMS) and icebergs computed from altimetry and only available from 1993.
+The configuration used for the years 1991-1992 is therefore different and not
+full consistent with the model configuration used from 1993 onward. 
 ```
 
 #### Ancillary sea ice concentration

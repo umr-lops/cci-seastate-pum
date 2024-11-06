@@ -56,17 +56,8 @@ cat fichier.list | /appli/services/bin/prun -e /path/to/script --split-max-jobs=
 
 Once the process is complete, the generated files will be stored in the production space specified in the scripts -o option.
 
-Paths to SGDR data to put as input in the script :
-
-| Mission     | Path                                                                                                    |
-|-------------|---------------------------------------------------------------------------------------------------------|
-| CRYOSAT-2   | /home/datawork-cersat-public/provider/esa/satellite/l1b/cryosat-2/siral/sir_lrm_1b/version_e/data/date/ |
-| SARAL       | /home/datawork-cersat-public/provider/aviso/satellite/l2/saral/altika/sgdr/version_f/data/date          |
-| JASON-1     | /home/datawork-cersat-public/provider/aviso/satellite/l2/jason-1/poseidon-2/sgdr/version_e/data/date    |
-| JASON-2     | /home/datawork-cersat-public/provider/aviso/satellite/l2/jason-2/poseidon-3/sgdr/version_d/data/date/   |
-| JASON-3     | /home/datawork-cersat-public/provider/aviso/satellite/l2/jason-3/poseidon-3b/sgdr/version_f/data/date   |
-| SENTINEL-3A | /home/datawork-cersat-public/provider/aviso/satellite/l2/sentinel-3_a/sral/peachi/sgdr/                 |
-| TOPEX       | /home/datawork-cersat-public/provider/aviso/satellite/l2/topex-poseidon/topex/gdr/version_f/            |
+Paths to SGDR data to put as input in the script are listed in 
+{numref}`sgdr_inputs`.
 
 ## Average to 1Hz
 
@@ -114,23 +105,5 @@ Script options :
 - -c : indicates the path to the configuration file
 - -o : indicates the output directory where the 1Hz files will be stored
 
-Paths to retracked files to put as input in the script :
-
-| Mission       | Path                                                                                                            |
-|---------------|-----------------------------------------------------------------------------------------------------------------|
-| JASON-1       | /home/datawork-cersat-public/provider/cci_seastate/products/v3/data/satellite/altimeter/l2_20Hz/l2/jason-1      |
-| JASON-2       | /home/datawork-cersat-public/provider/cci_seastate/products/v3/data/satellite/altimeter/l2_20Hz/l2/jason-2      |
-| JASON-3       | /home/datawork-cersat-public/provider/cci_seastate/products/v3/data/satellite/altimeter/l2_20Hz/l2/jason-3t     |
-| JASON-3D      | /home/datawork-cersat-public/provider/cci_seastate/products/v3/data/satellite/altimeter/l2_20Hz/l2/jason-3d     |
-| JASON-3F      | /home/datawork-cersat-public/provider/cci_seastate/products/v3/data/satellite/altimeter/l2_20Hz/l2/jason-3f     |
-| SARAL         | /home/datawork-cersat-public/provider/cci_seastate/products/v3/data/satellite/altimeter/l2_20Hz/l2/saral        |
-| CRYOSAT-2     | /home/datawork-cersat-public/provider/cci_seastate/products/v3/data/satellite/altimeter/l2_20Hz/l2/cryosat-2    |
-| ERS-1         | /home/datawork-cersat-public/provider/esa/satellite/l2/ers-1/ra/esa-reaper/ers_alt_2_/data/date/                |
-| ERS-2         | /home/datawork-cersat-public/provider/esa/satellite/l2/ers-2/ra/esa-reaper/ers_alt_2_/data/date/                |
-| ENVISAT       | /home/datawork-cersat-public/provider/cci_seastate/products/v3/data/satellite/altimeter/l2_20Hz/l2/envisat      |
-| TOPEX         | /home/datawork-cersat-public/provider/aviso/satellite/l2/topex-poseidon/topex/gdr/version_f/                    |
-| SENTINEL-3A   | /home/datawork-cersat-public/provider/cci_seastate/products/v3/data/satellite/altimeter/l2_20Hz/l2/sentinel-3_a |
-| SENTINEL-3B   | /home/datawork-cersat-public/provider/eumetsat/satellite/l2/sentinel-3b/sral/BC005_Release/                     |
-| SENTINEL-6A   |  /home/datawork-cersat-public/provider/eumetsat/satellite/l2/sentinel-6a/poseidon-4/p4_2__lr/f08/               |
-
-
+Paths to retracked files to put as input in the script are listed in 
+{numref}`retracked_workspace`.

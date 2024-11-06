@@ -9,8 +9,10 @@ chapters:
 - file: installation
 - file: system
 - file: missions
-- file: processing
+- file: inputs
 - file: baseline
 - file: changes
+- file: processing
+- file: workspace
 - file: production
 
