@@ -151,7 +151,7 @@ repositories:
 | ceremd      | https://gitlab.ifremer.fr/cerbere/ceremd                      | a python package to denoise data using EMD filter                                                                   |
 | DLR         | https://gitlab.com/dlr-earth-observation-center/cci-sea-state | a processor to produce the Sentinel-1 SAR ISSP L2P                                                                  |
 | cciseastate | https://gitlab.ifremer.fr/cciseastate/cciseastate             | the python post processing layer to generate full L2P, L3 and L4 products                                           |
-| prun        |                                                               | a python tool to run distributed jobs on a HPC cluster in job array - used for parallel reprocessing.               |
+| prun        | internal tool                                                 | a python tool to run distributed jobs on a HPC cluster in job array - used for parallel reprocessing.               |
 ```
 
 ## Source code control

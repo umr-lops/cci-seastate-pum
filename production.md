@@ -9,22 +9,25 @@ processing steps, an explanation is provided.
 
 ```{table} Number of files produced at each step in the processing workflow.
 
-| Date                          | Mission         | SGDR files | Retracked files | 1Hz files           | L2P files   |
-|-------------------------------|-----------------|------------|-----------------|---------------------|-------------|
-| From 15/01/2002 to 21/06/2013 | JASON-1         | 102 158    | 92 099          | 92 099              | 92 018      |
-| From 04/07/2008 to 01/10/2019 | JASON-2         | 98 619     | 98 619          | 98 619              | no data yet |
-| From 17/02/2016 to 06/05/2019 | JASON-3D        | 29 771     | 29 631          | 29 606 [^footnote1] | no data yet |
-| From 07/05/2019 to 01/04/2024 | JASON-3F        | 44 222     | 44 362          | 42 196              | no data yet | 
-| From 14/03/2013 to 22/07/2024 | SARAL           | 117 339    | 87 620          | no data yet         | no data yet |
-| From 16/07/2010 to 28/03/2024 | CRYOSAT-2       | 778 522    | 776 245         | 175 710             | no data yet |
-| From 03/08/1991 to 02/06/1996 | ERS-1           |            | 24 461          | 24 448              | 17 340      |
-| From 14/05/1995 to 02/07/2003 | ERS-2           |            | 43 058          | 43 058              | 43 057      |
-| From 14/05/2002 to 08/04/2012 | ENVISAT         |            | 99 771          | 99 771              | 99 771      |
-| From 13/10/1992 to 04/10/2005 | TOPEX           | 117 669    | 117 669         | 110 178             | no data yet |
-| From 01/07/2016 to 31/12/2020 | SENTINEL-3A     |            | 71 237          | 71 237              | 71 237      |
-| From 08/05/2018 to 09/03/2023 | SENTINEL-3B     |            | 50 318          | 50 318              | 50 318      |
-| From 17/12/2020 to 01/03/2024 | SENTINEL-6A-F08 |            | 30 163          | 30 163              | no data yet |
-| From 02/03/2024 to 08/08/2024 | SENTINEL-6A-F09 |            | 32 823          | 32 823              | no data yet |
+| Mission         | SGDR files | Retracked files     | 1Hz files           | L2P files           |
+|-----------------|------------|---------------------|---------------------|---------------------|
+| JASON-1         | 102 158    | 92 099 [^footnote1] | 92 099              | 92 018 [^footnote3] |
+| JASON-2         | 98 619     | 98 619              | 98 619              | no data yet         |
+| JASON-3D        | 29 771     | 29 631 [^footnote2] | 29 606 [^footnote3] | no data yet         |
+| JASON-3F        | 44 222     | 44 362 [^footnote2] | 42 196 [^footnote3] | no data yet         | 
+| SARAL           | 117 339    | 87 620 [^footnote1] | no data yet         | no data yet         |
+| CRYOSAT-2       | 778 522    | 776 245 [^footnote1]| 175 710 [^footnote3]| no data yet         |
+| ERS-1           |            | 24 461              | 24 448 [^footnote3] | 17 340 [^footnote3] |
+| ERS-2           |            | 43 058              | 43 058              | 43 057              |
+| ENVISAT         |            | 99 771              | 99 771              | 99 771              |
+| TOPEX           | 117 669    | 117 669             | 110 178 [^footnote4]| no data yet         |
+| SENTINEL-3A     |            | 71 237              | 71 237              | 71 237              |
+| SENTINEL-3B     |            | 50 318              | 50 318              | 50 318              |
+| SENTINEL-6A-F08 |            | 30 163              | 30 163              | no data yet         |
+| SENTINEL-6A-F09 |            | 32 823              | 32 823              | no data yet         |
 ```
 
-[^footnote1]: Provide here an explanation
+[^footnote1]: Part of the retracking wasn't done, or some files generate errors. To be fixed.
+[^footnote2]: Some retracked files are missing in version D, and have been replaced by retracked files in version F to fill the gaps. There are fewer retracked files than SGDR files in version D, and more retracked files than SGDR files in version F.
+[^footnote3]: Some files need to be reprocessed, they're just missing. To be fixed.
+[^footnote4]: Somes files generate errors. To be fixed.

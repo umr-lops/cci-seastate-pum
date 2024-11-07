@@ -83,9 +83,9 @@ processing step.
 
 | Mission         | Path                                                                                          |
 |-----------------|-----------------------------------------------------------------------------------------------|
-| SENTINEL-3A / EW | /home/datawork-cersat-public/provider/cci_seastate/processing/v4/sar/data/ew_dlr/sentinel-1_a/ |
-| SENTINEL-3B / EW | /home/datawork-cersat-public/provider/cci_seastate/processing/v4/sar/data/ew_dlr/sentinel-1_b/ |
-| SENTINEL-3A / IW | /home/datawork-cersat-public/provider/cci_seastate/processing/v4/sar/data/iw_dlr/sentinel-1_a/ |
-| SENTINEL-3B / IW | /home/datawork-cersat-public/provider/cci_seastate/processing/v4/sar/data/iw_dlr/sentinel-1_b/ |
+| SENTINEL-1A / EW | /home/datawork-cersat-public/provider/cci_seastate/processing/v4/sar/data/ew_dlr/sentinel-1_a/ |
+| SENTINEL-1B / EW | /home/datawork-cersat-public/provider/cci_seastate/processing/v4/sar/data/ew_dlr/sentinel-1_b/ |
+| SENTINEL-1A / IW | /home/datawork-cersat-public/provider/cci_seastate/processing/v4/sar/data/iw_dlr/sentinel-1_a/ |
+| SENTINEL-1B / IW | /home/datawork-cersat-public/provider/cci_seastate/processing/v4/sar/data/iw_dlr/sentinel-1_b/ |
 ```
 
