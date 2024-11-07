@@ -1,6 +1,8 @@
 # Changes
 
-## version 4.0
+This sections summarizes the main changes with respect to the previous release.
+
+## version 4.0 [2024/2025]
 
 ### L2P products
 - [fixed and updated bathymetry (GEBCO 2024)](changes/v4/bathymetry)
