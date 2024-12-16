@@ -6,26 +6,36 @@ processing step.
 
 ## Altimetry
 
-### Retracked files
+### Full resolution (retracked) files
 
-```{table} Location of the altimeter data retracked by CCI Sea State project
+```{table} Location of the altimeter data retracked by CCI Sea State project (WHALES)
+:name: retracked_workspace_cci
+
+| Mission       | Path                                                                                                                                                                                                                   |
+|---------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| JASON-1 (E)   | /home/datawork-cersat-public/provider/cci_seastate/products/v3/data/satellite/altimeter/l2_20Hz/l2/jason-1e                                                                                                             |
+| JASON-2 (D)   | /home/datawork-cersat-public/provider/cci_seastate/products/v3/data/satellite/altimeter/l2_20Hz/l2/jason-2                                                                                                             |
+| JASON-3 (D)   | /home/datawork-cersat-public/provider/cci_seastate/products/v3/data/satellite/altimeter/l2_20Hz/l2/jason-3d                                                                                                            |
+| JASON-3 (F)   | /home/datawork-cersat-public/provider/cci_seastate/products/v3/data/satellite/altimeter/l2_20Hz/l2/jason-3f                                                                                                            |
+| SARAL (T)     | /home/datawork-cersat-public/provider/cci_seastate/products/v3/data/satellite/altimeter/l2_20Hz/l2/saralt                                                                                                              |
+| SARAL (F)     | /home/datawork-cersat-public/provider/cci_seastate/products/v3/data/satellite/altimeter/l2_20Hz/l2/saralf                                                                                                              |
+| CRYOSAT-2 (D)  | /home/datawork-cersat-public/provider/cci_seastate/products/v3/data/satellite/altimeter/l2_20Hz/l2/cryosat-2/ |
+| CRYOSAT-2 (F)  | /home/datawork-cersat-public/provider/cci_seastate/products/v3/data/satellite/altimeter/l2_20Hz/l2/cryosat-2/ |                                                                                                                     |
+```
+
+```{table} Location of the altimeter data retracked by third party
 :name: retracked_workspace
 
 | Mission       | Path                                                                                                                                                                                                                   |
 |---------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| JASON-1       | /home/datawork-cersat-public/provider/cci_seastate/products/v3/data/satellite/altimeter/l2_20Hz/l2/jason-1                                                                                                             |
-| JASON-2       | /home/datawork-cersat-public/provider/cci_seastate/products/v3/data/satellite/altimeter/l2_20Hz/l2/jason-2                                                                                                             |
-| JASON-3D      | /home/datawork-cersat-public/provider/cci_seastate/products/v3/data/satellite/altimeter/l2_20Hz/l2/jason-3d                                                                                                            |
-| JASON-3F      | /home/datawork-cersat-public/provider/cci_seastate/products/v3/data/satellite/altimeter/l2_20Hz/l2/jason-3f                                                                                                            |
-| SARAL         | /home/datawork-cersat-public/provider/cci_seastate/products/v3/data/satellite/altimeter/l2_20Hz/l2/saral                                                                                                               |
-| CRYOSAT-2     | /home/datawork-cersat-public/provider/cci_seastate/products/v3/data/satellite/altimeter/l2_20Hz/l2/cryosat-2 & /home/datawork-cersat-public/provider/cci_seastate/processing/v4/altimeter/retracking/whales/cryosat-2/ |
-| ERS-1         | /home/datawork-cersat-public/provider/esa/satellite/l2/ers-1/ra/esa-reaper/ers_alt_2_/data/date/                                                                                                                       |
-| ERS-2         | /home/datawork-cersat-public/provider/esa/satellite/l2/ers-2/ra/esa-reaper/ers_alt_2_/data/date/                                                                                                                       |
-| ENVISAT       | /home/datawork-cersat-public/provider/cci_seastate/products/v3/data/satellite/altimeter/l2_20Hz/l2/envisat                                                                                                             |
-| TOPEX         | /home/datawork-cersat-public/provider/aviso/satellite/l2/topex-poseidon/topex/gdr/version_f/                                                                                                                           |
-| SENTINEL-3A   | /home/datawork-cersat-public/provider/cci_seastate/products/v3/data/satellite/altimeter/l2_20Hz/l2/sentinel-3_a                                                                                                        |
-| SENTINEL-3B   | /home/datawork-cersat-public/provider/eumetsat/satellite/l2/sentinel-3b/sral/BC005_Release/                                                                                                                            |
-| SENTINEL-6A   | /home/datawork-cersat-public/provider/eumetsat/satellite/l2/sentinel-6a/poseidon-4/p4_2__lr/f08/                                                                                                                       |
+| ERS-1 (REAPER) | /home/datawork-cersat-public/provider/esa/satellite/l2/ers-1/ra/esa-reaper/ers_alt_2_/data/date/                                                                                                                       |
+| ERS-2 (REAPER) | /home/datawork-cersat-public/provider/esa/satellite/l2/ers-2/ra/esa-reaper/ers_alt_2_/data/date/                                                                                                                       |
+| ENVISAT (v3)      | /home/datawork-cersat-public/provider/cci_seastate/products/v3/data/satellite/altimeter/l2_20Hz/l2/envisat                                                                                                             |
+| TOPEX (F)     | /home/datawork-cersat-public/provider/aviso/satellite/l2/topex-poseidon/topex/gdr/version_f/                                                                                                                           |
+| SENTINEL-3A (BC005) | /home/datawork-cersat-public/provider/cci_seastate/products/v3/data/satellite/altimeter/l2_20Hz/l2/sentinel-3_a                                                                                                        |
+| SENTINEL-3B  (BC005) | /home/datawork-cersat-public/provider/eumetsat/satellite/l2/sentinel-3b/sral/BC005_Release/                                                                                                                            |
+| SENTINEL-6A (F08) | /home/datawork-cersat-public/provider/eumetsat/satellite/l2/sentinel-6a/poseidon-4/p4_2__lr/f08/                                                                                                                       |
+| SENTINEL-6A (F09) | /home/datawork-cersat-public/provider/eumetsat/satellite/l2/sentinel-6a/poseidon-4/p4_2__lr/f09/                                                                                                                       |
 ```
 
 ### 1Hz files
@@ -35,20 +45,23 @@ processing step.
 
 | Mission         | Path                                                                                          |
 |-----------------|-----------------------------------------------------------------------------------------------|
-| JASON-1         | /home/datawork-cersat-public/cache/project/cciseastate/data/v4/altimeter/1hz/jason-1e         |
-| JASON-2         | /home/datawork-cersat-public/cache/project/cciseastate/data/v4/altimeter/1hz/jason-2d         |
-| JASON-3D        | /home/datawork-cersat-public/cache/project/cciseastate/data/v4/altimeter/1hz/jason-3d         |
-| JASON-3F        | /home/datawork-cersat-public/cache/project/cciseastate/data/v4/altimeter/1hz/jason-3f         |
-| SARAL           | /home/datawork-cersat-public/cache/project/cciseastate/data/v4/altimeter/1hz/saral            |
-| CRYOSAT-2       | /home/datawork-cersat-public/cache/project/cciseastate/data/v4/altimeter/1hz/cryosat-2e       |
-| ERS-1           | /home/datawork-cersat-public/cache/project/cciseastate/data/v4/altimeter/1hz/ers-1            |
-| ERS-2           | /home/datawork-cersat-public/cache/project/cciseastate/data/v4/altimeter/1hz/ers-2-reaper     |
-| ENVISAT         | /home/datawork-cersat-public/cache/project/cciseastate/data/v4/altimeter/1hz/envisat-v3       |
-| TOPEX           | /home/datawork-cersat-public/cache/project/cciseastate/data/v4/altimeter/1hz/topexf           |
-| SENTINEL-3A     | /home/datawork-cersat-public/cache/project/cciseastate/data/v4/altimeter/1hz/sentinel-3_a_005 |
-| SENTINEL-3B     | /home/datawork-cersat-public/cache/project/cciseastate/data/v4/altimeter/1hz/sentinel-3_b_005 |
-| SENTINEL-6A-F08 | /home/datawork-cersat-public/cache/project/cciseastate/data/v4/altimeter/1hz/sentinel-6_a_f08 |
-| SENTINEL-6A-F09 | /home/datawork-cersat-public/cache/project/cciseastate/data/v4/altimeter/1hz/sentinel-6_a_f09 |
+| JASON-1 (E)    | /home/datawork-cersat-public/cache/project/cciseastate/data/v4/altimeter/1hz/jason-1e          |
+| JASON-2 (D)    | /home/datawork-cersat-public/cache/project/cciseastate/data/v4/altimeter/1hz/jason-2d          |
+| JASON-3 (D)    | /home/datawork-cersat-public/cache/project/cciseastate/data/v4/altimeter/1hz/jason-3d          |
+| JASON-3 (F)    | /home/datawork-cersat-public/cache/project/cciseastate/data/v4/altimeter/1hz/jason-3f          |
+| SARAL (T)      | /home/datawork-cersat-public/cache/project/cciseastate/data/v4/altimeter/1hz/saralt            |
+| SARAL (F)      | /home/datawork-cersat-public/cache/project/cciseastate/data/v4/altimeter/1hz/saralf            |
+| CRYOSAT-2 (D)  | /home/datawork-cersat-public/cache/project/cciseastate/data/v4/altimeter/1hz/cryosat-2d        |
+| CRYOSAT-2 (E)  | /home/datawork-cersat-public/cache/project/cciseastate/data/v4/altimeter/1hz/cryosat-2e        |
+| ERS-1 (REAPER) | /home/datawork-cersat-public/cache/project/cciseastate/data/v4/altimeter/1hz/ers-1-reaper     |
+| ERS-2 (REAPER) | /home/datawork-cersat-public/cache/project/cciseastate/data/v4/altimeter/1hz/ers-2-reaper     |
+| ENVISAT (v3)   | /home/datawork-cersat-public/cache/project/cciseastate/data/v4/altimeter/1hz/envisat-v3       |
+| TOPEX (F/TOPEX-A) | /home/datawork-cersat-public/cache/project/cciseastate/data/v4/altimeter/1hz/topexf_topex_a |
+| TOPEX (F/TOPEX-B) | /home/datawork-cersat-public/cache/project/cciseastate/data/v4/altimeter/1hz/topexf_topex_b |
+| SENTINEL-3A (BC005) | /home/datawork-cersat-public/cache/project/cciseastate/data/v4/altimeter/1hz/sentinel-3_a_005 |
+| SENTINEL-3B (BC005) | /home/datawork-cersat-public/cache/project/cciseastate/data/v4/altimeter/1hz/sentinel-3_b_005 |
+| SENTINEL-6A (F08) | /home/datawork-cersat-public/cache/project/cciseastate/data/v4/altimeter/1hz/sentinel-6_a_f08 |
+| SENTINEL-6A (F09) | /home/datawork-cersat-public/cache/project/cciseastate/data/v4/altimeter/1hz/sentinel-6_a_f09 |
 ```
 
 ### L2P files
