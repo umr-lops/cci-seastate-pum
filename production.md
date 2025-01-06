@@ -26,6 +26,11 @@ processing steps, an explanation is provided. Datas are considered until 31/12/2
 | SENTINEL-6A-F08 |            | 28 619              | 28 349              | 28 349               | 28 349      |
 ```
 
+Some issues noted during data verification:
+- ERS-1 / ERS-2 (REAPER) : some zero-value SWH should be flagged out (probably fill value)
+- fill value for ERS-1 / ERS-2 L2P lat/lon is 2147483647. instead of 1e20
+
+
 [^footnote1]: Part of the retracking wasn't done, or some files generate errors. To be fixed.
 [^footnote2]: Some files need to be reprocessed, they're just missing. To be fixed.
 [^footnote3]: 6 SGDR files corrupted at provider; 1 SGDR generates dummy times when retracked (to be investigated).
