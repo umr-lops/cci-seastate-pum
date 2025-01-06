@@ -24,6 +24,7 @@ time have been operated for key missions, as defined in the table below:
 | Mission | Tandem with | Start | End | Delta T |
 | ------- | ----------- | ----- | --- | ------- |
 | ERS-2 (REAPER) | ERS-1 (REAPER) | 17-Aug-1995 | 06-jun-1996 | 35 min / 1 day [^footnote1] |
+| Jason-2 (version D) | TOPEX B (version F) | 07-Dec-2001 | 15-Aug-2002 | 1 min |
 | ENVISAT (version 3) | *ERS-2 (REAPER)* | 27-Sep-2007 | 12-Feb-2008 | 28 min[^footnote3] |
 | ENVISAT (version 3) | *ERS-2 (REAPER)* | 23-Oct-2008 | 27-Jan-2009 | 28 min ?[^footnote3]|
 | ENVISAT (version 3) | *ERS-2 (REAPER)* | 27-Jan-2009 | 07-Apr-2009 | 28 min ?[^footnote3] |
