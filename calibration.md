@@ -24,9 +24,9 @@ time have been operated for key missions, as defined in the table below:
 | Mission | Tandem with | Start | End | Delta T |
 | ------- | ----------- | ----- | --- | ------- |
 | ERS-2 (REAPER) | ERS-1 (REAPER) | 17-Aug-1995 | 06-jun-1996 | 35 min / 1 day [^footnote1] |
-| ENVISAT (version 3) | ERS-2 (REAPER)| 27-Sep-2007 | 12-Feb-2008 | 28 min |
-| ENVISAT (version 3 | ERS-2 (REAPER) | 23-Oct-2008 | 27-Jan-2009 | 28 min ?|
-| ENVISAT (version 3 | ERS-2 (REAPER) | 27-Jan-2009 | 07-Apr-2009 | 28 min ? |
+| ENVISAT (version 3) | *ERS-2 (REAPER)* | 27-Sep-2007 | 12-Feb-2008 | 28 min[^footnote3] |
+| ENVISAT (version 3) | *ERS-2 (REAPER)* | 23-Oct-2008 | 27-Jan-2009 | 28 min ?[^footnote3]|
+| ENVISAT (version 3) | *ERS-2 (REAPER)* | 27-Jan-2009 | 07-Apr-2009 | 28 min ?[^footnote3] |
 | Jason-2 (version D) | Jason-1 (version E) | August 2008 | January 2009 | 1 min? |
 | Jason-3 (version D) | Jason-2 (version D) | 12-Feb-2016 | 02-Oct-2016 | 80 s |
 | Sentinel-6 A | Jason-3 (version F) | 14-Sep-2021[^footnote2] | 04-Apr-2022 | | 
@@ -40,5 +40,6 @@ time have been operated for key missions, as defined in the table below:
   altimeter (Dinardo et al., 2022). Therefore, the data of the first tandem 
   phase between S6-MF and Jason-3 can be used after the side B change from 14 
   September 2021 to 4 April 2022. 
-
+[^footnote3]: ERS-2 REAPER does not extend beyond 2003, therefore has no overlap
+  with ENVISAT in tandem phases
 
