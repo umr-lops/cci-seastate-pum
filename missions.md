@@ -167,6 +167,7 @@
 
 **Orbit life** :
 - From June 2008 to October 2016 : in its nominal orbit.
+- Tandem phase with Jason-2 from February 12th to October 2nd 2016
 - Interleaved orbit : from October 14, 2016 to January 1, 2017
 - Geodetic orbit : from July 10, 2017 to October 1, 2019
 
@@ -201,6 +202,7 @@
 ---
 
 **Orbit life** :
+- Tandem phase with Jason-2 from February 12th to October 2nd 2016
 - From January 2016 to April 2022 : in its nominal orbit.
 - Interleaved orbit : from April 25, 2022
 

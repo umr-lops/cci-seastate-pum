@@ -12,6 +12,7 @@ chapters:
 - file: inputs
 - file: baseline
 - file: changes
+- file: calibration
 - file: processing
 - file: workspace
 - file: production
