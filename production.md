@@ -2,18 +2,21 @@
 
 ## Altimetry
 
+### Processing summmary
+
 This section summarizes the number of files produced at each processing step of 
 the altimetry processing workflow. In case of discrepancies between subsequent 
-processing steps, an explanation is provided. Datas are considered until 31/12/2023.
+processing steps, an explanation is provided. Data are considered until 
+31/12/2023.
 
 
 ```{table} Number of files produced at each step in the processing workflow.
 
 | Mission         | SGDR files | Retracked files     | 1Hz files           | L2P files            | Index files |
 |-----------------|------------|---------------------|---------------------|----------------------|-------------|
-| JASON-1         | 102 158    | 102 158             | 92 099 [^footnote2] | 92 099 [^footnote2]  | 184 088     |
+| JASON-1         | 102 158    | 102 158             | 102 154 [^footnote4] | 92 099 [^footnote4]  | 184 088     |
 | JASON-2         | 98 619     | 98 619              | 98 619              | 98 619               | 98 619      |
-| JASON-3D        | 26 947     | 26 947              | 26 947              | 26 947               | 30 114      |
+| JASON-3D        | 26 947     | 26 947 [^footnote5] | 26 947              | 26 947               | 30 114      |
 | JASON-3F        | 45 452     | 45 452              | 45 452              | 45 450               | 42 785      |
 | SARAL           | 112 474    | 112 467 [^footnote3]| 112 467             | 112 439              | 0           |
 | CRYOSAT-2       | 758 841    | 758 840 [^footnote1]| 615 255 [^footnote2]| 3 402                | 0           |
@@ -26,11 +29,24 @@ processing steps, an explanation is provided. Datas are considered until 31/12/2
 | SENTINEL-6A-F08 |            | 28 619              | 28 349              | 28 349               | 28 349      |
 ```
 
+### Processing issues
+
 Some issues noted during data verification:
+
+- some ERS-1 / ERS-2 (REAPER) files contain anomalous measurement times (out of 
+  the orbit time frame) while realistic. They were found associated with 
+  zero-value latitude and longitude. 
 - ERS-1 / ERS-2 (REAPER) : some zero-value SWH should be flagged out (probably fill value)
 - fill value for ERS-1 / ERS-2 L2P lat/lon is 2147483647. instead of 1e20
+- Data processed with WHALES at TUM (Jason-1, Jason-2, part of Jason-3) were 
+  edited wrt a coarse land mask, leading to less data close to coastal areas.
+  They should be reprocessed in CCI Sea State version 5.
+- Some TUM processed data (Jason-3D) containing zero-value lat and/or lon for 
+  some measurements. They have to be edited from WHALES files. FIXED.
 
 
 [^footnote1]: Part of the retracking wasn't done, or some files generate errors. To be fixed.
 [^footnote2]: Some files need to be reprocessed, they're just missing. To be fixed.
-[^footnote3]: 6 SGDR files corrupted at provider; 1 SGDR generates dummy times when retracked (to be investigated).
+[^footnote3]: 6 SARAL SGDR files corrupted at provider; 1 SGDR generates dummy times when retracked (to be investigated).
+[^footnote4]: 4 Jason-1 SGDR containing only one second of data were removed.
+[^footnote5]: 3 Jason-3 version D WHALES products (processed by TUM) were dropped as they had invalid (zero) lat and/or lon. 
