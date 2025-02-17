@@ -170,6 +170,26 @@ State 1 Hz file is fully comparable to the corresponding GDR file.
 The base 1 Hz compressed files are enriched with additional variables and 
 consolidated into L2P products.
 
+#### SWH quality level
+
+The quality level of SWH measurement, provided in the `quality_level` variable 
+is estimated by applying a suite of specific tests. When positive, a test will 
+downgrade a SWH measurement (starting initially with the quality level inherited
+from the 1 Hz compressed data file) to a lower value, as given in the following 
+table. The result of each applied test is summarized in the corresponding 
+`rejection_flags` variable.
+
+```{table} Quality level assigned to a validity test if positive (with corresponding label in the rejection_flags variable
+:name: swh_quality_level
+
+| Validity test | Assigned quality level  |
+| `sea_ice`: 0 < sea ice concentration <= 10% | 2 |
+| `sea_ice`: sea ice concentration > 10% | 1 |
+| `swh_validity`: 0 <= SWH <= 30 | 1 |
+| `swh_rms_outlier`: SWH RMS in 1 Hz meaurement > LUT value | 1 |
+| `outlier_test`: SWH outlier test | 1 |
+```
+
 #### Ancillary atmospheric model variables
 
 ```{table} ERA5 atmospheric model variables added to each 1 Hz measurement in L2P
