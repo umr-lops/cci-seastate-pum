@@ -261,3 +261,48 @@ coverage.
 | OSISAF-AMSR-CDR-v3p0 | ice_conc | 2002-2020 (ext: 2024) | AMSR Sea Ice Concentration Climate Data Record from OSI SAF (doi: 10.15770/EUM_SAF_OSI_0015)                                                                |
 | SICCI-HR-SIC         | ice_conc | 1991-2020             | High(er) Resolution Sea Ice Concentration Climate Data Record Version 3 from CCI Sea Ice+ (SSM/I and SSMIS) (doi: 10.5285/eade27004395466aaa006135e1b2ad1a) |
 ```
+
+### Verifications
+
+Production of the Sea State CCI dataset involved a number of processing steps that need to be verified before generating and delivering the final dataset to the Validation and Climate Assessment teams.
+
+#### LUT RMS
+
+The verification steps will be applied to each mission on 8 cycles. The number of cycles is a trade-off between CPU time and statistical robustness of the proposed diagnostics. 
+For some processing steps, it is expected that a larger number of cycles will have to be processed (e.g. EMD filtering or cross calibration). In that case, the selected period will be indicated below for the corresponding step.  
+The selected cycles correspond to periods of nominal orbit and nominal functioning of the instruments:
+
+| Mission     | Cycles                          |
+|-------------|---------------------------------|
+| ERS-1       | 154/92/84/146/148/149/151/98    |
+| ERS-2       | 50/82/43/63/45/76/46/36         |
+| TOPEX-A1    | 108/112/122/16/22/25/67/73      |
+| TOPEX-A2    | 134/143/148/158/198/208/218/221 |
+| TOPEX-B     | 246/254/306/328/364/428/444/453 |
+| JASON-1E    | 184/79/191/339/96/510/512/253   |
+| JASON-2D    | 206/319/179/286/146/3/48/195    |
+| JASON-3D    | 74/74/11/46/88/14/26/63         |
+| JASON-3F    | 319/325/194/196/348/349/356/357 |
+| ENVISAT-V3  | 105/54/77/84/87/89/96/9         |
+| SARAL       | 105/21/13/22/100/112/6/103      |
+| SENTINEL-3A | 10/27/34/37/49/59/62/65         |
+| SENTINEL-3B | 11/21/25/27/31/47/48/51         |
+| SENTINEL-6A | 11/12/17/21/25/27/31/47         |
+
+Below, the average LUTs for each mission :
+
+![LUT_average_ERS-1-REAPER.png](images/LUT_average_ERS-1-REAPER.png)
+![LUT_average_ERS-2-REAPER.png](images/LUT_average_ERS-2-REAPER.png)
+![LUT_average_TOPEXF_TOPEX_A1.png](images/LUT_average_TOPEXF_TOPEX_A1.png)
+![LUT_average_TOPEXF_TOPEX_A2.png](images/LUT_average_TOPEXF_TOPEX_A2.png)
+![LUT_average_TOPEXF_TOPEX_B.png](images/LUT_average_TOPEXF_TOPEX_B.png)
+![LUT_average_JASON-1E.png](images/LUT_average_JASON-1E.png)
+![LUT_average_JASON-2D.png](images/LUT_average_JASON-2D.png)
+![LUT_average_JASON-3D.png](images/LUT_average_JASON-3D.png)
+![LUT_average_JASON-3F.png](images/LUT_average_JASON-3F.png)
+![LUT_average_ENVISAT-V3.png](images/LUT_average_ENVISAT-V3.png)
+![LUT_average_SARALF.png](images/LUT_average_SARALF.png)
+![LUT_average_SENTINEL-3A.png](images/LUT_average_SENTINEL-3A.png)
+![LUT_average_SENTINEL-3B.png](images/LUT_average_SENTINEL-3B.png)
+![LUT_average_SENTINEL-6A_f08.png](images/LUT_average_SENTINEL-6A_f08.png)
+

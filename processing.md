@@ -95,7 +95,7 @@ module load anaconda-py2.7/4.3.13
 source activate /path/to/env/conda
 
 #Running the average_to_1hz script with parameters
-average_to_1hz -f $1 -m ENVISAT -c /path/to/configuration/file -o /path/to/output/directory
+average_to_1hz -f $1 -m mission -c /path/to/configuration/file -o /path/to/output/directory
 
 ```
 
@@ -107,3 +107,36 @@ Script options :
 
 Paths to retracked files to put as input in the script are listed in 
 {numref}`retracked_workspace`.
+
+## L2P
+
+**Step 1 :** Using a production space
+
+Same as for Average to 1hz step
+
+**Step 2 :** Creating the processing script 
+
+A Bash script should be set up to automate the L2P process.
+Here is an exemple of a script you can use :
+
+```bash
+#!/usr/bin/env bash
+
+
+cd $PBS_O_WORKDIR
+
+#Loading the necessary modules
+source /usr/share/Modules/3.2.10/init/bash
+module load anaconda-py2.7/4.3.13
+
+#Activating the specific conda environment
+source activate /path/to/env/conda
+
+#Running the average_to_1hz script with parameters
+l2tol2p $1 mission /path/to/configuration/file -o /path/to/output/directory
+
+```
+
+Script options :
+- -o : indicates the output directory where the L2P files will be stored
+
