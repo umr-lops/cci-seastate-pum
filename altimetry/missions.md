@@ -1,8 +1,9 @@
-# Satellite missions
+# Altimetry missions
 
-## Altimetry missions
+The version 4 of CCI Sea State datasets includes for altimetry the missions 
+described hereafter.
 
-### ERS-1
+## ERS-1
 
 **Launch date** : July 17, 1991
 
@@ -35,7 +36,7 @@
 
 
 
-### TOPEX
+## TOPEX
 
 **Launch date** : August 10, 1992
 
@@ -70,7 +71,7 @@
 
 
 
-### ERS-2
+## ERS-2
 
 **Launch date** : April 21, 1995
 
@@ -103,7 +104,7 @@
 
 
 
-### JASON-1
+## JASON-1
 
 **Launch date** : December 7, 2001
 
@@ -139,7 +140,7 @@
 
 
 
-### JASON-2
+## JASON-2
 
 **Launch date** : June 20, 2008
 
@@ -174,7 +175,7 @@
 
 
 
-### JASON-3
+## JASON-3
 
 **Launch date** : January 17, 2016
 
@@ -207,7 +208,7 @@
 - Interleaved orbit : from April 25, 2022
 
 
-### ENVISAT
+## ENVISAT
 
 **Launch date** : March 1, 2002
 
@@ -239,7 +240,7 @@
 - Tandem phase : from June 18, 2003 to October 20, 2003
 
 
-### CRYOSAT-2
+## CRYOSAT-2
 
 **Launch date** : April 8, 2010
 
@@ -265,7 +266,7 @@
 - Repeat cycle: 369 days
 
 
-### SARAL
+## SARAL
 
 **Launch date** : February 25, 2013
 
@@ -292,7 +293,7 @@
 
 
 
-### SENTINEL-3A
+## SENTINEL-3A
 
 **Launch date** : February 16, 2016
 
@@ -324,7 +325,7 @@
 
 
 
-### SENTINEL-3B
+## SENTINEL-3B
 
 **Launch date** : April 25, 2018
 
@@ -357,7 +358,7 @@
 - Tandem phase : from June 7, 2018 to October 16, 2018
 
 
-### SENTINEL-6A
+## SENTINEL-6A
 
 **Launch date** : November 21, 2020
 
@@ -382,59 +383,4 @@
 - Altitude: 1336 km
 - Repeat cycle: 9.9156 days
 
-
-
-
-## SAR missions
-
-### SENTINEL-1A
-
-**Launch date** : April 3, 2014
-
----
-
-**End of life date** : Out of service since 2022
-
----
-
-**Agency** : ESA
-
----
-
-**Instrument** : C-SAR
-
----
-
-**Orbit characteristics** :
-
-- Orbit type: Sun-synchronous
-- Inclination: 98 degrees
-- Altitude: 693 km
-- Repeat cycle: 12 days
-
-
-### SENTINEL-1B
-
-**Launch date** : April 25, 2014
-
----
-
-**End of life date** : December 23, 2021
-
----
-
-**Agency** : ESA
-
----
-
-**Instrument** : C-SAR
-
----
-
-**Orbit characteristics** :
-
-- Orbit type: Sun-synchronous
-- Inclination: 98 degrees
-- Altitude: 693 km
-- Repeat cycle: 12 days(base)
 

@@ -8,13 +8,12 @@ between these altimeters, using a set of reference missions.
 ```{table} Reference mission for cross-calibration
 
 | Mission | Start of reference timeframe| End of reference timeframe |
-| ------- | ----------- | ----- | --- |
+| ------- | --------------------------- | -------------------------- |
 | Jason-1 |  |  |
 | Jason-2 |  |  |
 | Jason-3 |  |  |
 | Sentinel-6 A |  |  |
 ```
-
 
 Tandem phases where two altimeters fly over the same track at roughly the same 
 time have been operated for key missions, as defined in the table below:

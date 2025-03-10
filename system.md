@@ -36,7 +36,7 @@ appropriate processing platform. This includes the following tasks:
 ### L1 to L2 processing
 Massively distributed reprocessing of the altimeter or SAR Level 1 data archive 
 to produce a complete time series of Sea State parameters using the selected 
-algorithm(s), as described in the [processing baseline](./baseline.md).
+algorithm(s), as described in the [processing baseline](altimetry/baseline).
 
 This step (and the following computational steps) involves the usage of 
 dedicated tools for job array multiprocessing and monitoring of reprocessing 

@@ -3,17 +3,28 @@
 
 format: jb-book
 root: intro
-options:
-  numbered: true
-chapters:
-- file: installation
-- file: system
-- file: missions
-- file: inputs
-- file: baseline
-- file: changes
-- file: calibration
-- file: processing
-- file: workspace
-- file: production
+parts:
+  - caption: System Specification Document
+    numbered: true
+    chapters:
+    - file: system
+    - file: installation
+    - file: inputs
+    - file: processing
+    - file: workspace
+    - file: production
+  - caption: Product User Manual
+    numbered: true
+    chapters:
+    - file: altimetry
+      sections:
+        - file: altimetry/missions
+        - file: altimetry/baseline
+        - file: altimetry/changes
+        - file: altimetry/calibration
+    - file: sar
+      sections:
+        - file: sar/missions
+
+
 

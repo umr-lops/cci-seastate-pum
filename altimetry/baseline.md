@@ -1,8 +1,9 @@
 # Altimeter processing baseline
 
-## version 4.0
+This sections describes the processing baseline for the altimeter data in 
+CCI Sea State version 4.
 
-### Retracking
+## Retracking
 Some missions were retracked specifically for the CCI Sea State dataset, 
 using WHALES retracker, whereas in some cases the data retracked by other 
 agencies were used instead. 
@@ -35,20 +36,20 @@ CCI Sea State production team (WHALES) or a third party agency:
 ```
 
 
-### Compression to 1 Hz
+## Compression to 1 Hz
 
 This section summarizes how the full resolution  (20/40 Hz) measurements are 
 edited and compressed into 1 Hz measurements. The same full resolution to 1 Hz 
 measurement mapping is used as in agency (S)GDR products so that a CCI Sea 
 State 1 Hz file is fully comparable to the corresponding GDR file. 
 
-#### Land detection
+### Land detection
 - full resolution (20/40 Hz) SWH and sigma0 values are flagged as land when 
   their distance to coast is **greater than 1000m**, based on the Goddard Space 
   Flight Center 1km resolution grid of distance to coast. They are ignored 
   in the compression process.
 
-#### Significant wave height (SWH)
+### Significant wave height (SWH)
 
 - SWH for uncompressed (20/40 Hz) measurements are discarded if not in the 
   range: [-0.5, 30]
@@ -115,7 +116,7 @@ State 1 Hz file is fully comparable to the corresponding GDR file.
 ```
 
 
-#### Sigma0
+### Sigma0
 - sigma0 are **always taken from third party (agency) SGDR**, in C and Ku band 
   (Ka for SARAL) - using MLE3 Ku band sigma0 when available, as summarized in 
   {numref}`fullres_sigma0`
@@ -165,12 +166,12 @@ State 1 Hz file is fully comparable to the corresponding GDR file.
   1 Hz value is flagged as **bad** in the `quality_level` variable.
   
 
-### L2P Processing
+## L2P Processing
 
 The base 1 Hz compressed files are enriched with additional variables and 
 consolidated into L2P products.
 
-#### SWH quality level
+### SWH quality level
 
 The quality level of SWH measurement, provided in the `quality_level` variable 
 is estimated by applying a suite of specific tests. When positive, a test will 
@@ -182,7 +183,8 @@ table. The result of each applied test is summarized in the corresponding
 ```{table} Quality level assigned to a validity test if positive (with corresponding label in the rejection_flags variable
 :name: swh_quality_level
 
-| Validity test | Assigned quality level  |
+| Validity test | Assigned quality level |
+| ------------- | ---------------------- |
 | `sea_ice`: 0 < sea ice concentration <= 10% | 2 |
 | `sea_ice`: sea ice concentration > 10% | 1 |
 | `swh_validity`: 0 <= SWH <= 30 | 1 |
@@ -190,7 +192,21 @@ table. The result of each applied test is summarized in the corresponding
 | `outlier_test`: SWH outlier test | 1 |
 ```
 
-#### Ancillary atmospheric model variables
+#### Test on SWH RMS
+
+A Look-up Table (LUT) is computed for each mission on a set of cycles 
+corresponding to periods of nominal orbit and nominal functioning of its  
+altimeter. It provides the threshold of the RMS of SWH over the full 
+resolution measurements (estimated during the compression to 1 Hz) with 
+respect to the estimated 1 Hz SWH : any 1 Hz SWH measurements for which the  
+corresponding RMS of the full resolution SWH values averaged to produce this 
+1 Hz value are flagged as bad measurements.
+
+The cycles selected to build these LUTs, the methodology and resulting 
+average LUTs are described in further details [here](swh_rms_lut).
+
+
+### Ancillary atmospheric model variables
 
 ```{table} ERA5 atmospheric model variables added to each 1 Hz measurement in L2P
 :name: ancillary_era5
@@ -205,7 +221,7 @@ table. The result of each applied test is summarized in the corresponding
 | sp       | Surface pressure                |
 ```
 
-#### Ancillary wave model variables
+### Ancillary wave model variables
 
 ```{table} ERA5/WAM wave model variables added to each 1 Hz measurement in L2P
 :name: ancillary_era5wam
@@ -247,7 +263,7 @@ The configuration used for the years 1991-1992 is therefore different and not
 full consistent with the model configuration used from 1993 onward. 
 ```
 
-#### Ancillary sea ice concentration
+### Ancillary sea ice concentration
 
 Different sources are combined for sea ice concentration, as the best 
 resolution datasets (25 km) do not cover the full CCI Sea State temporal 
@@ -262,11 +278,11 @@ coverage.
 | SICCI-HR-SIC         | ice_conc | 1991-2020             | High(er) Resolution Sea Ice Concentration Climate Data Record Version 3 from CCI Sea Ice+ (SSM/I and SSMIS) (doi: 10.5285/eade27004395466aaa006135e1b2ad1a) |
 ```
 
-### Verifications
+## Verifications
 
 Production of the Sea State CCI dataset involved a number of processing steps that need to be verified before generating and delivering the final dataset to the Validation and Climate Assessment teams.
 
-#### LUT RMS
+### LUT RMS
 
 The verification steps will be applied to each mission on 8 cycles. The number of cycles is a trade-off between CPU time and statistical robustness of the proposed diagnostics. 
 For some processing steps, it is expected that a larger number of cycles will have to be processed (e.g. EMD filtering or cross calibration). In that case, the selected period will be indicated below for the corresponding step.  
@@ -291,18 +307,18 @@ The selected cycles correspond to periods of nominal orbit and nominal functioni
 
 Below, the average LUTs for each mission :
 
-![LUT_average_ERS-1-REAPER.png](images/LUT_average_ERS-1-REAPER.png)
-![LUT_average_ERS-2-REAPER.png](images/LUT_average_ERS-2-REAPER.png)
-![LUT_average_TOPEXF_TOPEX_A1.png](images/LUT_average_TOPEXF_TOPEX_A1.png)
-![LUT_average_TOPEXF_TOPEX_A2.png](images/LUT_average_TOPEXF_TOPEX_A2.png)
-![LUT_average_TOPEXF_TOPEX_B.png](images/LUT_average_TOPEXF_TOPEX_B.png)
-![LUT_average_JASON-1E.png](images/LUT_average_JASON-1E.png)
-![LUT_average_JASON-2D.png](images/LUT_average_JASON-2D.png)
-![LUT_average_JASON-3D.png](images/LUT_average_JASON-3D.png)
-![LUT_average_JASON-3F.png](images/LUT_average_JASON-3F.png)
-![LUT_average_ENVISAT-V3.png](images/LUT_average_ENVISAT-V3.png)
-![LUT_average_SARALF.png](images/LUT_average_SARALF.png)
-![LUT_average_SENTINEL-3A.png](images/LUT_average_SENTINEL-3A.png)
-![LUT_average_SENTINEL-3B.png](images/LUT_average_SENTINEL-3B.png)
-![LUT_average_SENTINEL-6A_f08.png](images/LUT_average_SENTINEL-6A_f08.png)
+![LUT_average_ERS-1-REAPER.png](../images/LUT_average_ERS-1-REAPER.png)
+![LUT_average_ERS-2-REAPER.png](../images/LUT_average_ERS-2-REAPER.png)
+![LUT_average_TOPEXF_TOPEX_A1.png](../images/LUT_average_TOPEXF_TOPEX_A1.png)
+![LUT_average_TOPEXF_TOPEX_A2.png](../images/LUT_average_TOPEXF_TOPEX_A2.png)
+![LUT_average_TOPEXF_TOPEX_B.png](../images/LUT_average_TOPEXF_TOPEX_B.png)
+![LUT_average_JASON-1E.png](../images/LUT_average_JASON-1E.png)
+![LUT_average_JASON-2D.png](../images/LUT_average_JASON-2D.png)
+![LUT_average_JASON-3D.png](../images/LUT_average_JASON-3D.png)
+![LUT_average_JASON-3F.png](../images/LUT_average_JASON-3F.png)
+![LUT_average_ENVISAT-V3.png](../images/LUT_average_ENVISAT-V3.png)
+![LUT_average_SARALF.png](../images/LUT_average_SARALF.png)
+![LUT_average_SENTINEL-3A.png](../images/LUT_average_SENTINEL-3A.png)
+![LUT_average_SENTINEL-3B.png](../images/LUT_average_SENTINEL-3B.png)
+![LUT_average_SENTINEL-6A_f08.png](../images/LUT_average_SENTINEL-6A_f08.png)
 
