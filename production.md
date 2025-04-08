@@ -36,14 +36,27 @@ Some issues noted during data verification:
 
 - some ERS-1 / ERS-2 (REAPER) files contain anomalous measurement times (out of 
   the orbit time frame) while realistic. They were found associated with 
-  zero-value latitude and longitude. 
-- ERS-1 / ERS-2 (REAPER) : some zero-value SWH should be flagged out (probably fill value)
+  zero-value latitude and longitude (but not always). TO BE FIXED.
+- ERS-1 / ERS-2 (REAPER) : some zero-value SWH should be flagged out 
+  (probably fill value)
+- duplicated packets found in ERS-1 and ERS-2 data : duplicated sequences to 
+  be removed from files, backward discontinuities : to be detected on 
+  archive and fixed in output L2P
+- duplicated files (with different production or coverage time) have been found 
+  for different missions : to be cleaned
+- issue with model interpolation for orbits spanning over two different days 
+  or months : TO BE FIXED. (regenerate ancillary fields) 
+- failed outlier test due to a python bug : S6 and Topex reprocessed, to be 
+  done for other missions 
 - fill value for ERS-1 / ERS-2 L2P lat/lon is 2147483647. instead of 1e20
 - Data processed with WHALES at TUM (Jason-1, Jason-2, part of Jason-3) were 
   edited wrt a coarse land mask, leading to less data close to coastal areas.
   They should be reprocessed in CCI Sea State version 5.
 - Some TUM processed data (Jason-3D) containing zero-value lat and/or lon for 
   some measurements. They have to be edited from WHALES files. **FIXED**.
+- Cryosat-2 is split in numerous small files, which may create issues for 
+  EMD denoising : investigate full orbit stitching (if no discontinuities between 
+  files) : TO BE CHECKED 
 
 
 [^footnote1]: Part of the retracking wasn't done, or some files generate errors. To be fixed.

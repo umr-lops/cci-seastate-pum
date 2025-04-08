@@ -19,7 +19,7 @@ processing step.
 | JASON-3 (F)   | /home/datawork-cersat-public/provider/cci_seastate/products/v3/data/satellite/altimeter/l2_20Hz/l2/jason-3f    |
 | ENVISAT (v3)  | /home/datawork-cersat-public/provider/cci_seastate/products/v3/data/satellite/altimeter/l2_20Hz/l2/envisat    |
 | SARAL (F)     | /home/datawork-cersat-public/provider/cci_seastate/products/v3/data/satellite/altimeter/l2_20Hz/l2/saralf     |
-| CRYOSAT-2 (F)  | /home/datawork-cersat-public/provider/cci_seastate/products/v3/data/satellite/altimeter/l2_20Hz/l2/cryosat-2/ |                                                                                                                     |
+| CRYOSAT-2 (E)  | /home/datawork-cersat-public/provider/cci_seastate/products/v3/data/satellite/altimeter/l2_20Hz/l2/cryosat-2e/ |                                                                                                                     |
 ```
 
 ```{table} Location of the altimeter data retracked by third party

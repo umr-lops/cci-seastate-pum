@@ -1,7 +1,7 @@
 # Altimetry missions
 
-The version 4 of CCI Sea State datasets includes for altimetry the missions 
-described hereafter.
+The {{cci_version}} of CCI Sea State datasets includes for altimetry 
+the missions described hereafter.
 
 ## ERS-1
 
@@ -66,9 +66,6 @@ described hereafter.
 **Orbit life** :
 - From August 2008 to September 2002 : in its nominal orbit.
 - Interleaved orbit from September 16, 2002 to October 18, 2005
-
-
-
 
 
 ## ERS-2

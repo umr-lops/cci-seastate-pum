@@ -16,15 +16,26 @@ parts:
   - caption: Product User Manual
     numbered: true
     chapters:
+    - file: conventions
+      sections:
+        - file: naming
+        - file: coordinates
     - file: altimetry
       sections:
+        - file: altimetry/datasets
         - file: altimetry/missions
         - file: altimetry/baseline
         - file: altimetry/changes
         - file: altimetry/calibration
+        - file: altimetry/l2p
+        - file: altimetry/l3
+        - file: altimetry/l4
+
     - file: sar
       sections:
         - file: sar/missions
-
+        - file: sar/SAR-SeaStaR
+        - file: sar/sar_partition_parameters
+    - file: access
 
 
