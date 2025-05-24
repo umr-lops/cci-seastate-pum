@@ -1,4 +1,4 @@
-# Altimetry datasets
+# Nadir-altimetry datasets
 
 The main geophysical parameter provided by altimeters for sea state is the 
 significant wave height (SWH). Three kinds of datasets are delivered, as 

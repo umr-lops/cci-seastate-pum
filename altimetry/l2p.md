@@ -358,3 +358,61 @@ The {numref}`table_l2p_variables_auxiliary` provides an overview of the CCI
 Sea State L2P environment (geophysical) data record within a L2P file. In the 
 following sections, each variable within the L2P data file is described in detail.
 
+```{table} Summary description of CCI Sea State L2P ancillary data records
+:name: table_l2p_variables_instrumental
+
+| Variable Name          | Description           | Units  |
+|-----------------------|------------------------|--------|
+| [distance_to_coast](__l2p_distance_to_coast) | Distance to the nearest shoreline | m |
+| [bathymetry](__l2p_bathymetry) | Water depth to sea floor | m |
+| [sea_ice_fraction](__l2p_sea_ice_fraction) | Water depth to sea floor | 1 |
+```
+
+
+(__l2p_distance_to_coast)=
+### `distance_to_coast`
+
+The distance to the nearest coastline for each ocean measurement was extracted from the
+Distance to Nearest Coastline grid at 0.01 degree resolution, provided by the NASA
+Goddard Space Flight Center (GSFC) Ocean Color Group and available at:
+http://www.pacioos.hawaii.edu/metadata/dist2coast_1deg.html
+
+```{table} CDL example description of **<span style="font-family:courier;">distance_to_coast</span>** variable
+:name: l2p_distance_to_coast
+
+| **Storage type**  | **Name**  | **Unit** |
+|-------------------|-----------|----------|
+| float             | `distance_to_coast`     | m |
+```
+
+```{code-cell}
+:tags: [remove-input]
+:name: l2p_distance_to_coast
+
+!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]distance_to_coast[(,:]'| sed 's/[[:space:]]//'
+```
+
+
+(__l2p_bathymetry)=
+### `bathymetry`
+
+The same bathymetry source was used for all mission to get the ocean sea 
+floor depth. We selected the 15 arc second General Bathymetric Chart of the 
+Oceans (GEBCO), 2024 (https://doi.org/10.5285/1c44ce99-0a0d-5f4f-e063-7086abc0ea0f), 
+available at: https://www.gebco.net.
+
+
+```{table} CDL example description of **<span style="font-family:courier;">bathymetry</span>** variable
+:name: l2p_bathymetry
+
+| **Storage type**  | **Name**  | **Unit** |
+|-------------------|-----------|----------|
+| float             | `bathymetry`     | m |
+```
+
+```{code-cell}
+:tags: [remove-input]
+:name: l2p_bathymetry
+
+!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]bathymetry[(,:]'| sed 's/[[:space:]]//'
+```
