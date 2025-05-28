@@ -359,13 +359,38 @@ Sea State L2P environment (geophysical) data record within a L2P file. In the
 following sections, each variable within the L2P data file is described in detail.
 
 ```{table} Summary description of CCI Sea State L2P ancillary data records
-:name: table_l2p_variables_instrumental
+:name: table_l2p_variables_auxiliary
 
 | Variable Name          | Description           | Units  |
 |-----------------------|------------------------|--------|
 | [distance_to_coast](__l2p_distance_to_coast) | Distance to the nearest shoreline | m |
 | [bathymetry](__l2p_bathymetry) | Water depth to sea floor | m |
 | [sea_ice_fraction](__l2p_sea_ice_fraction) | Water depth to sea floor | 1 |
+| [era5_tclw](__l2p_era5_tclw) | Total column cloud liquid water | kg m-2 |
+| [era5_t2m](__l2p_era5_t2m) | 2 metre temperature             | K | 
+| [era5_sst](__l2p_era5_sst) | Sea surface temperature         | K |
+| [era5_u10](__l2p_era5_u10) | 10 metre U wind component       | m s-1 |
+| [era5_v10](__l2p_era5_v10) | 10 metre V wind component       | m s-1 |
+| [era5_sp](__l2p_era5_sp) | Surface pressure                | Pa |
+| swh        | Significant height of combined wind waves and swell | |
+| pp1d       | Peak wave period                                    ||
+| p1ps       | Mean wave period based on first moment of swell     ||
+| p140121    | Significant wave height of first swell partition    ||
+| p140122    | Mean wave direction of first swell partition        ||
+| mwp        | Mean wave period                                    ||
+| mwd        | Mean wave direction                                 ||
+| shww       | Significant height of wind waves                    ||
+| mdww       | Mean direction of wind waves                        ||
+| mpww       | Mean period of wind waves                           ||
+| uwnd       | 10 metre U wind component                  ||
+| vwnd       | 10 metre V wind component                  ||
+| hs         | Significant height of wind and swell waves ||
+| t02        | Mean period T02                            ||
+| t0m1       | Mean period T0m1                           ||
+| 1/fp       | Wave peak frequency                        ||
+| dir        | Wave mean direction                        ||
+| skw        | skewness                                   | |
+| qkk        | k-peakedness                               ||
 ```
 
 
@@ -415,4 +440,131 @@ available at: https://www.gebco.net.
 :name: l2p_bathymetry
 
 !ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]bathymetry[(,:]'| sed 's/[[:space:]]//'
+```
+
+(__l2p_era5_tclw)=
+### `era5_tclw`
+
+The total column cloud liquid water in the atmosphere, from ERA5 model 
+reanalysis, in kg per m2.
+
+
+```{table} CDL example description of **<span style="font-family:courier;">era5_tclw</span>** variable
+:name: l2p_era5_tclw
+
+| **Storage type**  | **Name**  | **Unit** |
+|-------------------|-----------|----------|
+| float             | `era5_tclw`     | kg m-2 |
+```
+
+```{code-cell}
+:tags: [remove-input]
+:name: l2p_era5_tclw
+
+!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]era5_tclw[(,:]'| sed 's/[[:space:]]//'
+```
+
+(__l2p_era5_t2m)=
+### `era5_t2m`
+
+The air temperature at 2 meter height, from ERA5 model reanalysis, in Kelvin.
+
+
+```{table} CDL example description of **<span style="font-family:courier;">era5_t2m</span>** variable
+:name: l2p_era5_t2m
+
+| **Storage type**  | **Name**  | **Unit** |
+|-------------------|-----------|----------|
+| float             | `era5_t2m`     | K |
+```
+
+```{code-cell}
+:tags: [remove-input]
+:name: l2p_era5_t2m
+
+!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]era5_t2m[(,:]'| sed 's/[[:space:]]//'
+```
+
+(__l2p_era5_sst)=
+### `era5_sst`
+
+The sea surface temperature, from ERA5 model reanalysis, in Kelvin.
+
+
+```{table} CDL example description of **<span style="font-family:courier;">era5_sst</span>** variable
+:name: l2p_era5_sst
+
+| **Storage type**  | **Name**  | **Unit** |
+|-------------------|-----------|----------|
+| float             | `era5_sst`     | K |
+```
+
+```{code-cell}
+:tags: [remove-input]
+:name: l2p_era5_sst
+
+!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]era5_sst[(,:]'| sed 's/[[:space:]]//'
+```
+
+(__l2p_era5_u10)=
+### `era5_u10`
+
+The zonal wind speed at 10 meter height, from ERA5 model reanalysis, in meter 
+per second. 
+
+
+```{table} CDL example description of **<span style="font-family:courier;">era5_u10</span>** variable
+:name: l2p_era5_u10
+
+| **Storage type**  | **Name**  | **Unit** |
+|-------------------|-----------|----------|
+| float             | `era5_u10`     | m s-1 |
+```
+
+```{code-cell}
+:tags: [remove-input]
+:name: l2p_era5_u10
+
+!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]era5_u10[(,:]'| sed 's/[[:space:]]//'
+```
+
+(__l2p_era5_v10)=
+### `era5_v10`
+
+The meridian wind speed at 10 meter height, from ERA5 model reanalysis, in 
+meter per second. 
+
+```{table} CDL example description of **<span style="font-family:courier;">era5_v10</span>** variable
+:name: l2p_era5_v10
+
+| **Storage type**  | **Name**  | **Unit** |
+|-------------------|-----------|----------|
+| float             | `era5_v10`   | m s-1 |
+```
+
+```{code-cell}
+:tags: [remove-input]
+:name: l2p_era5_v10
+
+!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]era5_v10[(,:]'| sed 's/[[:space:]]//'
+```
+
+(__l2p_era5_sp)=
+### `era5_sp`
+
+The atmospheric pressure at sea level, from ERA5 model reanalysis, in Pascal. 
+
+```{table} CDL example description of **<span style="font-family:courier;">era5_sp</span>** variable
+:name: l2p_era5_sp
+
+| **Storage type**  | **Name**  | **Unit** |
+|-------------------|-----------|----------|
+| float             | `era5_sp`   | m s-1 |
+```
+
+```{code-cell}
+:tags: [remove-input]
+:name: l2p_era5_sp
+
+!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]era5_sp[(,:]'| sed 's/[[:space:]]//'
 ```

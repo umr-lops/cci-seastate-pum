@@ -25,7 +25,6 @@ parts:
         - file: altimetry/datasets
         - file: altimetry/missions
         - file: altimetry/baseline
-        - file: altimetry/calibration
         - file: altimetry/l2p
         - file: altimetry/l3
         - file: altimetry/l4

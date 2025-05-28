@@ -366,6 +366,24 @@ average LUTs are described in further details [here](swh_rms_lut).
 (__swh_outlier_test)=
 #### Test on SWH outliers (`outlier_test`)
 
+Above quality flags and tests are not sufficient to discard all the 
+erroneous SWH data. Spurious measurements are still observed: some are 
+located in the vicinity of the coast where some land can be within the 
+altimeter footprint, or in areas of high scattering resulting in so-
+called sigma0 blooms (e. g. Thibaut et al. 2007). Some other individual 
+spurious measurements (corresponding mainly to high values of SWH) are not 
+explained. Consequently the data are filtered to eliminate these measurements.
+
+The screening is based on the analysis of the differences between successive 
+along track SWH measurements, using  along track running windows, 100 km 
+wide. For each measurement the along track data within 50 km each
+side are selected. This represents a maximun number of 15 (Envisat) to 19 
+(Jason) selected data. Then over this segment the 2 extreme SWH data are 
+discarded, and the mean value (m) and standard deviation (s) are estimated 
+over the residual data set. If the SWH value is outside the interval defined 
+by m ± 4s, then this data is considered as erroneous and is discarded. Up
+to 3 iterative passes were empirically adjusted for the processing.
+
 
 ## Ancillary data
 
@@ -595,20 +613,27 @@ The TOPEX altimeter was the primary sensor for the TOPEX/POSEIDON mission. It is
 ```
 
 
+```{admonition} References
+:class: note
 
+Dodet, G., Piolle, J.-F., Quilfen, Y., Abdalla, S., Accensi, M., Ardhuin, F.,
+ Ash, E., Bidlot, J.-R., Gommenginger, C., Marechal, G., Passaro, M., 
+ Quartly, G., Stopa, J., Timmermans, B., Young, I., Cipollini, P., Donlon, C.
+ , 2020. The Sea State CCI dataset v1: towards a sea state climate data 
+ record based on satellite observations. Earth System Science Data 12, 
+ 1929–1951. https://doi.org/10.5194/essd-12-1929-2020 
 
+Queffeulou, P., 2016. Validation of Jason-3 altimeter wave height 
+measurements. Presented at the OSTST.
 
-## References:
-
-Dodet, G., Piolle, J.-F., Quilfen, Y., Abdalla, S., Accensi, M., Ardhuin, F., Ash, E., Bidlot, J.-R., Gommenginger, C., Marechal, G., Passaro, M., Quartly, G., Stopa, J., Timmermans, B., Young, I., Cipollini, P., Donlon, C., 2020. The Sea State CCI dataset v1: towards a sea state climate data record based on satellite observations. Earth System Science Data 12, 1929–1951. https://doi.org/10.5194/essd-12-1929-2020
-
-Queffeulou, P., 2016. Validation of Jason-3 altimeter wave height measurements. Presented at the OSTST.
-
-Rosmorduc, V., Roinard, H., Desai, S., Desjonqueres, J.-D., Callahan, P.S., Bignalet-Cazalet, F., 2023. TOPEX/POSEIDON GDR-F Products Handbook (No. SALP-MU-MAO-OP-17607-CN).
+Rosmorduc, V., Roinard, H., Desai, S., Desjonqueres, J.-D., Callahan, P.S., 
+Bignalet-Cazalet, F., 2023. TOPEX/POSEIDON GDR-F Products Handbook (No. 
+SALP-MU-MAO-OP-17607-CN).
 
 Sepulveda, H., Queffeulou, P., Ardhuin, F., 2015. Assessment of SARAL/AltiKa 
 Wave Height Measurements Relative to Buoy, Jason-2, and Cryosat-2 Data.  
 Marine Geodesy 38, 449–465. https://doi.org/10.1080/01490419.2014.1000470
+```
 
 
 ## Denoising
@@ -619,6 +644,7 @@ variable `swh_adjusted` and stored in `swh_denoised` (see Kopsinis and
 McLaughlin, 2009, Quilfen et al., 2018 and Quilfen and Chapron, 2019ab).
 
 A detailed description of the method can be found in Quilfen and Chapron, 2019b.
+
 
 ```{admonition} References
 :class: note
@@ -641,5 +667,59 @@ Quilfen, Y., and Chapron, B., 2019. Ocean Surface Wave-Current Signatures From S
 Altimeter Measurements. Geophysical Research Letters 46, 253–261.
 https://doi.org/10.1029/2018GL081029
 ```
+
+
+
+## Uncertainties
+
+The L2P files contain two different and complementary estimates of uncertainty:
+- `swh_emd_uncertainty`: this is based on the “noise” estimated from the 
+  along-track variability of the EMD denoising applied on the 1 Hz data. It 
+  is an estimate of the uncertainty of the debiased and denoised significant 
+  wave height.
+- `swh_uncertainty`: this is a theoretical estimate of the uncertainty 
+  caused by speckle noise and sampling in 1-Hz averaged SWH values. Note 
+  that SWH sampling errors at 1Hz can be correlated (e.g. De Carlo et al. 
+  2023), so that the average over n 1~Hz values can have an uncertainty 
+  larger than 1/sqrt(n) times the 1 Hz uncertainty. 
+
+For the largest wave heights (Hs > 15 m) we advise to make a distinction 
+between Hs and SWH: SWH is an average of local wave heights, and it contains 
+fluctuations due to sampling uncertainty (i.e. wave groups), and the true 
+significant wave height Hs can only be estimated by averaging or denoising. 
+We find that the uncertainty on Hs estimated from a 7-point running average 
+and applying the theoretical uncertainty model for 7 s averages is close to 
+the EMD denoising uncertainty estimate. 
+
+The theoretical uncertainty is fully described in De Carlo and Ardhuin (2024), 
+and the variance is the sum of a variance caused by speckle noise and 
+sampling (wave group effect).
+
+For speckle noise, it is a function of the wave height Hs, the number of 
+pulses averaged $n_a$, and the retracking method: Maximum Likelihood (ML), 
+WHALES or Least Squares (LS), and a variance caused by sampling (wave group 
+effect) which is a function of the wave height Hs, the satellite altitude h 
+and the spectral shape quantified by the peakedness $Q_{kk}$). 
+
+The processing algorithm sets the value of s0 which gives the effect of 
+speckle noise:  it is lowest for ML (s0=1 m), intermediate for WHALES (s0 ~ 
+2 m) and largest for LS (s0=5 m). 
+
+The {numref}`all_sat_uncertainties` shows estimated of (a) the effective spatial resolution of 
+the along-track altimeter data: this is roughly the Chelton et al. (1989) 
+radius $\rho_c$=sqrt(2 h Hs) divided by 1.5, this is smallest for CFOSAT 
+because of the much lower orbit (b) the uncertainty of the data at the 
+native rate (4.5 Hz for CFOSAT, 40 Hz for SARAL and 20 Hz for all others) 
+and (c) the uncertainty of SWH averaged over 1 Hz. Note that there was a 
+mistake in a similar figure of De Carlo and Ardhuin (2024) for CFOSAT (the 
+native data rate was not properly taken to be 4.5 Hz) 
+
+```{figure} ../images/all_sat_uncertainties.png
+:name: all_sat_uncertainties
+
+```
+
+Different spectral shapes are considered: $Q_{kk}$ = 2 Hs is typical of a wind 
+sea, whereas swell-dominated conditions often have $Q_{kk}$ > 60 m. 
 
 
