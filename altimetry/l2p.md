@@ -332,24 +332,128 @@ sections, each variable within the L2P data file is described in detail.
 
 | Variable Name          | Description           | Units  |
 |-----------------------|------------------------|--------|
-| [sigma0](__l2p_sigma0) | Ku band backscatter coefficient, as calculated from the retracking | dB |
-| [sigma0_rms](__l2p_sigma0_rms) | RMS of the Ku band backscatter coefficient, within 1Hz cells, of the 20 Hz measurements calculated from the retracking| dB |
-| [sigma0_num_valid](__l2p_sigma0_num_valid) | number of valid points used to compute Ku band backscatter coefficient, within 1Hz cells, of the 20 Hz measurements calculated from the retracking | 1 |
+| [sigma0_ku](__l2p_sigma0_ku) | Ku band backscatter coefficient, as calculated from the retracking | dB |
+| [sigma0_ku_rms](__l2p_sigma0_ku_rms) | RMS of the Ku band backscatter coefficient, within 1Hz cells, of the 20 Hz measurements calculated from the retracking| dB |
+| [sigma0_ku_num_valid](__l2p_sigma0_ku_num_valid) | number of valid points used to compute Ku band backscatter coefficient, within 1Hz cells, of the 20 Hz measurements calculated from the retracking | 1 |
+| [sigma0_ku_quality_level](__l2p_sigma0_ku_quality_level) | Quality level (from 0 - worst to 3 - best) of the Ku band sigma0 averaged over 1 Hz cells |  |
+| [sigma0_ku_rejection_flags](__l2p_sigma0_ku_rejection_flags) | flag specifying the editing criteria on which a 1 Hz Ku band sigma0 measurement was rejected (meaning its quality level is not set to “good”).  |  |
+| [sigma0_c](__l2p_c_sigma0) | C band backscatter coefficient, as calculated from the retracking | dB |
+| [sigma0_c_rms](__l2p_sigma0_c_rms) | RMS of the C band backscatter coefficient, within 1Hz cells, of the 20 Hz measurements calculated from the retracking| dB |
+| [sigma0_c_num_valid](__l2p_sigma0_c_num_valid) | number of valid points used to compute C band backscatter coefficient, within 1Hz cells, of the 20 Hz measurements calculated from the retracking | 1 |
+| [sigma0_c_quality_level](__l2p_sigma0_c_quality_level) | Quality level (from 0 - worst to 3 - best) of the C band sigma0 averaged over 1 Hz cells |  |
+| [sigma0_c_rejection_flags](__l2p_sigma0_c_rejection_flags) | flag specifying the editing criteria on which a 1 Hz C band sigma0 measurement was rejected (meaning its quality level is not set to “good”).  |  |
+
 ```
 
-(__l2p_sigma0)=
-### `sigma0`
+(__l2p_sigma0_ku)=
+### `sigma0_ku`
 
-(__l2p_sigma0_rms)=
-### `sigma0_rms`
+The **Ku-band backscatter coefficients (sigma0)**, within 1 Hz cells, averaged from 
+groups of full resolution 20 Hz (18 Hz for Topex) measurements calculated from 
+the altimeter retracking, without any cross-mission bias correction. The Ku-band
+sigma0 is only provided for Ku-band altimeters (excluding SARAL/AltiKa for instance).
+
+The 1 Hz measurements were estimated from the full resolution sigma0 measurements 
+provided in the source Agency’s GDR & SGDR products, including when SWH was 
+estimated with the CCI Sea State selected retracker (WHALES). Refer to the processing 
+details {numref}`__retracking` for the specific source used for each mission.
+
+For all missions, the groups of full resolution measurements used to calculate 
+the 1 Hz values are exactly the same as in the source Agency’s GDR & SGDR products.
+Both CCI and Agency files can be compared one to one, have the same number 
+of measurements, and the same latitude, longitude, time for each 1 Hz 
+measurement. A minimal number of 6 valid points is required 
+to estimate a valid 1 Hz measurement. For more information on how the full 
+resolution measurements are compressed into 1 Hz values, refer to the 
+processing details {numref}`__compression`.
+
+The `sigma0_ku` variable in a L2P product follows the format shown in table 
+{numref}`l2p_sigma0_ku`.
+
+
+```{table} CDL example description of **<span style="font-family:courier;">sigma0_ku</span>** variable
+:name: l2p_sigma0_ku
+
+| **Storage type**  | **Name**  | **Unit** |
+|-------------------|-----------|----------|
+| float             | `sigma0_ku`     | dB |
+```
+
+```{code-cell}
+:tags: [remove-input]
+:name: l2p_sigma0_ku
+
+!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]sigma0_ku[(,:]'| sed 's/[[:space:]]//'
+```
+
+
+(__l2p_sigma0_ku_rms)=
+### `sigma0_ku_rms`
 
 (__l2p_sigma0_num_valid)=
-### `sigma0_num_valid`
+### `sigma0_ku_num_valid`
 
-The number of valid points used to compute Ku band backscatter coefficient, 
-within 1 Hz cells, of the full resolution measurements calculated from the 
-retracking.
+The number of valid points used to compute the Ku band backscatter coefficient
+(sigma0), within 1 Hz cells, from the full resolution measurements calculated
+from each altimeter waveform by the source Agency’s retracker.
 
+The groups of full resolution sigma0 measurements used to calculate the 1 Hz 
+values are exactly the same as in the source Agency’s GDR & SGDR products. Both
+CCI Sea State and Agency files can be compared one to one, have the same 
+number of measurements, and the same latitude, longitude, time for each 1 Hz
+measurement.
+
+
+```{table} CDL example description of **<span style="font-family:courier;">sigma0_ku_num_valid</span>** variable
+:name: l2p_sigma0_ku_num_valid
+
+| **Storage type**  | **Name**  | **Unit** |
+|-------------------|-----------|----------|
+| float             | `sigma0_ku_num_valid`     | 1 |
+```
+
+```{code-cell}
+:tags: [remove-input]
+:name: l2p_sigma0_ku_num_valid
+
+!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]sigma0_ku_num_valid[(,:]'| sed 's/[[:space:]]//'
+```
+
+(__l2p_sigma0_ku_quality_level)=
+### `sigma0_ku_quality_level`
+
+```{table} CDL example description of **<span style="font-family:courier;">sigma0_ku_quality_level</span>** variable
+:name: l2p_sigma0_ku_quality_level
+
+| **Storage type**  | **Name**  | **Unit** |
+|-------------------|-----------|----------|
+| float             | `sigma0_ku_quality_level`     | enumerate |
+```
+
+```{code-cell}
+:tags: [remove-input]
+:name: l2p_sigma0_ku_quality_level
+
+!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]sigma0_ku_quality_level[(,:]'| sed 's/[[:space:]]//'
+```
+
+(__l2p_sigma0_ku_rejection_flags)=
+### `sigma0_ku_rejection_flags`
+
+```{table} CDL example description of **<span style="font-family:courier;">sigma0_ku_rejection_flags</span>** variable
+:name: l2p_sigma0_ku_rejection_flags
+
+| **Storage type**  | **Name**  | **Unit** |
+|-------------------|-----------|----------|
+| float             | `sigma0_ku_rejection_flags`     | bit code |
+```
+
+```{code-cell}
+:tags: [remove-input]
+:name: l2p_sigma0_ku_rejection_flags
+
+!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]sigma0_ku_rejection_flags[(,:]'| sed 's/[[:space:]]//'
+```
 
 
 (l2p_variables_auxiliary)=
@@ -372,25 +476,24 @@ following sections, each variable within the L2P data file is described in detai
 | [era5_u10](__l2p_era5_u10) | 10 metre U wind component       | m s-1 |
 | [era5_v10](__l2p_era5_v10) | 10 metre V wind component       | m s-1 |
 | [era5_sp](__l2p_era5_sp) | Surface pressure                | Pa |
-| swh        | Significant height of combined wind waves and swell | |
-| pp1d       | Peak wave period                                    ||
-| p1ps       | Mean wave period based on first moment of swell     ||
-| p140121    | Significant wave height of first swell partition    ||
-| p140122    | Mean wave direction of first swell partition        ||
-| mwp        | Mean wave period                                    ||
-| mwd        | Mean wave direction                                 ||
-| shww       | Significant height of wind waves                    ||
-| mdww       | Mean direction of wind waves                        ||
-| mpww       | Mean period of wind waves                           ||
-| uwnd       | 10 metre U wind component                  ||
-| vwnd       | 10 metre V wind component                  ||
-| hs         | Significant height of wind and swell waves ||
-| t02        | Mean period T02                            ||
-| t0m1       | Mean period T0m1                           ||
-| 1/fp       | Wave peak frequency                        ||
-| dir        | Wave mean direction                        ||
-| skw        | skewness                                   | |
-| qkk        | k-peakedness                               ||
+| [era5_swh](__l2p_era5_swh) | Significant height of combined wind waves and swell | |
+| [era5_pp1d](__l2p_era5_pp1d)       | Peak wave period    | s |
+| [era5_p1ps](__l2p_era5_p1ps)       | Mean wave period based on first moment of swell     | s |
+| [era5_p140121](__l2p_era5_p140121)    | Significant wave height of first swell partition    | m |
+| [era5_p140122](__l2p_era5_p140122)    | Mean wave direction of first swell partition        | degree |
+| [era5_mwp](__l2p_era5_mwp)        | Mean wave period  | s |
+| [era5_mwd](__l2p_era5_mwd)        | Mean wave direction  | degree |
+| [era5_shww](__l2p_era5_shww)       | Significant height of wind waves  | m |
+| [era5_mdww](__l2p_era5_mdww) | Mean direction of wind waves  | degree |
+| [era5_mpww](__l2p_era5_mpww) | Mean period of wind waves  | s |
+| [ww3_hs](__l2p_ww3_hs)     | Significant height of wind and swell waves | m |
+| [ww3_t02](__l2p_ww3_t02)   | Mean period T02 | s |
+| [ww3_t0m1](__l2p_ww3_t0m1)  | Mean period T0m1 | s |
+| [ww3_emb](__l2p_ww3_emb)  | Electromagnetic bias coefficient | 1|
+| [ww3_fp](__l2p_ww3_fp)  | Wave peak frequency  | s-1 |
+| [ww3_dir](__l2p_ww3_dir)   | Wave mean direction (from)  | degree |
+| [ww3_skw](__l2p_ww3_skw)   | skewness of P(z,sx,sy=0)  | 1 |
+| [ww3_qkk](__l2p_ww3_qkk)   | 2D wavenumber peakedness |m rad-1|
 ```
 
 
@@ -568,3 +671,36 @@ The atmospheric pressure at sea level, from ERA5 model reanalysis, in Pascal.
 
 !ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]era5_sp[(,:]'| sed 's/[[:space:]]//'
 ```
+
+(__l2p_era5_swh)=
+### `era5_swh`
+
+The significant height of combined wind waves and swell, from ERA5/WAM model 
+reanalysis, in meters. Note that ERA5 WAM model assimilates altimeter data. For
+a fully independent SWH estimate, use the WW3 SWH (see {numref}`ww3_swh`).
+
+```{table} CDL example description of **<span style="font-family:courier;">era5_swh</span>** variable
+:name: l2p_era5_swh
+
+| **Storage type**  | **Name**  | **Unit** |
+|-------------------|-----------|----------|
+| float             | `era5_swh`   | m  |
+```
+
+```{code-cell}
+:tags: [remove-input]
+:name: l2p_era5_swh
+
+!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]era5wave_swh[(,:]'| sed 's/[[:space:]]//'
+```
+
+
+| [era5_pp1d](__l2p_era5_pp1d)       | Peak wave period    | s |
+| [era5_p1ps](__l2p_era5_p1ps)       | Mean wave period based on first moment of swell     | s |
+| [era5_p140121](__l2p_era5_p140121)    | Significant wave height of first swell partition    | m |
+| [era5_p140122](__l2p_era5_p140122)    | Mean wave direction of first swell partition        | degree |
+| [era5_mwp](__l2p_era5_mwp)        | Mean wave period  | s |
+| [era5_mwd](__l2p_era5_mwd)        | Mean wave direction  | degree |
+| [era5_shww](__l2p_era5_shww)       | Significant height of wind waves  | m |
+| [era5_mdww](__l2p_era5_mdww) | Mean direction of wind waves  | degree |
+| [era5_mpww](__l2p_era5_mpww) | Mean period of wind waves  | s |

@@ -180,12 +180,39 @@ CCI Sea State production team (WHALES) or a third party agency:
 | Sentinel-3 B Version 005 | 04/2018 to now     |               |
 ```
 
+For Ku-band sigma0, the measurements from the original retracking performed by the agency 
+which provided the input data (SGDR) were used, with no correction by CCI Sea 
+State for this version. {numref}`sigma0_retrackers` summarized the retracker 
+used for each mission for sigma0 by these agencies:
+
+```{table} Retracker used for each mission for retrieving the sigma0
+:name: sigma0_ku_retrackers
+
+| source                   | period             | retracker (per band)  | 
+|--------------------------|--------------------|---------------|
+| ERS-1                    | 07/1991 to 03/2000 | REAPER () | 
+| ERS-2                    | 04/1995 to 07/2011 | REAPER () | 
+| Jason-1 Version E        | 01/2002 to 07/2013 | MLE3        | 
+| Jason-2 Version D        | 06/2008 to 10/2019 | MLE3        | 
+| Jason-3 Version D        | 09/2016 to 06/2019 | MLE3        | 
+| Jason-3 Version F        | 06/2019 to now     | MLE3         | 
+| Jason-3 Version T        | 02/2016 to 09/2016 | MLE3        | 
+| Topex Version F          | 08/1992 to 01/2006 | MLE3 (Ku, C)   |
+| Envisat Version 3        | 03/2002 to 04/2012 |   MLE3 (C)      | 
+| CryoSat-2  Version E     | 07/2010 to now     | Ocean CFI | 
+| SARAL Version F          | 02/2013 to now     | MLE4 (Ka) |
+| Sentinel-6 A Version F08 | 03/2020 to 12/2023 | MLE3 |   
+| Sentinel-3 A Version 005 | 02/2016 to now     |               |
+| Sentinel-3 B Version 005 | 04/2018 to now     |               |
+```
+
+
 (__compression)=
 ## Compression to 1 Hz
 
 The CCI Sea State Dataset {{cci_version}} provides 1 Hz SWH measurements. 
 These 1 Hz measurements are calculated by averaging groups of consecutive 
-full resolution 20 Hz (18 Hz for Topex, 40 Hz for SARAL). 
+full resolution 20 Hz (18 Hz for Envisat or Topex, 40 Hz for SARAL). 
 
 The method used to average the full resolution measurements into 1 Hz values is 
 the same for all altimeters. The groups of full resolution measurements used to
@@ -280,7 +307,7 @@ sigma0 when available, as summarized in {numref}`fullres_sigma0`.
 | ERS-1 REAPER             | ocean_sig0_20hz       | ocean_sig0_used_20hz                     |
 | ERS-2 REAPER             | ocean_sig0_20hz       | ocean_sig0_used_20hz                     |
 | CryoSat-2  Version E     | sig0_1_20_ku          |                                          |
-| SARAL Version T          | sig0_40hz             | sig0_used_40hz == 0                      |
+| SARAL Version F          | sig0_40hz             | sig0_used_40hz == 0                      |
 | Sentinel-6 A Version F08 | ku_sig0_ocean_mle3    | c_sig0_ocean_qual != 1                   |
 |                          | c_sig0_ocean          | ku_sig0_ocean_mle3_qual != 1             |
 | Sentinel-3 A Version 005 | sig0_ocean_20_plrm_ku | sig0_ocean_qual_20_plrm_ku == 0          |
