@@ -180,12 +180,39 @@ CCI Sea State production team (WHALES) or a third party agency:
 | Sentinel-3 B Version 005 | 04/2018 to now     |               |
 ```
 
+For sigma0, the measurements from the original retracking performed by the agency 
+which provided the input data (SGDR) were used, with no correction by CCI Sea 
+State for this version. {numref}`sigma0_retrackers` summarized the retracker 
+used for each mission for sigma0 by these agencies:
+
+```{table} Retracker used for each mission for retrieving the sigma0
+:name: sigma0_retrackers
+
+| source                   | period             | retracker (per band)  | 
+|--------------------------|--------------------|-----------------------|
+| ERS-1                    | 07/1991 to 03/2000 | REAPER/MLE3 (Ku)      | 
+| ERS-2                    | 04/1995 to 07/2011 | REAPER/MLE3 (Ku)      | 
+| Jason-1 Version E        | 01/2002 to 07/2013 | MLE3 (Ku, C)          | 
+| Jason-2 Version D        | 06/2008 to 10/2019 | MLE3 (Ku, C)          | 
+| Jason-3 Version T        | 02/2016 to 09/2016 | MLE3 (Ku, C)          | 
+| Jason-3 Version D        | 09/2016 to 06/2019 | MLE3 (Ku, C)          | 
+| Jason-3 Version F        | 06/2019 to now     | MLE3  (Ku, C)         | 
+| Topex Version F          | 08/1992 to 01/2006 | MLE3 (Ku, C)          |
+| Envisat Version 3        | 03/2002 to 04/2012 | MLE3 (C)              | 
+| CryoSat-2  Version E     | 07/2010 to now     | Ocean CFI/MLE4 (Ku)   |
+| SARAL Version F          | 02/2013 to now     | MLE4 (Ka)             |
+| Sentinel-6 A Version F08 | 03/2020 to 12/2023 | MLE3 (Ku, C)          |   
+| Sentinel-3 A Version 005 | 02/2016 to now     |    (Ku, C)            |
+| Sentinel-3 B Version 005 | 04/2018 to now     |     (Ku, C)           |
+```
+
+
 (__compression)=
 ## Compression to 1 Hz
 
 The CCI Sea State Dataset {{cci_version}} provides 1 Hz SWH measurements. 
 These 1 Hz measurements are calculated by averaging groups of consecutive 
-full resolution 20 Hz (18 Hz for Topex, 40 Hz for SARAL). 
+full resolution 20 Hz (18 Hz for Envisat or Topex, 40 Hz for SARAL). 
 
 The method used to average the full resolution measurements into 1 Hz values is 
 the same for all altimeters. The groups of full resolution measurements used to
@@ -282,7 +309,7 @@ sigma0 when available, as summarized in {numref}`fullres_sigma0`.
 | CryoSat-2  Version E     | sig0_1_20_ku          |                                          |
 | SARAL Version T          | sig0_40hz             | sig0_used_40hz == 0                      |
 | Sentinel-6 A Version F08 | ku_sig0_ocean_mle3    | ku_sig0_ocean_mle3_qual != 1             |
-|                          | c_sig0_ocean          | c_sig0_ocean_qual != 1  |
+|                          | c_sig0_ocean          | c_sig0_ocean_qual != 1                   |
 | Sentinel-3 A Version 005 | sig0_ocean_20_plrm_ku | sig0_ocean_qual_20_plrm_ku == 0          |
 |                          | sig0_ocean_20_c       | sig0_ocean_qual_20_c == 0                |
 | Sentinel-3 B Version 005 | sig0_ocean_20_plrm_ku | sig0_ocean_qual_20_plrm_ku == 0          |
@@ -316,7 +343,7 @@ table. The result of each applied test is summarized in the corresponding
 ```
 
 (__swh_rms_test)=
-#### Test on SWH RMS (`swh_rms_outlier`)
+### Test on SWH RMS (`swh_rms_outlier`)
 
 As documented in Sepulveda et al. (2015), SWH measurements derived from 
 radar altimeter measurements can be contaminated by the presence of land in 
@@ -364,7 +391,7 @@ The cycles selected to build these LUTs, the methodology and resulting
 average LUTs are described in further details [here](swh_rms_lut).
 
 (__swh_outlier_test)=
-#### Test on SWH outliers (`outlier_test`)
+### Test on SWH outliers (`outlier_test`)
 
 Above quality flags and tests are not sufficient to discard all the 
 erroneous SWH data. Spurious measurements are still observed: some are 
@@ -456,11 +483,14 @@ The configuration used for the years 1991-1992 is therefore different and not
 full consistent with the model configuration used from 1993 onward. 
 ```
 
+(__sea_ice)=
 ### Ancillary sea ice concentration
 
 Different sources are combined for sea ice concentration, as the best 
 resolution datasets (25 km) do not cover the full CCI Sea State temporal 
-coverage.
+coverage. For each source, we use the closest in time concentration map, up to 
+three days apart in case it is missing for a given day, before switching to the 
+next source in line.
 
 ```{table} sources for sea ice concentration (SIC) CDR, by order of priority
 :name: ancillary_sic
@@ -635,7 +665,7 @@ Wave Height Measurements Relative to Buoy, Jason-2, and Cryosat-2 Data.
 Marine Geodesy 38, 449–465. https://doi.org/10.1080/01490419.2014.1000470
 ```
 
-
+(__denoising)=
 ## Denoising
 
 A non-parametric denoising method based on Empirical Mode Decomposition (EMD,
@@ -666,6 +696,10 @@ Environment 216, 561–571. https://doi.org/10.1016/j.rse.2018.07.020
 Quilfen, Y., and Chapron, B., 2019. Ocean Surface Wave-Current Signatures From Satellite
 Altimeter Measurements. Geophysical Research Letters 46, 253–261.
 https://doi.org/10.1029/2018GL081029
+
+Quilfen Y., Chapron B. (2020). On denoising satellite altimeter
+measurements for high-resolution geophysical signal analysis.
+Advances in Space Research, 68. https://doi.org/10.1016/j.asr.2020.01.005]
 ```
 
 

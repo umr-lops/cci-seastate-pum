@@ -58,8 +58,11 @@ following sections, each variable within the L2P data file is described in detai
 | [swh_adjusted](__l2p_swh_adjusted) | Significant wave height, averaged over 1 Hz cells, with cross-mission bias correction. | m |
 | [swh_denoised](__l2p_swh_denoised) | Significant wave height, averaged over 1 Hz cells, with cross-mission bias correction and denoising. | m |
 | [swh_uncertainty](__l2p_swh_uncertainty) | Uncertainty of the significant wave height averaged over 1 Hz cells | m |
-| [swh_quality_level](__l2p_swh_quality_level) | Quality level (from 0 - worst to 3 - best) of the significant wave height averaged over 1 Hz cells |  |
-| [swh_rejection_flags](__l2p_swh_rejection_flags) | flag specifying the editing criteria on which a 1 Hz significant wave height measurement was rejected (meaning its quality level is not set to “good”).  |  |
+| [swh_quality_level](__l2p_swh_quality_level) | Quality level (from 0 - worst to 3 - best) of the significant wave height averaged over 1 Hz cells | code |
+| [swh_rejection_flags](__l2p_swh_rejection_flags) | flag specifying the  editing criteria on which a 1 Hz significant wave height measurement was rejected (meaning its quality level is not set to “good”).  | bit mask |
+| [swh_emd_noise](__l2p_swh_emd_noise) | high-frequency noise attached to swh_adjusted, from EMD filter | m |
+| [swh_emd_imf1](__l2p_swh_emd_imf1) | first IMF attached to the denoising of swh_adjusted, from EMD filter | m |
+| [swh_emd_uncertainty](__l2p_swh_emd_uncertainty) | uncertainty estimated by EMD filter| m |
 ```
 
 
@@ -67,9 +70,9 @@ following sections, each variable within the L2P data file is described in detai
 ### `swh`
 
 The **significant wave height (SWH)**, within 1 Hz cells, averaged from 
-groups of full resolution 20 Hz (40 Hz for Saral, 18 Hz for Topex) measurements 
-calculated from the altimeter retracking, without any cross-mission bias 
-correction.
+groups of full resolution 20 Hz (40 Hz for Saral, 18 Hz for Envisat) 
+measurements calculated from the altimeter retracking, without any 
+cross-mission bias correction.
 
 For ERS-1, ERS-2, TOPEX, Sentinel-3 A & B and Sentinel-6, the 1 Hz 
 measurements were estimated from the full resolution SWH measurements 
@@ -195,33 +198,9 @@ applications.
 A non-parametric denoising method based on Empirical Mode Decomposition (EMD, Huang
 et al., 1998) and inspired by wavelet thresholding is applied to the 
 variable `swh_adjusted` to estimate the denoised significant wave height 
-(see Kopsinis and McLaughlin, 2009, Quilfen et al., 2018 and Quilfen and Chapron, 2019ab).
-A detailed description of the method can be found in Quilfen and Chapron, 2019b.
+(see Kopsinis and McLaughlin, 2009, Quilfen et al., 2018 and Quilfen and 
+Chapron, 2019ab), as detailed in {numref}`__denoising`.
 
-```{admonition} References
-
-Huang, N.E., Shen, Z., Long, S.R., Wu, M.C., Shih, H.H., Zheng, Q., Yen, N.-C., Tung, C.C.,
-Liu, H.H., 1998. The empirical mode decomposition and the Hilbert spectrum for nonlinear
-and non-stationary time series analysis. Proceedings of the Royal Society of London A:
-Mathematical, Physical and Engineering Sciences 454, 903–995.
-https://doi.org/10.1098/rspa.1998.0193
-
-Kopsinis, Y., McLaughlin, S., 2009. Development of EMD-Based Denoising Methods Inspired
-by Wavelet Thresholding. IEEE Transactions on Signal Processing 57, 1351–1362.
-https://doi.org/10.1109/TSP.2009.2013885
-
-Quilfen, Y., Yurovskaya, M., Chapron, B., Ardhuin, F., 2018. Storm waves focusing and
-steepening in the Agulhas current: Satellite observations and modeling. Remote Sensing Of
-Environment 216, 561–571. https://doi.org/10.1016/j.rse.2018.07.020
-
-Quilfen, Y., and Chapron, B., 2019. Ocean Surface Wave-Current Signatures From Satellite
-Altimeter Measurements. Geophysical Research Letters 46, 253–261.
-https://doi.org/10.1029/2018GL081029
-
-Quilfen Y., Chapron B. (2020). On denoising satellite altimeter
-measurements for high-resolution geophysical signal analysis.
-Advances in Space Research, 68. https://doi.org/10.1016/j.asr.2020.01.005]
-```
 
 ```{table} CDL example description of **<span style="font-family:courier;">swh_denoised</span>** variable
 :name: l2p_swh_denoised
@@ -302,13 +281,36 @@ table {numref}`l2p_swh_quality_level`.
 (__l2p_swh_rejection_flags)=
 ### `swh_rejection_flags`
 
+When SWH measurements were rejected as bad, the reason (quality test) for 
+which they were rejected is reported in the related `swh_rejection_flags` 
+variable. Refer to {numred}`editing` for details on the tests performed for 
+the quality check of the measurements.
+
+{numref}`__swh_quality_level` provides the meaning of each flag possibly raised, 
+stored as a specific bit of an integer.
+
+
+```{table} Definition of the rejection flags of significant wave height measurements
+:name: swh_flags
+
+| bit                             | meaning                         | 
+|---------------------------------|---------------------------------|
+| nb_of_valid_swh_too_low | the measurement was considered as invalid as there are indications of unsuitable waveforms for a proper SWH calculation. In particular there was no remaining 20 Hz values after all checks (such as distance to the closest shoreline) and outlier tests.|
+| sea_ice | the measurement has possible ice contamination. The sea ice fraction is taken from an external source (such as the CCI Sea Ice microwave based daily maps). Sea ice contamination is defined as areas where the sea ice fraction is greater than a minimal threshold (corresponding to 10% of ice in the current configuration).|
+| swh_validity | the SWH measurement was considered as invalid (out of the ]0, 30] meter range for instance).|
+| swh_rms_outlier | the measurement was considered as invalid when the RMS of the SWH measurements used to estimate each 1 Hz SWH measurement was beyond the acceptable threshold for a given range of SWH. |
+| outlier | the measurement was considered as invalid when performing the SWH outlier test, based on the neighbouring measurements within a 100 km window. |                                                                    
+```
+
+The `swh_rejection_flags` variable in a L2P product follows the format shown in 
+table {numref}`l2p_swh_rejection_flags`.
 
 ```{table} CDL example description of **<span style="font-family:courier;">swh_rejection_flags</span>** variable
 :name: l2p_swh_rejection_flags
 
 | **Storage type**  | **Name**  | **Unit** |
 |-------------------|-----------|----------|
-| float             | `rejection_flags`     | bit code |
+| float             | `rejection_flags`     | bit mask |
 ```
 
 ```{code-cell}
@@ -319,37 +321,220 @@ table {numref}`l2p_swh_quality_level`.
 ```
 
 
+(__l2p_swh_emd_noise)=
+### `swh_emd_noise`
+
+The **high-frequency noise of SWH** returned by the application of the 
+Empirical Mode Decomposition (EMD, Huang et al., 1998) to the bias-corrected 
+significant wave height (`swh_adjusted`), in meters. See {numref}`__denoising` 
+for more details on the SWH denoising.
+
+
+```{table} CDL example description of **<span style="font-family:courier;">swh_emd_noise</span>** variable
+:name: l2p_swh_emd_noise
+
+| **Storage type**  | **Name**  | **Unit** |
+|-------------------|-----------|----------|
+| float             | `swh_emd_noise`     | m (meter) |
+```
+
+```{code-cell}
+:tags: [remove-input]
+:name: l2p_swh_emd_noise
+
+!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]swh_emd_noise[(,:]'| sed 's/[[:space:]]//'
+```
+
+
+(__l2p_swh_emd_imf1)=
+### `swh_emd_imf1`
+
+The **first Intrinsic Mode Function of SWH** returned by the application of the
+Empirical Mode Decomposition (EMD, Huang et al., 1998) to the bias-corrected 
+significant wave height (`swh_adjusted`), in meters. See {numref}`__denoising` 
+for more details on the SWH denoising.
+
+
+```{table} CDL example description of **<span style="font-family:courier;">swh_emd_imf1</span>** variable
+:name: l2p_swh_emd_imf1
+
+| **Storage type**  | **Name**  | **Unit** |
+|-------------------|-----------|----------|
+| float             | `swh_emd_imf1`     | m (meter) |
+```
+
+```{code-cell}
+:tags: [remove-input]
+:name: l2p_swh_emd_imf1
+
+!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]swh_emd_imf1[(,:]'| sed 's/[[:space:]]//'
+```
+
+(__l2p_swh_emd_uncertainty)=
+### `swh_emd_uncertainty`
+
+The **SWH uncertainty** returned by the application of the
+Empirical Mode Decomposition (EMD, Huang et al., 1998) to the bias-corrected 
+significant wave height (`swh_adjusted`), in meters. See {numref}`__denoising` 
+for more details on the SWH denoising.
+
+
+```{table} CDL example description of **<span style="font-family:courier;">swh_emd_uncertainty</span>** variable
+:name: l2p_swh_emd_uncertainty
+
+| **Storage type**  | **Name**  | **Unit** |
+|-------------------|-----------|----------|
+| float             | `swh_emd_uncertainty`     | m (meter) |
+```
+
+```{code-cell}
+:tags: [remove-input]
+:name: l2p_swh_emd_uncertainty
+
+!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]swh_emd_uncertainty[(,:]'| sed 's/[[:space:]]//'
+```
+
 
 (l2p_variables_instrumental)=
 ## L2P instrumental data record format specification
 The {numref}`table_l2p_variables_instrumental` provides an overview of the CCI 
-Sea State L2P instrumental data record within a L2P file. In the following
-sections, each variable within the L2P data file is described in detail.
+Sea State L2P instrumental data record within a L2P file, mainly the 
+altimeter backscatter in available sensing bands (Ku, C, and Ka for SARAL).
+In the following sections, each variable within the L2P data file is described 
+in detail.
 
+```{note}
+Altimeters do not have all the same sensing bands and some of these 
+variables may therefore be missing for some missions. 
+```
 
 ```{table} Summary description of CCI Sea State L2P instrumental data records
 :name: table_l2p_variables_instrumental
 
 | Variable Name          | Description           | Units  |
 |-----------------------|------------------------|--------|
-| [sigma0](__l2p_sigma0) | Ku band backscatter coefficient, as calculated from the retracking | dB |
-| [sigma0_rms](__l2p_sigma0_rms) | RMS of the Ku band backscatter coefficient, within 1Hz cells, of the 20 Hz measurements calculated from the retracking| dB |
-| [sigma0_num_valid](__l2p_sigma0_num_valid) | number of valid points used to compute Ku band backscatter coefficient, within 1Hz cells, of the 20 Hz measurements calculated from the retracking | 1 |
+| [sigma0_ku](__l2p_sigma0_ku) | Ku band backscatter coefficient, as calculated from the retracking | dB |
+| [sigma0_ku_rms](__l2p_sigma0_ku_rms) | RMS of the Ku band backscatter coefficient, within 1Hz cells, of the 20 Hz measurements calculated from the retracking| dB |
+| [sigma0_ku_num_valid](__l2p_sigma0_ku_num_valid) | number of valid points used to compute Ku band backscatter coefficient, within 1Hz cells, of the 20 Hz measurements calculated from the retracking | 1 |
+| [sigma0_ku_quality_level](__l2p_sigma0_ku_quality_level) | Quality level (from 0 - worst to 3 - best) of the Ku band sigma0 averaged over 1 Hz cells |  |
+| [sigma0_ku_rejection_flags](__l2p_sigma0_ku_rejection_flags) | flag specifying the editing criteria on which a 1 Hz Ku band sigma0 measurement was rejected (meaning its quality level is not set to “good”).  |  |
+| [sigma0_c](__l2p_c_sigma0) | C band backscatter coefficient, as calculated from the retracking | dB |
+| [sigma0_c_rms](__l2p_sigma0_c_rms) | RMS of the C band backscatter coefficient, within 1Hz cells, of the 20 Hz measurements calculated from the retracking| dB |
+| [sigma0_c_num_valid](__l2p_sigma0_c_num_valid) | number of valid points used to compute C band backscatter coefficient, within 1Hz cells, of the 20 Hz measurements calculated from the retracking | 1 |
+| [sigma0_c_quality_level](__l2p_sigma0_c_quality_level) | Quality level (from 0 - worst to 3 - best) of the C band sigma0 averaged over 1 Hz cells |  |
+| [sigma0_c_rejection_flags](__l2p_sigma0_c_rejection_flags) | flag specifying the editing criteria on which a 1 Hz C band sigma0 measurement was rejected (meaning its quality level is not set to “good”).  |  |
+
 ```
 
-(__l2p_sigma0)=
-### `sigma0`
+(__l2p_sigma0_ku)=
+### `sigma0_ku`
 
-(__l2p_sigma0_rms)=
-### `sigma0_rms`
+The **Ku-band backscatter coefficients (sigma0)**, within 1 Hz cells, averaged from 
+groups of full resolution 20 Hz (18 Hz for Topex) measurements calculated from 
+the altimeter retracking, without any cross-mission bias correction. The Ku-band
+sigma0 is only provided for Ku-band altimeters (excluding SARAL/AltiKa for instance).
 
-(__l2p_sigma0_num_valid)=
-### `sigma0_num_valid`
+The 1 Hz measurements were estimated from the full resolution sigma0 measurements 
+provided in the source Agency’s GDR & SGDR products, including when SWH was 
+estimated with the CCI Sea State selected retracker (WHALES). Refer to the processing 
+details {numref}`__retracking` for the specific source used for each mission.
 
-The number of valid points used to compute Ku band backscatter coefficient, 
-within 1 Hz cells, of the full resolution measurements calculated from the 
-retracking.
+For all missions, the groups of full resolution measurements used to calculate 
+the 1 Hz values are exactly the same as in the source Agency’s GDR & SGDR products.
+Both CCI and Agency files can be compared one to one, have the same number 
+of measurements, and the same latitude, longitude, time for each 1 Hz 
+measurement. A minimal number of 6 valid points is required 
+to estimate a valid 1 Hz measurement. For more information on how the full 
+resolution measurements are compressed into 1 Hz values, refer to the 
+processing details {numref}`__compression`.
 
+The `sigma0_ku` variable in a L2P product follows the format shown in table 
+{numref}`l2p_sigma0_ku`.
+
+
+```{table} CDL example description of **<span style="font-family:courier;">sigma0_ku</span>** variable
+:name: l2p_sigma0_ku
+
+| **Storage type**  | **Name**  | **Unit** |
+|-------------------|-----------|----------|
+| float             | `sigma0_ku`     | dB |
+```
+
+```{code-cell}
+:tags: [remove-input]
+:name: l2p_sigma0_ku
+
+!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]sigma0_ku[(,:]'| sed 's/[[:space:]]//'
+```
+
+
+(__l2p_sigma0_ku_rms)=
+### `sigma0_ku_rms`
+
+(__l2p_sigma0_ku_num_valid)=
+### `sigma0_ku_num_valid`
+
+The number of valid points used to compute the Ku band backscatter coefficient
+(sigma0), within 1 Hz cells, from the full resolution measurements calculated
+from each altimeter waveform by the source Agency’s retracker.
+
+The groups of full resolution sigma0 measurements used to calculate the 1 Hz 
+values are exactly the same as in the source Agency’s GDR & SGDR products. Both
+CCI Sea State and Agency files can be compared one to one, have the same 
+number of measurements, and the same latitude, longitude, time for each 1 Hz
+measurement.
+
+
+```{table} CDL example description of **<span style="font-family:courier;">sigma0_ku_num_valid</span>** variable
+:name: l2p_sigma0_ku_num_valid
+
+| **Storage type**  | **Name**  | **Unit** |
+|-------------------|-----------|----------|
+| float             | `sigma0_ku_num_valid`     | 1 |
+```
+
+```{code-cell}
+:tags: [remove-input]
+:name: l2p_sigma0_ku_num_valid
+
+!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]sigma0_ku_num_valid[(,:]'| sed 's/[[:space:]]//'
+```
+
+(__l2p_sigma0_ku_quality_level)=
+### `sigma0_ku_quality_level`
+
+```{table} CDL example description of **<span style="font-family:courier;">sigma0_ku_quality_level</span>** variable
+:name: l2p_sigma0_ku_quality_level
+
+| **Storage type**  | **Name**  | **Unit** |
+|-------------------|-----------|----------|
+| float             | `sigma0_ku_quality_level`     | enumerate |
+```
+
+```{code-cell}
+:tags: [remove-input]
+:name: l2p_sigma0_ku_quality_level
+
+!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]sigma0_ku_quality_level[(,:]'| sed 's/[[:space:]]//'
+```
+
+(__l2p_sigma0_ku_rejection_flags)=
+### `sigma0_ku_rejection_flags`
+
+```{table} CDL example description of **<span style="font-family:courier;">sigma0_ku_rejection_flags</span>** variable
+:name: l2p_sigma0_ku_rejection_flags
+
+| **Storage type**  | **Name**  | **Unit** |
+|-------------------|-----------|----------|
+| float             | `sigma0_ku_rejection_flags`     | bit code |
+```
+
+```{code-cell}
+:tags: [remove-input]
+:name: l2p_sigma0_ku_rejection_flags
+
+!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]sigma0_ku_rejection_flags[(,:]'| sed 's/[[:space:]]//'
+```
 
 
 (l2p_variables_auxiliary)=
@@ -372,25 +557,24 @@ following sections, each variable within the L2P data file is described in detai
 | [era5_u10](__l2p_era5_u10) | 10 metre U wind component       | m s-1 |
 | [era5_v10](__l2p_era5_v10) | 10 metre V wind component       | m s-1 |
 | [era5_sp](__l2p_era5_sp) | Surface pressure                | Pa |
-| swh        | Significant height of combined wind waves and swell | |
-| pp1d       | Peak wave period                                    ||
-| p1ps       | Mean wave period based on first moment of swell     ||
-| p140121    | Significant wave height of first swell partition    ||
-| p140122    | Mean wave direction of first swell partition        ||
-| mwp        | Mean wave period                                    ||
-| mwd        | Mean wave direction                                 ||
-| shww       | Significant height of wind waves                    ||
-| mdww       | Mean direction of wind waves                        ||
-| mpww       | Mean period of wind waves                           ||
-| uwnd       | 10 metre U wind component                  ||
-| vwnd       | 10 metre V wind component                  ||
-| hs         | Significant height of wind and swell waves ||
-| t02        | Mean period T02                            ||
-| t0m1       | Mean period T0m1                           ||
-| 1/fp       | Wave peak frequency                        ||
-| dir        | Wave mean direction                        ||
-| skw        | skewness                                   | |
-| qkk        | k-peakedness                               ||
+| [era5_swh](__l2p_era5_swh) | Significant height of combined wind waves and swell | |
+| [era5_pp1d](__l2p_era5_pp1d)       | Peak wave period    | s |
+| [era5_p1ps](__l2p_era5_p1ps)       | Mean wave period based on first moment of swell     | s |
+| [era5_p140121](__l2p_era5_p140121)    | Significant wave height of first swell partition    | m |
+| [era5_p140122](__l2p_era5_p140122)    | Mean wave direction of first swell partition        | degree |
+| [era5_mwp](__l2p_era5_mwp)        | Mean wave period  | s |
+| [era5_mwd](__l2p_era5_mwd)        | Mean wave direction  | degree |
+| [era5_shww](__l2p_era5_shww)       | Significant height of wind waves  | m |
+| [era5_mdww](__l2p_era5_mdww) | Mean direction of wind waves  | degree |
+| [era5_mpww](__l2p_era5_mpww) | Mean period of wind waves  | s |
+| [ww3_hs](__l2p_ww3_hs)     | Significant height of wind and swell waves | m |
+| [ww3_t02](__l2p_ww3_t02)   | Mean period T02 | s |
+| [ww3_t0m1](__l2p_ww3_t0m1)  | Mean period T0m1 | s |
+| [ww3_emb](__l2p_ww3_emb)  | Electromagnetic bias coefficient | 1|
+| [ww3_fp](__l2p_ww3_fp)  | Wave peak frequency  | s-1 |
+| [ww3_dir](__l2p_ww3_dir)   | Wave mean direction (from)  | degree |
+| [ww3_skw](__l2p_ww3_skw)   | skewness of P(z,sx,sy=0)  | 1 |
+| [ww3_qkk](__l2p_ww3_qkk)   | 2D wavenumber peakedness |m rad-1|
 ```
 
 
@@ -440,6 +624,33 @@ available at: https://www.gebco.net.
 :name: l2p_bathymetry
 
 !ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]bathymetry[(,:]'| sed 's/[[:space:]]//'
+```
+
+(__l2p_sea_ice_fraction)=
+### `sea_ice_fraction`
+
+Sea ice concentration is provided as an ancillary variable but also used in 
+the SWH editing procedure. We use an external sea ice concentration product 
+to discard possibly ice contaminated measurements. Because no products 
+provides a complete temporal coverage (missed acquisitions, non continuities 
+between different microwave radiometer missions, infrequent updates of some 
+datasets), we had to use different sources, as reported in {numref}`sea_ice`.
+
+The sea ice concentration is expressed as a fraction.
+
+```{table} CDL example description of **<span style="font-family:courier;">sea_ice_fraction</span>** variable
+:name: l2p_sea_ice_fraction
+
+| **Storage type**  | **Name**  | **Unit** |
+|-------------------|-----------|----------|
+| float             | `sea_ice_fraction`     | 1 |
+```
+
+```{code-cell}
+:tags: [remove-input]
+:name: l2p_sea_ice_fraction
+
+!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]sea_ice_fraction[(,:]'| sed 's/[[:space:]]//'
 ```
 
 (__l2p_era5_tclw)=
@@ -568,3 +779,26 @@ The atmospheric pressure at sea level, from ERA5 model reanalysis, in Pascal.
 
 !ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]era5_sp[(,:]'| sed 's/[[:space:]]//'
 ```
+
+(__l2p_era5_swh)=
+### `era5_swh`
+
+The significant height of combined wind waves and swell, from ERA5/WAM model 
+reanalysis, in meters. Note that ERA5 WAM model assimilates altimeter data. For
+a fully independent SWH estimate, use the WW3 SWH (see {numref}`ww3_swh`).
+
+```{table} CDL example description of **<span style="font-family:courier;">era5_swh</span>** variable
+:name: l2p_era5_swh
+
+| **Storage type**  | **Name**  | **Unit** |
+|-------------------|-----------|----------|
+| float             | `era5_swh`   | m  |
+```
+
+```{code-cell}
+:tags: [remove-input]
+:name: l2p_era5_swh
+
+!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]era5wave_swh[(,:]'| sed 's/[[:space:]]//'
+```
+
