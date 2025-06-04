@@ -175,7 +175,7 @@ CCI Sea State production team (WHALES) or a third party agency:
 | Envisat Version 3        | 03/2002 to 04/2012 | WHALES        | 
 | CryoSat-2  Version E     | 07/2010 to now     | WHALES        | 
 | SARAL Version F          | 02/2013 to now     | WHALES        |
-| Sentinel-6 A Version F08 | 03/2020 to 12/2023 | MLE4 (?)      |   
+| Sentinel-6 A Version F08 | 03/2020 to 12/2023 | MLE4          |   
 | Sentinel-3 A Version 005 | 02/2016 to now     |               |
 | Sentinel-3 B Version 005 | 04/2018 to now     |               |
 ```
@@ -281,12 +281,12 @@ sigma0 when available, as summarized in {numref}`fullres_sigma0`.
 | ERS-2 REAPER             | ocean_sig0_20hz       | ocean_sig0_used_20hz                     |
 | CryoSat-2  Version E     | sig0_1_20_ku          |                                          |
 | SARAL Version T          | sig0_40hz             | sig0_used_40hz == 0                      |
-| Sentinel-6 A Version F08 | ku_sig0_ocean_mle3    | c_sig0_ocean_qual != 1                   |
-|                          | c_sig0_ocean          | ku_sig0_ocean_mle3_qual != 1             |
+| Sentinel-6 A Version F08 | ku_sig0_ocean_mle3    | ku_sig0_ocean_mle3_qual != 1             |
+|                          | c_sig0_ocean          | c_sig0_ocean_qual != 1  |
 | Sentinel-3 A Version 005 | sig0_ocean_20_plrm_ku | sig0_ocean_qual_20_plrm_ku == 0          |
 |                          | sig0_ocean_20_c       | sig0_ocean_qual_20_c == 0                |
-| Sentinel-3 B Version 005 | sig0_ocean_20_plrm_ku |                                          |
-|                          | sig0_ocean_20_c       |                                          |
+| Sentinel-3 B Version 005 | sig0_ocean_20_plrm_ku | sig0_ocean_qual_20_plrm_ku == 0          |
+|                          | sig0_ocean_20_c       | sig0_ocean_qual_20_c == 0                |
 ```
 
 > **S-band sigma0** were ignored for **Envisat** as it was found they were 
