@@ -12,15 +12,18 @@ The VV or HH polarization data were used, with priority to VV products for S1 IW
 ```{table} GRD S1 IW, S1 EW and S1 WV SLC products common information
 :name: dlr_products
 
-| Name        | ca. coverage | pixel spacing | GB per SAR L1 original ID product | N of worldwide/ocean scenes per day (S1A+ S1B in 2020) |
-|-------------| ------------ | ------------- | --------------------------------- | ------------------------------------------------|
-| S1 IW / GRD | 250×200 km | 10 m | ca. 3 GB | ca.    900 / 500 |
-| S1 EW / GRD | 400×350 km | 40 m | ca. 0.6 GB | ca.    260 / 200 |
-| S1 WV / SLC | 20×20 km each 100 km along-track imagettes | ca. 3.5 m | ca. 5 GB (min – ca. 2 GB max.- 16 GB) | ca. 50 ID-products each with ca. 80–120 imagettes.All imagettes in oceans|
+| Name        | ca. coverage | pixel spacing | GB per SAR L1 original ID product | N worldwide/ocean scenes per day (S1A+S1B in 2020)|
+|-------------| ------------ | ------------- | --------------------------------- | --------------------------------------------------|
+| S1 IW / GRD | 250×200 km   | 10 m          | ca. 3 GB                          | ca.    900 / 500                                  |
+| S1 EW / GRD | 400×350 km   | 40 m          | ca. 0.6 GB                        | ca.    260 / 200                                  |
+| S1 WV / SLC | 20×20 km     | ca. 3.5 m     | ca. 5 GB                          | ca. 50 ID-products each with ca. 80–120 imagettes |    
+|             | each 100 km  |               | (min – ca. 2 GB max.- 16 GB)      |                                                   |
+|             | along-track  |               |                                   |                                                   |
+|             | imagettes    |               |                                   |                                                   |
 ```
  
 
-```{figure} ../images/dlr_sar_fig1.png
+{figure} ../images/dlr_sar_fig1.png
 :name: dlr_sar_acquisitions
 
 An example of S1 worldwide acquisitions on 2020-09-01. There are 54 S1 WV tracks (red), 894 S1 IW images (green), 229 S1 EW images (grey).
