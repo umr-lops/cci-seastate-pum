@@ -20,9 +20,7 @@ The VV or HH polarization data were used, with priority to VV products for S1 IW
 |             | each 100 km  |               | (min – ca. 2 GB max.- 16 GB)      |                                                   |
 |             | along-track  |               |                                   |                                                   |
 |             | imagettes    |               |                                   |                                                   |
-```
  
-```
 ![dlr_sar_fig1.png](../images/dlr_sar_fig1.png)
 :name: An example of S1 worldwide acquisitions on 2020-09-01. There are 54 S1 WV tracks (red), 894 S1 IW images (green), 229 S1 EW images (grey).
 
