@@ -24,6 +24,7 @@ The VV or HH polarization data were used, with priority to VV products for S1 IW
 
  ```
 ![dlr_sar_fig1.png](../images/dlr_sar_fig1.png)
+![LUT_average_ERS-1-REAPER.png](../images/LUT_average_ERS-1-REAPER.png)
 :name: An example of S1 worldwide acquisitions on 2020-09-01. There are 54 S1 WV tracks (red), 894 S1 IW images (green), 229 S1 EW images (grey).
 
 ```
