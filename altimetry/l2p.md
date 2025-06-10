@@ -558,23 +558,23 @@ following sections, each variable within the L2P data file is described in detai
 | [era5_v10](__l2p_era5_v10) | 10 metre V wind component       | m s-1 |
 | [era5_sp](__l2p_era5_sp) | Surface pressure                | Pa |
 | [era5_swh](__l2p_era5_swh) | Significant height of combined wind waves and swell | |
-| [era5_pp1d](__l2p_era5_pp1d)       | Peak wave period    | s |
-| [era5_p1ps](__l2p_era5_p1ps)       | Mean wave period based on first moment of swell     | s |
-| [era5_p140121](__l2p_era5_p140121)    | Significant wave height of first swell partition    | m |
-| [era5_p140122](__l2p_era5_p140122)    | Mean wave direction of first swell partition        | degree |
-| [era5_mwp](__l2p_era5_mwp)        | Mean wave period  | s |
-| [era5_mwd](__l2p_era5_mwd)        | Mean wave direction  | degree |
-| [era5_shww](__l2p_era5_shww)       | Significant height of wind waves  | m |
-| [era5_mdww](__l2p_era5_mdww) | Mean direction of wind waves  | degree |
-| [era5_mpww](__l2p_era5_mpww) | Mean period of wind waves  | s |
-| [ww3_hs](__l2p_ww3_hs)     | Significant height of wind and swell waves | m |
-| [ww3_t02](__l2p_ww3_t02)   | Mean period T02 | s |
-| [ww3_t0m1](__l2p_ww3_t0m1)  | Mean period T0m1 | s |
+| [era5_peak_wave_period](__l2p_era5_pp1d)       | Peak wave period    | s |
+| [era5_swell_mean_period](__l2p_era5_p1ps)       | Mean wave period based on first moment of swell     | s |
+| [era5_swell_swh](__l2p_era5_p140121)    | Significant wave height of first swell partition    | m |
+| [era5_swell_direction](__l2p_era5_p140122)    | Mean wave direction of first swell partition        | degree |
+| [era5_mean_wave_period](__l2p_era5_mwp)        | Mean wave period  | s |
+| [era5_mean_wave_direction](__l2p_era5_mwd)        | Mean wave direction  | degree |
+| [era5_windwave_swh](__l2p_era5_shww)       | Significant height of wind waves  | m |
+| [era5_windwave_direction](__l2p_era5_mdww) | Mean direction of wind waves  | degree |
+| [era5_windwave_period](__l2p_era5_mpww) | Mean period of wind waves  | s |
+| [ww3_swh](__l2p_ww3_hs)     | Significant height of wind and swell waves | m |
+| [ww3_mean_wave_period](__l2p_ww3_t02)   | Mean period T02 | s |
+| [ww3_mean_wave_period_t0m1](__l2p_ww3_t0m1)  | Mean period T0m1 | s |
 | [ww3_emb](__l2p_ww3_emb)  | Electromagnetic bias coefficient | 1|
-| [ww3_fp](__l2p_ww3_fp)  | Wave peak frequency  | s-1 |
-| [ww3_dir](__l2p_ww3_dir)   | Wave mean direction (from)  | degree |
-| [ww3_skw](__l2p_ww3_skw)   | skewness of P(z,sx,sy=0)  | 1 |
-| [ww3_qkk](__l2p_ww3_qkk)   | 2D wavenumber peakedness |m rad-1|
+| [ww3_peak_wave_period](__l2p_ww3_fp)  | Wave peak frequency  | s-1 |
+| [ww3_mean_wave_direction](__l2p_ww3_dir)   | Wave mean direction (from)  | degree |
+| [ww3_wave_skewness](__l2p_ww3_skw)   | skewness of P(z,sx,sy=0)  | 1 |
+| [ww3_wavenumber_peakdness](__l2p_ww3_qkk)   | 2D wavenumber peakedness |m rad-1|
 ```
 
 
@@ -785,7 +785,7 @@ The atmospheric pressure at sea level, from ERA5 model reanalysis, in Pascal.
 
 The significant height of combined wind waves and swell, from ERA5/WAM model 
 reanalysis, in meters. Note that ERA5 WAM model assimilates altimeter data. For
-a fully independent SWH estimate, use the WW3 SWH (see {numref}`ww3_swh`).
+a fully independent SWH estimate, use the WW3 SWH (see {numref}`__l2p_ww3_hs`).
 
 ```{table} CDL example description of **<span style="font-family:courier;">era5_swh</span>** variable
 :name: l2p_era5_swh
@@ -799,6 +799,325 @@ a fully independent SWH estimate, use the WW3 SWH (see {numref}`ww3_swh`).
 :tags: [remove-input]
 :name: l2p_era5_swh
 
-!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]era5wave_swh[(,:]'| sed 's/[[:space:]]//'
+!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]era5_swh[(,:]'| sed 's/[[:space:]]//'
 ```
 
+(__l2p_era5_pp1d)=
+### `era5_peak_wave_period`
+
+```{table} CDL example description of **<span style="font-family:courier;">era5_peak_wave_period</span>** variable
+:name: l2p_era5_pp1d
+
+| **Storage type**  | **Name**  | **Unit** |
+|-------------------|-----------|----------|
+| float             | `era5_peak_wave_period`   | s  |
+```
+
+```{code-cell}
+:tags: [remove-input]
+:name: l2p_era5_pp1d
+
+!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]era5_peak_wave_period[(,:]'| sed 's/[[:space:]]//'
+```
+
+
+
+(__l2p_era5_p1ps)=
+### `era5_swell_mean_period`
+
+```{table} CDL example description of **<span style="font-family:courier;">era5_swell_mean_period</span>** variable
+:name: l2p_era5_p1ps
+
+| **Storage type**  | **Name**  | **Unit** |
+|-------------------|-----------|----------|
+| float             | `era5_swell_mean_period`   | s  |
+```
+
+```{code-cell}
+:tags: [remove-input]
+:name: l2p_era5_p1ps
+
+!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]era5_swell_mean_period[(,:]'| sed 's/[[:space:]]//'
+```
+
+
+(__l2p_era5_p140121)=
+### `era5_swell_swh`
+
+```{table} CDL example description of **<span style="font-family:courier;">era5_swell_swh</span>** variable
+:name: l2p_era5_p140121
+
+| **Storage type**  | **Name**  | **Unit** |
+|-------------------|-----------|----------|
+| float             | `era5_swell_swh`   | m  |
+```
+
+```{code-cell}
+:tags: [remove-input]
+:name: l2p_era5_p140121
+
+!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]era5_swell_swh[(,:]'| sed 's/[[:space:]]//'
+```
+
+
+(__l2p_era5_p140122)=
+### `era5_swell_direction`
+
+```{table} CDL example description of **<span style="font-family:courier;">era5_swell_direction</span>** variable
+:name: l2p_era5_p140122
+
+| **Storage type**  | **Name**  | **Unit** |
+|-------------------|-----------|----------|
+| float             | `era5_swell_direction`   | degree  |
+```
+
+```{code-cell}
+:tags: [remove-input]
+:name: l2p_era5_p140122
+
+!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]era5_swell_direction[(,:]'| sed 's/[[:space:]]//'
+```
+
+
+(__l2p_era5_mwp)=
+### `era5_mean_wave_period`
+
+```{table} CDL example description of **<span style="font-family:courier;">era5_mean_wave_period</span>** variable
+:name: l2p_era5_mwp
+
+| **Storage type**  | **Name**  | **Unit** |
+|-------------------|-----------|----------|
+| float             | `era5_mean_wave_period`   | s  |
+```
+
+```{code-cell}
+:tags: [remove-input]
+:name: l2p_era5_mwp
+
+!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]era5_mean_wave_period[(,:]'| sed 's/[[:space:]]//'
+```
+
+
+(__l2p_era5_mwd)=
+### `era5_mean_wave_direction`
+
+```{table} CDL example description of **<span style="font-family:courier;">era5_mean_wave_direction</span>** variable
+:name: l2p_era5_mwd
+
+| **Storage type**  | **Name**  | **Unit** |
+|-------------------|-----------|----------|
+| float             | `era5_mean_wave_direction`   | degree  |
+```
+
+```{code-cell}
+:tags: [remove-input]
+:name: l2p_era5_mwd
+
+!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]era5_mean_wave_direction[(,:]'| sed 's/[[:space:]]//'
+```
+
+
+(__l2p_era5_shww)=
+### `era5_windwave_swh`
+
+```{table} CDL example description of **<span style="font-family:courier;">era5_windwave_swh</span>** variable
+:name: l2p_era5_shww
+
+| **Storage type**  | **Name**  | **Unit** |
+|-------------------|-----------|----------|
+| float             | `era5_windwave_swh`   | m  |
+```
+
+```{code-cell}
+:tags: [remove-input]
+:name: l2p_era5_shww
+
+!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]era5_windwave_swh[(,:]'| sed 's/[[:space:]]//'
+```
+
+
+(__l2p_era5_mdww)=
+### `era5_windwave_direction`
+
+```{table} CDL example description of **<span style="font-family:courier;">era5_windwave_direction</span>** variable
+:name: l2p_era5_mdww
+
+| **Storage type**  | **Name**  | **Unit** |
+|-------------------|-----------|----------|
+| float             | `era5_windwave_direction`   | degree  |
+```
+
+```{code-cell}
+:tags: [remove-input]
+:name: l2p_era5_mdww
+
+!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]era5_windwave_direction[(,:]'| sed 's/[[:space:]]//'
+```
+
+
+(__l2p_era5_mpww)=
+### `era5_windwave_period`
+
+```{table} CDL example description of **<span style="font-family:courier;">era5_windwave_period</span>** variable
+:name: l2p_era5_mpww
+
+| **Storage type**  | **Name**  | **Unit** |
+|-------------------|-----------|----------|
+| float             | `era5_windwave_period`   | s  |
+```
+
+```{code-cell}
+:tags: [remove-input]
+:name: l2p_era5_mpww
+
+!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]era5_windwave_period[(,:]'| sed 's/[[:space:]]//'
+```
+
+(__l2p_ww3_hs)=
+### `ww3_swh`
+
+```{table} CDL example description of **<span style="font-family:courier;">ww3_swh</span>** variable
+:name: l2p_ww3_hs
+
+| **Storage type**  | **Name**  | **Unit** |
+|-------------------|-----------|----------|
+| float             | `ww3_swh`   | m  |
+```
+
+```{code-cell}
+:tags: [remove-input]
+:name: l2p_ww3_hs
+
+!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]ww3_swh[(,:]'| sed 's/[[:space:]]//'
+```
+
+
+(__l2p_ww3_t02)=
+### `ww3_mean_wave_period`
+
+```{table} CDL example description of **<span style="font-family:courier;">ww3_mean_wave_period</span>** variable
+:name: l2p_ww3_t02
+
+| **Storage type**  | **Name**  | **Unit** |
+|-------------------|-----------|----------|
+| float             | `ww3_mean_wave_period`   | s  |
+```
+
+```{code-cell}
+:tags: [remove-input]
+:name: l2p_ww3_t02
+
+!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]ww3_mean_wave_period[(,:]'| sed 's/[[:space:]]//'
+```
+
+
+(__l2p_ww3_t0m1)=
+### `ww3_mean_wave_period_t0m1`
+
+```{table} CDL example description of **<span style="font-family:courier;">ww3_mean_wave_period_t0m1</span>** variable
+:name: l2p_ww3_t0m1
+
+| **Storage type**  | **Name**  | **Unit** |
+|-------------------|-----------|----------|
+| float             | `ww3_mean_wave_period_t0m1`   | s  |
+```
+
+```{code-cell}
+:tags: [remove-input]
+:name: l2p_ww3_t0m1
+
+!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]ww3_mean_wave_period_t0m1[(,:]'| sed 's/[[:space:]]//'
+```
+
+
+(__l2p_ww3_emb)=
+### `ww3_emb`
+
+```{table} CDL example description of **<span style="font-family:courier;">ww3_emb</span>** variable
+:name: l2p_ww3_emb
+
+| **Storage type**  | **Name**  | **Unit** |
+|-------------------|-----------|----------|
+| float             | `ww3_emb`   | s  |
+```
+
+```{code-cell}
+:tags: [remove-input]
+:name: l2p_ww3_emb
+
+!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]ww3_emb[(,:]'| sed 's/[[:space:]]//'
+```
+
+
+(__l2p_ww3_fp)=
+### `ww3_peak_wave_period`
+
+```{table} CDL example description of **<span style="font-family:courier;">ww3_peak_wave_period</span>** variable
+:name: l2p_ww3_fp
+
+| **Storage type**  | **Name**  | **Unit** |
+|-------------------|-----------|----------|
+| float             | `ww3_peak_wave_period`   | s  |
+```
+
+```{code-cell}
+:tags: [remove-input]
+:name: l2p_ww3_fp
+
+!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]ww3_peak_wave_period[(,:]'| sed 's/[[:space:]]//'
+```
+
+
+(__l2p_ww3_dir)=
+### `ww3_mean_wave_direction`
+
+```{table} CDL example description of **<span style="font-family:courier;">ww3_mean_wave_direction</span>** variable
+:name: l2p_ww3_dir
+
+| **Storage type**  | **Name**  | **Unit** |
+|-------------------|-----------|----------|
+| float             | `ww3_mean_wave_direction`   | degree  |
+```
+
+```{code-cell}
+:tags: [remove-input]
+:name: l2p_ww3_dir
+
+!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]ww3_mean_wave_direction[(,:]'| sed 's/[[:space:]]//'
+```
+
+(__l2p_ww3_skw)=
+### `ww3_wave_skewness`
+
+```{table} CDL example description of **<span style="font-family:courier;">ww3_wave_skewness</span>** variable
+:name: l2p_ww3_skw
+
+| **Storage type**  | **Name**  | **Unit** |
+|-------------------|-----------|----------|
+| float             | `ww3_wave_skewness`   | 1 |
+```
+
+```{code-cell}
+:tags: [remove-input]
+:name: l2p_ww3_skw
+
+!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]ww3_wave_skewness[(,:]'| sed 's/[[:space:]]//'
+```
+
+(__l2p_ww3_qkk)=
+### `ww3_wavenumber_peakdness`
+
+```{table} CDL example description of **<span style="font-family:courier;">ww3_wavenumber_peakdness</span>** variable
+:name: l2p_ww3_qkk
+
+| **Storage type**  | **Name**  | **Unit** |
+|-------------------|-----------|----------|
+| float             | `ww3_wavenumber_peakdness`   | m rad-1  |
+```
+
+```{code-cell}
+:tags: [remove-input]
+:name: l2p_ww3_qkk
+
+!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]ww3_wavenumber_peakdness[(,:]'| sed 's/[[:space:]]//'
+```
