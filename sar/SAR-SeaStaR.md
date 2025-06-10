@@ -65,7 +65,7 @@ SAR-SeaStaR is based on combination of the linear regression function
 CWAVE_EX (Pleskachevsky et al., 2022) and a machine learning approach using the
 support vector machine (SVM) technique. 
 
-```{figure} ../images/dlr_sar_fig2.png
+![dlr_sar_fig2.png](../images/dlr_sar_fig2.png)
 :name: dlr_sar_outputs
 
 DLR SAR-SeaStaR outputs. Example of eight sea state parameter grids 
@@ -75,15 +75,15 @@ SWH reaching ca. 13 m. Processing in a 5 km raster results in ca. 1500
 subscenes (approximately ~30×50) for each individual IW image. Isolines shows 
 the results of forecast WFWAM at 18:00 UTC (excluding first moment not provided 
 by Copernicus Marine Environment CMEMS).
-```
 
-```{figure} ../images/dlr_sar_fig3.png
+
+![dlr_sar_fig3.png](../images/dlr_sar_fig3.png)
 :name: dlr_sar_example
 
 Example of Sentinel-1 WV archive processing. In the right half of the figure 
 only one-day of acquisitions is displayed on the globe, on the left half all 
 data acquired during February 2021 is displayed.
-```
+
 
 The SAR-SeaStaR algorithm includes the complete processing chain with a series
 of steps needed to reach high accuracy: 
