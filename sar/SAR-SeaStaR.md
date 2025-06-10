@@ -9,22 +9,25 @@
 
 The VV or HH polarization data were used, with priority to VV products for S1 IW and S1 EW.
 
-```{table} GRD S1 IW, S1 EW and S1 WV SLC products common information
+{table} GRD S1 IW, S1 EW and S1 WV SLC products common information
 :name: dlr_products
 
-| Name        | ca. coverage | pixel spacing | GB per SAR L1 original ID product | N of worldwide/ocean scenes per day (S1A+ S1B in 2020) |
-|-------------| ------------ | ------------- | --------------------------------- | ------------------------------------------------|
-| S1 IW / GRD | 250×200 km | 10 m | ca. 3 GB | ca.    900 / 500 |
-| S1 EW / GRD | 400×350 km | 40 m | ca. 0.6 GB | ca.    260 / 200 |
-| S1 WV / SLC | 20×20 km each 100 km along-track imagettes | ca. 3.5 m | ca. 5 GB (min – ca. 2 GB max.- 16 GB) | ca. 50 ID-products each with ca. 80–120 imagettes.All imagettes in oceans|
-```
- 
+| Name        | ca. coverage | pixel spacing | GB per SAR L1 original ID product | N worldwide/ocean scenes per day (S1A+S1B in 2020)|
+|-------------| ------------ | ------------- | --------------------------------- | --------------------------------------------------|
+| S1 IW / GRD | 250×200 km   | 10 m          | ca. 3 GB                          | ca.    900 / 500                                  |
+| S1 EW / GRD | 400×350 km   | 40 m          | ca. 0.6 GB                        | ca.    260 / 200                                  |
+| S1 WV / SLC | 20×20 km each 100 km  along-track imagettes  | ca. 3.5 m     | ca. 5 GB                          | ca. 50 ID-products each with ca. 80–120 imagettes  (min – ca. 2 GB max.- 16 GB)|    
 
-```{figure} ../images/dlr_sar_fig1.png
-:name: dlr_sar_acquisitions
 
-An example of S1 worldwide acquisitions on 2020-09-01. There are 54 S1 WV tracks (red), 894 S1 IW images (green), 229 S1 EW images (grey).
-```
+
+
+
+
+![dlr_sar_fig1.png](../images/dlr_sar_fig1.png)
+
+:name: An example of S1 worldwide acquisitions on 2020-09-01. There are 54 S1 WV tracks (red), 894 S1 IW images (green), 229 S1 EW images (grey).
+
+
 
 **Ancillary data (Land masks)**
 - SRTM - Shuttle Radar Topography Mission (SRTM) -60°<LAT<60°.
@@ -62,7 +65,7 @@ SAR-SeaStaR is based on combination of the linear regression function
 CWAVE_EX (Pleskachevsky et al., 2022) and a machine learning approach using the
 support vector machine (SVM) technique. 
 
-```{figure} ../images/dlr_sar_fig2.png
+![dlr_sar_fig2.png](../images/dlr_sar_fig2.png)
 :name: dlr_sar_outputs
 
 DLR SAR-SeaStaR outputs. Example of eight sea state parameter grids 
@@ -72,15 +75,15 @@ SWH reaching ca. 13 m. Processing in a 5 km raster results in ca. 1500
 subscenes (approximately ~30×50) for each individual IW image. Isolines shows 
 the results of forecast WFWAM at 18:00 UTC (excluding first moment not provided 
 by Copernicus Marine Environment CMEMS).
-```
 
-```{figure} ../images/dlr_sar_fig3.png
+
+![dlr_sar_fig3.png](../images/dlr_sar_fig3.png)
 :name: dlr_sar_example
 
 Example of Sentinel-1 WV archive processing. In the right half of the figure 
 only one-day of acquisitions is displayed on the globe, on the left half all 
 data acquired during February 2021 is displayed.
-```
+
 
 The SAR-SeaStaR algorithm includes the complete processing chain with a series
 of steps needed to reach high accuracy: 
