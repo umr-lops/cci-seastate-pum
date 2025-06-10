@@ -16,10 +16,9 @@ The VV or HH polarization data were used, with priority to VV products for S1 IW
 |-------------| ------------ | ------------- | --------------------------------- | --------------------------------------------------|
 | S1 IW / GRD | 250×200 km   | 10 m          | ca. 3 GB                          | ca.    900 / 500                                  |
 | S1 EW / GRD | 400×350 km   | 40 m          | ca. 0.6 GB                        | ca.    260 / 200                                  |
-| S1 WV / SLC | 20×20 km     | ca. 3.5 m     | ca. 5 GB                          | ca. 50 ID-products each with ca. 80–120 imagettes |    
-|             | each 100 km  |               | (min – ca. 2 GB max.- 16 GB)      |                                                   |
-|             | along-track  |               |                                   |                                                   |
-|             | imagettes    |               |                                   |                                                   |
+| S1 WV / SLC | 20×20 km each 100 km  along-track imagettes  | ca. 3.5 m     | ca. 5 GB                          | ca. 50 ID-products each with ca. 80–120 imagettes  (min – ca. 2 GB max.- 16 GB)|    
+
+
 
 
 
