@@ -9,7 +9,7 @@
 
 The VV or HH polarization data were used, with priority to VV products for S1 IW and S1 EW.
 
-```{table} GRD S1 IW, S1 EW and S1 WV SLC products common information
+{table} GRD S1 IW, S1 EW and S1 WV SLC products common information
 :name: dlr_products
 
 | Name        | ca. coverage | pixel spacing | GB per SAR L1 original ID product | N worldwide/ocean scenes per day (S1A+S1B in 2020)|
@@ -20,7 +20,7 @@ The VV or HH polarization data were used, with priority to VV products for S1 IW
 |             | each 100 km  |               | (min – ca. 2 GB max.- 16 GB)      |                                                   |
 |             | along-track  |               |                                   |                                                   |
 |             | imagettes    |               |                                   |                                                   |
- ```
+
 
 
 
