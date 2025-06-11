@@ -77,7 +77,7 @@ cross-mission bias correction.
 For ERS-1, ERS-2, TOPEX, Sentinel-3 A & B and Sentinel-6, the 1 Hz 
 measurements were estimated from the full resolution SWH measurements 
 provided in the source Agency’s GDR & SGDR products. Refer to the processing 
-details {numref}`__retracking` for the specific source used for these missions.
+details {numref}`__whales` for the specific source used for these missions.
 
 For Jason-1, Jason-2, Jason-3, Envisat, SARAL and CryoSat-2, a specific 
 retracking was performed, using the WHALES nadir altimetry retracker 
@@ -437,7 +437,7 @@ sigma0 is only provided for Ku-band altimeters (excluding SARAL/AltiKa for insta
 The 1 Hz measurements were estimated from the full resolution sigma0 measurements 
 provided in the source Agency’s GDR & SGDR products, including when SWH was 
 estimated with the CCI Sea State selected retracker (WHALES). Refer to the processing 
-details {numref}`__retracking` for the specific source used for each mission.
+details {numref}`__whales` for the specific source used for each mission.
 
 For all missions, the groups of full resolution measurements used to calculate 
 the 1 Hz values are exactly the same as in the source Agency’s GDR & SGDR products.

@@ -176,8 +176,8 @@ CCI Sea State production team (WHALES) or a third party agency:
 | CryoSat-2  Version E     | 07/2010 to now     | WHALES        | 
 | SARAL Version F          | 02/2013 to now     | WHALES        |
 | Sentinel-6 A Version F08 | 03/2020 to 12/2023 | MLE4          |   
-| Sentinel-3 A Version 005 | 02/2016 to now     |               |
-| Sentinel-3 B Version 005 | 04/2018 to now     |               |
+| Sentinel-3 A Version 005 | 02/2016 to now     | MLE4          |
+| Sentinel-3 B Version 005 | 04/2018 to now     | MLE4          |
 ```
 
 For sigma0, the measurements from the original retracking performed by the agency 
@@ -202,8 +202,8 @@ used for each mission for sigma0 by these agencies:
 | CryoSat-2  Version E     | 07/2010 to now     | Ocean CFI/MLE4 (Ku)   |
 | SARAL Version F          | 02/2013 to now     | MLE4 (Ka)             |
 | Sentinel-6 A Version F08 | 03/2020 to 12/2023 | MLE3 (Ku, C)          |   
-| Sentinel-3 A Version 005 | 02/2016 to now     |    (Ku, C)            |
-| Sentinel-3 B Version 005 | 04/2018 to now     |     (Ku, C)           |
+| Sentinel-3 A Version 005 | 02/2016 to now     | MLE4 (Ku), MLE3 (C)   |
+| Sentinel-3 B Version 005 | 04/2018 to now     | MLE4 (Ku), MLE3 (C)   |
 ```
 
 
