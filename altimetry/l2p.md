@@ -551,12 +551,12 @@ following sections, each variable within the L2P data file is described in detai
 | [distance_to_coast](__l2p_distance_to_coast) | Distance to the nearest shoreline | m |
 | [bathymetry](__l2p_bathymetry) | Water depth to sea floor | m |
 | [sea_ice_fraction](__l2p_sea_ice_fraction) | Water depth to sea floor | 1 |
-| [era5_tclw](__l2p_era5_tclw) | Total column cloud liquid water | kg m-2 |
-| [era5_t2m](__l2p_era5_t2m) | 2 metre temperature             | K | 
-| [era5_sst](__l2p_era5_sst) | Sea surface temperature         | K |
-| [era5_u10](__l2p_era5_u10) | 10 metre U wind component       | m s-1 |
-| [era5_v10](__l2p_era5_v10) | 10 metre V wind component       | m s-1 |
-| [era5_sp](__l2p_era5_sp) | Surface pressure                | Pa |
+| [era5_total_column_cloud_liquid_water](__l2p_era5_tclw) | Total column cloud liquid water | kg m-2 |
+| [era5_2m_air_temperature](__l2p_era5_t2m) | 2 metre temperature             | K | 
+| [era5_sea_surface_temperature](__l2p_era5_sst) | Sea surface temperature         | K |
+| [era5_eastward_wind](__l2p_era5_u10) | 10 metre U wind component       | m s-1 |
+| [era5_northward_wind](__l2p_era5_v10) | 10 metre V wind component       | m s-1 |
+| [era5_surface_pressure](__l2p_era5_sp) | Surface pressure                | Pa |
 | [era5_swh](__l2p_era5_swh) | Significant height of combined wind waves and swell | |
 | [era5_peak_wave_period](__l2p_era5_pp1d)       | Peak wave period    | s |
 | [era5_swell_mean_period](__l2p_era5_p1ps)       | Mean wave period based on first moment of swell     | s |
@@ -634,7 +634,7 @@ the SWH editing procedure. We use an external sea ice concentration product
 to discard possibly ice contaminated measurements. Because no products 
 provides a complete temporal coverage (missed acquisitions, non continuities 
 between different microwave radiometer missions, infrequent updates of some 
-datasets), we had to use different sources, as reported in {numref}`sea_ice`.
+datasets), we had to use different sources, as reported in {numref}`__sea_ice`.
 
 The sea ice concentration is expressed as a fraction.
 
@@ -654,138 +654,215 @@ The sea ice concentration is expressed as a fraction.
 ```
 
 (__l2p_era5_tclw)=
-### `era5_tclw`
+### `era5_total_column_cloud_liquid_water`
 
 The total column cloud liquid water in the atmosphere, from ERA5 model 
-reanalysis, in kg per m2.
+reanalysis (`tclw` variable), in kg per m2.
+
+This parameter is the amount of liquid water contained within cloud droplets in 
+a column extending from the surface of the Earth to the top of the atmosphere.
+Rain water droplets, which are much larger in size (and mass), are not included 
+in this parameter. This parameter represents the area averaged value for a model
+grid box. Clouds contain a continuum of different sized water droplets and ice 
+particles. The ECMWF Integrated Forecasting System (IFS) cloud scheme simplifies 
+this to represent a number of discrete cloud droplets/particles including: cloud 
+water droplets, raindrops, ice crystals and snow (aggregated ice crystals). 
+The processes of droplet formation, phase transition and aggregation are also 
+highly simplified in the IFS.
 
 
-```{table} CDL example description of **<span style="font-family:courier;">era5_tclw</span>** variable
+```{table} CDL example description of **<span style="font-family:courier;">era5_total_column_cloud_liquid_water</span>** variable
 :name: l2p_era5_tclw
 
 | **Storage type**  | **Name**  | **Unit** |
 |-------------------|-----------|----------|
-| float             | `era5_tclw`     | kg m-2 |
+| float             | `era5_total_column_cloud_liquid_water`     | kg m-2 |
 ```
 
 ```{code-cell}
 :tags: [remove-input]
 :name: l2p_era5_tclw
 
-!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]era5_tclw[(,:]'| sed 's/[[:space:]]//'
+!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]era5_total_column_cloud_liquid_water[(,:]'| sed 's/[[:space:]]//'
 ```
 
 (__l2p_era5_t2m)=
-### `era5_t2m`
+### `era5_2m_air_temperature`
 
-The air temperature at 2 meter height, from ERA5 model reanalysis, in Kelvin.
+The air temperature at 2 meter height, from ERA5 model reanalysis (`t2m` 
+variable), in Kelvin.
 
+This parameter is the temperature of air at 2m above the surface of land, sea 
+or inland waters. 2m temperature is calculated by interpolating between the 
+lowest model level and the Earth's surface, taking account of the atmospheric 
+conditions. This parameter has units of kelvin (K). Temperature measured in 
+kelvin can be converted to degrees Celsius (°C) by subtracting 273.15.
 
-```{table} CDL example description of **<span style="font-family:courier;">era5_t2m</span>** variable
+```{table} CDL example description of **<span style="font-family:courier;">era5_2m_air_temperature</span>** variable
 :name: l2p_era5_t2m
 
 | **Storage type**  | **Name**  | **Unit** |
 |-------------------|-----------|----------|
-| float             | `era5_t2m`     | K |
+| float             | `era5_2m_air_temperature`     | K |
 ```
 
 ```{code-cell}
 :tags: [remove-input]
 :name: l2p_era5_t2m
 
-!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]era5_t2m[(,:]'| sed 's/[[:space:]]//'
+!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]era5_2m_air_temperature[(,:]'| sed 's/[[:space:]]//'
 ```
 
 (__l2p_era5_sst)=
-### `era5_sst`
+### `era5_sea_surface_temperature`
 
-The sea surface temperature, from ERA5 model reanalysis, in Kelvin.
+The sea surface temperature, from ERA5 model reanalysis (`sst` variable), in 
+Kelvin.
+
+This parameter (SST) is the temperature of sea water near the surface. In ERA5, 
+this parameter is a foundation SST, which means there are no variations due to 
+the daily cycle of the sun (diurnal variations). SST, in ERA5, is given by two 
+external providers. Before September 2007, SST from the HadISST2 dataset is 
+used and from September 2007 onwards, the OSTIA dataset is used. This parameter 
+has units of kelvin (K). Temperature measured in kelvin can be converted to 
+degrees Celsius (°C) by subtracting 273.15.
 
 
-```{table} CDL example description of **<span style="font-family:courier;">era5_sst</span>** variable
+```{table} CDL example description of **<span style="font-family:courier;">era5_sea_surface_temperature</span>** variable
 :name: l2p_era5_sst
 
 | **Storage type**  | **Name**  | **Unit** |
 |-------------------|-----------|----------|
-| float             | `era5_sst`     | K |
+| float             | `era5_sea_surface_temperature`     | K |
 ```
 
 ```{code-cell}
 :tags: [remove-input]
 :name: l2p_era5_sst
 
-!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]era5_sst[(,:]'| sed 's/[[:space:]]//'
+!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]era5_sea_surface_temperature[(,:]'| sed 's/[[:space:]]//'
 ```
 
 (__l2p_era5_u10)=
-### `era5_u10`
+### `era5_eastward_wind`
 
-The zonal wind speed at 10 meter height, from ERA5 model reanalysis, in meter 
-per second. 
+The zonal wind speed at 10 meter height, from ERA5 model reanalysis (`u10` 
+variable), in meter per second. 
+
+This parameter is the eastward component of the 10m wind. It is the horizontal 
+speed of air moving towards the east, at a height of ten metres above the 
+surface of the Earth, in metres per second. Care should be taken when 
+comparing this parameter with observations, because wind observations vary on 
+small space and time scales and are affected by the local terrain, vegetation 
+and buildings that are represented only on average in the ECMWF Integrated 
+Forecasting System (IFS). This parameter can be combined with the V component 
+of 10m wind to give the speed and direction of the horizontal 10m wind.
 
 
-```{table} CDL example description of **<span style="font-family:courier;">era5_u10</span>** variable
+```{table} CDL example description of **<span style="font-family:courier;">era5_eastward_wind</span>** variable
 :name: l2p_era5_u10
 
 | **Storage type**  | **Name**  | **Unit** |
 |-------------------|-----------|----------|
-| float             | `era5_u10`     | m s-1 |
+| float             | `era5_eastward_wind`     | m s-1 |
 ```
 
 ```{code-cell}
 :tags: [remove-input]
 :name: l2p_era5_u10
 
-!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]era5_u10[(,:]'| sed 's/[[:space:]]//'
+!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]era5_eastward_wind[(,:]'| sed 's/[[:space:]]//'
 ```
 
 (__l2p_era5_v10)=
-### `era5_v10`
+### `era5_northward_wind`
 
-The meridian wind speed at 10 meter height, from ERA5 model reanalysis, in 
-meter per second. 
+The meridian wind speed at 10 meter height, from ERA5 model reanalysis (`v10` 
+variable), in meter per second. 
 
-```{table} CDL example description of **<span style="font-family:courier;">era5_v10</span>** variable
+This parameter is the northward component of the 10m wind. It is the horizontal 
+speed of air moving towards the north, at a height of ten metres above the 
+surface of the Earth, in metres per second. Care should be taken when comparing 
+this parameter with observations, because wind observations vary on small space 
+and time scales and are affected by the local terrain, vegetation and buildings 
+that are represented only on average in the ECMWF Integrated Forecasting System 
+(IFS). This parameter can be combined with the U component of 10m wind to give 
+the speed and direction of the horizontal 10m wind.
+
+
+
+```{table} CDL example description of **<span style="font-family:courier;">era5_northward_wind</span>** variable
 :name: l2p_era5_v10
 
 | **Storage type**  | **Name**  | **Unit** |
 |-------------------|-----------|----------|
-| float             | `era5_v10`   | m s-1 |
+| float             | `era5_northward_wind`   | m s-1 |
 ```
 
 ```{code-cell}
 :tags: [remove-input]
 :name: l2p_era5_v10
 
-!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]era5_v10[(,:]'| sed 's/[[:space:]]//'
+!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]era5_northward_wind[(,:]'| sed 's/[[:space:]]//'
 ```
 
 (__l2p_era5_sp)=
-### `era5_sp`
+### `era5_surface_pressure`
 
-The atmospheric pressure at sea level, from ERA5 model reanalysis, in Pascal. 
+The atmospheric pressure at sea level, from ERA5 model reanalysis (`sp` 
+variable), in Pascal. 
 
-```{table} CDL example description of **<span style="font-family:courier;">era5_sp</span>** variable
+This parameter is the pressure (force per unit area) of the atmosphere at the 
+surface of land, sea and inland water. It is a measure of the weight of all the 
+air in a column vertically above a point on the Earth's surface. Surface 
+pressure is often used in combination with temperature to calculate air density.
+The strong variation of pressure with altitude makes it difficult to see the low
+and high pressure weather systems over mountainous areas, so mean sea level 
+pressure, rather than surface pressure, is normally used for this purpose. 
+The units of this parameter are Pascals (Pa). Surface pressure is often measured
+in hPa and sometimes is presented in the old units of millibars, mb 
+(1 hPa = 1 mb= 100 Pa).
+
+
+```{table} CDL example description of **<span style="font-family:courier;">era5_surface_pressure</span>** variable
 :name: l2p_era5_sp
 
 | **Storage type**  | **Name**  | **Unit** |
 |-------------------|-----------|----------|
-| float             | `era5_sp`   | m s-1 |
+| float             | `era5_surface_pressure`   | Pa |
 ```
 
 ```{code-cell}
 :tags: [remove-input]
 :name: l2p_era5_sp
 
-!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]era5_sp[(,:]'| sed 's/[[:space:]]//'
+!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]era5_surface_pressure[(,:]'| sed 's/[[:space:]]//'
 ```
 
 (__l2p_era5_swh)=
 ### `era5_swh`
 
 The significant height of combined wind waves and swell, from ERA5/WAM model 
-reanalysis, in meters. Note that ERA5 WAM model assimilates altimeter data. For
+reanalysis (`swh` variable), in meters. 
+
+This parameter represents the average height of the highest third of surface 
+ocean/sea waves generated by wind and swell. It represents the vertical distance 
+between the wave crest and the wave trough. The ocean/sea surface wave field 
+consists of a combination of waves with different heights, lengths and 
+directions (known as the two-dimensional wave spectrum). The wave spectrum can 
+be decomposed into wind-sea waves, which are directly affected by local winds, 
+and swell, the waves that were generated by the wind at a different location 
+and time. This parameter takes account of both. More strictly, this parameter 
+is four times the square root of the integral over all directions and all 
+frequencies of the two-dimensional wave spectrum. This parameter can be used to 
+assess sea state and swell. For example, engineers use significant wave height 
+to calculate the load on structures in the open ocean, such as oil platforms, 
+or in coastal applications.
+
+```{note}
+Note that ERA5 WAM model assimilates altimeter data. For
 a fully independent SWH estimate, use the WW3 SWH (see {numref}`__l2p_ww3_hs`).
+```
 
 ```{table} CDL example description of **<span style="font-family:courier;">era5_swh</span>** variable
 :name: l2p_era5_swh
@@ -804,6 +881,22 @@ a fully independent SWH estimate, use the WW3 SWH (see {numref}`__l2p_ww3_hs`).
 
 (__l2p_era5_pp1d)=
 ### `era5_peak_wave_period`
+
+The peak wave period of combined wind waves and swell, from ERA5/WAM model 
+reanalysis (`pp1d` variable), in seconds. 
+
+This parameter represents the period of the most energetic ocean waves generated
+by local winds and associated with swell. The wave period is the average time 
+it takes for two consecutive wave crests, on the surface of the ocean/sea, to 
+pass through a fixed point. The ocean/sea surface wave field consists of a 
+combination of waves with different heights, lengths and directions (known as 
+the two-dimensional wave spectrum). This parameter is calculated from the 
+reciprocal of the frequency corresponding to the largest value (peak) of the 
+frequency wave spectrum. The frequency wave spectrum is obtained by integrating 
+the two-dimensional wave spectrum over all directions. The wave spectrum can be 
+decomposed into wind-sea waves, which are directly affected by local winds, and 
+swell, the waves that were generated by the wind at a different location and 
+time. This parameter takes account of both.
 
 ```{table} CDL example description of **<span style="font-family:courier;">era5_peak_wave_period</span>** variable
 :name: l2p_era5_pp1d
@@ -825,6 +918,21 @@ a fully independent SWH estimate, use the WW3 SWH (see {numref}`__l2p_ww3_hs`).
 (__l2p_era5_p1ps)=
 ### `era5_swell_mean_period`
 
+The mean wave period of swell based on first moment for swell, from ERA5/WAM 
+model reanalysis (`p1ps` variable), in seconds. 
+
+This parameter is the reciprocal of the mean frequency of the wave components 
+associated with swell. All wave components have been averaged proportionally to 
+their respective amplitude. This parameter can be used to estimate the magnitude 
+of Stokes drift transport in deep water associated with swell. The ocean/sea 
+surface wave field consists of a combination of waves with different heights, 
+lengths and directions (known as the two-dimensional wave spectrum). The wave 
+spectrum can be decomposed into wind-sea waves, which are directly affected by 
+local winds, and swell, the waves that were generated by the wind at a different 
+location and time. This parameter takes account of all swell only. Moments are 
+statistical quantities derived from the two-dimensional wave spectrum.
+
+
 ```{table} CDL example description of **<span style="font-family:courier;">era5_swell_mean_period</span>** variable
 :name: l2p_era5_p1ps
 
@@ -843,6 +951,32 @@ a fully independent SWH estimate, use the WW3 SWH (see {numref}`__l2p_ww3_hs`).
 
 (__l2p_era5_p140121)=
 ### `era5_swell_swh`
+
+The significant wave height of first swell partition, from ERA5/WAM 
+model reanalysis (`p140121` variable), in meters. 
+
+This parameter represents the average height of the highest third of surface 
+ocean/sea waves associated with the first swell partition. Wave height 
+represents the vertical distance between the wave crest and the wave trough. 
+The ocean/sea surface wave field consists of a combination of waves with 
+different heights, lengths and directions (known as the two-dimensional wave 
+spectrum). The wave spectrum can be decomposed into wind-sea waves, which are 
+directly affected by local winds, and swell, the waves that were generated by 
+the wind at a different location and time. In many situations, swell can be made
+up of different swell systems, for example, from two distant and separate storms. 
+To account for this, the swell spectrum is partitioned into up to three parts. 
+The swell partitions are labelled first, second and third based on their 
+respective wave height. Therefore, there is no guarantee of spatial coherence 
+(the first might be from one system at one location and another system at the 
+neighbouring location). More strictly, this parameter is four times the square 
+root of the integral over all directions and all frequencies of the first swell 
+partition of the two-dimensional swell spectrum. The swell spectrum is obtained 
+by only considering the components of the two-dimensional wave spectrum that are 
+not under the influence of the local wind. This parameter can be used to assess 
+swell. For example, engineers use significant wave height to calculate the load 
+on structures in the open ocean, such as oil platforms, or in coastal 
+applications.
+
 
 ```{table} CDL example description of **<span style="font-family:courier;">era5_swell_swh</span>** variable
 :name: l2p_era5_p140121
@@ -863,6 +997,26 @@ a fully independent SWH estimate, use the WW3 SWH (see {numref}`__l2p_ww3_hs`).
 (__l2p_era5_p140122)=
 ### `era5_swell_direction`
 
+The mean wave direction of first swell partition, from ERA5/WAM 
+model reanalysis (`p140122` variable), in degrees. 
+
+This parameter is the mean direction of waves in the first swell partition. The 
+ocean/sea surface wave field consists of a combination of waves with different 
+heights, lengths and directions (known as the two-dimensional wave spectrum). 
+The wave spectrum can be decomposed into wind-sea waves, which are directly 
+affected by local winds, and swell, the waves that were generated by the wind at 
+a different location and time. In many situations, swell can be made up of 
+different swell systems, for example, from two distant and separate storms. To 
+account for this, the swell spectrum is partitioned into up to three parts. The 
+swell partitions are labelled first, second and third based on their respective 
+wave height. Therefore, there is no guarantee of spatial coherence (the first 
+swell partition might be from one system at one location and a different system 
+at the neighbouring location). The units are degrees true, which means the 
+direction relative to the geographic location of the north pole. It is the 
+direction that waves are coming from, so 0 degrees means "coming from the north" 
+and 90 degrees means "coming from the east".
+
+
 ```{table} CDL example description of **<span style="font-family:courier;">era5_swell_direction</span>** variable
 :name: l2p_era5_p140122
 
@@ -881,6 +1035,21 @@ a fully independent SWH estimate, use the WW3 SWH (see {numref}`__l2p_ww3_hs`).
 
 (__l2p_era5_mwp)=
 ### `era5_mean_wave_period`
+
+The mean wave period, from ERA5/WAM model reanalysis (`mwp` variable), in 
+seconds. 
+
+This parameter is the average time it takes for two consecutive wave crests, on 
+the surface of the ocean/sea, to pass through a fixed point. The ocean/sea 
+surface wave field consists of a combination of waves with different heights, 
+lengths and directions (known as the two-dimensional wave spectrum). This 
+parameter is a mean over all frequencies and directions of the two-dimensional 
+wave spectrum. The wave spectrum can be decomposed into wind-sea waves, which 
+are directly affected by local winds, and swell, the waves that were generated 
+by the wind at a different location and time. This parameter takes account of 
+both. This parameter can be used to assess sea state and swell. For example, 
+engineers use such wave information when designing structures in the open ocean, 
+such as oil platforms, or in coastal applications.
 
 ```{table} CDL example description of **<span style="font-family:courier;">era5_mean_wave_period</span>** variable
 :name: l2p_era5_mwp
@@ -901,6 +1070,23 @@ a fully independent SWH estimate, use the WW3 SWH (see {numref}`__l2p_ww3_hs`).
 (__l2p_era5_mwd)=
 ### `era5_mean_wave_direction`
 
+The mean wave direction, from ERA5/WAM model reanalysis (`mwd` variable), in 
+degrees.
+
+This parameter is the mean direction of ocean/sea surface waves. The ocean/sea 
+surface wave field consists of a combination of waves with different heights, 
+lengths and directions (known as the two-dimensional wave spectrum). This 
+parameter is a mean over all frequencies and directions of the two-dimensional 
+wave spectrum. The wave spectrum can be decomposed into wind-sea waves, which 
+are directly affected by local winds, and swell, the waves that were generated 
+by the wind at a different location and time. This parameter takes account of 
+both. This parameter can be used to assess sea state and swell. For example, 
+engineers use this type of wave information when designing structures in the 
+open ocean, such as oil platforms, or in coastal applications. The units are 
+degrees true, which means the direction relative to the geographic location of 
+the north pole. It is the direction that waves are coming from, so 0 degrees 
+means "coming from the north" and 90 degrees means "coming from the east".
+
 ```{table} CDL example description of **<span style="font-family:courier;">era5_mean_wave_direction</span>** variable
 :name: l2p_era5_mwd
 
@@ -919,6 +1105,26 @@ a fully independent SWH estimate, use the WW3 SWH (see {numref}`__l2p_ww3_hs`).
 
 (__l2p_era5_shww)=
 ### `era5_windwave_swh`
+
+The significant height of wind waves, from ERA5/WAM model reanalysis (`shww` 
+variable), in meters.
+
+This parameter represents the average height of the highest third of surface 
+ocean/sea waves generated by the local wind. It represents the vertical distance 
+between the wave crest and the wave trough. The ocean/sea surface wave field 
+consists of a combination of waves with different heights, lengths and 
+directions (known as the two-dimensional wave spectrum). The wave spectrum can 
+be decomposed into wind-sea waves, which are directly affected by local winds, 
+and swell, the waves that were generated by the wind at a different location and 
+time. This parameter takes account of wind-sea waves only. More strictly, this 
+parameter is four times the square root of the integral over all directions and 
+all frequencies of the two-dimensional wind-sea wave spectrum. The wind-sea wave 
+spectrum is obtained by only considering the components of the two-dimensional 
+wave spectrum that are still under the influence of the local wind. This 
+parameter can be used to assess wind-sea waves. For example, engineers use 
+significant wave height to calculate the load on structures in the open ocean, 
+such as oil platforms, or in coastal applications.
+
 
 ```{table} CDL example description of **<span style="font-family:courier;">era5_windwave_swh</span>** variable
 :name: l2p_era5_shww
@@ -939,6 +1145,20 @@ a fully independent SWH estimate, use the WW3 SWH (see {numref}`__l2p_ww3_hs`).
 (__l2p_era5_mdww)=
 ### `era5_windwave_direction`
 
+The mean direction of wind waves, from ERA5/WAM model reanalysis (`mdww` 
+variable), in degrees.
+
+The mean direction of waves generated by local winds. The ocean/sea surface wave
+field consists of a combination of waves with different heights, lengths and 
+directions (known as the two-dimensional wave spectrum). The wave spectrum can 
+be decomposed into wind-sea waves, which are directly affected by local winds, 
+and swell, the waves that were generated by the wind at a different location and 
+time. This parameter takes account of wind-sea waves only. It is the mean over 
+all frequencies and directions of the total wind-sea wave spectrum. The units 
+are degrees true, which means the direction relative to the geographic location 
+of the north pole. It is the direction that waves are coming from, so 0 degrees 
+means "coming from the north" and 90 degrees means "coming from the east".
+
 ```{table} CDL example description of **<span style="font-family:courier;">era5_windwave_direction</span>** variable
 :name: l2p_era5_mdww
 
@@ -958,6 +1178,19 @@ a fully independent SWH estimate, use the WW3 SWH (see {numref}`__l2p_ww3_hs`).
 (__l2p_era5_mpww)=
 ### `era5_windwave_period`
 
+The mean period of wind waves, from ERA5/WAM model reanalysis (`mpww` 
+variable), in seconds.
+
+This parameter is the average time it takes for two consecutive wave crests, on
+the surface of the ocean/sea generated by local winds, to pass through a fixed
+point. The ocean/sea surface wave field consists of a combination of waves with 
+different heights, lengths and directions (known as the two-dimensional wave 
+spectrum). The wave spectrum can be decomposed into wind-sea waves, which are 
+directly affected by local winds, and swell, the waves that were generated by 
+the wind at a different location and time. This parameter takes account of 
+wind-sea waves only. It is the mean over all frequencies and directions of the 
+total wind-sea spectrum.
+
 ```{table} CDL example description of **<span style="font-family:courier;">era5_windwave_period</span>** variable
 :name: l2p_era5_mpww
 
@@ -975,6 +1208,14 @@ a fully independent SWH estimate, use the WW3 SWH (see {numref}`__l2p_ww3_hs`).
 
 (__l2p_ww3_hs)=
 ### `ww3_swh`
+
+The significant height of combined wind waves and swell, from Ifremer WW3 model 
+hindcast (`hs` variable), in meters. 
+
+```{note}
+Note that Ifremer WW3 hindcast does not assimilate altimeter data and is 
+therefore a fully independent SWH estimate, contrary to ERA5 reanalysis.
+```
 
 ```{table} CDL example description of **<span style="font-family:courier;">ww3_swh</span>** variable
 :name: l2p_ww3_hs
