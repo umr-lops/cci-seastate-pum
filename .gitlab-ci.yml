@@ -6,3 +6,4 @@ include:
 
 variables:
   DOCUMENTATION_PYTHON_REQUIREMENTS: "requirements.txt"
+  DOCUMENTATION_CONDA_REQUIREMENTS: "environment.yml"
