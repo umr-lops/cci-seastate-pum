@@ -149,6 +149,34 @@ are the primary features complemented with:
   products)
 - flag identifying polarisation (HH or VV).
 
+# SAR: DLR ocean products description
+
+## Processed parameters 
+
+DLR processed sea state parameters using SAR-SeaStaR from three S1 SAR modes:
+
+-	S1 WV - averaged values for each imagette 20 km x 20 km in along-track imagettes each 100 km apart 
+
+-	S1 IW - grids  (5 km grid’s step with ca. 1500 subscenes/image)
+
+-	S1 EW - grids  (17.5 km grid’s step with ca. 400 subscenes/image )
+
+Eight sea state parameters processed by DLR (uncertainties based on Pleskachevsky et al., 2024)
+
+|Parameter	|Abb. 	|Unit	|RMSE for satellite mode |
+|                                                        |S1 IW | 	S1 EW	 | S1 WV (wv1/wv2) |
+|total significant wave height |	swh |m |0.42| 0.51| 0.24 / 0.28 |
+|mean wave period | Tm0-1	Tm0	 |s | 0.88| 0.92| 0.46 / 0.51 |
+|first moment wave period |	Tm1 |	s| 0.97 | 0.85| 0.51 / 0.56 |
+|second moment wave period |	Tm2 |s | 0.96 | 0.86| 0.46 / 0.51 |
+|wave height swell dominant system |	swell_swh_primary |	m | 0.57 | 0.60 | 0.42 / 0.47 |
+|wave height swell secondary system |	swell_swh_secondary |	m | 0.38 | 0.44 | 0.41 / 0.46 |
+|significant wave height windsea |	windwave_swh |	m|	0.48 | 0.57| 0.40 / 0.46 |
+|mean period windsea |	windwave_period |	s |	0.97 | 0.95 | 0.62 / 0.67 |
+
+
+
+
 ```{admonition} References
 :class: note
 
