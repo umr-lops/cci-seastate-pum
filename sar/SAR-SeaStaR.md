@@ -166,6 +166,11 @@ Eight sea state parameters processed by DLR (uncertainties based on Pleskachevsk
 {table} processed parameters uncertanties 
 :name: dlr_processed_parameters
 
+| Name        | ca. coverage | pixel spacing | GB per SAR L1 original ID product | N worldwide/ocean scenes per day (S1A+S1B in 2020)|
+|-------------| ------------ | ------------- | --------------------------------- | --------------------------------------------------|
+| S1 IW / GRD | ca. 250×200 km   | 10 m          | ca. 3 GB                          | ca.    900 / 500                                  |
+
+
 |         Parameter               |        Abb.               |  Unit|      RMSE S1 IW      | RMSE S1 EW | S1RMSEWV (wv1/wv2)    |
 |---------------------------------|---------------------------|------| ---------------------------------------------------------- | 
 |total significant wave height    | swh                       | m    | 0.42                 | 0.51        | 0.24 / 0.28   |
