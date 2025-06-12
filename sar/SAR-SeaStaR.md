@@ -171,6 +171,8 @@ Eight sea state parameters processed by DLR (uncertainties based on Pleskachevsk
 |total significant wave height    |	swh                       | m    | 0.42                 | 0.51        | 0.24 / 0.28   |
 |mean wave period   Tm0-1         |	Tm0	                    | s    | 0.88                 | 0.92        | 0.46 / 0.51   |
 |first moment wave period         | Tm1                       | s    | 0.97                 | 0.85        | 0.51 / 0.56   |
+
+
 |second moment wave period        |	Tm2 |s | 0.96 | 0.86| 0.46 / 0.51 |
 |wave height swell dominant system |	swell_swh_primary |	m | 0.57 | 0.60 | 0.42 / 0.47 |
 |wave height swell secondary system |	swell_swh_secondary |	m | 0.38 | 0.44 | 0.41 / 0.46 |
