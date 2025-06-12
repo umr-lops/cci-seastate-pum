@@ -166,8 +166,9 @@ Eight sea state parameters processed by DLR (uncertainties based on Pleskachevsk
 {table} processed parameters uncertanties 
 :name: dlr_processed_parameters
 
-| Name        | ca. coverage | pixel spacing | GB per SAR L1 original ID product | N worldwide/ocean scenes per day (S1A+S1B in 2020)|
-|-------------| ------------ | ------------- | --------------------------------- | --------------------------------------------------|
+| Parameter        | Abb.| Unit | RMSE for satellite mode|
+|-------------| ------------ | ------------- | --------------------------------- | 
+
 
 |Parameter	|Abb. 	|Unit	|RMSE for satellite mode |
 |------------------------------------|S1 IW | 	S1 EW	 | S1 WV (wv1/wv2) |
