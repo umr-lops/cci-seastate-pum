@@ -14,9 +14,9 @@ The VV or HH polarization data were used, with priority to VV products for S1 IW
 
 | Name        | ca. coverage | pixel spacing | GB per SAR L1 original ID product | N worldwide/ocean scenes per day (S1A+S1B in 2020)|
 |-------------| ------------ | ------------- | --------------------------------- | --------------------------------------------------|
-| S1 IW / GRD | 250×200 km   | 10 m          | ca. 3 GB                          | ca.    900 / 500                                  |
-| S1 EW / GRD | 400×350 km   | 40 m          | ca. 0.6 GB                        | ca.    260 / 200                                  |
-| S1 WV / SLC | 20×20 km each 100 km  along-track imagettes  | ca. 3.5 m     | ca. 5 GB                          | ca. 50 ID-products each with ca. 80–120 imagettes  (min – ca. 2 GB max.- 16 GB)|    
+| S1 IW / GRD | ca. 250×200 km   | 10 m          | ca. 3 GB                          | ca.    900 / 500                                  |
+| S1 EW / GRD | ca- 400×350 km   | 40 m          | ca. 0.6 GB                        | ca.    260 / 200                                  |
+| S1 WV / SLC | ca. 20×20 km each 100 km  along-track imagettes  | ca. 3.5 m     | ca. 5 GB                          | ca. 50 ID-products each with ca. 80–120 imagettes  (min – ca. 2 GB max.- 16 GB)|    
 
 
 
@@ -49,17 +49,19 @@ The VV or HH polarization data were used, with priority to VV products for S1 IW
 The empirical algorithm SAR-SeaStaR (SAR Sea State Retrieval) is developed 
 at German Aerospace Center DLR, Maritime Safety and Security Lab Bremen. 
 From SAR data, SAR-SeaStaR estimates a series of integrated sea state 
-parameters: total significant wave height SWH, wave heights of dominant and 
-secondary swells and windsea, mean, first and second moment wave periods, 
-and windsea period. SAR scenes are processed in raster format, the output 
+parameters: 
+-total significant wave height SWH
+-wave heights of dominant and secondary swells and windsea,
+-mean, first and second moment wave periods, and windsea period.
+SAR scenes are processed in raster format, the output 
 are fields for each parameter showing their spatial distribution.
 
 SAR-SeaStaR is adopted for different satellites Sentinel-1 (S1) and 
 TerraSAR-X (TS-X) and modes (state-of-the-art 2024): 
-− S1 Wave Mode (WV) Level-1 (L1) products 
-− S1 Interferometric Wide Swath Mode (IW)
-− S1 Extra Wide (EW) 
-− TerraSAR-X (TS-X) StripMap (SM)
+− S1 Wave Mode (WV) Level-1 (L1) products  SLC
+− S1 Interferometric Wide Swath Mode (IW)  GRD
+− S1 Extra Wide (EW)  GRD
+− TerraSAR-X (TS-X) StripMap (SM) GRD RE
 
 SAR-SeaStaR is based on combination of the linear regression function 
 CWAVE_EX (Pleskachevsky et al., 2022) and a machine learning approach using the
