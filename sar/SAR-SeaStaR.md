@@ -163,8 +163,14 @@ DLR processed sea state parameters using SAR-SeaStaR from three S1 SAR modes:
 
 Eight sea state parameters processed by DLR (uncertainties based on Pleskachevsky et al., 2024)
 
+{table} processed parameters uncertanties 
+:name: dlr_processed_parameters
+
+| Name        | ca. coverage | pixel spacing | GB per SAR L1 original ID product | N worldwide/ocean scenes per day (S1A+S1B in 2020)|
+|-------------| ------------ | ------------- | --------------------------------- | --------------------------------------------------|
+
 |Parameter	|Abb. 	|Unit	|RMSE for satellite mode |
-|                                                        |S1 IW | 	S1 EW	 | S1 WV (wv1/wv2) |
+|------------------------------------|S1 IW | 	S1 EW	 | S1 WV (wv1/wv2) |
 |total significant wave height |	swh |m |0.42| 0.51| 0.24 / 0.28 |
 |mean wave period | Tm0-1	Tm0	 |s | 0.88| 0.92| 0.46 / 0.51 |
 |first moment wave period |	Tm1 |	s| 0.97 | 0.85| 0.51 / 0.56 |
