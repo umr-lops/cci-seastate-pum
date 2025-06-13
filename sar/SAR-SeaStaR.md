@@ -163,8 +163,8 @@ DLR processed sea state parameters using SAR-SeaStaR from three S1 SAR modes:
 
 Eight sea state parameters processed by DLR (uncertainties based on Pleskachevsky et al., 2024)
 
-{table} processed parameters uncertanties 
-:name: dlr_processed_parameters
+{table} DLR processed ocena parameters and uncertanties 
+
 
 
 |         Parameter               |        Abb.               |  Unit|      RMSE S1 IW      | RMSE      S1 EW | RMSE    S1 WV (wv1/wv2)     |
@@ -184,13 +184,40 @@ Eight sea state parameters processed by DLR (uncertainties based on Pleskachevsk
 ## Processed data amount 
 
 {table} DLR ocean products in netCDF format (both S1-Anand S1-B) 
-:name: DLR ocean products in netCDF format (both S1-Anand S1-B) 
 
 | 1 ID product                    | 1 day worldwide        | 1 month worldwide  |
 |---------------------------------|---------------------------|--------------------|
 |S1 I  ca. 0.4 MB | ca. 500 IDs – ca. 200 MB | ca. 15000 IDs -  ca. 6 GB   |
 |S1 EW ca. 0.2 MB   | ca. 200 IDs – ca. 80 MB  | ca. 6000 IDs -  ca. 2.4  GB |
 |S1 WV ca. 0.1 MB   | ca. 65   IDs – ca. 7 MB  | ca. 2000 IDs -  ca. 200 MB  |
+
+## individual ID description 
+
+The DLR ocean products (DLR-OP=) are stored using original IDs in netCDF format, e.g.:
+
+  S1 ID  = S1A_IW_GRDH_1SDH_20141006T074120_20141006T074149_002706_00306E_BAE5
+  DLR-OP = S1A_IW_GRDH_1SDH_20141006T074120_20141006T074149_002706_00306E_BAE5-fv04.nc
+
+The time-stamp (UTC) is stored in file names (2014-10-06 07:41:20 for the given example).
+The stored data are all 2D arrays: 
+-	geo-coordinates (latitude, longitude)
+-	8 integrated sea state parameters (see Tab. "DLR processed ocena parameters and uncertanties")
+-	quality, and rejection flags (see.Tab.DLR.4)
+-	uncertainties for all 8 parameters
+
+
+|                     |       Abb. in netCDF product    | Description in netCDF product                               |       Meaning                            |
+|---------------------|---------------------------------|-------------------------------------------------------------|------------------------------------------|
+| quality flag        | swh_quality                     | quality of C band SAR significant wave height measurement   | 0 – undefined (e.g. land)  1 – bad 2 – acceptable (not used) 3 – good |
+| rejection flag      | swh_rejection_flags             | consolidated Significant Wave height quality flags          | 1  - Nv (variance) > max (not more used) 2  - swh outlier 4   - invalid values 8  - wind below 2 m/s (not more used)  16 - not_water (land) |
+| uncertainty SWH     | swh_uncertanty                  | best estimate of significant wave height standard error     | to MFWAM (CMEMS) estimated for each swh domains 0-1.5 m, 1.5-3m, 3-6m, >6m and interpolated/extrapolated |
+| uncertainty SW1     | swell_swh_primary_uncertanty    | Best estimate of dominant swell wave height standard error  | to MFWAM (CMEMS) estimated for each swh domains 0-1.5 m, 1.5-3m, 3-6m, >6m and interpolated/extrapolated |
+| uncertainty SW2     | swell_swh_secondary_uncertanty  | Best estimate of secondary swell wave height standard error | to MFWAM (CMEMS) estimated for each swh domains 0-1.5 m, 1.5-3m, 3-6m, >6m and interpolated/extrapolated |
+| uncertainty SWW     | windwave_swh_uncertanty         | Best estimate of windsea wave height standard error         | to MFWAM (CMEMS) estimated for each swh domains 0-1.5 m, 1.5-3m, 3-6m, >6m and interpolated/extrapolated |
+| uncertainty Tm0     | Tm0_uncertanty                  | Best estimate of mean wave period standard error            | to MFWAM (CMEMS) estimated for each swh domains 0-4 s, 4-7 s, 7-10s, >10 s and interpolated/extrapolated |
+| uncertainty Tm1     | Tm1_uncertanty                  | Best estimate of first moment wave period standard error    | to WW3 estimated for each swh domains 0-4 s, 4-7 s, 7-10s, >10 s and interpolated/extrapolated |
+| uncertainty Tm2     | Tm2_uncertanty                  | Best estimate of second moment wave period standard error   | to MFWAM (CMEMS) estimated for each swh domains 0-4 s, 4-7 s, 7-10s, >10 s and interpolated/extrapolated |
+| uncertainty Tmw     | windwave_period_uncertanty      | Best estimate of mean period windsea standard error         | to MFWAM (CMEMS) estimated for each swh domains 0-4 s, 4-7 s, 7-10s, >10 s and interpolated/extrapolated |
 
 
 
