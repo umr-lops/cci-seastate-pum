@@ -178,6 +178,7 @@ Eight sea state parameters processed by DLR (uncertainties based on Pleskachevsk
 |significant wave height windsea |	windwave_swh |	m|	0.48 | 0.57| 0.40 / 0.46 |
 |mean period windsea |	windwave_period |	s |	0.97 | 0.95 | 0.62 / 0.67 |
 
+The DLR uncertainties in the Tab.DLR.2. are based on comparisons with MFWAM reanalysis with 1/5° and 3h time step (20 min interpolated) performed for S1 archive processed data. The detailed information on comparisons can be found in Pleskachevsky et al., 2024 (https://ieeexplore.ieee.org/document/10584481).
 
 The uncertainties of the results are connected to uncertainties in ground truth data. From global point of view, the in-situ measurements cover very limited areas, mostly in shelf regions. To estimate accuracies of the methods worldwide, only model results are available. However, the comparisons between different wave forecast models shows, the shelf regions and also series of golfs and local seas (e.g. Philippine Sea) and coasts (Aleutian Islands) have stronger uncertainties between different models (RMSE between models are around 0.40 m) in comparison to open ocean regions (RMSE between models are around 0.20 m). 
 
