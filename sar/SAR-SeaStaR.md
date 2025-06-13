@@ -208,8 +208,8 @@ The stored data are all 2D arrays:
 
 |                     |       Abb. in netCDF product    | Description in netCDF product                               |       Meaning                            |
 |---------------------|---------------------------------|-------------------------------------------------------------|------------------------------------------|
-| quality flag        | swh_quality                     | quality of C band SAR significant wave height measurement   | 0=undefined (e.g. land)                 1=bad                   2=acceptable (not used)                   3 – good |
-| rejection flag      | swh_rejection_flags             | consolidated Significant Wave height quality flags          | 1=Nv (variance) > max (not more used) 2=swh outlier 4=invalid values 8=wind below 2 m/s (not more used)  16=not_water (land) |
+| quality flag        | swh_quality                     | quality of C band SAR significant wave height measurement   | 0=undefined (e.g. land),    1=bad,   2=acceptable (not used),    3 – good |
+| rejection flag      | swh_rejection_flags             | consolidated Significant Wave height quality flags          | 1=Nv (variance) > max (not more used), 2=swh outlier, 4=invalid value, 8=wind below 2 m/s (not more used),  16=not_water (land) |
 | uncertainty SWH     | swh_uncertanty                  | best estimate of significant wave height standard error     | to MFWAM (CMEMS) estimated for each swh domains 0-1.5 m, 1.5-3m, 3-6m, >6m and interpolated/extrapolated |
 | uncertainty SW1     | swell_swh_primary_uncertanty    | Best estimate of dominant swell wave height standard error  | to MFWAM (CMEMS) estimated for each swh domains 0-1.5 m, 1.5-3m, 3-6m, >6m and interpolated/extrapolated |
 | uncertainty SW2     | swell_swh_secondary_uncertanty  | Best estimate of secondary swell wave height standard error | to MFWAM (CMEMS) estimated for each swh domains 0-1.5 m, 1.5-3m, 3-6m, >6m and interpolated/extrapolated |
