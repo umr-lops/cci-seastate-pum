@@ -223,6 +223,8 @@ The stored data are all 2D arrays:
 | uncertainty Tm2     | Tm2_uncertanty                  | Best estimate of second moment wave period standard error   | to MFWAM (CMEMS) estimated for each swh domains 0-4 s, 4-7 s, 7-10s, >10 s and interpolated/extrapolated |
 | uncertainty Tmw     | windwave_period_uncertanty      | Best estimate of mean period windsea standard error         | to MFWAM (CMEMS) estimated for each swh domains 0-4 s, 4-7 s, 7-10s, >10 s and interpolated/extrapolated |
 
+![dlr_sar_fig4.png](../images/dlr_sar_fig4.png)
+:name: Example of DLR ocean product (DLR-OP) for 1 S1 ID (displayed with PANOPLY) 
 
 
 ```{admonition} References
