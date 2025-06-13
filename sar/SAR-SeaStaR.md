@@ -179,6 +179,8 @@ Eight sea state parameters processed by DLR (uncertainties based on Pleskachevsk
 |mean period windsea |	windwave_period |	s |	0.97 | 0.95 | 0.62 / 0.67 |
 
 
+The uncertainties of the results are connected to uncertainties in ground truth data. From global point of view, the in-situ measurements cover very limited areas, mostly in shelf regions. To estimate accuracies of the methods worldwide, only model results are available. However, the comparisons between different wave forecast models shows, the shelf regions and also series of golfs and local seas (e.g. Philippine Sea) and coasts (Aleutian Islands) have stronger uncertainties between different models (RMSE between models are around 0.40 m) in comparison to open ocean regions (RMSE between models are around 0.20 m). 
+
 # DLR processed ocean products description (OCN-DLR) 
 
 ## Processed data amount 
@@ -202,9 +204,10 @@ The time-stamp (UTC) is stored in file names (2014-10-06 07:41:20 for the given 
 The stored data are all 2D arrays: 
 -	geo-coordinates (latitude, longitude)
 -	8 integrated sea state parameters (see Tab. "DLR processed ocena parameters and uncertanties")
--	quality, and rejection flags (see.Tab.DLR.4)
+-	quality, and rejection flags (see.Tab "DLR ocean products quality, and rejection flags")
 -	uncertainties for all 8 parameters
 
+{table} DLR ocean products quality, and rejection flags
 
 |                     |       Abb. in netCDF product    | Description in netCDF product                               |       Meaning                            |
 |---------------------|---------------------------------|-------------------------------------------------------------|------------------------------------------|
