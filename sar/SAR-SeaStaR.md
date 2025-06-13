@@ -196,12 +196,12 @@ The uncertainties of the results are connected to uncertainties in ground truth 
 
 ## Individual ID description 
 
-The DLR ocean products (DLR-OP=) are stored using original IDs in netCDF format, e.g.:
+The DLR ocean products (DLR-OP) are stored using original IDs in netCDF format, e.g.:
 
   S1 ID  = S1A_IW_GRDH_1SDH_20141006T074120_20141006T074149_002706_00306E_BAE5
   DLR-OP = S1A_IW_GRDH_1SDH_20141006T074120_20141006T074149_002706_00306E_BAE5-fv04.nc
 
-The time-stamp (UTC) is stored in file names (2014-10-06 07:41:20 for the given example).
+The time-stamp (UTC) is stored in file names (2014-10-06 07:41:20 UTC for the given example).
 The stored data are all 2D arrays: 
 -	geo-coordinates (latitude, longitude)
 -	8 integrated sea state parameters (see Tab. "DLR processed ocena parameters and uncertanties")
