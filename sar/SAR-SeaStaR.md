@@ -227,6 +227,11 @@ The stored data are all 2D arrays:
 :name: Example of DLR ocean product (DLR-OP) for 1 S1 ID (displayed with PANOPLY) 
 
 
+![dlr_sar_fig5.png](../images/dlr_sar_fig5.png)
+:name: Example of DLR ocean product (DLR-OP) for 1 S1 ID (displayed with PANOPLY), 2D array wave heigth 
+
+
+
 ```{admonition} References
 :class: note
 
