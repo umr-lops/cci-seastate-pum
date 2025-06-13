@@ -179,6 +179,19 @@ Eight sea state parameters processed by DLR (uncertainties based on Pleskachevsk
 |mean period windsea |	windwave_period |	s |	0.97 | 0.95 | 0.62 / 0.67 |
 
 
+# DLR processed ocean products description (OCN-DLR) 
+
+## Processed data amount 
+
+{table} DLR ocean products in netCDF format (both S1-Anand S1-B) 
+:name: DLR ocean products in netCDF format (both S1-Anand S1-B) 
+
+| 1 ID product                    | 1 day worldwide        | 1 month worldwide  |
+|---------------------------------|---------------------------|--------------------|
+|S1 I  ca. 0.4 MB | ca. 500 IDs – ca. 200 MB | ca. 15000 IDs -  ca. 6 GB   |
+|S1 EW ca. 0.2 MB   | ca. 200 IDs – ca. 80 MB  | ca. 6000 IDs -  ca. 2.4  GB |
+|S1 WV ca. 0.1 MB   | ca. 65   IDs – ca. 7 MB  | ca. 2000 IDs -  ca. 200 MB  |
+
 
 
 ```{admonition} References
