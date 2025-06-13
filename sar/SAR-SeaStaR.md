@@ -194,7 +194,7 @@ The uncertainties of the results are connected to uncertainties in ground truth 
 |S1 EW ca. 0.2 MB   | ca. 200 IDs – ca. 80 MB  | ca. 6000 IDs -  ca. 2.4  GB |
 |S1 WV ca. 0.1 MB   | ca. 65   IDs – ca. 7 MB  | ca. 2000 IDs -  ca. 200 MB  |
 
-## individual ID description 
+## Individual ID description 
 
 The DLR ocean products (DLR-OP=) are stored using original IDs in netCDF format, e.g.:
 
