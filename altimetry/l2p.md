@@ -108,7 +108,7 @@ The `swh` variable in a L2P product follows the format shown in table {numref}`l
 :tags: [remove-input]
 :name: l2p_swh
 
-!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]swh[(,:]'| sed 's/[[:space:]]//'
+!ncdump -h samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]swh[(,:]'| sed 's/[[:space:]]//'
 ```
 
 
