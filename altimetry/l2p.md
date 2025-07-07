@@ -285,7 +285,7 @@ table {numref}`l2p_swh_quality_level`.
 
 When SWH measurements were rejected as bad, the reason (quality test) for 
 which they were rejected is reported in the related `swh_rejection_flags` 
-variable. Refer to {numred}`editing` for details on the tests performed for 
+variable. Refer to {numref}`editing` for details on the tests performed for 
 the quality check of the measurements.
 
 {numref}`__swh_quality_level` provides the meaning of each flag possibly raised, 

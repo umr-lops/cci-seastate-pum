@@ -9,7 +9,7 @@
 
 The VV or HH polarization data were used, with priority to VV products for S1 IW and S1 EW.
 
-{table} GRD S1 IW, S1 EW and S1 WV SLC products common information
+```{table} GRD S1 IW, S1 EW and S1 WV SLC products common information
 :name: dlr_products
 
 | Name        | ca. coverage | pixel spacing | GB per SAR L1 original ID product | N worldwide/ocean scenes per day (S1A+S1B in 2020)|
@@ -17,17 +17,14 @@ The VV or HH polarization data were used, with priority to VV products for S1 IW
 | S1 IW / GRD | ca. 250×200 km   | 10 m          | ca. 3 GB                          | ca.    900 / 500                                  |
 | S1 EW / GRD | ca- 400×350 km   | 40 m          | ca. 0.6 GB                        | ca.    260 / 200                                  |
 | S1 WV / SLC | ca. 20×20 km each 100 km  along-track imagettes  | ca. 3.5 m     | ca. 5 GB                          | ca. 50 ID-products each with ca. 80–120 imagettes  (min – ca. 2 GB max.- 16 GB)|    
+```
 
-
-
-
-
-
-![dlr_sar_fig1.png](../images/dlr_sar_fig1.png)
-
-:name: An example of S1 worldwide acquisitions on 2020-09-01. There are 54 S1 WV tracks (red), 894 S1 IW images (green), 229 S1 EW images (grey).
-
-
+```{figure} /images/dlr_sar_fig1.png
+---
+name: dlr_sar_fig1
+---
+An example of S1 worldwide acquisitions on 2020-09-01. There are 54 S1 WV tracks (red), 894 S1 IW images (green), 229 S1 EW images (grey).
+```
 
 **Ancillary data (Land masks)**
 - SRTM - Shuttle Radar Topography Mission (SRTM) -60°<LAT<60°.
@@ -52,9 +49,7 @@ From SAR data, SAR-SeaStaR estimates a series of integrated sea state
 parameters: 
 
 -total significant wave height SWH
-
 -wave heights of dominant and secondary swells and windsea,
-
 -mean, first and second moment wave periods, and windsea period.
 
 SAR scenes are processed in raster format, the output 
@@ -71,9 +66,10 @@ SAR-SeaStaR is based on combination of the linear regression function
 CWAVE_EX (Pleskachevsky et al., 2022) and a machine learning approach using the
 support vector machine (SVM) technique. 
 
-![dlr_sar_fig2.png](../images/dlr_sar_fig2.png)
-:name: dlr_sar_outputs
-
+```{figure} /images/dlr_sar_fig2.png
+---
+name: dlr_sar_outputs
+---
 DLR SAR-SeaStaR outputs. Example of eight sea state parameter grids 
 retrieved from a S1 IW scene with ca. 1600 km × 200 km coverage acquired 
 during a strong storm in the North Atlantic on 2020-02-14 at 18:45 UTC with 
@@ -81,14 +77,16 @@ SWH reaching ca. 13 m. Processing in a 5 km raster results in ca. 1500
 subscenes (approximately ~30×50) for each individual IW image. Isolines shows 
 the results of forecast WFWAM at 18:00 UTC (excluding first moment not provided 
 by Copernicus Marine Environment CMEMS).
+```
 
-
-![dlr_sar_fig3.png](../images/dlr_sar_fig3.png)
-:name: dlr_sar_example
-
+```{figure} /images/dlr_sar_fig3.png
+---
+name: dlr_sar_example
+---
 Example of Sentinel-1 WV archive processing. In the right half of the figure 
 only one-day of acquisitions is displayed on the globe, on the left half all 
 data acquired during February 2021 is displayed.
+```
 
 
 The SAR-SeaStaR algorithm includes the complete processing chain with a series
@@ -155,17 +153,14 @@ are the primary features complemented with:
 
 DLR processed sea state parameters using SAR-SeaStaR from three S1 SAR modes:
 
--	S1 WV - averaged values for each imagette 20 km x 20 km in along-track imagettes each 100 km apart 
-
--	S1 IW - grids  (5 km grid’s step with ca. 1500 subscenes/image)
-
--	S1 EW - grids  (17.5 km grid’s step with ca. 400 subscenes/image )
+- S1 WV - averaged values for each imagette 20 km x 20 km in along-track 
+  imagettes each 100 km apart 
+- S1 IW - grids  (5 km grid’s step with ca. 1500 subscenes/image)
+- S1 EW - grids  (17.5 km grid’s step with ca. 400 subscenes/image )
 
 Eight sea state parameters processed by DLR (uncertainties based on Pleskachevsky et al., 2024)
 
-{table} DLR processed ocena parameters and uncertanties 
-
-
+```{table} DLR processed ocena parameters and uncertanties 
 
 |         Parameter               |        Abb.               |  Unit|      RMSE S1 IW      | RMSE      S1 EW | RMSE    S1 WV (wv1/wv2)     |
 |---------------------------------|---------------------------|------| ---------------------|------------|----------------------- | 
@@ -177,6 +172,7 @@ Eight sea state parameters processed by DLR (uncertainties based on Pleskachevsk
 |wave height swell secondary system |	swell_swh_secondary |	m | 0.38 | 0.44 | 0.41 / 0.46 |
 |significant wave height windsea |	windwave_swh |	m|	0.48 | 0.57| 0.40 / 0.46 |
 |mean period windsea |	windwave_period |	s |	0.97 | 0.95 | 0.62 / 0.67 |
+```
 
 The DLR uncertainties in the Tab.DLR.2. are based on comparisons with MFWAM reanalysis with 1/5° and 3h time step (20 min interpolated) performed for S1 archive processed data. The detailed information on comparisons can be found in Pleskachevsky et al., 2024 (https://ieeexplore.ieee.org/document/10584481).
 
@@ -186,13 +182,14 @@ The uncertainties of the results are connected to uncertainties in ground truth 
 
 ## Processed data amount 
 
-{table} DLR ocean products in netCDF format (both S1-Anand S1-B) 
+```{table} DLR ocean products in netCDF format (both S1-Anand S1-B) 
 
 | 1 ID product                    | 1 day worldwide        | 1 month worldwide  |
 |---------------------------------|---------------------------|--------------------|
 |S1 I  ca. 0.4 MB | ca. 500 IDs – ca. 200 MB | ca. 15000 IDs -  ca. 6 GB   |
 |S1 EW ca. 0.2 MB   | ca. 200 IDs – ca. 80 MB  | ca. 6000 IDs -  ca. 2.4  GB |
 |S1 WV ca. 0.1 MB   | ca. 65   IDs – ca. 7 MB  | ca. 2000 IDs -  ca. 200 MB  |
+```
 
 ## Individual ID description 
 
@@ -208,7 +205,7 @@ The stored data are all 2D arrays:
 -	quality, and rejection flags (see.Tab "DLR ocean products quality, and rejection flags")
 -	uncertainties for all 8 parameters
 
-{table} DLR ocean products quality, and rejection flags
+```{table} DLR ocean products quality, and rejection flags
 
 |                     |       Abb. in netCDF product    | Description in netCDF product                               |       Meaning                            |
 |---------------------|---------------------------------|-------------------------------------------------------------|------------------------------------------|
@@ -222,13 +219,22 @@ The stored data are all 2D arrays:
 | uncertainty Tm1     | Tm1_uncertanty                  | Best estimate of first moment wave period standard error    | to WW3 estimated for each swh domains 0-4 s, 4-7 s, 7-10s, >10 s and interpolated/extrapolated |
 | uncertainty Tm2     | Tm2_uncertanty                  | Best estimate of second moment wave period standard error   | to MFWAM (CMEMS) estimated for each swh domains 0-4 s, 4-7 s, 7-10s, >10 s and interpolated/extrapolated |
 | uncertainty Tmw     | windwave_period_uncertanty      | Best estimate of mean period windsea standard error         | to MFWAM (CMEMS) estimated for each swh domains 0-4 s, 4-7 s, 7-10s, >10 s and interpolated/extrapolated |
+```
 
-![dlr_sar_fig4.png](../images/dlr_sar_fig4.png)
-:name: Example of DLR ocean product (DLR-OP) for 1 S1 ID (displayed with PANOPLY) 
+```{figure} /images/dlr_sar_fig4.png
+---
+name: dlr_sar_fig4
+---
+Example of DLR ocean product (DLR-OP) for 1 S1 ID (displayed with PANOPLY) 
+```
 
-
-![dlr_sar_fig5.png](../images/dlr_sar_fig5.png)
-:name: Example of DLR ocean product (DLR-OP) for 1 S1 ID (displayed with PANOPLY), 2D array wave heigth 
+```{figure} /images/dlr_sar_fig5.png
+---
+name: dlr_sar_fig5
+---
+Example of DLR ocean product (DLR-OP) for 1 S1 ID (displayed with PANOPLY), 
+2D array wave heigth  
+```
 
 
 
