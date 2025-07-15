@@ -38,7 +38,7 @@ Example of a L2P coverage
 Edited merged daily dataset retaining all valid and good quality 
 measurements from all L2P altimeters over one day (one daily file), with 
 simplified content (only a few key parameters). This is close to what is 
-delivered in NRT by CMEMS project.
+delivered in NRT or Multi-Year time series by CMEMS project[^footnote1].
 
 ```{figure} images/cci_l3_altimeter.png
 ---
@@ -61,4 +61,6 @@ name: cci_l4_altimeter
 ---
 Example of a multi-mission L4 coverage 
 ```
+
+[^footnote1]: https://doi.org/10.48670/moi-00176
 

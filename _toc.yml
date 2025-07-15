@@ -20,9 +20,9 @@ parts:
       sections:
         - file: naming
         - file: coordinates
+        - file: attributes
     - file: altimetry
       sections:
-        - file: altimetry/datasets
         - file: altimetry/missions
         - file: altimetry/baseline
         - file: altimetry/l2p

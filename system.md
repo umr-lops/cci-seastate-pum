@@ -117,7 +117,8 @@ Expert (manual) activity on the assessment and validation of the produced
 dataset before release.
 
 The methodology is described in the Product Validation Plan (PVP) and the 
-results in the Product Validation and Intercomparison Report (PVIR).
+results in the Product Validation and Intercomparison Report (PVIR) found in 
+ESA CCI State reference list of key documents[^footnote1].
 
 ### Distribution 
 Push of the produced datasets to Ifremer distribution server (HTTPS and FTP) 
@@ -153,7 +154,7 @@ repositories:
 | ceremd      | https://gitlab.ifremer.fr/cerbere/ceremd                      | a python package to denoise data using EMD filter                                                                   |
 | DLR         | https://gitlab.com/dlr-earth-observation-center/cci-sea-state | a processor to produce the Sentinel-1 SAR ISSP L2P                                                                  |
 | cciseastate | https://gitlab.ifremer.fr/cciseastate/cciseastate             | the python post processing layer to generate full L2P, L3 and L4 products                                           |
-| prun        | internal tool                                                 | a python tool to run distributed jobs on a HPC cluster in job array - used for parallel reprocessing.               |
+| prun        | Ifremer internal tool       | a python tool to run distributed jobs on a HPC cluster in job array - used for parallel reprocessing.               |
 ```
 
 ## Source code control
@@ -181,9 +182,8 @@ platform for each dataset is detailed in {numref}`processing_location`:
 ### Ifremer *Datarmor* platform
 
 Physically, the CCI production platform is mainly based on the Datarmor platform
-operated by Ifremer IT department (refer to the facility section in the
-management proposal), though a few reprocessing tasks were delegated to other 
-platforms (see {numref}`processing_location`).
+operated by Ifremer IT department, though a few reprocessing tasks were
+delegated to other platforms (see {numref}`processing_location`).
 
 The current storage capability is about 20 PB and the available capacity largely
 exceeds the need for CCI products.
@@ -279,3 +279,5 @@ the CCI Data Portal’s Technical Team (e.. for CCI Sea State Dataset version
 The data organization follows the recommendation of CCI Data Standards 
 version 2.0 and are described in the Product Specification Document.
 
+
+[^footnote1]: https://climate.esa.int/en/projects/sea-state/
