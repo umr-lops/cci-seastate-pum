@@ -16,6 +16,7 @@ parts:
   - caption: Product User Manual
     numbered: true
     chapters:
+    - file: quickintro
     - file: conventions
       sections:
         - file: naming
