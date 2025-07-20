@@ -3,39 +3,29 @@
 
 format: jb-book
 root: intro
-parts:
-  - caption: System Specification Document
-    numbered: true
-    chapters:
-    - file: system
-    - file: installation
-    - file: inputs
-    - file: processing
-    - file: workspace
-    - file: production
-  - caption: Product User Manual
-    numbered: true
-    chapters:
-    - file: quickintro
-    - file: conventions
-      sections:
-        - file: naming
-        - file: coordinates
-        - file: attributes
-    - file: altimetry
-      sections:
-        - file: altimetry/missions
-        - file: altimetry/baseline
-        - file: altimetry/l2p
-        - file: altimetry/l3
-        - file: altimetry/l4
-
-    - file: sar
-      sections:
-        - file: sar/missions
-        - file: sar/SAR-SeaStaR
-        - file: sar/sar_partition_parameters
-    - file: access
-    - file: changes
+options:  # The options key will be applied to all chapters, but not sub-sections
+  numbered: True
+chapters:
+- file: quickintro
+- file: project
+- file: conventions
+  sections:
+  - file: naming
+  - file: coordinates
+  - file: attributes
+- file: altimetry
+  sections:
+  - file: altimetry/missions
+  - file: altimetry/baseline
+  - file: altimetry/l2p
+  - file: altimetry/l3
+  - file: altimetry/l4
+- file: sar
+  sections:
+  - file: sar/missions
+  - file: sar/SAR-SeaStaR
+  - file: sar/sar_partition_parameters
+- file: access
+- file: changes
 
 

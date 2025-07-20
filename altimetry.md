@@ -1,3 +1,13 @@
+---
+jupytext:
+  formats: md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+mystnb:
+  execution_timeout: 360
+---
+
 # Nadir-altimetry datasets
 
 The main geophysical parameter provided by altimeters for sea state is the 
