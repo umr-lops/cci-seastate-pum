@@ -1,4 +1,4 @@
-# CCI Sea State Datasets
+# CCI Sea State Product User Guide
 
 This document presents the Product User Guide (PUG) for CCI Sea State 
 datasets {{cci_version}}. It describes the different datasets produced within 
