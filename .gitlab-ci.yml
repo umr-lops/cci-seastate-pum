@@ -1,6 +1,6 @@
 ---
 include:
-  - component: $CI_SERVER_FQDN/dev-ops/templates/automatisation/ci-cd/pipeline-documentation-jupyterbook@feature/doc-pipeline-add-inputs
+  - component: $CI_SERVER_FQDN/dev-ops/templates/automatisation/ci-cd/pipeline-documentation-jupyterbook@~latest
     inputs:
       documentation_conda_requirements: "environment.yml"
       documentation_python_requirements: "requirements.txt"
