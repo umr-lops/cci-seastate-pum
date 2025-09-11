@@ -130,7 +130,7 @@ The `swh` variable in a L2P product follows the format shown in table {numref}`l
 :tags: [remove-input]
 :name: l2p_swh_rms
 
-!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]swh_rms[(,:]'| sed 's/[[:space:]]//'
+!bash -c "ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]swh_rms[(,:]'| sed 's/[[:space:]]//'"
 ```
 
 
@@ -161,7 +161,7 @@ measurement.
 :tags: [remove-input]
 :name: l2p_swh_num_valid
 
-!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]swh_numval[(,:]'| sed 's/[[:space:]]//'
+!!bash -c "ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]swh_numval[(,:]'| sed 's/[[:space:]]//'"
 ```
 
 (__l2p_swh_adjusted)=
@@ -183,7 +183,7 @@ based on cross-mission intercalibration as described in {numref}`__bias_correcti
 :tags: [remove-input]
 :name: l2p_swh_adjusted
 
-!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]swh_adjusted[(,:]'| sed 's/[[:space:]]//'
+!bash -c "ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]swh_adjusted[(,:]'| sed 's/[[:space:]]//'"
 ```
 
 
@@ -216,7 +216,7 @@ Chapron, 2019ab), as detailed in {numref}`__denoising`.
 :tags: [remove-input]
 :name: l2p_swh_denoised
 
-!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]swh_denoised[(,:]'| sed 's/[[:space:]]//'
+!bash -c "ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]swh_denoised[(,:]'| sed 's/[[:space:]]//'"
 ```
 
 
@@ -235,7 +235,7 @@ Chapron, 2019ab), as detailed in {numref}`__denoising`.
 :tags: [remove-input]
 :name: l2p_swh_uncertainty
 
-!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]swh_uncertainty[(,:]'| sed 's/[[:space:]]//'
+!bash -c "ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]swh_uncertainty[(,:]'| sed 's/[[:space:]]//'"
 ```
 
 (__l2p_swh_quality_level)=
@@ -277,7 +277,7 @@ table {numref}`l2p_swh_quality_level`.
 :tags: [remove-input]
 :name: l2p_swh_quality_level
 
-!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]swh_quality_level[(,:]'| sed 's/[[:space:]]//'
+!bash -c "ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]swh_quality_level[(,:]'| sed 's/[[:space:]]//'"
 ```
 
 (__l2p_swh_rejection_flags)=
@@ -319,7 +319,7 @@ table {numref}`l2p_swh_rejection_flags`.
 :tags: [remove-input]
 :name: l2p_swh_rejection_flags
 
-!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]swh_rejection_flags[(,:]'| sed 's/[[:space:]]//'
+!bash -c "ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]swh_rejection_flags[(,:]'| sed 's/[[:space:]]//'"
 ```
 
 
@@ -344,7 +344,7 @@ for more details on the SWH denoising.
 :tags: [remove-input]
 :name: l2p_swh_emd_noise
 
-!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]swh_emd_noise[(,:]'| sed 's/[[:space:]]//'
+!bash -c "ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]swh_emd_noise[(,:]'| sed 's/[[:space:]]//'"
 ```
 
 
@@ -369,7 +369,7 @@ for more details on the SWH denoising.
 :tags: [remove-input]
 :name: l2p_swh_emd_imf1
 
-!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]swh_emd_imf1[(,:]'| sed 's/[[:space:]]//'
+!bash -c "ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]swh_emd_imf1[(,:]'| sed 's/[[:space:]]//'"
 ```
 
 (__l2p_swh_emd_uncertainty)=
@@ -393,7 +393,7 @@ for more details on the SWH denoising.
 :tags: [remove-input]
 :name: l2p_swh_emd_uncertainty
 
-!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]swh_emd_uncertainty[(,:]'| sed 's/[[:space:]]//'
+!bash -c "ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]swh_emd_uncertainty[(,:]'| sed 's/[[:space:]]//'"
 ```
 
 
@@ -466,7 +466,7 @@ The `sigma0_ku` variable in a L2P product follows the format shown in table
 :tags: [remove-input]
 :name: l2p_sigma0_ku
 
-!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]sigma0_ku[(,:]'| sed 's/[[:space:]]//'
+!bash -c "ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]sigma0_ku[(,:]'| sed 's/[[:space:]]//'"
 ```
 
 
@@ -499,7 +499,7 @@ measurement.
 :tags: [remove-input]
 :name: l2p_sigma0_ku_num_valid
 
-!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]sigma0_ku_num_valid[(,:]'| sed 's/[[:space:]]//'
+!bash -c "ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]sigma0_ku_num_valid[(,:]'| sed 's/[[:space:]]//'"
 ```
 
 (__l2p_sigma0_ku_quality_level)=
@@ -517,7 +517,7 @@ measurement.
 :tags: [remove-input]
 :name: l2p_sigma0_ku_quality_level
 
-!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]sigma0_ku_quality_level[(,:]'| sed 's/[[:space:]]//'
+!bash -c "ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]sigma0_ku_quality_level[(,:]'| sed 's/[[:space:]]//'"
 ```
 
 (__l2p_sigma0_ku_rejection_flags)=
@@ -535,7 +535,7 @@ measurement.
 :tags: [remove-input]
 :name: l2p_sigma0_ku_rejection_flags
 
-!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]sigma0_ku_rejection_flags[(,:]'| sed 's/[[:space:]]//'
+!bash -c "ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]sigma0_ku_rejection_flags[(,:]'| sed 's/[[:space:]]//'"
 ```
 
 
@@ -600,7 +600,7 @@ http://www.pacioos.hawaii.edu/metadata/dist2coast_1deg.html
 :tags: [remove-input]
 :name: l2p_distance_to_coast
 
-!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]distance_to_coast[(,:]'| sed 's/[[:space:]]//'
+!bash -c "ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]distance_to_coast[(,:]'| sed 's/[[:space:]]//'"
 ```
 
 
@@ -625,7 +625,7 @@ available at: https://www.gebco.net.
 :tags: [remove-input]
 :name: l2p_bathymetry
 
-!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]bathymetry[(,:]'| sed 's/[[:space:]]//'
+!bash -c "ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]bathymetry[(,:]'| sed 's/[[:space:]]//'"
 ```
 
 (__l2p_sea_ice_fraction)=
@@ -652,7 +652,7 @@ The sea ice concentration is expressed as a fraction.
 :tags: [remove-input]
 :name: l2p_sea_ice_fraction
 
-!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]sea_ice_fraction[(,:]'| sed 's/[[:space:]]//'
+!bash -c "ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]sea_ice_fraction[(,:]'| sed 's/[[:space:]]//'"
 ```
 
 (__l2p_era5_tclw)=
@@ -685,7 +685,7 @@ highly simplified in the IFS.
 :tags: [remove-input]
 :name: l2p_era5_tclw
 
-!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]era5_total_column_cloud_liquid_water[(,:]'| sed 's/[[:space:]]//'
+!bash -c "ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]era5_total_column_cloud_liquid_water[(,:]'| sed 's/[[:space:]]//'"
 ```
 
 (__l2p_era5_t2m)=
@@ -712,7 +712,7 @@ kelvin can be converted to degrees Celsius (°C) by subtracting 273.15.
 :tags: [remove-input]
 :name: l2p_era5_t2m
 
-!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]era5_2m_air_temperature[(,:]'| sed 's/[[:space:]]//'
+!bash -c "ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]era5_2m_air_temperature[(,:]'| sed 's/[[:space:]]//'"
 ```
 
 (__l2p_era5_sst)=
@@ -742,7 +742,7 @@ degrees Celsius (°C) by subtracting 273.15.
 :tags: [remove-input]
 :name: l2p_era5_sst
 
-!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]era5_sea_surface_temperature[(,:]'| sed 's/[[:space:]]//'
+!bash -c "ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]era5_sea_surface_temperature[(,:]'| sed 's/[[:space:]]//'"
 ```
 
 (__l2p_era5_u10)=
@@ -773,7 +773,7 @@ of 10m wind to give the speed and direction of the horizontal 10m wind.
 :tags: [remove-input]
 :name: l2p_era5_u10
 
-!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]era5_eastward_wind[(,:]'| sed 's/[[:space:]]//'
+!bash -c "ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]era5_eastward_wind[(,:]'| sed 's/[[:space:]]//'"
 ```
 
 (__l2p_era5_v10)=
@@ -805,7 +805,7 @@ the speed and direction of the horizontal 10m wind.
 :tags: [remove-input]
 :name: l2p_era5_v10
 
-!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]era5_northward_wind[(,:]'| sed 's/[[:space:]]//'
+!bash -c "ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]era5_northward_wind[(,:]'| sed 's/[[:space:]]//'"
 ```
 
 (__l2p_era5_sp)=
@@ -838,7 +838,7 @@ in hPa and sometimes is presented in the old units of millibars, mb
 :tags: [remove-input]
 :name: l2p_era5_sp
 
-!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]era5_surface_pressure[(,:]'| sed 's/[[:space:]]//'
+!bash -c "ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]era5_surface_pressure[(,:]'| sed 's/[[:space:]]//'"
 ```
 
 (__l2p_era5_swh)=
@@ -878,7 +878,7 @@ a fully independent SWH estimate, use the WW3 SWH (see {numref}`__l2p_ww3_hs`).
 :tags: [remove-input]
 :name: l2p_era5_swh
 
-!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]era5_swh[(,:]'| sed 's/[[:space:]]//'
+!bash -c "ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]era5_swh[(,:]'| sed 's/[[:space:]]//'"
 ```
 
 (__l2p_era5_pp1d)=
@@ -912,7 +912,7 @@ time. This parameter takes account of both.
 :tags: [remove-input]
 :name: l2p_era5_pp1d
 
-!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]era5_peak_wave_period[(,:]'| sed 's/[[:space:]]//'
+!bash -c "ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]era5_peak_wave_period[(,:]'| sed 's/[[:space:]]//'"
 ```
 
 
@@ -947,7 +947,7 @@ statistical quantities derived from the two-dimensional wave spectrum.
 :tags: [remove-input]
 :name: l2p_era5_p1ps
 
-!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]era5_swell_mean_period[(,:]'| sed 's/[[:space:]]//'
+!bash -c "ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]era5_swell_mean_period[(,:]'| sed 's/[[:space:]]//'"
 ```
 
 
@@ -992,7 +992,7 @@ applications.
 :tags: [remove-input]
 :name: l2p_era5_p140121
 
-!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]era5_swell_swh[(,:]'| sed 's/[[:space:]]//'
+!bash -c "ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]era5_swell_swh[(,:]'| sed 's/[[:space:]]//'"
 ```
 
 
@@ -1031,7 +1031,7 @@ and 90 degrees means "coming from the east".
 :tags: [remove-input]
 :name: l2p_era5_p140122
 
-!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]era5_swell_direction[(,:]'| sed 's/[[:space:]]//'
+!bash -c "ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]era5_swell_direction[(,:]'| sed 's/[[:space:]]//'"
 ```
 
 
@@ -1065,7 +1065,7 @@ such as oil platforms, or in coastal applications.
 :tags: [remove-input]
 :name: l2p_era5_mwp
 
-!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]era5_mean_wave_period[(,:]'| sed 's/[[:space:]]//'
+!bash -c "ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]era5_mean_wave_period[(,:]'| sed 's/[[:space:]]//'"
 ```
 
 
@@ -1101,7 +1101,7 @@ means "coming from the north" and 90 degrees means "coming from the east".
 :tags: [remove-input]
 :name: l2p_era5_mwd
 
-!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]era5_mean_wave_direction[(,:]'| sed 's/[[:space:]]//'
+!bash -c "ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]era5_mean_wave_direction[(,:]'| sed 's/[[:space:]]//'"
 ```
 
 
@@ -1140,7 +1140,7 @@ such as oil platforms, or in coastal applications.
 :tags: [remove-input]
 :name: l2p_era5_shww
 
-!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]era5_windwave_swh[(,:]'| sed 's/[[:space:]]//'
+!bash -c "ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]era5_windwave_swh[(,:]'| sed 's/[[:space:]]//'"
 ```
 
 
@@ -1173,7 +1173,7 @@ means "coming from the north" and 90 degrees means "coming from the east".
 :tags: [remove-input]
 :name: l2p_era5_mdww
 
-!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]era5_windwave_direction[(,:]'| sed 's/[[:space:]]//'
+!bash -c "ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]era5_windwave_direction[(,:]'| sed 's/[[:space:]]//'"
 ```
 
 
@@ -1231,7 +1231,7 @@ therefore a fully independent SWH estimate, contrary to ERA5 reanalysis.
 :tags: [remove-input]
 :name: l2p_ww3_hs
 
-!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]ww3_swh[(,:]'| sed 's/[[:space:]]//'
+!bash -c "ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]ww3_swh[(,:]'| sed 's/[[:space:]]//'"
 ```
 
 
@@ -1250,7 +1250,7 @@ therefore a fully independent SWH estimate, contrary to ERA5 reanalysis.
 :tags: [remove-input]
 :name: l2p_ww3_t02
 
-!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]ww3_mean_wave_period[(,:]'| sed 's/[[:space:]]//'
+!bash -c "ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]ww3_mean_wave_period[(,:]'| sed 's/[[:space:]]//'"
 ```
 
 
@@ -1269,7 +1269,7 @@ therefore a fully independent SWH estimate, contrary to ERA5 reanalysis.
 :tags: [remove-input]
 :name: l2p_ww3_t0m1
 
-!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]ww3_mean_wave_period_t0m1[(,:]'| sed 's/[[:space:]]//'
+!bash -c "ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]ww3_mean_wave_period_t0m1[(,:]'| sed 's/[[:space:]]//'"
 ```
 
 
@@ -1288,7 +1288,7 @@ therefore a fully independent SWH estimate, contrary to ERA5 reanalysis.
 :tags: [remove-input]
 :name: l2p_ww3_emb
 
-!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]ww3_emb[(,:]'| sed 's/[[:space:]]//'
+!bash -c "ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]ww3_emb[(,:]'| sed 's/[[:space:]]//'"
 ```
 
 
@@ -1307,7 +1307,7 @@ therefore a fully independent SWH estimate, contrary to ERA5 reanalysis.
 :tags: [remove-input]
 :name: l2p_ww3_fp
 
-!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]ww3_peak_wave_period[(,:]'| sed 's/[[:space:]]//'
+!bash -c "ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]ww3_peak_wave_period[(,:]'| sed 's/[[:space:]]//'"
 ```
 
 
@@ -1326,7 +1326,7 @@ therefore a fully independent SWH estimate, contrary to ERA5 reanalysis.
 :tags: [remove-input]
 :name: l2p_ww3_dir
 
-!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]ww3_mean_wave_direction[(,:]'| sed 's/[[:space:]]//'
+!bash -c "ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]ww3_mean_wave_direction[(,:]'| sed 's/[[:space:]]//'"
 ```
 
 (__l2p_ww3_skw)=
@@ -1344,7 +1344,7 @@ therefore a fully independent SWH estimate, contrary to ERA5 reanalysis.
 :tags: [remove-input]
 :name: l2p_ww3_skw
 
-!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]ww3_wave_skewness[(,:]'| sed 's/[[:space:]]//'
+!bash -c "ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]ww3_wave_skewness[(,:]'| sed 's/[[:space:]]//'"
 ```
 
 (__l2p_ww3_qkk)=
@@ -1362,5 +1362,5 @@ therefore a fully independent SWH estimate, contrary to ERA5 reanalysis.
 :tags: [remove-input]
 :name: l2p_ww3_qkk
 
-!ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]ww3_wavenumber_peakdness[(,:]'| sed 's/[[:space:]]//'
+!bash -c "ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]ww3_wavenumber_peakdness[(,:]'| sed 's/[[:space:]]//'"
 ```
