@@ -1,10 +1,6 @@
 ---
 include:
-    - project: dev-ops/templates/automatisation/ci-cd
-      ref: main
-      file: /templates/pipeline-documentation-jupyterbook.yml
-
-variables:
-  # DOCUMENTATION_BASE_PYTHON_IMAGE: "gitlab-registry.ifremer.fr/ifremer-commons/docker/internal-images/jupyter-book:1.0.2"
-  DOCUMENTATION_PYTHON_REQUIREMENTS: "requirements.txt"
-  DOCUMENTATION_CONDA_REQUIREMENTS: "environment.yml"
+  - component: $CI_SERVER_FQDN/dev-ops/templates/automatisation/ci-cd/pipeline-documentation-jupyterbook@~latest
+    inputs:
+      documentation_conda_requirements: "environment.yml"
+      documentation_python_requirements: "requirements.txt"
