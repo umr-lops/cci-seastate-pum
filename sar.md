@@ -21,10 +21,12 @@ were acquired (S1A and S1B).
 
 
 ```{table} DLR processing ocean products  
+:name: dlr_products
 
 | 1 ID product                    |  Processing        | 
 |---------------------------------|---------------------------|
 |S1 IW  coverage ca. 250x200 km | 5 km raster - ca. 1500 values/image |
 |S1 EW coverage ca. 450x400 km  | 1.5 km raster - ca. 450 values/image  | 
 |S1 WV coverage ca. 20x20 km, each 100 km along.track  | averaged values per imagette |  
+
 ```
