@@ -30,3 +30,16 @@ were acquired (S1A and S1B).
 |S1 WV coverage ca. 20x20 km, each 100 km along.track  | averaged values per imagette |  
 
 ```
+
+
+```{figure} /images/dlr_sar_fig01.png
+---
+name: dlr_sar_fig01
+---
+An example of one-day sea state estimated from Sentinel-1 satellites S1-A and S1-B in the scope of this study on 2021-01-01.
+The three main acquisition modes WV along-flight imagettes, IW, EW scenes are acquired in different areas with switched acquisition modes. 
+The acquired IW and EW raw data are divided into individual products with along-flight length of ca. 200 km for IW and ca. 400 km for EW.
+In total, 748 products with ca. 570,000 processed water points are shown: 59 WV tracks (averaged values for an imagette 20×20 km),
+513 S1 IW products (5 km processing raster), 212 EW products (ca. 17.5 km processing raster).
+
+```
