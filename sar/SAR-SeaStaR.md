@@ -4,7 +4,7 @@ used for processing the data in CCI Sea State version 4, as illustrated in figur
 
 ```{figure} /images/dlr_sar_fig0.png
 ---
-name: dlr_sar_fig1
+name: dlr_sar_fig0
 ```
 # SAR-SeaStaR
 
