@@ -85,6 +85,7 @@ Multiparametric sea state fields from synthetic aperture radar for maritime situ
 Remote Sens. Environ., vol. 280, Oct. 2022, Art. no. 113200.
 ```
 
+## Ancillary data 
 
 **Ancillary data (Land masks)**
 - SRTM - Shuttle Radar Topography Mission (SRTM) -60°<LAT<60°.
@@ -99,7 +100,6 @@ Remote Sens. Environ., vol. 280, Oct. 2022, Art. no. 113200.
   (NOAA, https://polar.ncep.noaa.gov/waves/(https://polar.ncep.noaa.gov/waves/)) 
   with a spatial resolution of 1/2 degrees (spatially interpolated for 
   collocation) for collocations before 2016. 
-
 
 ## DLR Algorithm SAR-SeaStaR  
 
@@ -209,14 +209,7 @@ are the primary features complemented with:
 
 # SAR: DLR ocean products description
 
-## Processed parameters 
-
-DLR processed sea state parameters using SAR-SeaStaR from three S1 SAR modes:
-
-- S1 WV - averaged values for each imagette 20 km x 20 km in along-track 
-  imagettes each 100 km apart 
-- S1 IW - grids  (5 km grid’s step with ca. 1500 subscenes/image)
-- S1 EW - grids  (17.5 km grid’s step with ca. 400 subscenes/image )
+## Uncertanties 
 
 Eight sea state parameters processed by DLR (uncertainties based on Pleskachevsky et al., 2024)
 
