@@ -51,10 +51,6 @@ An example of S1 worldwide acquisitions on 2020-09-01. There are 54 S1 WV tracks
 
 ## Processing and resolution of derived sea state parameters 
 
-At first, all available archive scenes were processed.Later only scenes with at least 2 km water area were designated as ocean scenes
-and included in the DLR sea state products (DLR_OCN).
-The WVs are only recorded over oceans, while only ca. 40% of all IW and ca. 80% of all EW scenes include the seas. 
-
 - S1 WV (wave mode) acquires two parallel tracks with incidence angles of around 23° (wv1) and around 36° (wv2) with imagettes 
 (small images with an approximate footprint of 20×20 km, (ESA, S1-WV) acquired every 200 km along each wv1 and wv2 track 
 with a 100 km offset and distance of 100 km between wv1 and wv2 tracks.  Using both wv1 and wv2 this means along-track imagettes each 100 km.
@@ -75,7 +71,7 @@ The EW mode acquires data over 400 km swath width with a coarser pixel spacing o
 For CCI, the sea state parameters were processed (the processing raster S1 IW and S1 EW can be chaged):
 - S1 WV: averaged values for an along-track imagette 20x20km each 100 km,
 - S1 IW: 5 km raster (ca. 1500 values/image) 
-- S1 EW: 17.5 km raster (ca. 550 values/image)
+- S1 EW: 17.5 km raster (ca. 450 values/image)
 
 ```{admonition} References
 :class: note
@@ -84,6 +80,17 @@ Pleskachevsky, A., Tings, B., S. Wiehle, S., Imber, J., Jacobsen, S., 2022.
 Multiparametric sea state fields from synthetic aperture radar for maritime situational awareness.
 Remote Sens. Environ., vol. 280, Oct. 2022, Art. no. 113200.
 ```
+
+## Editing
+
+At first, all available archive scenes were processed.Later only scenes with at least 2 km water area were designated as ocean scenes
+and included in the DLR sea state products (DLR_OCN).
+The WVs are only recorded over oceans, while only ca. 40% of all IW and ca. 80% of all EW scenes include the seas. 
+The processed results has two level of data rejection:
+- landmasking  (rejection_flag=16 for not_water (land))   
+- due to series of control procedures (rejection_flag=4=invalid value)
+Addirtional flags point out the sea state parametr is correct, but due to enviroment, the value can have a lower accuracy (rejection_flag=8 for wind below 2 m/s) 
+
 
 ## Ancillary data 
 
@@ -147,7 +154,6 @@ Example of Sentinel-1 WV archive processing. In the right half of the figure
 only one-day of acquisitions is displayed on the globe, on the left half all 
 data acquired during February 2021 is displayed.
 ```
-
 
 The SAR-SeaStaR algorithm includes the complete processing chain with a series
 of steps needed to reach high accuracy: 
