@@ -49,7 +49,7 @@ name: dlr_sar_fig1
 An example of S1 worldwide acquisitions on 2020-09-01. There are 54 S1 WV tracks (red), 894 S1 IW images (green), 229 S1 EW images (grey).
 ```
 
-## Processing and resolution of derived sea state parameters
+## Processing and resolution of derived sea state parameters 
 
 At first, all available archive scenes were processed.Later only scenes with at least 2 km water area were designated as ocean scenes
 and included in the DLR sea state products (DLR_OCN).
@@ -77,10 +77,13 @@ For CCI, the sea state parameters were processed (the processing raster S1 IW an
 - S1 IW: 5 km raster (ca. 1500 values/image) 
 - S1 EW: 17.5 km raster (ca. 550 values/image)
 
+```{admonition} References
+:class: note
 
-
-
-
+Pleskachevsky, A., Tings, B., S. Wiehle, S., Imber, J., Jacobsen, S., 2022.
+Multiparametric sea state fields from synthetic aperture radar for maritime situational awareness.
+Remote Sens. Environ., vol. 280, Oct. 2022, Art. no. 113200.
+```
 
 
 **Ancillary data (Land masks)**
