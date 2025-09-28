@@ -23,10 +23,10 @@ The processing includes the complete processing chain with a series of steps nee
 
 
 
-## EO data processed by SAR-SeaStaR (DLR)
+## SAR input data for processed by SAR-SeaStaR (DLR)
 
-- S1- Interferometric Wide Swath Mode (**IW**) GRD (Ground Range Detected) L1 
-  products
+Sentinel-1 SAR three modes:
+- S1- Interferometric Wide Swath Mode (**IW**) GRD (Ground Range Detected) L1 products
 - S1- Extra Wide (**EW**) GRD L1 products.
 - S1- wave mode (**WV**) SAR Single Look Complex (SLC) L1 products.
 
@@ -48,6 +48,40 @@ name: dlr_sar_fig1
 ---
 An example of S1 worldwide acquisitions on 2020-09-01. There are 54 S1 WV tracks (red), 894 S1 IW images (green), 229 S1 EW images (grey).
 ```
+
+## Processing and resolution of derived sea state parameters
+
+At first, all available archive scenes were processed.Later only scenes with at least 2 km water area were designated as ocean scenes
+and included in the DLR sea state products (DLR_OCN).
+The WVs are only recorded over oceans, while only ca. 40% of all IW and ca. 80% of all EW scenes include the seas. 
+
+- S1 WV (wave mode) acquires two parallel tracks with incidence angles of around 23° (wv1) and around 36° (wv2) with imagettes 
+(small images with an approximate footprint of 20×20 km, (ESA, S1-WV) acquired every 200 km along each wv1 and wv2 track 
+with a 100 km offset and distance of 100 km between wv1 and wv2 tracks.  Using both wv1 and wv2 this means along-track imagettes each 100 km.
+The length of a track (relative orbit with ID) varies from around 1,000 km (10 imagettes) to 12,000 km (120 imagettes).
+The nominal spatial pixel resolution of S1 WV is around 3 m depending on the local incidence angle.
+The scenes can be acquired in vertical (VV) or horizontal (HH) co-polarization. However, more than 95% of the data were acquired in VV polarization. 
+Each day, around 60 S1 WV products (ascending or descending tracks) each with around 120 individual imagettes for both S1-A and S1-B are acquired.
+Each individual S1 WV L1 SLC product has 2–10 GB (ca. 5 TB/month).
+
+- S1 IW mode combines a large swath width with a moderate geometric resolution (ESA, S1-IW).
+The individual IW images cover approximately 200 km in azimuth and 250 km in the range direction with a pixel spacing of 10 m.
+The original GRDH (Ground Range Detected High resolution) L1 products are available in single (HH or VV) or dual polarization (HH+HV or VV+VH).
+For sea state estimation, the VV or HH polarization data were used, with priority given to VV products.
+
+- S1 EW (Extra Wide) mode is similar to the IW mode, but the EW mode acquires data over a wider area than for IW mode using five sub-swaths.
+The EW mode acquires data over 400 km swath width with a coarser pixel spacing of 40 m (GRDM), and 25 m (GRDH).
+
+For CCI, the sea state parameters were processed (the processing raster S1 IW and S1 EW can be chaged):
+- S1 WV: averaged values for an along-track imagette 20x20km each 100 km,
+- S1 IW: 5 km raster (ca. 1500 values/image) 
+- S1 EW: 17.5 km raster (ca. 550 values/image)
+
+
+
+
+
+
 
 **Ancillary data (Land masks)**
 - SRTM - Shuttle Radar Topography Mission (SRTM) -60°<LAT<60°.
