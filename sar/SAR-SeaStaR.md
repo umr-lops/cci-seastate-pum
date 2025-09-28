@@ -1,3 +1,6 @@
+# SAR-SeaStaR
+
+## Processing details
 
 This section describes in details the processing workflow for the SAR Sea State Processor (SSP) based on SAR-SeaStaR (SAR Sea State Retrival) algorithm 
 used for processing the data in CCI Sea State version 4, as illustrated in figure Fig.
@@ -6,7 +9,6 @@ used for processing the data in CCI Sea State version 4, as illustrated in figur
 ---
 name: dlr_sar_fig0
 ```
-# SAR-SeaStaR
 
 ## EO data processed by SAR-SeaStaR (DLR)
 
