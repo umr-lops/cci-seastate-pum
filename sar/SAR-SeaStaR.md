@@ -10,6 +10,21 @@ used for processing the data in CCI Sea State version 4, as illustrated in figur
 name: dlr_sar_fig0
 ```
 
+SAR-SeaStaR algorithm workflow realized in Sea State Processor as a part of SAR AIS Integrated Toolbox (SAINT) package for processing
+ meteo-marine information, targets and processes at sea surface from SAR imagery. 
+ The current version of the algorithm includes 32 CWAVE_EX model functions (4 satellite/modes, 8 sea state parameters) and 8 SVM ML 
+ functions (4 satellite/modes Hs and Tm2). For each processing operation, the approximate effects in percent on resulting RMSE 
+ in terms of wave height are shown on the right; for the model functions, this is compared to CWAVE method.
+
+The processing includes the complete processing chain with a series of steps needed to reach high accuracy: 
+- Filtering of the image artefacts (e.g. ships, wakes, offshore windfarms constructions, etc.).
+- Resampling and denoising (e.g. for S1 IW resampling from 10 m to 2.5 m pixel spacing).
+- SAR features estimation and control-of- features.
+- Model functions (linear regression and machine learning models) for estimation of sea state parameters.
+- Control-of-results using filtering procedures. 
+
+
+
 ## EO data processed by SAR-SeaStaR (DLR)
 
 - S1- Interferometric Wide Swath Mode (**IW**) GRD (Ground Range Detected) L1 
