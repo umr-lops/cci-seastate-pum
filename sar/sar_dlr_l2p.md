@@ -47,18 +47,12 @@ Due to series of control procedures, rejection has been inicialized:
 
  - =1  -  variance > max (not more used)
  - =2  -  swh outlier, non-valid 
- - =4  -  invalid value
+ - =4  -  non-valid value
  - =8  -  valid value, wind below 2 m/s (not more used)
-- =16  -  not_water (land), correspondes to quality_level=0 (land) 
+ - =16  -  not_water (land), correspondes to quality_level=0 (land) 
 
 
 
-
-
-
-
- - invalid value (swh_quality=4)
- - valid value can have lower accuracy due to geophysical ambiguous enviroment (rejection_flag=8 for wind below 2 m/s). 
 
 
 
