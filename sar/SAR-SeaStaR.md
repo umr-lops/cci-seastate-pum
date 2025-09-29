@@ -1,9 +1,15 @@
-# SAR-SeaStaR
+# SAR processing details
 
-## Processing details
+## Processing with SAR-SeaStaR algorithm using Sea State Processor (SSP)
 
 This section describes in details the processing workflow for the SAR Sea State Processor (SSP) based on SAR-SeaStaR (SAR Sea State Retrival) algorithm 
-used for processing the data in CCI Sea State version 4, as illustrated in figure Fig.
+used for processing the data in CCI Sea State version 4.
+The SSP is part of the SAR AIS Integrated Toolbox (SAINT), developed at the DLR Maritime Safety and Security Lab Bremen.
+It is provided as a container, enabling easy integration into the PSM. Subscription rules allow user requests to be directly linked to on-demand ground station planning and L2 processing. 
+
+The SAR-SeaStaR is optimised for minimizing non-valid data. For example, the number of non-valid ocean imagettes for S1 WV is ca. 1.5% with an accuracy of ca. 0.26 m in terms of SWH. 
+This optimization allows process data for ambiguous enviroment conditions dominate in coastal ares (artifacts by ships, buoys, watermarks, windparks, etc.) and by low winds uncer 2 m/s.
+
 
 ```{figure} /images/dlr_sar_fig0.png
 ---
