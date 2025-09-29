@@ -58,10 +58,10 @@ An example of S1 worldwide acquisitions on 2020-09-01. There are 54 S1 WV tracks
 ## Processing and resolution of derived sea state parameters 
 
 - S1 WV (wave mode) acquires two parallel tracks with incidence angles of around 23° (wv1) and around 36° (wv2) with imagettes 
-(small images with an approximate footprint of 20×20 km, (ESA, S1-WV) acquired every 200 km along each wv1 and wv2 track 
+(small images with an approximate footprint of 20×20 km, acquired every 200 km along each wv1 and wv2 track 
 with a 100 km offset and distance of 100 km between wv1 and wv2 tracks.  Using both wv1 and wv2 this means along-track imagettes each 100 km.
 The length of a track (relative orbit with ID) varies from around 1,000 km (10 imagettes) to 12,000 km (120 imagettes).
-The nominal spatial pixel resolution of S1 WV is around 3 m depending on the local incidence angle.
+The nominal spatial pixel resolution of S1 WV is around 3 m depending on the local incidence angle in SLC L1 products.
 The scenes can be acquired in vertical (VV) or horizontal (HH) co-polarization. However, more than 95% of the data were acquired in VV polarization. 
 Each day, around 60 S1 WV products (ascending or descending tracks) each with around 120 individual imagettes for both S1-A and S1-B are acquired.
 Each individual S1 WV L1 SLC product has 2–10 GB (ca. 5 TB/month).
