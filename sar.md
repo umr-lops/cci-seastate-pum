@@ -16,11 +16,11 @@ for easier distribution. This dividing can differ by processing of the raw SAR d
 At first, all available archive scenes were processed. Later only scenes with at least 2 km water area were designated as ocean scenes
 and included in the DLR sea state products (DLR_OCN).
 
-In total, per a day ca.
+In total, over ocveans and seas per a day ca.
  - 500 IW products 
  - 200 EW products 
  -  60 WV tracks (means ca. 600 imagettes)
-were acquired (S1A and S1B) over oveans and seas.
+were acquired (S1A and S1B).
 
 
 ```{table} DLR processing ocean products  
