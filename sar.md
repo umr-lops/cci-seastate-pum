@@ -43,3 +43,22 @@ In total, 748 products with ca. 570,000 processed water points are shown: 59 WV 
 513 S1 IW products (5 km processing raster), 212 EW products (ca. 17.5 km processing raster).
 
 ```
+
+## Sentinel-1 Wave Mode WV datasets
+
+Wave mode (WV) acquired over open oceans, along-orbit imagettes ca. 20×20 km every 100 km.
+S1 WV (wave mode) acquires two parallel tracks with incidence angles of around 23° (wv1) and around 36° (wv2) with imagettes (small images with an approximate footprint of 20×20 km,
+acquired every 200 km along each wv1 and wv2 track with a 100 km offset and distance of 100 km between wv1 and wv2 tracks.
+Using both wv1 and wv2 this means along-track imagettes each 100 km. The length of a track (relative orbit with ID) varies from around 1,000 km (10 imagettes) to 12,000 km (120 imagettes).
+The nominal spatial pixel resolution of S1 WV is around 3 m depending on the local incidence angle. 
+
+```{figure} /images/dlr_sar_fig01.png
+---
+name: dlr_sar_fig02
+---
+ Example one-year data in 2020 (both S1-A and S1-B in service) WV imagettes 20x20 km imagettes every 100 km, color means density of processed data on 0.2° mesh (correspondes to wave model WFWAM reanalysis data)
+
+
+```
+
+
