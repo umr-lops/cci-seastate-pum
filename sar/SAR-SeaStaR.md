@@ -130,6 +130,7 @@ are fields for each parameter showing their spatial distribution.
 
 SAR-SeaStaR is adopted for different satellites Sentinel-1 (S1) and 
 TerraSAR-X (TS-X) and modes (state-of-the-art 2024): 
+
  − S1 Wave Mode (WV) Level-1 (L1) products  SLC
  − S1 Interferometric Wide Swath Mode (IW)  GRD
  − S1 Extra Wide (EW)  GRD
