@@ -32,7 +32,7 @@ The Table provides an overview of the CCI Sea State L2P environment (geophysical
 | uncertainty Tm2     | Tm2_uncertanty                  | Best estimate of second moment wave period standard error   | to MFWAM (CMEMS) estimated for each swh domains 0-4 s, 4-7 s, 7-10s, >10 s and interpolated/extrapolated |
 | uncertainty Tmw     | windwave_period_uncertanty      | Best estimate of mean period windsea standard error         | to MFWAM (CMEMS) estimated for each swh domains 0-4 s, 4-7 s, 7-10s, >10 s and interpolated/extrapolated |
 ```
-## L2P  SAR L2P quality_level
+## L2P  SAR  quality_level
 
 The DLR algorithm SAR-SeaStaR is optimised for minimizing the percenatge of the non-valid data. For example, the number of non-valid ocean imagettes for S1 WV is ca. 1.5% with an accuracy of ca. 0.26 m in terms of SWH. 
 This optimization allows processing data for ambiguous enviroment conditions dominate in coastal ares (NRCS artifacts by ships, buoys, watermarks, windparks, etc.) and by low winds under 2 m/s.
@@ -43,7 +43,7 @@ Due to series of control procedures, rejection has been inicialized:
  - =2  -  acceptable (not used),
  - =3  -  good 
 
-## L2P  SAR L2P rejection_flags
+## L2P  SAR  rejection_flags
 
  - =1  -  variance > max (not more used)
  - =2  -  swh outlier, non-valid 
