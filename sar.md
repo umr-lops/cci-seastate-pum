@@ -49,8 +49,9 @@ In total, 748 products with ca. 570,000 processed water points are shown: 59 WV 
 Wave mode (WV) acquired over open oceans, along-orbit imagettes ca. 20×20 km every 100 km.
 S1 WV (wave mode) acquires two parallel tracks with incidence angles of around 23° (wv1) and around 36° (wv2) with imagettes (small images with an approximate footprint of 20×20 km,
 acquired every 200 km along each wv1 and wv2 track with a 100 km offset and distance of 100 km between wv1 and wv2 tracks.
-Using both wv1 and wv2 this means along-track imagettes each 100 km. The length of a track (relative orbit with ID) varies from around 1,000 km (10 imagettes) to 12,000 km (120 imagettes).
-The nominal spatial pixel resolution of S1 WV is around 3 m depending on the local incidence angle. 
+Using both wv1 and wv2 this means along-track imagettes each 100 km.
+The length of a track (relative orbit with ID) varies from around 1,000 km (10 imagettes) to 12,000 km (120 imagettes).
+The nominal spatial pixel resolution of S1 WV is around 3 m depending on the local incidence angle in SLC products used. 
 
 ```{figure} /images/dlr_sar_fig01.png
 ---
@@ -58,7 +59,32 @@ name: dlr_sar_fig02
 ---
  Example one-year data in 2020 (both S1-A and S1-B in service) WV imagettes 20x20 km imagettes every 100 km, color means density of processed data on 0.2° mesh (correspondes to wave model WFWAM reanalysis data)
 
+```
 
+## Sentinel-1 Interferometric Wide Swath mode (IW) datasets
+
+S1 IW mode combines a large swath width with a moderate geometric resolution.
+The individual IW images cover approximately 200 km in azimuth and 250 km in the range direction with a pixel spacing of 10 m.
+The original GRDH (Ground Range Detected High resolution) L1 products are available in single (HH or VV) or dual polarization (HH+HV or VV+VH).
+For sea state estimation, the VV or HH polarization data were used, with priority given to VV products.
+
+```{figure} /images/dlr_sar_fig03.png
+---
+name: dlr_sar_fig03
+---
+ Example one-year data in 2020 (both S1-A and S1-B in service) IW products, color means density of processed data on 0.2° mesh (correspondes to wave model WFWAM reanalysis data)
+```
+
+## Sentinel-1 Extra Wide Swath mode (EW) data datasets
+
+S1 EW mode is similar to the IW mode, but the EW mode acquires data over a wider area than for IW mode using five sub-swaths.
+The EW mode acquires data over 400 km swath width with a coarser pixel spacing of 40 m (GRDM products) and 25 m (GRDH).
+
+```{figure} /images/dlr_sar_fig04.png
+---
+name: dlr_sar_fig4
+---
+ Example one-year data in 2020 (both S1-A and S1-B in service) EW products, color means density of processed data on 0.2° mesh (correspondes to wave model WFWAM reanalysis data)
 ```
 
 
