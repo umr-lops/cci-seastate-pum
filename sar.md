@@ -57,7 +57,7 @@ The nominal spatial pixel resolution of S1 WV is around 3 m depending on the loc
 ---
 name: dlr_sar_fig02
 ---
- Example one-year data in 2020 (both S1-A and S1-B in service) WV imagettes 20x20 km imagettes every 100 km, color means density of processed data on 0.2° mesh (correspondes to wave model WFWAM reanalysis data)
+ Example one-year data in 2020 (both S1-A and S1-B in service) WV imagettes 20x20 km imagettes every 100 km, color means density of processed data on 0.2° mesh (correspondes to resolution of the wave model WFWAM reanalysis data)
 
 ```
 
@@ -72,7 +72,7 @@ For sea state estimation, the VV or HH polarization data were used, with priorit
 ---
 name: dlr_sar_fig03
 ---
- Example one-year data in 2020 (both S1-A and S1-B in service) IW products, color means density of processed data on 0.2° mesh (correspondes to wave model WFWAM reanalysis data)
+ Example one-year data in 2020 (both S1-A and S1-B in service) IW products, color means density of processed data on 0.2° mesh (correspondes to resolution of the wave model WFWAM reanalysis data)
 ```
 
 ## Sentinel-1 Extra Wide Swath mode (EW) data datasets
@@ -84,7 +84,7 @@ The EW mode acquires data over 400 km swath width with a coarser pixel spacing o
 ---
 name: dlr_sar_fig4
 ---
- Example one-year data in 2020 (both S1-A and S1-B in service) EW products, color means density of processed data on 0.2° mesh (correspondes to wave model WFWAM reanalysis data)
+ Example one-year data in 2020 (both S1-A and S1-B in service) EW products, color means density of processed data on 0.2° mesh (correspondes to to resolution of the wave model WFWAM reanalysis data)
 ```
 
 
