@@ -5,7 +5,7 @@ The SAR L2P products are:
 - sea state rastered fields with mesh of 5 km for S1 IW and 17.5 km for S1 EW.
 
 
-## L2P  SAR L2P geophysical data record format specification
+## L2P SAR geophysical data record format specification
 
 The Table provides an overview of the CCI Sea State L2P environment (geophysical) data record within a L2P file (DLR_OCN).
 
