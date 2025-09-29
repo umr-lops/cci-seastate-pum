@@ -8,7 +8,7 @@ The SSP is part of the SAR AIS Integrated Toolbox (SAINT), developed at the DLR 
 It is provided as a container, enabling easy integration into the PSM (Processing System Management, which provides a systematic process flow and controls for Level-2). Subscription rules allow user requests to be directly linked to on-demand ground station planning and L2 processing. 
 
 The SAR-SeaStaR is optimised for minimizing non-valid data. For example, the number of non-valid ocean imagettes for S1 WV is ca. 1.5% with an accuracy of ca. 0.26 m in terms of SWH. 
-This optimization allows process data for ambiguous enviroment conditions dominate in coastal ares (artifacts by ships, buoys, watermarks, windparks, etc.) and by low winds uncer 2 m/s.
+This optimization allows process data for ambiguous enviroment conditions dominate in coastal ares (artifacts by ships, buoys, watermarks, windparks, etc.) and by low winds under 2 m/s.
 
 
 ```{figure} /images/dlr_sar_fig0.png
