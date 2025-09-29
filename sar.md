@@ -5,9 +5,9 @@ Also, first and second moment wave periods, mean wave period, dominant and secon
 windsea wave height and periods (total eight parameters). 
 
 Three kinds of datasets are delivered, processed from Sentienl-1 three modes: 
-•	Wave mode (WV) acquired over open oceans, along-orbit imagettes ca. 20×20 km every 100 km.
-•	Interferometric Wide Swath mode (IW) in shelf regions and seas, strips up to 2000 km with swath width of ca. 250 km.
-•	Extra Wide Swath mode (EW) in polar regions with swath width of ca. 450 km.
+-	Wave mode (WV) acquired over open oceans, along-orbit imagettes ca. 20×20 km every 100 km.
+-	Interferometric Wide Swath mode (IW) in shelf regions and seas, strips up to 2000 km with swath width of ca. 250 km.
+-	Extra Wide Swath mode (EW) in polar regions with swath width of ca. 450 km.
 
 During processing at Ground Stations (GS) the IW and EW raw data are divided into images with individual product
 IDs with along-flight length of ca. 200 km for IW and ca. 400 km for EW and converted into Level-1 (L1) products 
