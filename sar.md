@@ -13,7 +13,7 @@ During processing at Ground Stations (GS) the IW and EW raw data are divided int
 IDs with along-flight length of ca. 200 km for IW and ca. 400 km for EW and converted into Level-1 (L1) products 
 for easier distribution. This dividing can differ by processing of the raw SAR data at different GTs.
 
-In total, pear a day ca.
+In total, per a day ca.
  500 IW products 
  200 EW products 
   60 WV tracks (means ca. 600 imagettes)
