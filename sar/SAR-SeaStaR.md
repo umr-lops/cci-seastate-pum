@@ -129,11 +129,10 @@ SAR scenes are processed in raster format, the output
 are fields for each parameter showing their spatial distribution.
 
 SAR-SeaStaR is adopted for different satellites Sentinel-1 (S1) and TerraSAR-X (TS-X) and modes (state-of-the-art 2024): 
-
- − S1 Wave Mode (WV) Level-1 (L1) products  SLC
- − S1 Interferometric Wide Swath Mode (IW)  GRD
- − S1 Extra Wide (EW)  GRD
- − TerraSAR-X (TS-X) StripMap (SM) GRD RE
+ - S1 Wave Mode (WV) Level-1 (L1) products  SLC
+ - S1 Interferometric Wide Swath Mode (IW)  GRDH
+ - S1 Extra Wide (EW)  GRDM and GRDH
+ - TerraSAR-X (TS-X) StripMap (SM) GRD RE
  
 SAR-SeaStaR is based on combination of the linear regression function 
 CWAVE_EX (Pleskachevsky et al., 2022) and a machine learning approach using the
