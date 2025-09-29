@@ -121,9 +121,9 @@ at German Aerospace Center DLR, Maritime Safety and Security Lab Bremen.
 From SAR data, SAR-SeaStaR estimates a series of integrated sea state 
 parameters: 
 
--total significant wave height SWH
--wave heights of dominant and secondary swells and windsea,
--mean, first and second moment wave periods, and windsea period.
+ - total significant wave height SWH
+ - wave heights of dominant and secondary swells and windsea,
+ - mean, first and second moment wave periods, and windsea period.
 
 SAR scenes are processed in raster format, the output 
 are fields for each parameter showing their spatial distribution.
