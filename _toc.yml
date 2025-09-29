@@ -24,6 +24,7 @@ chapters:
   sections:
   - file: sar/missions
   - file: sar/SAR-SeaStaR
+  - file: sar/sar_dlr_l2p
   - file: sar/sar_partition_parameters
 - file: access
 - file: changes
