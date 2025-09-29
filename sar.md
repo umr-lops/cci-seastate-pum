@@ -53,7 +53,7 @@ Using both wv1 and wv2 this means along-track imagettes each 100 km.
 The length of a track (relative orbit with ID) varies from around 1,000 km (10 imagettes) to 12,000 km (120 imagettes).
 The nominal spatial pixel resolution of S1 WV is around 3 m depending on the local incidence angle in SLC products used. 
 
-```{figure} /images/dlr_sar_fig01.png
+```{figure} /images/dlr_sar_fig02.png
 ---
 name: dlr_sar_fig02
 ---
