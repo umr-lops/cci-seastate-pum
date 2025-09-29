@@ -17,9 +17,9 @@ At first, all available archive scenes were processed. Later only scenes with at
 and included in the DLR sea state products (DLR_OCN).
 
 In total, per a day ca.
- -500 IW products 
- -200 EW products 
- - 60 WV tracks (means ca. 600 imagettes)
+ - 500 IW products 
+ - 200 EW products 
+ -  60 WV tracks (means ca. 600 imagettes)
 were acquired (S1A and S1B) over oveans and seas.
 
 
