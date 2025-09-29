@@ -90,7 +90,7 @@ The EW mode acquires data over 400 km swath width with a coarser pixel spacing o
 
 ```{figure} /images/dlr_sar_fig04.png
 ---
-name: dlr_sar_fig4
+name: dlr_sar_fig04
 ---
  Example one-year ocean  data in 2020 (both S1-A and S1-B in service) EW products,
   color means density of processed data (17.5 km raster) on 0.2° mesh (correspondes to to resolution of the wave model WFWAM reanalysis data)
