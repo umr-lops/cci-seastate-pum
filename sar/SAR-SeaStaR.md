@@ -83,7 +83,7 @@ Remote Sens. Environ., vol. 280, Oct. 2022, Art. no. 113200.
 
 ## Editing
 
-At first, all available archive scenes were processed.Later only scenes with at least 2 km water area were designated as ocean scenes
+At first, all available archive scenes were processed. Later only scenes with at least 2 km water area were designated as ocean scenes
 and included in the DLR sea state products (DLR_OCN).
 The WVs are only recorded over oceans, while only ca. 40% of all IW and ca. 80% of all EW scenes include the seas. 
 The processed results has two level of data rejection:
