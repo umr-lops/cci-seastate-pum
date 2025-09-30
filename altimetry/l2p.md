@@ -542,8 +542,8 @@ measurement.
 (l2p_variables_auxiliary)=
 ## L2P auxiliary data record format specification
 The {numref}`table_l2p_variables_auxiliary` provides an overview of the CCI 
-Sea State L2P environment (geophysical) data record within a L2P file. In the 
-following sections, each variable within the L2P data file is described in detail.
+Sea State L2P auxiliary data records within a L2P file. In the 
+following sections, each variable within this table is described in detail.
 
 ```{table} Summary description of CCI Sea State L2P ancillary data records
 :name: table_l2p_variables_auxiliary
