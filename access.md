@@ -30,9 +30,10 @@ Where:
 ## Data subsetting
 
 Remote data subsetting and reading is also possible:
-- with THREDDS/OPenDAP service: https://tds0.ifremer.fr/thredds/dodsC/ESACCI-SEASTATE-L4-SWH-MULTI_1M (L4 only)
+- with THREDDS/OPenDAP service: https://tds0.ifremer.
+  fr/thredds/dodsC/ESACCI-SEASTATE-L4-SWH-MULTI_1M (L4 only) - check [this tutorial](./notebooks/tutorial_thredds.ipynb)
 - with the ESA CCI Sea State API: https://cci-seastate.ifremer.fr/ (all 
-  products)
+  products) - check [this tutorial](./notebooks/tutorial_cci-seastate_subsetting_api.ipynb)
 
 
 
