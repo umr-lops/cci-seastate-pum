@@ -1,11 +1,14 @@
- # Data access
+# Data access
 
-The data can be obtained from Ifremer FTP server: ftp://eftp.ifremer.fr. 
+## Basic download
+The data can be obtained from Ifremer through HTTP or FTP.
 
-The login and password can be obtained upon filling the registration form at: https://forms.ifremer.fr/lops-siam/access-to-esa-cci-sea-state-data/
+- for FTP, go to: ftp://ftp.ifremer.fr/ifremer/cersat/data/ocean-waves/cci-seastate/v4/
+- for HTTP, go to: https://data-cersat.ifremer.fr/data/ocean-waves/cci-seastate/v4/
 
-Latest data are also linked from the Project web page at: 
-https://climate.esa.int/en/projects/sea-state/data/ .
+No login or password is required.
+
+The data will be later pushed to the legacy ESA CCI archive at: https://climate.esa.int/en/projects/sea-state/data/ .
 
 The common directory structure is based on CCI recommendations and is arranged as
 follows:
@@ -22,4 +25,14 @@ Where:
   merged  products and l4 for monthly averaged gridded products)
 * `<mission>` : satellite mission (for L2P products only)
 * `<date>` : *<year as YYYY>/<day in the year as DDD>*
+
+
+## Data subsetting
+
+Remote data subsetting and reading is also possible:
+- with THREDDS/OPenDAP service: https://tds0.ifremer.fr/thredds/dodsC/ESACCI-SEASTATE-L4-SWH-MULTI_1M (L4 only)
+- with the ESA CCI Sea State API: https://cci-seastate.ifremer.fr/ (all 
+  products)
+
+
 

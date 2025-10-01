@@ -1,4 +1,4 @@
-# L2P  SAR 
+# L2P SAR WV & IW/EW by DLR  
 
 The SAR L2P products are:
 - along-track files for S1 wave mode WV (averaged values for each 20x20 km imagette acquired each 100 km) 
@@ -10,7 +10,7 @@ The SAR L2P products are:
 The Table provides an overview of the CCI Sea State L2P environment (geophysical) data record within a L2P file (DLR_OCN).
 
 ```{table} Summary description of CCI Sea State L2P geophysical data records SAR (DLR_OCN)  
-:name: dlr_products
+:name: dlr_vars
 |                     |       Abb. in netCDF product    | Description in netCDF product                               |       Unit/Meaning                       |
 |---------------------|---------------------------------|-------------------------------------------------------------|------------------------------------------|
 | total significant wave height    | swh                | total C band significant wave height                        | m                                        | 
