@@ -48,8 +48,7 @@ used in the processing workflow:
 | SARAL       | Version F   | AVISO    | From 14/03/2013 to 31/12/2023 |
 | JASON-1     | Version E   | AVISO    | From 15/01/2002 to 21/06/2013 |
 | JASON-2     | Version D   | AVISO    | From 04/07/2008 to 01/10/2019 |
-| JASON-3     | Version D   | AVISO    | From 17/02/2016 to 06/05/2019 |
-| JASON-3     | Version F   | AVISO    | From 07/05/2019 to 31/12/2023 |
+| JASON-3     | Version F   | AVISO    | From 17/02/2016 to 31/12/2023 |
 | TOPEX       | Version F   | AVISO    | From 13/10/1992 to 04/10/2005 |
 | ERS-1       | REAPER      | ESA      | From 03/08/1991 to 02/06/1996 |
 | ERS-2       | REAPER      | ESA      | From 14/05/1995 to 02/07/2003 |
@@ -93,22 +92,6 @@ According to TOPEX version F documentation:
   of the loss allowing approximately 90% data coverage. Finally, in October 2004
   TRC failed. Real time data acquisition provided approximately 82% data 
   coverage until the end of the mission.
-```
-
-```{admonition} Note on Jason-3
-Two versions of SGDR were used as input : **version D** and **Version F**. 
-Version F replaced version D in the course of the mission. However a large 
-amount of data in version D had already retracked with WHALES in CCI Sea 
-State version 3. It was decided not to replace this already completed segment
-of the Jason-3 data archive.
-
-Data processed in version D and version F were however separated in CCI 
-processing to ensure that possible inconsistencies between the two versions are 
-addressed.
-
-Jason-3 SGDR data during the cal/val period are labelled as **version T**.
-Version T method and algorithms are consistent with version D. The two versions 
-are merged into the version D segment of the CCI processing.
 ```
 
 
