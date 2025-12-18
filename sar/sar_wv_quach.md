@@ -1,4 +1,4 @@
-# L2P SAR WV by Ifremer
+# L2P "Quach" SAR WV by Ifremer
 
 This section covers the the wave height estimation from Sentinel-1 WV using 
 Quach et al methodology (IFREMER & University of Hawaii)

@@ -1,4 +1,4 @@
-# Sentinel-1 SAR Partition parameters datset
+# Sentinel-1 SAR Partition parameters
 
 This page provides general information regarding the SAR partition parameter dataset produced by ODL.
 

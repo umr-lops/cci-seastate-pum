@@ -100,7 +100,7 @@ upstream developments and the downstream uses.
 {numref}`survey` sums up the results of a survey sent to a large community of 
 Wave interested people around the world (100 answers around 18 countries).
 
-```{figure} /images/overview3.png
+```{figure} /images/overview2.png
 ---
 name: survey
 ---
