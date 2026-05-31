@@ -205,6 +205,35 @@ the missions described hereafter.
 - Interleaved orbit : from April 25, 2022
 
 
+## GFO (GEOSat Follow-on)
+
+**Launch date** : February 10, 1998
+
+---
+
+**End of life date** : October 22, 2008
+
+---
+
+**Agency** : US Navy
+
+---
+
+**Instrument** : GFO-RA (GEOSat Follow-On Radar Altimeter)
+
+---
+
+**Orbit characteristics** : 
+- Orbit type : Drifting orbit
+- Inclination: 108 degrees
+- Altitude: 789 km
+- Repeat cycle: 17 days
+
+---
+
+
+
+
 ## ENVISAT
 
 **Launch date** : March 1, 2002
@@ -381,3 +410,52 @@ the missions described hereafter.
 - Repeat cycle: 9.9156 days
 
 
+## CFOSAT
+
+**Launch date** : October, 29 Oct 2018
+
+---
+
+**End of life date** : Still operational (expected: 2026)
+
+---
+
+**Agency** : CNES/NSOAS
+
+---
+
+**Instrument** : SWIM (Nadir beam)
+
+---
+
+**Orbit characteristics** :
+
+- Orbit type: Sun-synchronous
+- Inclination: 97.5 degrees
+- Altitude: 519 km
+
+
+## SWOT
+
+**Launch date** : December, 16 2022
+
+---
+
+**End of life date** : Still operational (expected: Dec 2029)
+
+---
+
+**Agency** : CNES/NASA/CSA/UKSA
+
+---
+
+**Instrument** : Poseidon-3C
+
+---
+
+**Orbit characteristics** :
+
+- Orbit type: Inclined, Non-sun-synchronous
+- Inclination: 77.6 degrees
+- Altitude: 891 km
+- Repeat cycle: 21 days

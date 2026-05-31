@@ -1,10 +1,10 @@
 # Data access
 
 ## Basic download
-The data can be obtained from Ifremer through HTTP or FTP.
+The data can be obtained from Ifremer through HTTPS or FTP.
 
-- for FTP, go to: ftp://ftp.ifremer.fr/ifremer/cersat/data/ocean-waves/cci-seastate/v4/
-- for HTTP, go to: https://data-cersat.ifremer.fr/data/ocean-waves/cci-seastate/v4/
+- for FTP, go to: ftp://ftp.ifremer.fr/ifremer/cersat/data/ocean-waves/cci-seastate/v5/
+- for HTTPS, go to: https://data-cersat.ifremer.fr/data/ocean-waves/cci-seastate/v5/
 
 No login or password is required.
 
@@ -13,7 +13,7 @@ The data will be later pushed to the legacy ESA CCI archive at: https://climate.
 The common directory structure is based on CCI recommendations and is arranged as
 follows:
 
-`/cci_seastate/<release version>/data/<instrument type>/<type>/<mission>/<date>/`
+`/cci_seastate/<release version>/data/<instrument type>/<type>/<mission>/<product>/<date>/`
 
 Where:
 * `<cci_project>` : *seastate*
@@ -24,6 +24,7 @@ Where:
   consistent within an ECV, here l2 for along-track data, l3 for edited 
   merged  products and l4 for monthly averaged gridded products)
 * `<mission>` : satellite mission (for L2P products only)
+* `<product>` : the product (file collection) identifier
 * `<date>` : *<year as YYYY>/<day in the year as DDD>*
 
 

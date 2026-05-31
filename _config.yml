@@ -33,4 +33,4 @@ html:
 
 parse:
   myst_substitutions:
-    cci_version: version 4
+    cci_version: version

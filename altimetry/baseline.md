@@ -21,14 +21,16 @@ In a nutshell:
   values (and set the quality confidence variable `quality_level`)
 - **ancillary variables** extracted from different sources (models and 
   observations, climatology, land, sea ice,...) are added into the L2 product.
-- **bias correction** of SWH is estimated for each mission to ensure 
-  consistent time series of measurements across all missions, and a 
+- **bias correction** of SWH and backscatter ($\sigma^0$) is estimated for each 
+  mission to ensure consistent time series of measurements across all missions, and a 
   corrected value added to the L2 product
 - **denoising** is applied to the corrected SWH values using  Empirical Mode 
   Decomposition (EMD) filter and added to the L2P product as a new 
   `swh_denoised` variable
 - **uncertainty** of SWH values is estimated and added to the L2P as a new 
   `swh_uncertainty` variable
+- the **wind speed** is calculated from the cross calibrated $\sigma^0$ using the 
+  same retrieval algorithm
 - the L2P measurements are aggregated into multi-mission observation files 
   (**L3**) and monthly statistics of SWH (**L4**) are calculated
 
@@ -42,20 +44,27 @@ used in the processing workflow:
 ```{table} List of SGDR input data
 :name: sgdr_inputs
 
-| Mission     | Version     | Provider | Date                          |
+| Mission     | Version     | Provider | Temporal coverage             |
 |-------------|-------------|----------|-------------------------------|
-| CRYOSAT-2   | Version E   | ESA      | From 16/07/2010 to 31/12/2023 |
-| SARAL       | Version F   | AVISO    | From 14/03/2013 to 31/12/2023 |
-| JASON-1     | Version E   | AVISO    | From 15/01/2002 to 21/06/2013 |
-| JASON-2     | Version D   | AVISO    | From 04/07/2008 to 01/10/2019 |
-| JASON-3     | Version F   | AVISO    | From 17/02/2016 to 31/12/2023 |
-| TOPEX       | Version F   | AVISO    | From 13/10/1992 to 04/10/2005 |
-| ERS-1       | REAPER      | ESA      | From 03/08/1991 to 02/06/1996 |
-| ERS-2       | REAPER      | ESA      | From 14/05/1995 to 02/07/2003 |
-| ENVISAT     | Version 3   | ESA      | From 14/05/2002 to 08/04/2012 |
-| Sentinel-3A | Version 005 | EUMETSAT | From 01/07/2016 to 31/12/2023 |
-| Sentinel-3B | Version 005 | EUMETSAT | From 08/05/2018 to 31/12/2023 |
-| Sentinel-6A | Version F08 | EUMETSAT | From 17/12/2020 to 31/12/2023 |
+| ERS-1       | REAPER      | ESA      | 03/08/1991 to 02/06/1996 |
+| ERS-2       | REAPER      | ESA      | 14/05/1995 to 02/07/2003 |
+| JASON-1     | Version E   | AVISO    | 15/01/2002 to 21/06/2013 |
+| JASON-2     | Version D   | AVISO    | 04/07/2008 to 01/10/2019 |
+| JASON-3     | Version F   | AVISO    | 12/02/2015 to 07/01/2025 |
+| JASON-3     | Version G   | AVISO    | 30/01/2025 to 31/12/2025 |
+| TOPEX-Poseidon | Version F   | AVISO    | 13/10/1992 to 04/10/2005 |
+| ENVISAT     | Version 3   | ESA      | 14/05/2002 to 08/04/2012 |
+| GFO         |             | NOAA     | 08/01/2000 to 17/09/2008 |
+| CRYOSAT-2   | Version E   | ESA      | 16/07/2010 to 31/12/2025 |
+| SARAL       | Version F   | AVISO    | 14/03/2013 to 31/12/2025 |
+| Sentinel-3A | Version 005 | EUMETSAT | 01/07/2016 to 08/11/2024 |
+| Sentinel-3A | Version G61 | EUMETSAT | 08/11/2024 to 31/12/2025 |
+| Sentinel-3B | Version 005 | EUMETSAT | 08/05/2018 to 07/11/2024 |
+| Sentinel-3B | Version G61 | EUMETSAT | 08/11/2024 to 31/12/2025 |
+| Sentinel-6A | Version G01 | EUMETSAT | 17/12/2020 to 31/12/2025 |
+| SWOT Nadir  | Version S02 | AVISO    | 16/02/2023 to 31/12/2025 |
+| CFOSAT Nadir| Version OP06| AVISO    | 19/04/2019 to 09/10/2024 |
+| CFOSAT Nadir| Version OP07| AVISO    | 09/10/2024 to 31/12/2025 |
 ```
 
 ```{admonition} Note on TOPEX-POSEIDON
@@ -108,7 +117,7 @@ measurements already processed by the space agencies (see
 not retracked with WHALES in this release include: non availability of the 
 waveforms, non applicability of WHALES to an altimeter (e.g. SAR altimeters, 
 lack of technical information to adapt the retracker), or postponement to a 
-future release (Sentinel-6 LRM, ERS-1, ERS-2, ...). 
+future release (CFOSAT/Nadir, ...). 
 
 The Low Resolution Mode (LRM) waveforms are characterised by a rising leading edge that
 becomes less steep as the SWH increases, and a slowly decreasing trailing edge. The
@@ -147,20 +156,23 @@ CCI Sea State production team (WHALES) or a third party agency:
 
 | source                   | period             | retracker     | 
 |--------------------------|--------------------|---------------|
-| ERS-1                    | 07/1991 to 03/2000 | REAPER (MLE3) | 
-| ERS-2                    | 04/1995 to 07/2011 | REAPER (MLE3) | 
+| ERS-1                    | 07/1991 to 03/2000 | WHALES        | 
+| ERS-2                    | 04/1995 to 07/2011 | WHALES        | 
 | Jason-1 Version E        | 01/2002 to 07/2013 | WHALES        | 
 | Jason-2 Version D        | 06/2008 to 10/2019 | WHALES        | 
-| Jason-3 Version D        | 09/2016 to 06/2019 | WHALES        | 
-| Jason-3 Version F        | 06/2019 to now     | WHALES        | 
-| Jason-3 Version T        | 02/2016 to 09/2016 | WHALES        | 
+| Jason-3 Version F        | 02/2016 to 01/2025 | WHALES        | 
+| Jason-3 Version G        | 01/2025 to 12/2025 | WHALES        | 
 | Topex Version F          | 08/1992 to 01/2006 | MLE3          |
+| GFO                      | 01/2000 to 09/2008 |           |
 | Envisat Version 3        | 03/2002 to 04/2012 | WHALES        | 
 | CryoSat-2  Version E     | 07/2010 to now     | WHALES        | 
 | SARAL Version F          | 02/2013 to now     | WHALES        |
-| Sentinel-6 A Version F08 | 03/2020 to 12/2023 | MLE4          |   
+| Sentinel-6 A Version G   | 03/2020 to 12/2023 | WHALES          |   
 | Sentinel-3 A Version 005 | 02/2016 to now     | MLE4          |
 | Sentinel-3 B Version 005 | 04/2018 to now     | MLE4          |
+| SWOT Nadir | 02/2023 to 12/2025 | WHALES          |   
+| CFOSAT OP06 | 04/2019 to 10/2024 | Adaptive  |   
+| CFOSAT OP07 | 10/2024 to 12/2025 | Adaptive  |   
 ```
 
 For sigma0, the measurements from the original retracking performed by the agency 
@@ -177,16 +189,19 @@ used for each mission for sigma0 by these agencies:
 | ERS-2                    | 04/1995 to 07/2011 | REAPER/MLE3 (Ku)      | 
 | Jason-1 Version E        | 01/2002 to 07/2013 | MLE3 (Ku, C)          | 
 | Jason-2 Version D        | 06/2008 to 10/2019 | MLE3 (Ku, C)          | 
-| Jason-3 Version T        | 02/2016 to 09/2016 | MLE3 (Ku, C)          | 
-| Jason-3 Version D        | 09/2016 to 06/2019 | MLE3 (Ku, C)          | 
-| Jason-3 Version F        | 06/2019 to now     | MLE3  (Ku, C)         | 
+| Jason-3 Version F        | 02/2016 to 01/2025 | MLE3  (Ku, C)         | 
+| Jason-3 Version G        | 01/2025 to 12/2025 | MLE3  (Ku, C)         | 
 | Topex Version F          | 08/1992 to 01/2006 | MLE3 (Ku, C)          |
 | Envisat Version 3        | 03/2002 to 04/2012 | MLE3 (C)              | 
 | CryoSat-2  Version E     | 07/2010 to now     | Ocean CFI/MLE4 (Ku)   |
 | SARAL Version F          | 02/2013 to now     | MLE4 (Ka)             |
-| Sentinel-6 A Version F08 | 03/2020 to 12/2023 | MLE3 (Ku, C)          |   
-| Sentinel-3 A Version 005 | 02/2016 to now     | MLE4 (Ku), MLE3 (C)   |
-| Sentinel-3 B Version 005 | 04/2018 to now     | MLE4 (Ku), MLE3 (C)   |
+| Sentinel-6 A Version G01 | 03/2020 to 12/2025 | MLE3 (Ku, C)     ?     |   
+| Sentinel-3 A Version 005 | 02/2016 to ?     | MLE4 (Ku), MLE3 (C)   |
+| Sentinel-3 A Version G61 |     | MLE4 (Ku), MLE3 (C)  ? |
+| Sentinel-3 B Version 005 | 04/2018 to ?     | MLE4 (Ku), MLE3 (C)   |
+| SWOT Nadir | 02/2023 to 12/2025 | ?          |   
+| CFOSAT OP06 | 04/2019 to 10/2024 | Adaptive    ?      |   
+| CFOSAT OP07 | 04/2019 to 10/2024 | Adaptive     ?     |   
 ```
 
 
@@ -236,7 +251,7 @@ measurements into 1 Hz values follows these steps:
 4. Among the remaining full resolution SWH measurements, **outliers** are 
    discarded. The outlier detection scheme is based on the **maximum absolute 
    deviation (MAD)**  for a 3-sigma criterion, meaning:
-   * only 20 Hz SWH values within [median(SWH) - 3 * MAD(SWH), median(SWH) 3 * MAD(SWH)] interval are kept
+   * only 20 Hz SWH values within [median(SWH) - 3 * MAD(SWH), median(SWH) + 3 * MAD(SWH)] interval are kept
    * with: MAD(SWH) = 1.4286 * median(abs(SWH - median(SWH)))
 5. The **median** of the remaining measurements is selected as 1 Hz value. When 
    there were less than 6 (12 for SARAL) valid remaining measurements, the 1 
@@ -247,20 +262,24 @@ measurements into 1 Hz values follows these steps:
 
 | Source                  | SWH                    | SWH quality                         |
 |-------------------------|------------------------|-------------------------------------|
-| Jason-1 Version E       | swh.07                 | swh_WHALES_fitting_error_20hz > 0.3 |
-| Jason-2 Version D       | swh.07                 | swh_WHALES_fitting_error_20hz > 0.3 |
-| Jason-3 Version D       | swh_WHALES_20hz        | swh_WHALES_fitting_error_20hz > 0.3 |
+| Jason-1 Version E       | swh_WHALES_20hz        | swh_WHALES_qual_20hz == 0           |
+| Jason-2 Version D       | swh_WHALES_20hz        | swh_WHALES_qual_20hz == 0           |
 | Jason-3 Version F       | swh_WHALES_20hz        | swh_WHALES_qual_20hz == 0           |
-| Jason-3 Version T       | swh_WHALES_20hz        | swh_WHALES_fitting_error_20hz > 0.3 |
+| Jason-3 Version G       | swh_WHALES_20hz        | swh_WHALES_qual_20hz == 0           |
 | Topex Version F         | swh_20hz_ku            | swh_used_20hz_ku == 0               |
 | Envisat Version 3       | swh_WHALES_20hz        | swh_WHALES_qual_20hz == 0           |
-| ERS-1 REAPER            | swh_20hz               | swh_used_20hz == 0                  |
-| ERS-2 REAPER            | swh_20hz               | swh_used_20hz == 0                  |
-| CryoSat-2 Version E     | swh_WHALES_20hz        | swh_WHALES_fitting_error_20hz > 0.3 |
-| Saral Version F         | swh_WHALES_20hz        | swh_WHALES_fitting_error_20hz > 0.3 |                           
-| Sentinel-6A Version F08 | swh_ocean              | swh_ocean_qual == 1                 |
+| ERS-1 REAPER            | swh_WHALES_20hz        | swh_WHALES_qual_20hz == 0           |
+| ERS-2 REAPER            | swh_WHALES_20hz        | swh_WHALES_qual_20hz == 0           |
+| CryoSat-2 Version E     | swh_WHALES_20hz        | swh_WHALES_qual_20hz == 0           |
+| Saral Version F         | swh_WHALES_20hz        | swh_WHALES_qual_20hz == 0           |                           
+| Sentinel-6A Version G01 | swh_WHALES_20hz        | swh_WHALES_qual_20hz == 0           |
 | Sentinel-3A Version 005 | swh_ocean_20_plrm_ku   | swh_ocean_qual_20_plrm_ku == 0      |
+| Sentinel-3A Version G61 | swh_ocean_20_plrm_ku   | swh_ocean_qual_20_plrm_ku == 0      |
 | Sentinel-3B Version 005 | swh_ocean_20_plrm_ku   | swh_ocean_qual_20_plrm_ku == 0      |
+| Sentinel-3A Version G61 | swh_ocean_20_plrm_ku   | swh_ocean_qual_20_plrm_ku == 0      |
+| SWOT Nadir version S02  | swh_WHALES_20hz        | swh_WHALES_qual_20hz == 0           | 
+| CFOSAT OP06             | swh                    | flag_valid_swh_1Hz == 0             |   
+| CFOSAT OP07             | swh                    | flag_valid_swh_1Hz == 0             |   
 ```
 
 For the compression of the **sigma0**, the processing is the same. Full 
@@ -281,22 +300,26 @@ sigma0 when available, as summarized in {numref}`fullres_sigma0`.
 |                          | sig0_20hz_c           | sig0_used_20hz_c == 0                    |
 | Jason-2 Version D        | sig0_20hz_ku_mle3     | sig0_used_20hz_ku_mle3 == 0              |
 |                          | sig0_20hz_c           | sig0_used_20hz_c == 0                    |
-| Jason-3 Version D        | sig0_20hz_ku_mle3     | sig0_used_20hz_ku_mle3 == 0              |
-|                          | sig0_20hz_c           | sig0_used_20hz_c == 0                    |
-| Jason-3 Version F        | ku_sig0_ocean_mle3    | ku_sig0_ocean_mle3_compression_qual == 0 |
-|                          | c_sig0_ocean          | c_sig0_ocean_compression_qual == 0       |
+| Jason-3 Version F        | sig0_ocean_mle3       | sig0_ocean_mle3_compression_qual == 0    |
+|                          | sig0_ocean            | sig0_ocean_compression_qual == 0         |
+| Jason-3 Version G        | sig0_ocean_mle3       | sig0_ocean_mle3_compression_qual == 0    |
+|                          | sig0_ocean            | sig0_ocean_compression_qual == 0         |
 | Topex Version F          | sig0_20hz_ku_mle3     | sig0_used_20hz_ku == 0                   |
 | Envisat Version 3        | sig0_ocean_20_ku      | sig0_ocean_qual_20_ku == 0               |
 | ERS-1 REAPER             | ocean_sig0_20hz       | ocean_sig0_used_20hz                     |
 | ERS-2 REAPER             | ocean_sig0_20hz       | ocean_sig0_used_20hz                     |
 | CryoSat-2  Version E     | sig0_1_20_ku          |                                          |
-| SARAL Version T          | sig0_40hz             | sig0_used_40hz == 0                      |
+| SARAL Version F          | sig0_40hz             | sig0_used_40hz == 0                      |
 | Sentinel-6 A Version F08 | ku_sig0_ocean_mle3    | ku_sig0_ocean_mle3_qual != 1             |
 |                          | c_sig0_ocean          | c_sig0_ocean_qual != 1                   |
 | Sentinel-3 A Version 005 | sig0_ocean_20_plrm_ku | sig0_ocean_qual_20_plrm_ku == 0          |
 |                          | sig0_ocean_20_c       | sig0_ocean_qual_20_c == 0                |
 | Sentinel-3 B Version 005 | sig0_ocean_20_plrm_ku | sig0_ocean_qual_20_plrm_ku == 0          |
 |                          | sig0_ocean_20_c       | sig0_ocean_qual_20_c == 0                |
+| SWOT Nadir version S02   | sig0_ocean_mle3       | sig0_ocean_mle3_compression_qual == 0    |
+|                          | sig0_ocean            | sig0_ocean_compression_qual == 0         | 
+| CFOSAT OP06              | sigma0                | flag_valid_sigma0_1Hz == 0               |   
+| CFOSAT OP07              | sigma0                | flag_valid_sigma0_1Hz == 0               |   
 ```
 
 > **S-band sigma0** were ignored for **Envisat** as it was found they were 
@@ -478,10 +501,12 @@ next source in line.
 ```{table} sources for sea ice concentration (SIC) CDR, by order of priority
 :name: ancillary_sic
 
-|                      | Variable | Temporal Coverage     | Description                                                                                                                                                 |
-|----------------------|----------|-----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| OSISAF-AMSR-CDR-v3p0 | ice_conc | 2002-2020 (ext: 2024) | AMSR Sea Ice Concentration Climate Data Record from OSI SAF (doi: 10.15770/EUM_SAF_OSI_0015)                                                                |
-| SICCI-HR-SIC         | ice_conc | 1991-2020             | High(er) Resolution Sea Ice Concentration Climate Data Record Version 3 from CCI Sea Ice+ (SSM/I and SSMIS) (doi: 10.5285/eade27004395466aaa006135e1b2ad1a) |
+|  Product             | Variable | Temporal Coverage     | Description |
+|----------------------|----------|-----------------------|-------------|
+| OSISAF-438 | ice_conc | 2021-onward | AMSR-2 Interim Sea Ice Concentration Climate Data Record from MetNo | 
+| OSI-458    | ice_conc | 2013-2020   | AMSR Sea Ice Concentration Climate Data Record from OSI SAF (doi: 10.15770/EUM_SAF_OSI_0015) |
+| SICCI-HR-SIC  | ice_conc | 1991-2020  | High(er) Resolution Sea Ice Concentration Climate Data Record Version 3 from CCI Sea Ice+ (SSM/I and SSMIS) (doi: 10.5285/eade27004395466aaa006135e1b2ad1a) |
+| OSISAF-450-a1 | ice_conc  | 1990-1991 | Sea Ice Concentration Climate Data Record Version 3 (SMMR, SSM/I, and SSMIS) from the EUMETSAT OSI SAF (doi: 10.15770/EUM_SAF_OSI_0023) |
 ```
 
 ### Bathymetry
@@ -649,7 +674,7 @@ Marine Geodesy 38, 449–465. https://doi.org/10.1080/01490419.2014.1000470
 ```
 
 (__denoising)=
-## Denoising
+## SWH Denoising
 
 A non-parametric denoising method based on Empirical Mode Decomposition (EMD,
 Huang et al., 1998) and inspired by wavelet thresholding is applied to the 
@@ -702,9 +727,10 @@ Advances in Space Research, 68. https://doi.org/10.1016/j.asr.2020.01.005]
 
 
 
-## Uncertainties
+## SWH Uncertainties
 
-The L2P files contain two different and complementary estimates of uncertainty:
+The L2P files contain two different and complementary estimates of 
+SWH uncertainty:
 - `swh_emd_uncertainty`: this is based on the “noise” estimated from the 
   along-track variability of the EMD denoising applied on the 1 Hz data. It 
   is an estimate of the uncertainty of the debiased and denoised significant 
@@ -731,15 +757,14 @@ For speckle noise, it is a function of the wave height Hs, the number of
 pulses averaged $n_a$, and the retracking method: Maximum Likelihood (ML), 
 WHALES or Least Squares (LS), and a variance caused by sampling (wave group 
 effect) which is a function of the wave height Hs, the satellite altitude h 
-and the spectral shape quantified by the peakedness $Q_{kk}$). 
+and the spectral shape quantified by the peakedness $Q_{kk}$. 
 
 The processing algorithm sets the value of s0 which gives the effect of 
-speckle noise:  it is lowest for ML (s0=1 m), intermediate for WHALES (s0 ~ 
-2 m) and largest for LS (s0=5 m). 
+speckle noise:  it is lowest for ML (s0=1 m), intermediate for WHALES (s0 ~ 2 m) and largest for LS (s0=5 m). 
 
-The {numref}`all_sat_uncertainties` shows estimated of (a) the effective spatial resolution of 
+{numref}`sat_uncertainties` shows estimated of (a) the effective spatial resolution of 
 the along-track altimeter data: this is roughly the Chelton et al. (1989) 
-radius $\rho_c$=sqrt(2 h Hs) divided by 1.5, this is smallest for CFOSAT 
+radius $\rho_c=sqrt(2 h Hs)$ divided by 1.5, this is smallest for CFOSAT 
 because of the much lower orbit (b) the uncertainty of the data at the 
 native rate (4.5 Hz for CFOSAT, 40 Hz for SARAL and 20 Hz for all others) 
 and (c) the uncertainty of SWH averaged over 1 Hz. Note that there was a 
@@ -747,11 +772,121 @@ mistake in a similar figure of De Carlo and Ardhuin (2024) for CFOSAT (the
 native data rate was not properly taken to be 4.5 Hz) 
 
 ```{figure} ../images/all_sat_uncertainties.png
-:name: all_sat_uncertainties
-
+:name: sat_uncertainties
 ```
 
 Different spectral shapes are considered: $Q_{kk}$ = 2 Hs is typical of a wind 
 sea, whereas swell-dominated conditions often have $Q_{kk}$ > 60 m. 
 
+
+(__sigma0_bias_correction)=
+## Sigma0 bias correction
+
+### Background
+The normalised radar cross-section, $σ^0$, is  a measure of the reflectance of the 
+Earth surface at nadir, which is calculated as the strength of the received signal 
+divided by the emitted pulse, with allowance for known losses. As the backscatter 
+is usually expressed in logarithmic terms (decibels), nearly all physical causes 
+of loss (degradation of amplifier, loss in reflectivity of antenna etc.) equate 
+to a simple subtraction in dB.  The strength of the emitted signal is monitored 
+and compensated for in the on-ground processing.  There are two concerns: the 
+difference in $σ^0$ definition/calculation for individual missions, and changes 
+in $σ^0$ performance that are not correctly picked up by the internal monitoring. 
+They are both addressed in the same way.
+
+### Constant reference surfaces
+Use of surfaces with constant reflective or emissive properties is a common method 
+of monitoring of satellite sensors, but for nadir-pointing radar altimeter there 
+is no natural surface that provides the required accuracy.  However, the relationship 
+between ocean scattering at Ku- and C-band is very well constrained and was thus 
+proposed as a method of monitoring $\sigma^0$ variations (Quartly, 2000).  There are minor 
+secondary effects caused by changes in  wave height and sea surface temperature, 
+but these are fully documented (Quartly, 2025). To intercompare different instruments 
+requires a consistent definition of $\sigma^0$, in effect use of the same retracker 
+throughout.  Earlier work showed the MLE-3 retracker to be very robust, but this 
+is not available for some recent missions, so instead we use the "adjusted $\sigma^0$", 
+which is the MLE-4 estimate compensated for waveform-derived mispointing, 
+$\psi^2$ (Quartly, 2009). Although the $\sigma^0$ at C-band is usually based on an MLE-3 
+retracker, it often utilises the $\psi^2$ estimate from Ku-band.
+
+### Observed sigma0 differences
+{numref}`sigma0_correction_1` shows plots of the mean relationship between 
+$\sigma^0_{Ku}$ and $\sigma^0_{C}$ for a number 
+of dual-frequency radar altimeters that successively occupied the Topex/Jason 
+reference orbit   Simple shifts (of order a few dB) align these different empirical 
+curves closely, providing a consistent sigma0 record.  During lifetimes of individual 
+missions there may be minor changes in calibration (usually less than 0.1 dB) that 
+are required to maintain the match to the defined reference curve.  For Jason-2 
+alone, there were also noted to be issues with the on-ground AGC corrections, so 
+a further correction term is needed specifically for that instrument.
+
+```{figure} ../images/SOMA_s0s0_unshifted.png
+:name: sigma0_correction_1
+
+Mean $σ^0$-$σ^0$ relationships for several dual-frequency altimeters, showing the 
+large offsets required to bring them into alignment.
+```
+
+```{figure} ../images/SOMA_sig0_corr_Topex.png
+:name: sigma0_correction_2
+
+Time series of shifts for the Topex altimeters (switch from Topex-A to Topex-B 
+was in Feb. 1999), showing the large overall value, due to instrument processing 
+specification, with much smaller changes added to that. 
+[The thin blue (orange) line shows the inferred correction at Ku- (C-) band on 
+approximately monthly analysis; the thick yellow (purple) line indicates the 
+implemented corrections, which ignore the short-term variations.]
+```
+
+### Implementation
+
+- Ku-band: $σ^0_{CCI}=σ^0_{MLE4}-α_{Ku}\psi^2 + \Delta σ^0_{Ku}(t)  - \delta σ^0_{Ku}(AGC_{Ku})$
+- C-band: $σ^0_{CCI}=σ^0-α_C \psi^2 + \Delta σ^0_{C}(t)  - \delta σ^0_{C}(AGC_{C})$
+
+where the coefficients, $α_{Ku}$ and $α_{C}$, are specific for each altimeter mission, and 
+the AGC term is only needed for Jason-2.  The corrections varying with $\psi^2$ and AGC 
+effect changes in $σ^0$ on small spatial scales leading to better short-term consistency; 
+the $\Delta σ^0$ term is designed to apply the large shifts needed between different missions 
+and to compensate for uncorrected long-term drift.
+
+These corrections were only derived on a selection of missions, for a given version 
+of the input GDR (which the $σ^0$ are taken from), as listed in {numref}`sigma0_corrected_missions`:
+
+```{table} GDR version and used 1 Hz $\sigma^0$ variables for which a bias corrected \sigma^0$ is provided.
+:name: sigma0_corrected_missions
+
+| source                   | period             | GDR version | $σ^0_{Ku}$ variable | $σ^0_{C}$ variable |
+|--------------------------|--------------------|-------------| ------------------- | ------------------ |
+| Jason-1       | 01/2002 to 07/2013 | Version E   | `sig0_ku` | `sig0_c` |
+| Jason-2       | 06/2008 to 10/2019 | Version D   | `sig0_ku` | `sig0_c` |
+| Jason-3       | 02/2016 to 01/2025 | Version F   |  `ku_sig0_ocean` | `c_sig0_ocean` |
+| Topex         | 08/1992 to 01/2006 | Version F   | `sig0_ku` | `sig0_c` |
+| Sentinel-6 A  | 03/2020 to 12/2025 | Version G   |   `ku_sig0_ocean` | `ku_sig0_ocean` |
+| Sentinel-3 A  | 02/2016 to 11/2024 | Version 005    | `sig0_ocean_20_plrm_ku` | `sig0_ocean_20_c` |
+| Sentinel-3 B  | 04/2018 to 11/2024 | Version 005    | `sig0_ocean_20_plrm_ku` | `sig0_ocean_20_c` |
+```
+
+
+
+```{admonition} References
+:class: note
+Quartly G.D. 2000, Monitoring and cross-calibration of altimeter σ0 through dual-frequency backscatter measurements, J. Atmos. Oceanic Tech., 17, 1252-1258.
+
+Quartly, G.D., 2009, Optimizing σ0 information from the Jason-2 altimeter. IEEE Geosci. Rem. Sensing Lett., 6 (3), 398-402. doi: 10.1109/LGRS.2009.2013973
+
+Quartly, G.D., 2025. The intertwined factors affecting altimeter sigma0. Remote Sens. 17, 3776 (21pp.). doi: 10.3390/rs17223776
+```
+
+(__wind_speed_calculation)=
+## Wind speed calculation
+
+The wind speed measured by the altimeter is calculated from the $\sigma^0$ 
+measurements, using the Abdalla (2012) formulation. Other algorithms using 
+additional dependencies such the SWH and sea surface temperature are being 
+assessed with CCI Sea State project team and may be added in future.
+
+```{admonition} References
+:class: note
+S. Abdalla (2012) Ku-Band Radar Altimeter Surface Wind Speed Algorithm, Marine Geodesy, 35:sup1, 276-298, DOI: 10.1080/01490419.2012.718676"
+```
 

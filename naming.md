@@ -15,7 +15,7 @@ Where:
 * `<Processing Level>` : here *L2P* for along-track data, *L3* for edited 
   merged product and *L4* for monthly averages
 * `<Data Type>` : *SWH* for “Significant Wave Height”, *ISSP* for “Integrated 
-  Sea State Parameters”
+  Sea State Parameters”, *WND* for "Wind speed"
 * `<Product String>` : contains the name of the mission for L2P
 * `<Additional Segregator>` : optionally the name of algorithm used
 * `<Indicative Date>[<Indicative Time>]` : The identifying date for this 

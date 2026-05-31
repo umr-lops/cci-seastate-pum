@@ -4,15 +4,13 @@ jupytext:
   text_representation:
     extension: .md
     format_name: myst
-mystnb:
-  execution_timeout: 360
 ---
 
 (l2p)=
-# L2P
+# L2P SWH
 
-The altimeter L2P products are along-track files, usually corresponding to a 
-satellite pass, processed from each mission data provider’s L1B product 
+The altimeter L2P SWH products are along-track files, usually corresponding 
+to a satellite pass, processed from each mission data provider’s L1B product 
 (usually referred to as SGDR) containing the waveforms. A retracking 
 algorithm is applied to retrieve significant wave height from the instrument 
 waveforms.
@@ -36,7 +34,7 @@ information in this document.
 
 | netCDF File Contents | Description                                                                                               |
 |----------------------|-----------------------------------------------------------------------------------------------------------|
-| **Coordinate variables**  | Information to permit locating data on non-orthogonal grids, as defined in {numref}`coordinate_variables` | 
+| **Coordinate variables**  | Information to permit locating data on non-orthogonal grids, as defined in {numref}`coordinate_variables_all` | 
 | **Geophysical data record variables** | environmental variables for 1st band altimeter (usually Ku) as defined in {numref}`l2p_variables_environmental`                                          | 
 | **Instrumental data record variables** | instrumental variables for 1st band altimeter (usually Ku) as defined in {numref}`l2p_variables_instrumental`                                          | 
 | **Auxiliary data record variables** | auxiliary variables as defined in {numref}`l2p_variables_auxiliary`                                          | 
@@ -285,10 +283,10 @@ table {numref}`l2p_swh_quality_level`.
 
 When SWH measurements were rejected as bad, the reason (quality test) for 
 which they were rejected is reported in the related `swh_rejection_flags` 
-variable. Refer to {numref}`editing` for details on the tests performed for 
+variable. Refer to {numref}`swh_quality_level` for details on the tests performed for 
 the quality check of the measurements.
 
-{numref}`__swh_quality_level` provides the meaning of each flag possibly raised, 
+{numref}`swh_flags` provides the meaning of each flag possibly raised, 
 stored as a specific bit of an integer.
 
 
@@ -420,7 +418,7 @@ variables may therefore be missing for some missions.
 | [sigma0_ku_num_valid](__l2p_sigma0_ku_num_valid) | number of valid points used to compute Ku band backscatter coefficient, within 1Hz cells, of the 20 Hz measurements calculated from the retracking | 1 |
 | [sigma0_ku_quality_level](__l2p_sigma0_ku_quality_level) | Quality level (from 0 - worst to 3 - best) of the Ku band sigma0 averaged over 1 Hz cells |  |
 | [sigma0_ku_rejection_flags](__l2p_sigma0_ku_rejection_flags) | flag specifying the editing criteria on which a 1 Hz Ku band sigma0 measurement was rejected (meaning its quality level is not set to “good”).  |  |
-| [sigma0_c](__l2p_c_sigma0) | C band backscatter coefficient, as calculated from the retracking | dB |
+| [sigma0_c](__l2p_sigma0_c) | C band backscatter coefficient, as calculated from the retracking | dB |
 | [sigma0_c_rms](__l2p_sigma0_c_rms) | RMS of the C band backscatter coefficient, within 1Hz cells, of the 20 Hz measurements calculated from the retracking| dB |
 | [sigma0_c_num_valid](__l2p_sigma0_c_num_valid) | number of valid points used to compute C band backscatter coefficient, within 1Hz cells, of the 20 Hz measurements calculated from the retracking | 1 |
 | [sigma0_c_quality_level](__l2p_sigma0_c_quality_level) | Quality level (from 0 - worst to 3 - best) of the C band sigma0 averaged over 1 Hz cells |  |
@@ -537,6 +535,116 @@ measurement.
 
 !bash -c "ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]sigma0_ku_rejection_flags[(,:]'| sed 's/[[:space:]]//'"
 ```
+
+(__l2p_sigma0_c)=
+### `sigma0_c`
+
+The **C-band backscatter coefficients (sigma0)**, within 1 Hz cells, averaged from 
+groups of full resolution 20 Hz (18 Hz for Topex) measurements calculated from 
+the altimeter retracking, without any cross-mission bias correction. The C-band
+sigma0 is only provided for some altimeters, and therefore is an optional variable.
+
+The 1 Hz measurements were estimated from the full resolution sigma0 measurements 
+provided in the source Agency’s GDR & SGDR products. Refer to the processing 
+details {numref}`__whales` for the specific source used for each mission.
+
+For all missions, the groups of full resolution measurements used to calculate 
+the 1 Hz values are exactly the same as in the source Agency’s GDR & SGDR products.
+Both CCI and Agency files can be compared one to one, have the same number 
+of measurements, and the same latitude, longitude, time for each 1 Hz 
+measurement. A minimal number of 6 valid points is required 
+to estimate a valid 1 Hz measurement. For more information on how the full 
+resolution measurements are compressed into 1 Hz values, refer to the 
+processing details {numref}`__compression`.
+
+The `sigma0_c` variable in a L2P product follows the format shown in table 
+{numref}`l2p_sigma0_c`.
+
+
+```{table} CDL example description of **<span style="font-family:courier;">sigma0_c</span>** variable
+:name: l2p_sigma0_c
+
+| **Storage type**  | **Name**  | **Unit** |
+|-------------------|-----------|----------|
+| float             | `sigma0_c`     | dB |
+```
+
+```{code-cell}
+:tags: [remove-input]
+:name: l2p_sigma0_c
+
+!bash -c "ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]sigma0_c[(,:]'| sed 's/[[:space:]]//'"
+```
+
+
+(__l2p_sigma0_c_rms)=
+### `sigma0_c_rms`
+
+(__l2p_sigma0_c_num_valid)=
+### `sigma0_c_num_valid`
+
+The number of valid points used to compute the C band backscatter coefficient
+(sigma0), within 1 Hz cells, from the full resolution measurements calculated
+from each altimeter waveform by the source Agency’s retracker.
+
+The groups of full resolution sigma0 measurements used to calculate the 1 Hz 
+values are exactly the same as in the source Agency’s GDR & SGDR products. Both
+CCI Sea State and Agency files can be compared one to one, have the same 
+number of measurements, and the same latitude, longitude, time for each 1 Hz
+measurement.
+
+
+```{table} CDL example description of **<span style="font-family:courier;">sigma0_c_num_valid</span>** variable
+:name: l2p_sigma0_c_num_valid
+
+| **Storage type**  | **Name**  | **Unit** |
+|-------------------|-----------|----------|
+| float             | `sigma0_c_num_valid`     | 1 |
+```
+
+```{code-cell}
+:tags: [remove-input]
+:name: l2p_sigma0_c_num_valid
+
+!bash -c "ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]sigma0_c_num_valid[(,:]'| sed 's/[[:space:]]//'"
+```
+
+(__l2p_sigma0_c_quality_level)=
+### `sigma0_c_quality_level`
+
+```{table} CDL example description of **<span style="font-family:courier;">sigma0_c_quality_level</span>** variable
+:name: l2p_sigma0_c_quality_level
+
+| **Storage type**  | **Name**  | **Unit** |
+|-------------------|-----------|----------|
+| float             | `sigma0_c_quality_level`     | enumerate |
+```
+
+```{code-cell}
+:tags: [remove-input]
+:name: l2p_sigma0_c_quality_level
+
+!bash -c "ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]sigma0_c_quality_level[(,:]'| sed 's/[[:space:]]//'"
+```
+
+(__l2p_sigma0_c_rejection_flags)=
+### `sigma0_c_rejection_flags`
+
+```{table} CDL example description of **<span style="font-family:courier;">sigma0_c_rejection_flags</span>** variable
+:name: l2p_sigma0_c_rejection_flags
+
+| **Storage type**  | **Name**  | **Unit** |
+|-------------------|-----------|----------|
+| float             | `sigma0_c_rejection_flags`     | bit code |
+```
+
+```{code-cell}
+:tags: [remove-input]
+:name: l2p_sigma0_c_rejection_flags
+
+!bash -c "ncdump -h ../samples/ESACCI-SEASTATE-L2P-SWH-ERS-1-19950410T002419-fv01.nc | grep $'[ , \t]sigma0_c_rejection_flags[(,:]'| sed 's/[[:space:]]//'"
+```
+
 
 
 (l2p_variables_auxiliary)=

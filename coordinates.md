@@ -1,4 +1,12 @@
-(coordinate_variables)=
+---
+jupytext:
+  formats: md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+---
+
+(coordinate_variables_all)=
 # Coordinate variables
 NetCDF coordinate variables provide scales for the space and time axes for the
 multidimensional data arrays, and are included for all dimensions that can 

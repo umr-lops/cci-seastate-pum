@@ -18,6 +18,7 @@ chapters:
   - file: altimetry/missions
   - file: altimetry/baseline
   - file: altimetry/l2p
+  - file: altimetry/l2p_wind
   - file: altimetry/l3
   - file: altimetry/l4
 - file: sar
