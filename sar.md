@@ -24,7 +24,7 @@ were acquired (S1A and S1B).
 
 
 ```{table} DLR processing ocean products  
-:name: dlr_products
+:name: dlr_products_overview
 
 | 1 ID product                    |  Processing        | 
 |---------------------------------|---------------------------|
