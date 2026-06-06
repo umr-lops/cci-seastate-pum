@@ -358,7 +358,7 @@ winds or surface slicks. According to these authors, the standard deviation
 of the full resolution (20Hz/40Hz) SWH values over one second (hereinafter 
 called SWH RMS) is one of the most relevant parameter to detect erroneous 
 values of SWH. Since the SWH RMS level strongly depends on SWH, constant 
-threshold values are not adequate to efficiently remove SWH RMS outliers. 
+threshold values are not adequate to efficiently remove SWH RMS outliers.
 
 Therefore, Sepulveda et al. (2015) and Queffeulou (2016) proposed a 
 methodology to set a statistical threshold on SWH RMS that depends on SWH, 
@@ -371,14 +371,15 @@ for large SWH values, where the number of records is too low to derive
 robust statistics, a second-order polynomial function is fitted. 
 
 The methodology implemented to determine a SWH RMS LUT for each mission of 
-the Sea State CCI {{cci_version}} dataset can be described as follows: 
+the Sea State CCI {{ cci_version }} dataset can be described as follows: 
 
-1. eight cycles of SWH and SWH RMS measurements are sampled and invalid 
-   measurements are rejected based on the land mask and SWH range quality flags; 
-2. for each cycle the mean and standard deviation of log(SWH RMS) are 
-   computed for SWH bins of 0.5 m width, ranging from 0 to 15 m, with a 0.05 
-   m increment. Only bins with more than 100 values are considered; 
-3. upper threshold on SWH RMS are computed for each SWH bin as: $\exp(mean(\log{}swh\_rms)+3\times std(\log{}swh\_rms))$;
+1. for each cycle of the mission duration, SWH and SWH RMS measurements are 
+   sampled and invalid measurements are rejected based on the land mask and SWH 
+   range quality flags; 
+2. the mean and standard deviation of log(SWH RMS) are computed for SWH bins of
+   0.5 m width, ranging from 0 to 15 m, with a 0.05 m increment. Only bins with
+   more than 100 values are considered; 
+3. upper threshold on SWH RMS are computed for each SWH bin as : $\exp(mean(\log{}swh\_rms)+3\times std(\log{}swh\_rms))$;
 4. a second-order polynomial function is fitted to the SWH RMS threshold 
    function for SWH values comprised between 3 and 10m and is extrapolated 
    up to SWH = 12m;
@@ -386,15 +387,16 @@ the Sea State CCI {{cci_version}} dataset can be described as follows:
    each cycle the SWH RMS threshold values for SWH lower than 3m and the 
    values of the polynomial function for SWH higher than 3m; for SWH above 
    12 m, a constant value equal to the SWH RMS threshold at 12m is taken;
-6. the final LUT is computed as the ensemble mean of the 8 cycle LUTs;
+6. the final LUT is computed as the ensemble mean of the N cycle LUTs;
 
 Note that the selection of the lower and upper bounds (3-10m) used to 
 estimate the second-order polynomial function are mission specific, and is 
 determined for each method from visual inspection of the SWH_RMS = f(SWH) 
 function.
 
-The cycles selected to build these LUTs, the methodology and resulting 
-average LUTs are described in further details [here](swh_rms_lut).
+A significant improvement with respect to the Sea State CCI dataset version 4 is 
+the fact that the ensemble average LUT is now computed over the full mission 
+duration and not on a sub sample of 8 cycles, as was done before.
 
 (__swh_outlier_test)=
 ### Test on SWH outliers (`outlier_test`)
@@ -457,8 +459,8 @@ temporal linear interpolation at measurement point.
 | swh        | Significant height of combined wind waves and swell |
 | pp1d       | Peak wave period                                    |
 | p1ps       | Mean wave period based on first moment of swell     |
-| p140121    | Significant wave height of first swell partition    |
-| p140122    | Mean wave direction of first swell partition        |
+| swh1       | Significant wave height of first swell partition    |
+| mwd1       | Mean wave direction of first swell partition        |
 | mwp        | Mean wave period                                    |
 | mwd        | Mean wave direction                                 |
 | shww       | Significant height of wind waves                    |
@@ -548,16 +550,28 @@ altimeter missions and in situ SWH measurement from a global wave buoy network.
 An additional component – called intra-calibration - is required for specific 
 missions that suffer from temporal heterogeneity. The overall methodology is based
 on three types of dataset: 
-1. collocated SWH records from two *reference altimetry missions* (see definition 
-   at the end of this section) flying closely behind each other along the same orbit 
-   during their tandem phases (hereafter called tandem records); 
-2. collocated measurements between a reference mission and a non-reference mission 
-   at their crossover locations (crossover records); 
-3. collocated measurements between reference missions and in situ buoy SWH measurements 
-   (buoy matchup records).
+-  collocated SWH records from two *reference altimetry missions* flying closely 
+   behind each other along the same orbit during their tandem phases (hereafter called **tandem records**); 
+-  collocated measurements between a reference mission and a non-reference mission 
+   at their crossover locations (**crossover records**); 
+-  collocated measurements between reference missions and in situ buoy SWH measurements 
+   (**buoy matchup records**).
+
+```{admonition} Reference missions
+Reference altimetry missions are satellite missions that provide high-accuracy, 
+continuous measurements of sea surface height from a stable reference orbit, forming 
+the backbone of global sea level monitoring. These missions include carefully coordinated 
+tandem phases, during which a new satellite flies closely behind its predecessor 
+to enable cross-calibration and ensure data continuity across successive missions. 
+In this document reference altimetry missions refers to the current altimetry mission 
+Sentinel-6 A (Michael Freilich) and the four historical altimetry missions Topex, 
+Jason-1, Jason-2, and Jason-3. Note that for Topex, only data from the Topex Side B 
+instrument are used as reference, since the Topex Side A instrument showed signs of 
+degradation before the tandem phase with the Jason-1 mission.
+```
 
 The bias correction methodology is made of the following steps:
-1. the five reference altimetry missions Topex, Jason-1/2/3 and Sentinel-6A are 
+1. the five reference altimetry missions Topex, Jason-1/2/3 and Sentinel-6 A are 
    intercalibrated using tandem SWH records. For this purpose, Jason-3 SWH records 
    are (arbitrarily) considered as the reference and the four other missions are 
    aligned to its records; 
@@ -574,97 +588,40 @@ The bias correction methodology is made of the following steps:
 
 The reference dataset used to correct each altimetry mission of the Sea State CCI 
 {{ cci_version }} dataset, as well as the number of available records are presented in 
-Table 1.
+{numref}`reference_datasets`.
 
 In addition to these three steps, an additional intra-calibration step was necessary 
 for three specific missions (Topex Side A, GFO and SARAL), which presented degraded 
 performance over a limited time period. This intra-calibration step is further 
 described in {numref}`__intercalibration_topex_gfo_saral`.
 
-       
-Table 1. Reference dataset and number of records used for the altimeter SWH bias-correction in the Sea State CCI version 5 dataset 
-Mission
-Reference dataset
-Data type
-Number of records
+```{table} Reference dataset and number of records used for the altimeter SWH bias-correction in the Sea State CCI {{ cci_version }} dataset
+:name: reference_datasets
 
-Inter-calibration of reference missions 
-Sentinel-6A/MF
-Jason-3
-Tandem
-10,032,474
-Jason-3
-N/A
-N/A
-N/A
-Jason-2
-Jason-3
-Tandem
-10,654,786
-Jason-1
-Jason-2 (intercalibrated)
-Tandem
-8,703,256
-TOPEX Side B
-Jason-1 (intercalibrated)
-Tandem
-9,364,549
-
-Absolute calibration of reference missions
-TP, J1/2/3,S6 (intercalibrated)
-Wave buoys
-Matchup
-44,507
-
-Inter-calibration of non-reference missions
-SWOT
-Sentinel-6A/MF (bias-corrected)
-Crossover
-10,249
-CFOSAT
-Jason-3 (bias-corrected)
-Crossover
-20,977
-Sentinel-3B
-Jason-3 (bias-corrected)
-Crossover
-23,710
-Sentinel-3A
-Jason-3 (bias-corrected)
-Crossover
-32,148
-SARAL
-Jason-3 (bias-corrected)
-Crossover
-11,445
-Cryosat-2
-Jason-2 (bias-corrected)
-Crossover
-26,072
-Envisat
-Jason-1 (bias-corrected)
-Crossover
-34,500
-GFO
-Jason-1 (bias-corrected)
-Crossover
-19,181
-ERS-2
-Topex Side B (bias-corrected)
-Crossover
-11,690
-TOPEX Side A
-ERS-2 (bias-corrected)
-Crossover
-11,364
-Poseidon
-ERS-2 (bias-corrected)
-Crossover
-1,802
-ERS-1
-TOPEX Side A (bias-corrected)
-Crossover
-11,251
+| Mission | Reference dataset | Data type | Number of records |
+| ------- | ----------------- | --------- | ----------------- |
+| **Inter-calibration of reference missions** |
+| Sentinel-6 A | Jason-3 | Tandem | 10,032,474 |
+| Jason-3 | N/A | N/A | N/A |
+| Jason-2 | Jason-3 | Tandem | 10,654,786| 
+| Jason-1 | Jason-2 (intercalibrated)| Tandem | 8,703,256 |
+| TOPEX Side B | Jason-1 (intercalibrated) | Tandem | 9,364,549 |
+| **Absolute calibration of reference missions** |
+| TP, J1/2/3,S6 (intercalibrated) | Wave buoys | Matchup | 44,507 |
+| **Inter-calibration of non-reference missions** |
+| SWOT | Sentinel-6 A (bias-corrected) | Crossover | 10,249 |
+| CFOSAT | Jason-3 (bias-corrected) | Crossover | 20,977 |
+| Sentinel-3 B | Jason-3 (bias-corrected) | Crossover | 23,710 |
+| Sentinel-3 A | Jason-3 (bias-corrected) | Crossover | 32,148 |
+| SARAL | Jason-3 (bias-corrected) | Crossover | 11,445 | 
+| Cryosat-2 | Jason-2 (bias-corrected) | Crossover | 26,072 |
+| Envisat | Jason-1 (bias-corrected) | Crossover | 34,500 |
+| GFO | Jason-1 (bias-corrected) | Crossover | 19,181 |
+| ERS-2 | Topex Side B (bias-corrected) | Crossover | 11,690 |
+| TOPEX Side A | ERS-2 (bias-corrected) | Crossover | 11,364 |
+| Poseidon | ERS-2 (bias-corrected) | Crossover | 1,802 |
+| ERS-1 | TOPEX Side A (bias-corrected) | Crossover | 11,251 |
+```
 
 ### Description of the correction method
 Here, the correction method refers to any of the tandem-based, crossover-based or 
@@ -681,102 +638,63 @@ that its statistical distribution matches that of the reference dataset. EQM pro
 as follows:
 1. Empirical cumulative distribution functions (CDFs) are computed for the reference 
   dataset (REF) and the uncorrected dataset (UNC) over the common period of measurements
-2. For each observation x in the uncorrected dataset, the percentile p = CDFUNC(x) 
+2. For each observation x in the uncorrected dataset, the percentile $p = CDF_{uncorrected}(x)$ 
    is mapped onto the reference distribution using the inverse CDF of the reference 
-   dataset. The corrected value is therefore: xcorr = CDFREF−1(CDFUNC(xUNC))
+   dataset. The corrected value is therefore: $x_{corrected} = CDF_{reference}^{−1}(CDF_{uncorrected}(x_{uncorrected}))$
 
 In practice, the EQM-based correction LUT is obtained by interpolating the difference
-between xCORR-xUNC onto a fix vector ranging from 0.1 to 25m with an increment of 
-0.05m (Figure 2). For high SWH values (typically above 10m), the corrections 
+between $x_{corrected} - x_{uncorrected}$ onto a fix vector ranging from 0.1 to 25m with an increment of 
+0.05m ({numref}`swh_correction`). For high SWH values (typically above 10m), the corrections 
 present large fluctuations that result from limited sampling and cannot be considered 
 as robust estimate of the mission inter-bias. Therefore, a constant value is fixed 
 for SWH larger than a defined maximum SWH value. In addition, for the correction 
 of the non-reference missions that relied on a reduced number of crossover samples 
-(see Table 1), the correction was approximated with a linear fit over a fixed SWH 
-range (see magenta dots in Figure 2, bottom right panel). The SWH ranges used for 
+(see {numref}`reference_datasets`), the correction was approximated with a linear fit over a fixed SWH 
+range (see magenta dots in {numref}`swh_correction`, bottom right panel). The SWH ranges used for 
 the linear approximation and the maximum SWH used for extrapolating the correction 
 with a constant values are mission dependent and were defined from visual inspection 
-of the raw correction data. These parametric values are listed in Table 2 for each 
+of the raw correction data. These parametric values are listed in {numref}`swh_ranges` for each 
 altimetry mission.
 
-(my-grid-label)=
-:::{figure-md}
+```{figure} ../images/swh_correction.png
+:name: swh_correction
 
-::::{grid} 2
-:gutter: 3
-:::{grid-item}
-![Image 1](../images/swh_correction_1.png)
-:::
-:::{grid-item}
-![Image 2](../images/swh_correction_2.png)
-:::
-
-::::
-:::
-
-Figure 1. ECDFs of reference and uncorrected dataset (top panels) and Empirical Quantile Mapping bias corrections (bottom panels) derived for Topex side B against Jason-1 SWH data (left panels) and for Saral against Jason-3 SWH data (right panels). In the bottom panels, black dots represent the raw corrections and magenta dots represent the final LUT corrections after interpolation and thresholding. 
+ECDFs of reference and uncorrected dataset (top panels) and Empirical Quantile 
+Mapping bias corrections (bottom panels) derived for Topex side B against Jason-1 
+SWH data (left panels) and for Saral against Jason-3 SWH data (right panels). 
+In the bottom panels, black dots represent the raw corrections and magenta dots 
+represent the final LUT corrections after interpolation and thresholding. 
+```
 
 Finally, in order to reduce noise and outliers in the altimeter measurements before 
 computing the bias-correction LUTs, the CCI quality level information was applied 
-(ie. only measurements with swh_quality_level == 3 were used) and the denoised SWH 
+(ie. only measurements with swh_quality_level equal to 3 were used) and the denoised SWH 
 records were used at all steps of the bias-correction procedure. In addition, only 
 altimeter records located at more than 100km from the coast were used.
 
-Table 2. SWH ranges and maximum SWH valuesused for the linear approximation and extrapolation of the bias-correction LUTs
-Mission
-Linear fitting range (m)
-Maximum SWH (m)
-SWOT
-[3 6]
-10
-Sentinel-6A/MF
-N∕A
-12
-CFOSAT
-[3 6]
-10
-Sentinel-3B
-[2 6]
-10
-Sentinel-3A
-[2 6]
-10
-Jason-3
-N∕A
-10
-SARAL
-[4 8]
-10
-Cryosat-2
-[4 7]
-10
-Jason-2
-N∕A
-10
-Envisat
-[4 7]
-10
-Jason-1
-N∕A
-10
-GFO
-[4 7]
-10
-ERS-2
-[3.5 5.5]
-10
-TOPEX Side B
-N∕A
-12
-TOPEX Side A
-[2.5 6]
-10
-Poseidon
-[2 4]
-10
-ERS-1
-[2.5 6]
-10
+```{table} SWH ranges and maximum SWH values used for the linear approximation and extrapolation of the bias-correction LUTs
+:name: swh_ranges
+
+| Mission | Linear fitting range (m) | Maximum SWH (m) |
+| ------- | ------------------------ | --------------- |
+| SWOT | [3 6] | 10 |
+| Sentinel-6A/MF | N∕A | 12 |
+| CFOSAT | [3 6] | 10 |
+| Sentinel-3B | [2 6] | 10 |
+| Sentinel-3A | [2 6] | 10 |
+| Jason-3 | N∕A | 10 |
+| SARAL | [4 8] | 10 |
+| Cryosat-2 | [4 7] | 10 |
+| Jason-2 | N∕A | 10 |
+| Envisat | [4 7] | 10 |
+| Jason-1 | N∕A | 10 |
+| GFO | [4 7] | 10 |
+| ERS-2 | [3.5 5.5] | 10 |
+| TOPEX Side B | N∕A | 12 |
+| TOPEX Side A | [2.5 6] | 10 |
+| Poseidon | [2 4] | 10 |
+| ERS-1 | [2.5 6] | 10 |
+```
 
 ### Selection of in situ platforms for absolute calibration
 The CMEMS In Situ Thematic Assembly Center (CMEMS INSTAC) is a component of the 
@@ -863,19 +781,17 @@ change of February 2002, which resulted in improved consistency of the SWH
 time-series.
 
 
-### Definitions
-#### Reference altimetry missions: 
-Reference altimetry missions are satellite missions that provide high-accuracy, 
-continuous measurements of sea surface height from a stable reference orbit, forming 
-the backbone of global sea level monitoring. These missions include carefully coordinated 
-tandem phases, during which a new satellite flies closely behind its predecessor 
-to enable cross-calibration and ensure data continuity across successive missions. 
-In this document reference altimetry missions refers to the current altimetry mission 
-Sentinel-6 A (Michael Freilich) and the four historical altimetry missions Topex, 
-Jason-1, Jason-2, and Jason-3. Note that for Topex, only data from the Topex Side B 
-instrument are used as reference, since the Topex Side A instrument showed signs of 
-degradation before the tandem phase with the Jason-1 mission.
+```{admonition} References
+Dodet, G., Piolle, J.-F., Quilfen, Y., Abdalla, S., Accensi, M., Ardhuin, F., Ash, E., Bidlot, J.-R., Gommenginger, C., Marechal, G., Passaro, M., Quartly, G., Stopa, J., Timmermans, B., Young, I., Cipollini, P., Donlon, C., 2020. The Sea State CCI dataset v1: towards a sea state climate data record based on satellite observations. Earth System Science Data 12, 1929–1951. https://doi.org/10.5194/essd-12-1929-2020
 
+Queffeulou, P., 2016. Validation of Jason-3 altimeter wave height measurements. Presented at the OSTST.
+
+Rosmorduc, V., Roinard, H., Desai, S., Desjonqueres, J.-D., Callahan, P.S., Bignalet-Cazalet, F., 2023. TOPEX/POSEIDON GDR-F Products Handbook (No. SALP-MU-MAO-OP-17607-CN).
+
+Sepulveda, H., Queffeulou, P., Ardhuin, F., 2015. Assessment of SARAL/AltiKa Wave Height Measurements Relative to Buoy, Jason-2, and Cryosat-2 Data. Marine Geodesy 38, 449–465. https://doi.org/10.1080/01490419.2014.1000470
+
+Sharma, R., Chaudhary, A., Seemanth, M., Bhowmick, S.A., Agarwal, N., Verron, J., Bonnefond, P., Gupta, H., Thomas, J.V., 2022. SARAL/AltiKa data analysis for oceanographic research: Impact of drifting and post star sensor anomaly phases. Advances in Space Research 69, 2349–2361. https://doi.org/10.1016/j.asr.2021.12.008
+```
 
 (__denoising)=
 ## SWH Denoising
