@@ -1,0 +1,1028 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>5.5. SAR processing details &#8212; CCI Sea State System Documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'sar/SAR-SeaStaR';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="5.8. L2P SAR WV &amp; IW/EW by DLR" href="sar_dlr_l2p.html" />
+    <link rel="prev" title="5.4. SAR missions" href="missions.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="CCI Sea State System Documentation - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="CCI Sea State System Documentation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    CCI Sea State Product User Guide
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../quickintro.html">1. ESA Sea State CCI datasets in a nutshell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../project.html">2. The CCI Sea State project</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../conventions.html">3. Format conventions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../naming.html">3.1. Naming conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../coordinates.html">3.2. Coordinate variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../attributes.html">3.3. Global attributes</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../altimetry.html">4. Nadir-altimetry datasets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../altimetry/missions.html">4.4. Altimetry missions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../altimetry/baseline.html">4.5. Processing details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../altimetry/l2p.html">4.6. L2P</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../altimetry/l3.html">4.7. L3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../altimetry/l4.html">4.8. L4</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../sar.html">5. SAR datasets</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="missions.html">5.4. SAR missions</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">5.5. SAR processing details</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="sar_dlr_l2p.html">5.8. L2P SAR WV &amp; IW/EW by DLR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sar_wv_quach.html">5.9. L2P SAR WV by Ifremer</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../access.html">6. Data access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changes.html">7. Changes</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-gitlab"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://gitlab.ifremer.fr/cciseastate/ccidoc" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-gitlab"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://gitlab.ifremer.fr/cciseastate/ccidoc/-/issues/new?issue[title]=Issue%20on%20page%20%2Fsar/SAR-SeaStaR.html&issue[description]=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/sar/SAR-SeaStaR.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>SAR processing details</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">5.5. SAR processing details</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#processing-with-sar-seastar-algorithm-using-sea-state-processor-ssp">5.5.1. Processing with SAR-SeaStaR algorithm using Sea State Processor (SSP)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sar-input-data-for-processed-by-sar-seastar-dlr">5.5.2. SAR input data for processed by SAR-SeaStaR (DLR)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#processing-and-resolution-of-derived-sea-state-parameters">5.5.3. Processing and resolution of derived sea state parameters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#editing">5.5.4. Editing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ancillary-data">5.5.5. Ancillary data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dlr-algorithm-sar-seastar">5.5.6. DLR Algorithm SAR-SeaStaR</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sar-dlr-ocean-products-description">5.6. SAR: DLR ocean products description</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uncertanties">5.6.1. Uncertanties</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#dlr-processed-ocean-products-description-ocn-dlr">5.7. DLR processed ocean products description (OCN-DLR)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#processed-data-amount">5.7.1. Processed data amount</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#individual-id-description">5.7.2. Individual ID description</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="sar-processing-details">
+<h1><span class="section-number">5.5. </span>SAR processing details<a class="headerlink" href="#sar-processing-details" title="Link to this heading">#</a></h1>
+<section id="processing-with-sar-seastar-algorithm-using-sea-state-processor-ssp">
+<h2><span class="section-number">5.5.1. </span>Processing with SAR-SeaStaR algorithm using Sea State Processor (SSP)<a class="headerlink" href="#processing-with-sar-seastar-algorithm-using-sea-state-processor-ssp" title="Link to this heading">#</a></h2>
+<p>This section describes in details the processing workflow for the SAR Sea State Processor (SSP) based on SAR-SeaStaR (SAR Sea State Retrival) algorithm
+used for processing the data in CCI Sea State version 4.
+The SSP is part of the SAR AIS Integrated Toolbox (SAINT), developed at the DLR Maritime Safety and Security Lab Bremen.
+It is provided as a container, enabling easy integration into the PSM (Processing System Management, which provides a systematic process flow and controls for Level-2). Subscription rules allow user requests to be directly linked to on-demand ground station planning and L2 processing.</p>
+<p>The SAR-SeaStaR is optimised for minimizing the percenatge of the non-valid data. For example, the number of non-valid ocean imagettes for S1 WV is ca. 1.5% with an accuracy of ca. 0.26 m in terms of SWH.
+This optimization allows processing data for ambiguous enviroment conditions dominate in coastal ares (NRCS artifacts by ships, buoys, watermarks, windparks, etc.) and by low winds under 2 m/s.</p>
+<figure class="align-default" id="dlr-sar-fig0">
+<img alt="../_images/dlr_sar_fig0.png" src="../_images/dlr_sar_fig0.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 5.5 </span><span class="caption-text">SAR-SeaStaR algorithm workflow realized in Sea State Processor as a part of SAR AIS Integrated Toolbox (SAINT) package for processing meteo-marine information, targets and processes at sea surface from SAR imagery. The current version of the algorithm includes 32 CWAVE_EX model functions (4 satellite/modes, 8 sea state parameters) and 8 SVM ML
+functions (4 satellite/modes Hs and Tm2). For each processing operation, the approximate effects in percent on resulting RMSE in terms of wave height are shown on the right; for the model functions, this is compared to CWAVE method.</span><a class="headerlink" href="#dlr-sar-fig0" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The processing includes the complete processing chain with a series of steps needed to reach high accuracy:</p>
+<ul class="simple">
+<li><p>Filtering of the image artefacts (e.g. ships, wakes, offshore windfarms constructions, etc.).</p></li>
+<li><p>Resampling and denoising (e.g. for S1 IW resampling from 10 m to 2.5 m pixel spacing).</p></li>
+<li><p>SAR features estimation and control-of- features.</p></li>
+<li><p>Model functions (linear regression and machine learning models) for estimation of sea state parameters.</p></li>
+<li><p>Control-of-results using filtering procedures.</p></li>
+</ul>
+</section>
+<section id="sar-input-data-for-processed-by-sar-seastar-dlr">
+<h2><span class="section-number">5.5.2. </span>SAR input data for processed by SAR-SeaStaR (DLR)<a class="headerlink" href="#sar-input-data-for-processed-by-sar-seastar-dlr" title="Link to this heading">#</a></h2>
+<p>Sentinel-1 SAR three modes:</p>
+<ul class="simple">
+<li><p>S1- Interferometric Wide Swath Mode (<strong>IW</strong>) GRD (Ground Range Detected) L1 products</p></li>
+<li><p>S1- Extra Wide (<strong>EW</strong>) GRD L1 products.</p></li>
+<li><p>S1- wave mode (<strong>WV</strong>) SAR Single Look Complex (SLC) L1 products.</p></li>
+</ul>
+<p>The VV or HH polarization data were used, with priority to VV products for S1 IW and S1 EW.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="dlr-products">
+<caption><span class="caption-number">Table 5.2 </span><span class="caption-text">GRD S1 IW, S1 EW and S1 WV SLC products common information</span><a class="headerlink" href="#dlr-products" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>ca. coverage</p></th>
+<th class="head"><p>pixel spacing</p></th>
+<th class="head"><p>GB per SAR L1 original ID product</p></th>
+<th class="head"><p>N worldwide/ocean scenes per day (S1A+S1B in 2020)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>S1 IW / GRD</p></td>
+<td><p>ca. 250×200 km</p></td>
+<td><p>10 m</p></td>
+<td><p>ca. 3 GB</p></td>
+<td><p>ca.    900 / 500</p></td>
+</tr>
+<tr class="row-odd"><td><p>S1 EW / GRD</p></td>
+<td><p>ca- 400×350 km</p></td>
+<td><p>40 m</p></td>
+<td><p>ca. 0.6 GB</p></td>
+<td><p>ca.    260 / 200</p></td>
+</tr>
+<tr class="row-even"><td><p>S1 WV / SLC</p></td>
+<td><p>ca. 20×20 km each 100 km  along-track imagettes</p></td>
+<td><p>ca. 3.5 m</p></td>
+<td><p>ca. 5 GB</p></td>
+<td><p>ca. 50 ID-products each with ca. 80–120 imagettes  (min – ca. 2 GB max.- 16 GB)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="align-default" id="dlr-sar-fig1">
+<img alt="../_images/dlr_sar_fig1.png" src="../_images/dlr_sar_fig1.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 5.6 </span><span class="caption-text">An example of S1 worldwide acquisitions on 2020-09-01. There are 54 S1 WV tracks (red), 894 S1 IW images (green), 229 S1 EW images (grey).</span><a class="headerlink" href="#dlr-sar-fig1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="processing-and-resolution-of-derived-sea-state-parameters">
+<h2><span class="section-number">5.5.3. </span>Processing and resolution of derived sea state parameters<a class="headerlink" href="#processing-and-resolution-of-derived-sea-state-parameters" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>S1 WV (wave mode) acquires two parallel tracks with incidence angles of around 23° (wv1) and around 36° (wv2) with imagettes
+(small images with an approximate footprint of 20×20 km, acquired every 200 km along each wv1 and wv2 track
+with a 100 km offset and distance of 100 km between wv1 and wv2 tracks.  Using both wv1 and wv2 this means along-track imagettes each 100 km.
+The length of a track (relative orbit with ID) varies from around 1,000 km (10 imagettes) to 12,000 km (120 imagettes).
+The nominal spatial pixel resolution of S1 WV is around 3 m depending on the local incidence angle in SLC L1 products.
+The scenes can be acquired in vertical (VV) or horizontal (HH) co-polarization. However, more than 95% of the data were acquired in VV polarization.
+Each day, around 60 S1 WV products (ascending or descending tracks) each with around 120 individual imagettes for both S1-A and S1-B are acquired.
+Each individual S1 WV L1 SLC product has 2–10 GB (ca. 5 TB/month).</p></li>
+<li><p>S1 IW mode combines a large swath width with a moderate geometric resolution (ESA, S1-IW).
+The individual IW images cover approximately 200 km in azimuth and 250 km in the range direction with a pixel spacing of 10 m.
+The original GRDH (Ground Range Detected High resolution) L1 products are available in single (HH or VV) or dual polarization (HH+HV or VV+VH).
+For sea state estimation, the VV or HH polarization data were used, with priority given to VV products.</p></li>
+<li><p>S1 EW (Extra Wide) mode is similar to the IW mode, but the EW mode acquires data over a wider area than for IW mode using five sub-swaths.
+The EW mode acquires data over 400 km swath width with a coarser pixel spacing of 40 m (GRDM), and 25 m (GRDH).</p></li>
+</ul>
+<p>For CCI, the sea state parameters were processed (the processing raster S1 IW and S1 EW can be chaged):</p>
+<ul class="simple">
+<li><p>S1 WV: averaged values for an along-track imagette 20x20km each 100 km,</p></li>
+<li><p>S1 IW: 5 km raster (ca. 1500 values/image)</p></li>
+<li><p>S1 EW: 17.5 km raster (ca. 450 values/image)</p></li>
+</ul>
+<div class="note admonition">
+<p class="admonition-title">References</p>
+<p>Pleskachevsky, A., Tings, B., S. Wiehle, S., Imber, J., Jacobsen, S., 2022.
+Multiparametric sea state fields from synthetic aperture radar for maritime situational awareness.
+Remote Sens. Environ., vol. 280, Oct. 2022, Art. no. 113200.</p>
+</div>
+</section>
+<section id="editing">
+<h2><span class="section-number">5.5.4. </span>Editing<a class="headerlink" href="#editing" title="Link to this heading">#</a></h2>
+<p>At first, all available archive scenes were processed. Later only scenes with at least 2 km water area were designated as ocean scenes
+and included in the DLR sea state products (DLR_OCN).
+The WVs are only recorded over oceans, while only ca. 40% of all IW and ca. 80% of all EW scenes include the seas.
+The processed results has two level of data rejection:</p>
+<ul class="simple">
+<li><p>landmasking  (rejection_flag=16 for not_water (land))</p></li>
+<li><p>due to series of control procedures (rejection_flag=4=invalid value)
+Additional, the flags point out the sea state parametr is correct, but due to enviroment, the value can have a lower accuracy (rejection_flag=8 for wind below 2 m/s)</p></li>
+</ul>
+</section>
+<section id="ancillary-data">
+<h2><span class="section-number">5.5.5. </span>Ancillary data<a class="headerlink" href="#ancillary-data" title="Link to this heading">#</a></h2>
+<p><strong>Ancillary data (Land masks)</strong></p>
+<ul class="simple">
+<li><p>SRTM - Shuttle Radar Topography Mission (SRTM) -60°&lt;LAT&lt;60°.</p></li>
+<li><p>GSHHG - Global Self-consistent, Hierarchical, High-resolution Geography
+Database.</p></li>
+</ul>
+<p><strong>Model data (training/validations)</strong></p>
+<ul class="simple">
+<li><p>Météo-France WAve Model (MFWAM) with a spatial resolution of 1/5° degrees.
+Global Ocean Waves Reanalysis (<a class="reference external" href="https://data.marine.copernicus.eu/product/GLOBAL_MULTIYEAR_WAV_001_032/description">https://data.marine.copernicus.eu/product/GLOBAL_MULTIYEAR_WAV_001_032/description</a>)
+past sea states since years 1980.</p></li>
+<li><p>WaveWatch-3 (WW3) model of National Oceanic and Atmospheric Administration
+(NOAA, <a class="reference external" href="https://polar.ncep.noaa.gov/waves/(https://polar.ncep.noaa.gov/waves/)">https://polar.ncep.noaa.gov/waves/(https://polar.ncep.noaa.gov/waves/)</a>)
+with a spatial resolution of 1/2 degrees (spatially interpolated for
+collocation) for collocations before 2016.</p></li>
+</ul>
+</section>
+<section id="dlr-algorithm-sar-seastar">
+<h2><span class="section-number">5.5.6. </span>DLR Algorithm SAR-SeaStaR<a class="headerlink" href="#dlr-algorithm-sar-seastar" title="Link to this heading">#</a></h2>
+<p>The empirical algorithm SAR-SeaStaR (SAR Sea State Retrieval) is developed
+at German Aerospace Center DLR, Maritime Safety and Security Lab Bremen.
+From SAR data, SAR-SeaStaR estimates a series of integrated sea state
+parameters:</p>
+<ul class="simple">
+<li><p>total significant wave height SWH</p></li>
+<li><p>wave heights of dominant and secondary swells and windsea,</p></li>
+<li><p>mean, first and second moment wave periods, and windsea period.</p></li>
+</ul>
+<p>SAR scenes are processed in raster format, the output
+are fields for each parameter showing their spatial distribution.</p>
+<p>SAR-SeaStaR is adopted for different satellites Sentinel-1 (S1) and TerraSAR-X (TS-X) and modes (state-of-the-art 2024):</p>
+<ul class="simple">
+<li><p>S1 Wave Mode (WV) Level-1 (L1) products  SLC</p></li>
+<li><p>S1 Interferometric Wide Swath Mode (IW)  GRDH</p></li>
+<li><p>S1 Extra Wide (EW)  GRDM and GRDH</p></li>
+<li><p>TerraSAR-X (TS-X) StripMap (SM) GRD RE</p></li>
+</ul>
+<p>SAR-SeaStaR is based on combination of the linear regression function
+CWAVE_EX (Pleskachevsky et al., 2022) and a machine learning approach using the
+support vector machine (SVM) technique.</p>
+<figure class="align-default" id="dlr-sar-outputs">
+<img alt="../_images/dlr_sar_fig2.png" src="../_images/dlr_sar_fig2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 5.7 </span><span class="caption-text">DLR SAR-SeaStaR outputs. Example of eight sea state parameter grids
+retrieved from a S1 IW scene with ca. 1600 km × 200 km coverage acquired
+during a strong storm in the North Atlantic on 2020-02-14 at 18:45 UTC with
+SWH reaching ca. 13 m. Processing in a 5 km raster results in ca. 1500
+subscenes (approximately ~30×50) for each individual IW image. Isolines shows
+the results of forecast WFWAM at 18:00 UTC (excluding first moment not provided
+by Copernicus Marine Environment CMEMS).</span><a class="headerlink" href="#dlr-sar-outputs" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="dlr-sar-example">
+<img alt="../_images/dlr_sar_fig3.png" src="../_images/dlr_sar_fig3.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 5.8 </span><span class="caption-text">Example of Sentinel-1 WV archive processing. In the right half of the figure
+only one-day of acquisitions is displayed on the globe, on the left half all
+data acquired during February 2021 is displayed.</span><a class="headerlink" href="#dlr-sar-example" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The SAR-SeaStaR algorithm includes the complete processing chain with a series
+of steps needed to reach high accuracy:</p>
+<ol class="arabic simple">
+<li><p>Filtering of the image artefacts (e.g. ships, wakes, offshore windfarms
+constructions, etc.).</p></li>
+<li><p>Resampling and denoising (e.g. for S1 IW resampling from 10 m to 2.5 m
+pixel spacing).</p></li>
+<li><p>SAR features estimation and control-of-features.</p></li>
+<li><p>Model functions (linear regression and machine learning models) for
+estimation of sea state parameters.</p></li>
+<li><p>Control-of-results using filtering procedures.</p></li>
+</ol>
+<p>The SAR-SeaStaR estimation of sea state parameters is based on an analysis
+of the normalized radar cross-section (NRCS) of a subscene. A series of
+subscenes are initialized in a raster format and their analysis results in a
+continuous grid for series of integrated sea state parameters. The grid’s
+raster step is the distance between the centre points of analysed subscenes.
+One of the basic variables represents the SAR image spectrum obtained using
+fast Fourier transformation (FFT) applied to radiometrically calibrated,
+filtered, denoised, land-masked and normalised subscenes with a size of
+1024×1024 pixels in wave number domain.</p>
+<p><strong>Linear regression</strong>. The empirical linear regression CWAVE_EX (extended
+CWAVE) model function uses primary SAR features estimated directly from the
+subscenes and secondary features. Secondary features are combinations of
+primary features in quadratic and inverse form. In total, 54 primary and the
+77 most significant secondary features are applied in CWAVE_EX.
+Normalization of features using mean (MEAN) and standard deviation (STD) for
+each feature was found to be optimal. The primary features are of five
+different types:</p>
+<ol class="arabic simple">
+<li><p>NRCS and NRCS statistics (variance, skewness, kurtosis, etc.), in total 9
+features.</p></li>
+<li><p>Geophysical parameters (surface wind speed estimated from analysed
+subscene using CMOD‑5N algorithms for C-band and XMOD‑2 for X-Band), 1 feature.</p></li>
+<li><p>Grey Level Co-occurrence Matrix (GLCM) parameters (homogeneity,
+dissimilarity, etc.), in total 8 features.</p></li>
+<li><p>Spectral parameters based on image spectrum integration for different
+wavelength domains (0-30 m, 30-100 m, 100-400 m, etc.) and spectral width
+parameters (Longuet-Higgins, Goda), in total 17 features.</p></li>
+<li><p>Spectral parameters using products of normalized image spectrum with
+orthonormal functions (CWAVE approach) and cutoff wavelength estimated
+using autocorrelation function (ACF), in total 21 features.</p></li>
+</ol>
+<p>Note, sea state is estimated form prefiltered subscenes, where the NRCS of
+outliers (ships, wakes, oil, etc.) and noise are essentially removed.</p>
+<p><strong>Machine learning</strong>. The SVM technique was applied to SAR-SeaStaR with nu-SVR
+Support Vector Regression (ν-SVR) with a radial basis function as kernel
+type. For practical applications, the high-performance ThunderSVM (TSVM)
+library was applied. TSVM runs an order of magnitude faster than the
+standard LibSVM and allows training of large datasets. The input for the SVM
+are the primary features complemented with:</p>
+<ul class="simple">
+<li><p>first-guess Hs from CWAVE_EX linear regression solution.</p></li>
+<li><p>precise incidence angle with an accuracy of third decimal place.</p></li>
+<li><p>flag identifying the satellite (S1-A or S1-B for Sentinel-1).</p></li>
+<li><p>pixel spacing (different for e.g. EW GRDH (25 m pixel) and GRDM (40 m pixel)
+products)</p></li>
+<li><p>flag identifying polarisation (HH or VV).</p></li>
+</ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="sar-dlr-ocean-products-description">
+<h1><span class="section-number">5.6. </span>SAR: DLR ocean products description<a class="headerlink" href="#sar-dlr-ocean-products-description" title="Link to this heading">#</a></h1>
+<section id="uncertanties">
+<h2><span class="section-number">5.6.1. </span>Uncertanties<a class="headerlink" href="#uncertanties" title="Link to this heading">#</a></h2>
+<p>Eight sea state parameters processed by DLR (uncertainties based on Pleskachevsky et al., 2024)</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id1">
+<caption><span class="caption-number">Table 5.3 </span><span class="caption-text">DLR processed ocena parameters and uncertanties</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Abb.</p></th>
+<th class="head"><p>Unit</p></th>
+<th class="head"><p>RMSE S1 IW</p></th>
+<th class="head"><p>RMSE      S1 EW</p></th>
+<th class="head"><p>RMSE    S1 WV (wv1/wv2)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>total significant wave height</p></td>
+<td><p>swh</p></td>
+<td><p>m</p></td>
+<td><p>0.42</p></td>
+<td><p>0.51</p></td>
+<td><p>0.24 / 0.28</p></td>
+</tr>
+<tr class="row-odd"><td><p>mean wave period   Tm0-1</p></td>
+<td><p>Tm0</p></td>
+<td><p>s</p></td>
+<td><p>0.88</p></td>
+<td><p>0.92</p></td>
+<td><p>0.46 / 0.51</p></td>
+</tr>
+<tr class="row-even"><td><p>first moment wave period</p></td>
+<td><p>Tm1</p></td>
+<td><p>s</p></td>
+<td><p>0.97</p></td>
+<td><p>0.85</p></td>
+<td><p>0.51 / 0.56</p></td>
+</tr>
+<tr class="row-odd"><td><p>second moment wave period</p></td>
+<td><p>Tm2</p></td>
+<td><p>s</p></td>
+<td><p>0.96</p></td>
+<td><p>0.86</p></td>
+<td><p>0.46 / 0.51</p></td>
+</tr>
+<tr class="row-even"><td><p>wave height swell dominant system</p></td>
+<td><p>swell_swh_primary</p></td>
+<td><p>m</p></td>
+<td><p>0.57</p></td>
+<td><p>0.60</p></td>
+<td><p>0.42 / 0.47</p></td>
+</tr>
+<tr class="row-odd"><td><p>wave height swell secondary system</p></td>
+<td><p>swell_swh_secondary</p></td>
+<td><p>m</p></td>
+<td><p>0.38</p></td>
+<td><p>0.44</p></td>
+<td><p>0.41 / 0.46</p></td>
+</tr>
+<tr class="row-even"><td><p>significant wave height windsea</p></td>
+<td><p>windwave_swh</p></td>
+<td><p>m</p></td>
+<td><p>0.48</p></td>
+<td><p>0.57</p></td>
+<td><p>0.40 / 0.46</p></td>
+</tr>
+<tr class="row-odd"><td><p>mean period windsea</p></td>
+<td><p>windwave_period</p></td>
+<td><p>s</p></td>
+<td><p>0.97</p></td>
+<td><p>0.95</p></td>
+<td><p>0.62 / 0.67</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The DLR uncertainties in the Tab.DLR.2. are based on comparisons with MFWAM reanalysis with 1/5° and 3h time step (20 min interpolated) performed for S1 archive processed data. The detailed information on comparisons can be found in Pleskachevsky et al., 2024 (<a class="reference external" href="https://ieeexplore.ieee.org/document/10584481">https://ieeexplore.ieee.org/document/10584481</a>).</p>
+<p>The uncertainties of the results are connected to uncertainties in ground truth data. From global point of view, the in-situ measurements cover very limited areas, mostly in shelf regions. To estimate accuracies of the methods worldwide, only model results are available. However, the comparisons between different wave forecast models shows, the shelf regions and also series of golfs and local seas (e.g. Philippine Sea) and coasts (Aleutian Islands) have stronger uncertainties between different models (RMSE between models are around 0.40 m) in comparison to open ocean regions (RMSE between models are around 0.20 m).</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="dlr-processed-ocean-products-description-ocn-dlr">
+<h1><span class="section-number">5.7. </span>DLR processed ocean products description (OCN-DLR)<a class="headerlink" href="#dlr-processed-ocean-products-description-ocn-dlr" title="Link to this heading">#</a></h1>
+<section id="processed-data-amount">
+<h2><span class="section-number">5.7.1. </span>Processed data amount<a class="headerlink" href="#processed-data-amount" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table" id="id2">
+<caption><span class="caption-number">Table 5.4 </span><span class="caption-text">DLR ocean products in netCDF format (both S1-Anand S1-B)</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>1 ID product</p></th>
+<th class="head"><p>1 day worldwide</p></th>
+<th class="head"><p>1 month worldwide</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>S1 I  ca. 0.4 MB</p></td>
+<td><p>ca. 500 IDs – ca. 200 MB</p></td>
+<td><p>ca. 15000 IDs -  ca. 6 GB</p></td>
+</tr>
+<tr class="row-odd"><td><p>S1 EW ca. 0.2 MB</p></td>
+<td><p>ca. 200 IDs – ca. 80 MB</p></td>
+<td><p>ca. 6000 IDs -  ca. 2.4  GB</p></td>
+</tr>
+<tr class="row-even"><td><p>S1 WV ca. 0.1 MB</p></td>
+<td><p>ca. 65   IDs – ca. 7 MB</p></td>
+<td><p>ca. 2000 IDs -  ca. 200 MB</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="individual-id-description">
+<h2><span class="section-number">5.7.2. </span>Individual ID description<a class="headerlink" href="#individual-id-description" title="Link to this heading">#</a></h2>
+<p>The DLR ocean products (DLR-OP) are stored using original IDs in netCDF format, e.g.:</p>
+<p>S1 ID  = S1A_IW_GRDH_1SDH_20141006T074120_20141006T074149_002706_00306E_BAE5
+DLR-OP = S1A_IW_GRDH_1SDH_20141006T074120_20141006T074149_002706_00306E_BAE5-fv04.nc</p>
+<p>The time-stamp (UTC) is stored in file names (2014-10-06 07:41:20 UTC for the given example).
+The stored data are all 2D arrays:</p>
+<ul class="simple">
+<li><p>geo-coordinates (latitude, longitude)</p></li>
+<li><p>8 integrated sea state parameters (see Tab. “DLR processed ocena parameters and uncertanties”)</p></li>
+<li><p>quality, and rejection flags (see.Tab “DLR ocean products quality, and rejection flags”)</p></li>
+<li><p>uncertainties for all 8 parameters</p></li>
+</ul>
+<div class="pst-scrollable-table-container"><table class="table" id="id3">
+<caption><span class="caption-number">Table 5.5 </span><span class="caption-text">DLR ocean products quality, and rejection flags</span><a class="headerlink" href="#id3" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>Abb. in netCDF product</p></th>
+<th class="head"><p>Description in netCDF product</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>quality flag</p></td>
+<td><p>swh_quality</p></td>
+<td><p>quality of C band SAR significant wave height measurement</p></td>
+<td><p>0=undefined (e.g. land),    1=bad,   2=acceptable (not used),    3 – good</p></td>
+</tr>
+<tr class="row-odd"><td><p>rejection flag</p></td>
+<td><p>swh_rejection_flags</p></td>
+<td><p>consolidated Significant Wave height quality flags</p></td>
+<td><p>1=Nv (variance) &gt; max (not more used), 2=swh outlier, 4=invalid value, 8=wind below 2 m/s (not more used),  16=not_water (land)</p></td>
+</tr>
+<tr class="row-even"><td><p>uncertainty SWH</p></td>
+<td><p>swh_uncertanty</p></td>
+<td><p>best estimate of significant wave height standard error</p></td>
+<td><p>to MFWAM (CMEMS) estimated for each swh domains 0-1.5 m, 1.5-3m, 3-6m, &gt;6m and interpolated/extrapolated</p></td>
+</tr>
+<tr class="row-odd"><td><p>uncertainty SW1</p></td>
+<td><p>swell_swh_primary_uncertanty</p></td>
+<td><p>Best estimate of dominant swell wave height standard error</p></td>
+<td><p>to MFWAM (CMEMS) estimated for each swh domains 0-1.5 m, 1.5-3m, 3-6m, &gt;6m and interpolated/extrapolated</p></td>
+</tr>
+<tr class="row-even"><td><p>uncertainty SW2</p></td>
+<td><p>swell_swh_secondary_uncertanty</p></td>
+<td><p>Best estimate of secondary swell wave height standard error</p></td>
+<td><p>to MFWAM (CMEMS) estimated for each swh domains 0-1.5 m, 1.5-3m, 3-6m, &gt;6m and interpolated/extrapolated</p></td>
+</tr>
+<tr class="row-odd"><td><p>uncertainty SWW</p></td>
+<td><p>windwave_swh_uncertanty</p></td>
+<td><p>Best estimate of windsea wave height standard error</p></td>
+<td><p>to MFWAM (CMEMS) estimated for each swh domains 0-1.5 m, 1.5-3m, 3-6m, &gt;6m and interpolated/extrapolated</p></td>
+</tr>
+<tr class="row-even"><td><p>uncertainty Tm0</p></td>
+<td><p>Tm0_uncertanty</p></td>
+<td><p>Best estimate of mean wave period standard error</p></td>
+<td><p>to MFWAM (CMEMS) estimated for each swh domains 0-4 s, 4-7 s, 7-10s, &gt;10 s and interpolated/extrapolated</p></td>
+</tr>
+<tr class="row-odd"><td><p>uncertainty Tm1</p></td>
+<td><p>Tm1_uncertanty</p></td>
+<td><p>Best estimate of first moment wave period standard error</p></td>
+<td><p>to WW3 estimated for each swh domains 0-4 s, 4-7 s, 7-10s, &gt;10 s and interpolated/extrapolated</p></td>
+</tr>
+<tr class="row-even"><td><p>uncertainty Tm2</p></td>
+<td><p>Tm2_uncertanty</p></td>
+<td><p>Best estimate of second moment wave period standard error</p></td>
+<td><p>to MFWAM (CMEMS) estimated for each swh domains 0-4 s, 4-7 s, 7-10s, &gt;10 s and interpolated/extrapolated</p></td>
+</tr>
+<tr class="row-odd"><td><p>uncertainty Tmw</p></td>
+<td><p>windwave_period_uncertanty</p></td>
+<td><p>Best estimate of mean period windsea standard error</p></td>
+<td><p>to MFWAM (CMEMS) estimated for each swh domains 0-4 s, 4-7 s, 7-10s, &gt;10 s and interpolated/extrapolated</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="align-default" id="dlr-sar-fig4">
+<img alt="../_images/dlr_sar_fig4.png" src="../_images/dlr_sar_fig4.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 5.9 </span><span class="caption-text">Example of DLR ocean product (DLR-OP) for 1 S1 ID (displayed with PANOPLY)</span><a class="headerlink" href="#dlr-sar-fig4" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="dlr-sar-fig5">
+<img alt="../_images/dlr_sar_fig5.png" src="../_images/dlr_sar_fig5.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 5.10 </span><span class="caption-text">Example of DLR ocean product (DLR-OP) for 1 S1 ID (displayed with PANOPLY),
+2D array wave heigth</span><a class="headerlink" href="#dlr-sar-fig5" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="note admonition">
+<p class="admonition-title">References</p>
+<p>Pleskachevsky, A., Tings, B., Jacobsen, S., Wiehle, S., Schwarz, E., and D.
+Krause, 2024: A System for Near Real Time Monitoring of the Sea State using
+SAR Satellites. IEEE Transactions on Geoscience and Remote Sensing, VOL. 62, 2024</p>
+<p>Pleskachevsky, A., Tings, B., and S, Jacobsen, 2022: Multiparametric Sea
+State Fields from Synthetic Aperture Radar for Maritime Situational
+Awareness, RSE, vol. 280, 22 pp.</p>
+<p>Pleskachevsky, A., Jacobsen, S., Tings, B., and E. Schwarz, 2019. Estimation
+of sea state from Sentinel-1 Synthetic aperture radar imagery for maritime
+situation awareness. IJRS, Vol. 40-11, pp. 4104-4142.</p>
+<p>Pleskachevsky, A., W. Rosenthal, and S. Lehner, 2016:  Meteo-Marine
+Parameters for Highly Variable Environment in Coastal Regions from Satellite
+Radar Images.” JPRS, Vol. 119, pp. 464-484., 2016.</p>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./sar"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="missions.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">5.4. </span>SAR missions</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="sar_dlr_l2p.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">5.8. </span>L2P SAR WV &amp; IW/EW by DLR</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">5.5. SAR processing details</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#processing-with-sar-seastar-algorithm-using-sea-state-processor-ssp">5.5.1. Processing with SAR-SeaStaR algorithm using Sea State Processor (SSP)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sar-input-data-for-processed-by-sar-seastar-dlr">5.5.2. SAR input data for processed by SAR-SeaStaR (DLR)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#processing-and-resolution-of-derived-sea-state-parameters">5.5.3. Processing and resolution of derived sea state parameters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#editing">5.5.4. Editing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ancillary-data">5.5.5. Ancillary data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dlr-algorithm-sar-seastar">5.5.6. DLR Algorithm SAR-SeaStaR</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sar-dlr-ocean-products-description">5.6. SAR: DLR ocean products description</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uncertanties">5.6.1. Uncertanties</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#dlr-processed-ocean-products-description-ocn-dlr">5.7. DLR processed ocean products description (OCN-DLR)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#processed-data-amount">5.7.1. Processed data amount</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#individual-id-description">5.7.2. Individual ID description</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The CCI Sea State system development team
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

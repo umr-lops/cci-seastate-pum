@@ -1,0 +1,1646 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>4.5. Processing details &#8212; CCI Sea State System Documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'altimetry/baseline';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="4.6. L2P" href="l2p.html" />
+    <link rel="prev" title="4.4. Altimetry missions" href="missions.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="CCI Sea State System Documentation - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="CCI Sea State System Documentation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    CCI Sea State Product User Guide
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../quickintro.html">1. ESA Sea State CCI datasets in a nutshell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../project.html">2. The CCI Sea State project</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../conventions.html">3. Format conventions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../naming.html">3.1. Naming conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../coordinates.html">3.2. Coordinate variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../attributes.html">3.3. Global attributes</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../altimetry.html">4. Nadir-altimetry datasets</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="missions.html">4.4. Altimetry missions</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">4.5. Processing details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="l2p.html">4.6. L2P</a></li>
+<li class="toctree-l2"><a class="reference internal" href="l3.html">4.7. L3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="l4.html">4.8. L4</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../sar.html">5. SAR datasets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../sar/missions.html">5.4. SAR missions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sar/SAR-SeaStaR.html">5.5. SAR processing details</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../sar/sar_dlr_l2p.html">5.8. L2P SAR WV &amp; IW/EW by DLR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sar/sar_wv_quach.html">5.9. L2P SAR WV by Ifremer</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../access.html">6. Data access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changes.html">7. Changes</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-gitlab"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://gitlab.ifremer.fr/cciseastate/ccidoc" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-gitlab"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://gitlab.ifremer.fr/cciseastate/ccidoc/-/issues/new?issue[title]=Issue%20on%20page%20%2Faltimetry/baseline.html&issue[description]=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/altimetry/baseline.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Processing details</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sgdr-input-data">4.5.1. SGDR input data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retracking">4.5.2. Retracking</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compression-to-1-hz">4.5.3. Compression to 1 Hz</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#editing">4.5.4. Editing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-on-swh-rms-swh-rms-outlier">4.5.4.1. Test on SWH RMS (<code class="docutils literal notranslate"><span class="pre">swh_rms_outlier</span></code>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-on-swh-outliers-outlier-test">4.5.4.2. Test on SWH outliers (<code class="docutils literal notranslate"><span class="pre">outlier_test</span></code>)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ancillary-data">4.5.5. Ancillary data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ancillary-atmospheric-model-variables">4.5.5.1. Ancillary atmospheric model variables</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ancillary-wave-model-variables">4.5.5.2. Ancillary wave model variables</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ancillary-sea-ice-concentration">4.5.5.3. Ancillary sea ice concentration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bathymetry">4.5.5.4. Bathymetry</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distance-to-coast">4.5.5.5. Distance to coast</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#swh-bias-correction">4.5.6. SWH bias correction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#description-of-the-correction-method">4.5.6.1. Description of the correction method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-of-in-situ-platforms-for-absolute-calibration">4.5.6.2. Selection of in situ platforms for absolute calibration</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#denoising">4.5.7. Denoising</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uncertainties">4.5.8. Uncertainties</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="processing-details">
+<h1><span class="section-number">4.5. </span>Processing details<a class="headerlink" href="#processing-details" title="Link to this heading">#</a></h1>
+<p>This section describes in details the processing workflow for the altimeter
+data in CCI Sea State version 4, as illustrated in figure
+<a class="reference internal" href="#altimetry-workflow"><span class="std std-numref">Fig. 4.4</span></a>.</p>
+<figure class="align-default" id="altimetry-workflow">
+<img alt="../_images/altimetry_workflow.png" src="../_images/altimetry_workflow.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 4.4 </span><span class="caption-text">Main steps in altimeter data processing workflow</span><a class="headerlink" href="#altimetry-workflow" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>In a nutshell:</p>
+<ul class="simple">
+<li><p>Significant wave height is computed from the original altimeter
+waveforms through the <strong>retracking</strong> step with the <em>WHALES</em> retracker
+selected by CCI Sea State expert, though for some missions the values
+produced by the space agencies default retracker are used.</p></li>
+<li><p>the full resolution SWH and sigma0 measurements are <strong>compressed</strong> to 1 Hz
+(one value every second) to produce a L2 product</p></li>
+<li><p><strong>editing</strong> of the 1 Hz values is performed to flag bad or suspect
+values (and set the quality confidence variable <code class="docutils literal notranslate"><span class="pre">quality_level</span></code>)</p></li>
+<li><p><strong>ancillary variables</strong> extracted from different sources (models and
+observations, climatology, land, sea ice,…) are added into the L2 product.</p></li>
+<li><p><strong>bias correction</strong> of SWH is estimated for each mission to ensure
+consistent time series of measurements across all missions, and a
+corrected value added to the L2 product</p></li>
+<li><p><strong>denoising</strong> is applied to the corrected SWH values using  Empirical Mode
+Decomposition (EMD) filter and added to the L2P product as a new
+<code class="docutils literal notranslate"><span class="pre">swh_denoised</span></code> variable</p></li>
+<li><p><strong>uncertainty</strong> of SWH values is estimated and added to the L2P as a new
+<code class="docutils literal notranslate"><span class="pre">swh_uncertainty</span></code> variable</p></li>
+<li><p>the L2P measurements are aggregated into multi-mission observation files
+(<strong>L3</strong>) and monthly statistics of SWH (<strong>L4</strong>) are calculated</p></li>
+</ul>
+<section id="sgdr-input-data">
+<span id="sgdr-inputs"></span><h2><span class="section-number">4.5.1. </span>SGDR input data<a class="headerlink" href="#sgdr-input-data" title="Link to this heading">#</a></h2>
+<p>The table <a class="reference internal" href="#id1"><span class="std std-numref">Table 4.2</span></a> summarizes the list of input altimeter data
+used in the processing workflow:</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id1">
+<caption><span class="caption-number">Table 4.2 </span><span class="caption-text">List of SGDR input data</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Mission</p></th>
+<th class="head"><p>Version</p></th>
+<th class="head"><p>Provider</p></th>
+<th class="head"><p>Date</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>CRYOSAT-2</p></td>
+<td><p>Version E</p></td>
+<td><p>ESA</p></td>
+<td><p>From 16/07/2010 to 31/12/2023</p></td>
+</tr>
+<tr class="row-odd"><td><p>SARAL</p></td>
+<td><p>Version F</p></td>
+<td><p>AVISO</p></td>
+<td><p>From 14/03/2013 to 31/12/2023</p></td>
+</tr>
+<tr class="row-even"><td><p>JASON-1</p></td>
+<td><p>Version E</p></td>
+<td><p>AVISO</p></td>
+<td><p>From 15/01/2002 to 21/06/2013</p></td>
+</tr>
+<tr class="row-odd"><td><p>JASON-2</p></td>
+<td><p>Version D</p></td>
+<td><p>AVISO</p></td>
+<td><p>From 04/07/2008 to 01/10/2019</p></td>
+</tr>
+<tr class="row-even"><td><p>JASON-3</p></td>
+<td><p>Version F</p></td>
+<td><p>AVISO</p></td>
+<td><p>From 17/02/2016 to 31/12/2023</p></td>
+</tr>
+<tr class="row-odd"><td><p>TOPEX</p></td>
+<td><p>Version F</p></td>
+<td><p>AVISO</p></td>
+<td><p>From 13/10/1992 to 04/10/2005</p></td>
+</tr>
+<tr class="row-even"><td><p>ERS-1</p></td>
+<td><p>REAPER</p></td>
+<td><p>ESA</p></td>
+<td><p>From 03/08/1991 to 02/06/1996</p></td>
+</tr>
+<tr class="row-odd"><td><p>ERS-2</p></td>
+<td><p>REAPER</p></td>
+<td><p>ESA</p></td>
+<td><p>From 14/05/1995 to 02/07/2003</p></td>
+</tr>
+<tr class="row-even"><td><p>ENVISAT</p></td>
+<td><p>Version 3</p></td>
+<td><p>ESA</p></td>
+<td><p>From 14/05/2002 to 08/04/2012</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sentinel-3A</p></td>
+<td><p>Version 005</p></td>
+<td><p>EUMETSAT</p></td>
+<td><p>From 01/07/2016 to 31/12/2023</p></td>
+</tr>
+<tr class="row-even"><td><p>Sentinel-3B</p></td>
+<td><p>Version 005</p></td>
+<td><p>EUMETSAT</p></td>
+<td><p>From 08/05/2018 to 31/12/2023</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sentinel-6A</p></td>
+<td><p>Version F08</p></td>
+<td><p>EUMETSAT</p></td>
+<td><p>From 17/12/2020 to 31/12/2023</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition-note-on-topex-poseidon admonition">
+<p class="admonition-title">Note on TOPEX-POSEIDON</p>
+<p>According to TOPEX version F documentation:</p>
+<ul class="simple">
+<li><p>From launch through repeat cycle 16, various changes to the sensors were
+performed. Data up to repeat cycle 16 have varying quality and should not be
+used for climate studies. They are ignored in CCI Dataset.</p></li>
+<li><p>TOPEX Side A was active from September 22, 1992 to February 10, 1999, and
+Side B was active from February 10, 1999 to end of mission. Users are advised
+to treat the data from Side A and Side B as two independent time series.
+No effort has been made to enforce continuity between Side A and Side B in
+this reprocessed data. They are separated in CCI processing.</p></li>
+<li><p>TOPEX Side A calibration data have a jump on April 1, 1996. This very likely
+causes a jump in all TOPEX altimeter geophysical measurements at this time.
+Users are advised to treat data from Side A1 (Launch – April 1, 1996) and Side
+A2 (April 1, 1996 – February 10, 1999) as two independent time series.
+No effort has been made to enforce continuity between Sides A1 and A2.  They
+are separated in CCI processing.</p></li>
+<li><p>Sweep Calibration measurements to monitor the TOPEX point target response only
+started from September 8, 1998 onward for both Side A and Side B. Users are
+cautioned that this may cause larger errors in the reprocessed Side A data.
+The Sweep Calibration data available for Side A from September 8, 1998 to
+February 10, 1999 are not used by themselves to process the Side A data in
+this product. Instead, for Side A, the available Sweep Calibrations have been
+used to generate a model for oversampled calibrations. The nominal Cal-1 data
+are used with this model to process all of Side A data to generate a
+consistent Side A time series.</p></li>
+<li><p>Three 8-track tape recorders (TR A, B, C) were utilized to continuously record
+the 16K data stream, acquiring over 99.9% of all spacecraft and science data.
+However, after 5 years of excellent performance the recorders, starting with
+TRB, slowly started to degrade. Work arounds involving recording and playback
+speed restored some performance for periods. TRB was deactivated in September
+2001 and TRA in October 2002. Real time acquisition through TDRSS filled much
+of the loss allowing approximately 90% data coverage. Finally, in October 2004
+TRC failed. Real time data acquisition provided approximately 82% data
+coverage until the end of the mission.</p></li>
+</ul>
+</div>
+</section>
+<section id="retracking">
+<span id="whales"></span><h2><span class="section-number">4.5.2. </span>Retracking<a class="headerlink" href="#retracking" title="Link to this heading">#</a></h2>
+<p>The retracking step calculates 20 Hz SWH measurements (40 Hz for Saral) from
+the altimeter waveforms available in the SGDR products (Level 1) provided by
+space agencies. In CCI SeaState version version 4, we have
+performed a complete retracking of several non-SAR altimeters with TUM’s
+retracker WHALES, while for others we used the full resolution SWH
+measurements already processed by the space agencies (see
+<a class="reference internal" href="#swh-retrackers"><span class="std std-numref">Table 4.3</span></a> for a summary). Reasons why some altimeters were
+not retracked with WHALES in this release include: non availability of the
+waveforms, non applicability of WHALES to an altimeter (e.g. SAR altimeters,
+lack of technical information to adapt the retracker), or postponement to a
+future release (Sentinel-6 LRM, ERS-1, ERS-2, …).</p>
+<p>The Low Resolution Mode (LRM) waveforms are characterised by a rising leading edge that
+becomes less steep as the SWH increases, and a slowly decreasing trailing edge. The
+standard retracking methods are still affected by a suboptimal distribution of the residuals in
+the fitting process, which results in high level of noise in the estimations. WHALES is
+designed as a unified way to solve these problems and is based on two principles:</p>
+<ol class="arabic simple">
+<li><p>The application of a weighted fitting solution, whose weights are adapted
+to the SWH in order to guarantee a more uniform distribution of the
+residuals during the iterative fitting. This guarantees significantly
+more precise estimations.</p></li>
+<li><p>A subwaveform strategy to focus the retracking on the portion of the signal
+of interest, avoiding heterogeneous backscattering in the trailing edge
+(partially inherited from the ALES retracker, Passaro et al., 2014). This
+guarantees efficiency in the coastal zone and a better representation of
+the oceanic scales of variability.</p></li>
+</ol>
+<p>Moreover, a revisiting of the look-up tables used to correct for the
+Gaussian approximation of the Point Target Response in the Brown model
+ensures that the accuracy in the estimation is tailored to the new retracking
+solution.</p>
+<div class="note admonition">
+<p class="admonition-title">References</p>
+<p>Passaro M., Cipollini P., Vignudelli S., Quartly G., Snaith H.: ALES: A multi-mission
+subwaveform retracker for coastal and open ocean altimetry. Remote Sensing of
+Environment 145, 173-189, <a class="reference external" href="https://doi.org/10.1016/j.rse.2014.02.008">https://doi.org/10.1016/j.rse.2014.02.008</a>, 2014</p>
+</div>
+<p><a class="reference internal" href="#swh-retrackers"><span class="std std-numref">Table 4.3</span></a> summarized the retracker used for each
+mission for significant wave height, whether the retracking was performed by
+CCI Sea State production team (WHALES) or a third party agency:</p>
+<div class="pst-scrollable-table-container"><table class="table" id="swh-retrackers">
+<caption><span class="caption-number">Table 4.3 </span><span class="caption-text">Retracker used for each mission for retrieving the significant wave height</span><a class="headerlink" href="#swh-retrackers" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>source</p></th>
+<th class="head"><p>period</p></th>
+<th class="head"><p>retracker</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ERS-1</p></td>
+<td><p>07/1991 to 03/2000</p></td>
+<td><p>REAPER (MLE3)</p></td>
+</tr>
+<tr class="row-odd"><td><p>ERS-2</p></td>
+<td><p>04/1995 to 07/2011</p></td>
+<td><p>REAPER (MLE3)</p></td>
+</tr>
+<tr class="row-even"><td><p>Jason-1 Version E</p></td>
+<td><p>01/2002 to 07/2013</p></td>
+<td><p>WHALES</p></td>
+</tr>
+<tr class="row-odd"><td><p>Jason-2 Version D</p></td>
+<td><p>06/2008 to 10/2019</p></td>
+<td><p>WHALES</p></td>
+</tr>
+<tr class="row-even"><td><p>Jason-3 Version D</p></td>
+<td><p>09/2016 to 06/2019</p></td>
+<td><p>WHALES</p></td>
+</tr>
+<tr class="row-odd"><td><p>Jason-3 Version F</p></td>
+<td><p>06/2019 to now</p></td>
+<td><p>WHALES</p></td>
+</tr>
+<tr class="row-even"><td><p>Jason-3 Version T</p></td>
+<td><p>02/2016 to 09/2016</p></td>
+<td><p>WHALES</p></td>
+</tr>
+<tr class="row-odd"><td><p>Topex Version F</p></td>
+<td><p>08/1992 to 01/2006</p></td>
+<td><p>MLE3</p></td>
+</tr>
+<tr class="row-even"><td><p>Envisat Version 3</p></td>
+<td><p>03/2002 to 04/2012</p></td>
+<td><p>WHALES</p></td>
+</tr>
+<tr class="row-odd"><td><p>CryoSat-2  Version E</p></td>
+<td><p>07/2010 to now</p></td>
+<td><p>WHALES</p></td>
+</tr>
+<tr class="row-even"><td><p>SARAL Version F</p></td>
+<td><p>02/2013 to now</p></td>
+<td><p>WHALES</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sentinel-6 A Version F08</p></td>
+<td><p>03/2020 to 12/2023</p></td>
+<td><p>MLE4</p></td>
+</tr>
+<tr class="row-even"><td><p>Sentinel-3 A Version 005</p></td>
+<td><p>02/2016 to now</p></td>
+<td><p>MLE4</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sentinel-3 B Version 005</p></td>
+<td><p>04/2018 to now</p></td>
+<td><p>MLE4</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>For sigma0, the measurements from the original retracking performed by the agency
+which provided the input data (SGDR) were used, with no correction by CCI Sea
+State for this version. <a class="reference internal" href="#sigma0-retrackers"><span class="std std-numref">Table 4.4</span></a> summarized the retracker
+used for each mission for sigma0 by these agencies:</p>
+<div class="pst-scrollable-table-container"><table class="table" id="sigma0-retrackers">
+<caption><span class="caption-number">Table 4.4 </span><span class="caption-text">Retracker used for each mission for retrieving the sigma0</span><a class="headerlink" href="#sigma0-retrackers" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>source</p></th>
+<th class="head"><p>period</p></th>
+<th class="head"><p>retracker (per band)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ERS-1</p></td>
+<td><p>07/1991 to 03/2000</p></td>
+<td><p>REAPER/MLE3 (Ku)</p></td>
+</tr>
+<tr class="row-odd"><td><p>ERS-2</p></td>
+<td><p>04/1995 to 07/2011</p></td>
+<td><p>REAPER/MLE3 (Ku)</p></td>
+</tr>
+<tr class="row-even"><td><p>Jason-1 Version E</p></td>
+<td><p>01/2002 to 07/2013</p></td>
+<td><p>MLE3 (Ku, C)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Jason-2 Version D</p></td>
+<td><p>06/2008 to 10/2019</p></td>
+<td><p>MLE3 (Ku, C)</p></td>
+</tr>
+<tr class="row-even"><td><p>Jason-3 Version T</p></td>
+<td><p>02/2016 to 09/2016</p></td>
+<td><p>MLE3 (Ku, C)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Jason-3 Version D</p></td>
+<td><p>09/2016 to 06/2019</p></td>
+<td><p>MLE3 (Ku, C)</p></td>
+</tr>
+<tr class="row-even"><td><p>Jason-3 Version F</p></td>
+<td><p>06/2019 to now</p></td>
+<td><p>MLE3  (Ku, C)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Topex Version F</p></td>
+<td><p>08/1992 to 01/2006</p></td>
+<td><p>MLE3 (Ku, C)</p></td>
+</tr>
+<tr class="row-even"><td><p>Envisat Version 3</p></td>
+<td><p>03/2002 to 04/2012</p></td>
+<td><p>MLE3 (C)</p></td>
+</tr>
+<tr class="row-odd"><td><p>CryoSat-2  Version E</p></td>
+<td><p>07/2010 to now</p></td>
+<td><p>Ocean CFI/MLE4 (Ku)</p></td>
+</tr>
+<tr class="row-even"><td><p>SARAL Version F</p></td>
+<td><p>02/2013 to now</p></td>
+<td><p>MLE4 (Ka)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sentinel-6 A Version F08</p></td>
+<td><p>03/2020 to 12/2023</p></td>
+<td><p>MLE3 (Ku, C)</p></td>
+</tr>
+<tr class="row-even"><td><p>Sentinel-3 A Version 005</p></td>
+<td><p>02/2016 to now</p></td>
+<td><p>MLE4 (Ku), MLE3 (C)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sentinel-3 B Version 005</p></td>
+<td><p>04/2018 to now</p></td>
+<td><p>MLE4 (Ku), MLE3 (C)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="compression-to-1-hz">
+<span id="compression"></span><h2><span class="section-number">4.5.3. </span>Compression to 1 Hz<a class="headerlink" href="#compression-to-1-hz" title="Link to this heading">#</a></h2>
+<p>The CCI Sea State Dataset version 4 provides 1 Hz SWH measurements.
+These 1 Hz measurements are calculated by averaging groups of consecutive
+full resolution 20 Hz (18 Hz for Envisat or Topex, 40 Hz for SARAL).</p>
+<p>The method used to average the full resolution measurements into 1 Hz values is
+the same for all altimeters. The groups of full resolution measurements used to
+calculate the 1 Hz values are exactly the same as in the source Agency’s GDR
+and SGDR products. Both CCI and Agency files can be compared one to one, have
+the same number of measurements, and the same latitude, longitude, time for each
+1 Hz measurement.</p>
+<p>For each group of valid (the measurements remaining after the editing
+described above) measurements, the 1 Hz SWH value is computed as the median
+of the remaining full resolution SWH values and copied to <code class="docutils literal notranslate"><span class="pre">swh</span></code> variable.
+Moreover, the <code class="docutils literal notranslate"><span class="pre">swh_num_valid</span></code> variable is computed as the number of
+remaining valid full resolution measurements and the <code class="docutils literal notranslate"><span class="pre">swh_rms</span></code> variable is
+computed as the root mean square of the deviation from the median,
+considering only valid full resolution measurements.</p>
+<p>The same method is used to calculate 1 Hz sigma0 values from the full
+resolution sigma0.</p>
+<p>The compression of the full resolution (20/40 Hz) SWH and sigma0
+measurements into 1 Hz values follows these steps:</p>
+<ol class="arabic simple">
+<li><p>Full resolution (20/40 Hz) SWH and sigma0 values are flagged as <strong>land</strong>
+when their distance to coast is <strong>greater than 1000m</strong>, based on the Goddard
+Space Flight Center (GSFC) 1km resolution grid of distance to coast. <strong>They
+are ignored in the compression process.</strong></p></li>
+<li><p>Full resolution measurements flagged as bad by the retracker are discarded.
+These measurements are flagged as bad, for altimeters retracked with WHALES,
+when the fitting error is greater than 0.3. In Agency’s SGDR, a quality
+variable is usually associated with the SWH and sigma0 variables and used
+as a substitute here. <a class="reference internal" href="#fullres-swh"><span class="std std-numref">Table 4.5</span></a> and <a class="reference internal" href="#fullres-sigma0"><span class="std std-numref">Table 4.6</span></a>
+provides, respectively for SWH and sigma0, the source variable used as
+input for the full resolution measurements, the associated quality
+variable used for this editing and condition tested to discard the
+measurements.</p></li>
+<li><p>Full resolution SWH measurements <strong>not in the -0.5 to 30 meter range</strong> are
+also discarded.</p></li>
+<li><p>Among the remaining full resolution SWH measurements, <strong>outliers</strong> are
+discarded. The outlier detection scheme is based on the <strong>maximum absolute
+deviation (MAD)</strong>  for a 3-sigma criterion, meaning:</p>
+<ul class="simple">
+<li><p>only 20 Hz SWH values within [median(SWH) - 3 * MAD(SWH), median(SWH) 3 * MAD(SWH)] interval are kept</p></li>
+<li><p>with: MAD(SWH) = 1.4286 * median(abs(SWH - median(SWH)))</p></li>
+</ul>
+</li>
+<li><p>The <strong>median</strong> of the remaining measurements is selected as 1 Hz value. When
+there were less than 6 (12 for SARAL) valid remaining measurements, the 1
+Hz value is flagged as <strong>bad</strong> in the <code class="docutils literal notranslate"><span class="pre">quality_level</span></code> variable.</p></li>
+</ol>
+<div class="pst-scrollable-table-container"><table class="table" id="fullres-swh">
+<caption><span class="caption-number">Table 4.5 </span><span class="caption-text">selected variable for SWH in each full resolution dataset, and the corresponding quality flag variable used to discard invalid measurements</span><a class="headerlink" href="#fullres-swh" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Source</p></th>
+<th class="head"><p>SWH</p></th>
+<th class="head"><p>SWH quality</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Jason-1 Version E</p></td>
+<td><p>swh.07</p></td>
+<td><p>swh_WHALES_fitting_error_20hz &gt; 0.3</p></td>
+</tr>
+<tr class="row-odd"><td><p>Jason-2 Version D</p></td>
+<td><p>swh.07</p></td>
+<td><p>swh_WHALES_fitting_error_20hz &gt; 0.3</p></td>
+</tr>
+<tr class="row-even"><td><p>Jason-3 Version D</p></td>
+<td><p>swh_WHALES_20hz</p></td>
+<td><p>swh_WHALES_fitting_error_20hz &gt; 0.3</p></td>
+</tr>
+<tr class="row-odd"><td><p>Jason-3 Version F</p></td>
+<td><p>swh_WHALES_20hz</p></td>
+<td><p>swh_WHALES_qual_20hz == 0</p></td>
+</tr>
+<tr class="row-even"><td><p>Jason-3 Version T</p></td>
+<td><p>swh_WHALES_20hz</p></td>
+<td><p>swh_WHALES_fitting_error_20hz &gt; 0.3</p></td>
+</tr>
+<tr class="row-odd"><td><p>Topex Version F</p></td>
+<td><p>swh_20hz_ku</p></td>
+<td><p>swh_used_20hz_ku == 0</p></td>
+</tr>
+<tr class="row-even"><td><p>Envisat Version 3</p></td>
+<td><p>swh_WHALES_20hz</p></td>
+<td><p>swh_WHALES_qual_20hz == 0</p></td>
+</tr>
+<tr class="row-odd"><td><p>ERS-1 REAPER</p></td>
+<td><p>swh_20hz</p></td>
+<td><p>swh_used_20hz == 0</p></td>
+</tr>
+<tr class="row-even"><td><p>ERS-2 REAPER</p></td>
+<td><p>swh_20hz</p></td>
+<td><p>swh_used_20hz == 0</p></td>
+</tr>
+<tr class="row-odd"><td><p>CryoSat-2 Version E</p></td>
+<td><p>swh_WHALES_20hz</p></td>
+<td><p>swh_WHALES_fitting_error_20hz &gt; 0.3</p></td>
+</tr>
+<tr class="row-even"><td><p>Saral Version F</p></td>
+<td><p>swh_WHALES_20hz</p></td>
+<td><p>swh_WHALES_fitting_error_20hz &gt; 0.3</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sentinel-6A Version F08</p></td>
+<td><p>swh_ocean</p></td>
+<td><p>swh_ocean_qual == 1</p></td>
+</tr>
+<tr class="row-even"><td><p>Sentinel-3A Version 005</p></td>
+<td><p>swh_ocean_20_plrm_ku</p></td>
+<td><p>swh_ocean_qual_20_plrm_ku == 0</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sentinel-3B Version 005</p></td>
+<td><p>swh_ocean_20_plrm_ku</p></td>
+<td><p>swh_ocean_qual_20_plrm_ku == 0</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>For the compression of the <strong>sigma0</strong>, the processing is the same. Full
+resolution sigma0 measurements are discarded if not in the range: [7, 30] dB
+(except for SARAL Ka sigma0: [-6.5, 23.]).</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>sigma0, in C and Ku band (Ka for SARAL), are <strong>always taken from the
+agency’s SGDR, even when using WHALES to estimate SWH</strong> using MLE3 Ku band
+sigma0 when available, as summarized in <a class="reference internal" href="#fullres-sigma0"><span class="std std-numref">Table 4.6</span></a>.</p>
+</div>
+<div class="pst-scrollable-table-container"><table class="table" id="fullres-sigma0">
+<caption><span class="caption-number">Table 4.6 </span><span class="caption-text">selected variable for sigma0 in each full resolution dataset, for each sensing band, and the corresponding quality flag variable used to discard invalid measurements</span><a class="headerlink" href="#fullres-sigma0" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Source</p></th>
+<th class="head"><p>Sigma0</p></th>
+<th class="head"><p>Sigma0 quality</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Jason-1 Version E</p></td>
+<td><p>sig0_20hz_ku</p></td>
+<td><p>sig0_used_20hz_ku == 0</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>sig0_20hz_c</p></td>
+<td><p>sig0_used_20hz_c == 0</p></td>
+</tr>
+<tr class="row-even"><td><p>Jason-2 Version D</p></td>
+<td><p>sig0_20hz_ku_mle3</p></td>
+<td><p>sig0_used_20hz_ku_mle3 == 0</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>sig0_20hz_c</p></td>
+<td><p>sig0_used_20hz_c == 0</p></td>
+</tr>
+<tr class="row-even"><td><p>Jason-3 Version D</p></td>
+<td><p>sig0_20hz_ku_mle3</p></td>
+<td><p>sig0_used_20hz_ku_mle3 == 0</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>sig0_20hz_c</p></td>
+<td><p>sig0_used_20hz_c == 0</p></td>
+</tr>
+<tr class="row-even"><td><p>Jason-3 Version F</p></td>
+<td><p>ku_sig0_ocean_mle3</p></td>
+<td><p>ku_sig0_ocean_mle3_compression_qual == 0</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>c_sig0_ocean</p></td>
+<td><p>c_sig0_ocean_compression_qual == 0</p></td>
+</tr>
+<tr class="row-even"><td><p>Topex Version F</p></td>
+<td><p>sig0_20hz_ku_mle3</p></td>
+<td><p>sig0_used_20hz_ku == 0</p></td>
+</tr>
+<tr class="row-odd"><td><p>Envisat Version 3</p></td>
+<td><p>sig0_ocean_20_ku</p></td>
+<td><p>sig0_ocean_qual_20_ku == 0</p></td>
+</tr>
+<tr class="row-even"><td><p>ERS-1 REAPER</p></td>
+<td><p>ocean_sig0_20hz</p></td>
+<td><p>ocean_sig0_used_20hz</p></td>
+</tr>
+<tr class="row-odd"><td><p>ERS-2 REAPER</p></td>
+<td><p>ocean_sig0_20hz</p></td>
+<td><p>ocean_sig0_used_20hz</p></td>
+</tr>
+<tr class="row-even"><td><p>CryoSat-2  Version E</p></td>
+<td><p>sig0_1_20_ku</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>SARAL Version T</p></td>
+<td><p>sig0_40hz</p></td>
+<td><p>sig0_used_40hz == 0</p></td>
+</tr>
+<tr class="row-even"><td><p>Sentinel-6 A Version F08</p></td>
+<td><p>ku_sig0_ocean_mle3</p></td>
+<td><p>ku_sig0_ocean_mle3_qual != 1</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>c_sig0_ocean</p></td>
+<td><p>c_sig0_ocean_qual != 1</p></td>
+</tr>
+<tr class="row-even"><td><p>Sentinel-3 A Version 005</p></td>
+<td><p>sig0_ocean_20_plrm_ku</p></td>
+<td><p>sig0_ocean_qual_20_plrm_ku == 0</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>sig0_ocean_20_c</p></td>
+<td><p>sig0_ocean_qual_20_c == 0</p></td>
+</tr>
+<tr class="row-even"><td><p>Sentinel-3 B Version 005</p></td>
+<td><p>sig0_ocean_20_plrm_ku</p></td>
+<td><p>sig0_ocean_qual_20_plrm_ku == 0</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>sig0_ocean_20_c</p></td>
+<td><p>sig0_ocean_qual_20_c == 0</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<div><p><strong>S-band sigma0</strong> were ignored for <strong>Envisat</strong> as it was found they were
+systematically flagged as bad in the SGDR product.</p>
+</div></blockquote>
+</section>
+<section id="editing">
+<span id="swh-quality-level"></span><h2><span class="section-number">4.5.4. </span>Editing<a class="headerlink" href="#editing" title="Link to this heading">#</a></h2>
+<p>The quality level of SWH measurement, provided in the <code class="docutils literal notranslate"><span class="pre">quality_level</span></code> variable
+is estimated by applying a suite of specific tests. When positive, a test will
+downgrade a SWH measurement (starting initially with the quality level inherited
+from the 1 Hz compressed data file) to a lower value, as given in the following
+table. The result of each applied test is summarized in the corresponding
+<code class="docutils literal notranslate"><span class="pre">rejection_flags</span></code> variable.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id2">
+<caption><span class="caption-number">Table 4.7 </span><span class="caption-text">Quality level assigned to a validity test if positive (with corresponding label in the rejection_flags variable</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Validity test</p></th>
+<th class="head"><p>Assigned quality level</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">sea_ice</span></code>: 0 &lt; sea ice concentration &lt;= 10%</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">sea_ice</span></code>: sea ice concentration &gt; 10%</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">swh_validity</span></code>: 0 &lt;= SWH &lt;= 30</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">swh_rms_outlier</span></code>: SWH RMS in 1 Hz meaurement &gt; LUT value</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">outlier_test</span></code>: SWH outlier test</p></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="test-on-swh-rms-swh-rms-outlier">
+<span id="swh-rms-test"></span><h3><span class="section-number">4.5.4.1. </span>Test on SWH RMS (<code class="docutils literal notranslate"><span class="pre">swh_rms_outlier</span></code>)<a class="headerlink" href="#test-on-swh-rms-swh-rms-outlier" title="Link to this heading">#</a></h3>
+<p>As documented in Sepulveda et al. (2015), SWH measurements derived from
+radar altimeter measurements can be contaminated by the presence of land in
+the footprint, strong rain events, and so-called “sigma0 blooms” due to weak
+winds or surface slicks. According to these authors, the standard deviation
+of the full resolution (20Hz/40Hz) SWH values over one second (hereinafter
+called SWH RMS) is one of the most relevant parameter to detect erroneous
+values of SWH. Since the SWH RMS level strongly depends on SWH, constant
+threshold values are not adequate to efficiently remove SWH RMS outliers.</p>
+<p>Therefore, Sepulveda et al. (2015) and Queffeulou (2016) proposed a
+methodology to set a statistical threshold on SWH RMS that depends on SWH,
+and which can be used a posteriori to filter out erroneous SWH measurements.
+Since the SWH RMS for a given narrow SWH presents a log-normal distribution,
+these authors proposes to estimate the upper threshold for the logarithm of
+SWH RMS as the sum of the mean value and thrice the standard deviation.
+Moreover, in order to reduce discontinuity in the SWH RMS threshold function
+for large SWH values, where the number of records is too low to derive
+robust statistics, a second-order polynomial function is fitted.</p>
+<p>The methodology implemented to determine a SWH RMS LUT for each mission of
+the Sea State CCI version 4 dataset can be described as follows:</p>
+<ol class="arabic simple">
+<li><p>eight cycles of SWH and SWH RMS measurements are sampled and invalid
+measurements are rejected based on the land mask and SWH range quality flags;</p></li>
+<li><p>for each cycle the mean and standard deviation of log(SWH RMS) are
+computed for SWH bins of 0.5 m width, ranging from 0 to 15 m, with a 0.05
+m increment. Only bins with more than 100 values are considered;</p></li>
+<li><p>upper threshold on SWH RMS are computed for each SWH bin as: <span class="math notranslate nohighlight">\(\exp(mean(\log{}swh\_rms)+3\times std(\log{}swh\_rms))\)</span>;</p></li>
+<li><p>a second-order polynomial function is fitted to the SWH RMS threshold
+function for SWH values comprised between 3 and 10m and is extrapolated
+up to SWH = 12m;</p></li>
+<li><p>a look-up table (LUT) of SWH RMS thresholds is derived by combining for
+each cycle the SWH RMS threshold values for SWH lower than 3m and the
+values of the polynomial function for SWH higher than 3m; for SWH above
+12 m, a constant value equal to the SWH RMS threshold at 12m is taken;</p></li>
+<li><p>the final LUT is computed as the ensemble mean of the 8 cycle LUTs;</p></li>
+</ol>
+<p>Note that the selection of the lower and upper bounds (3-10m) used to
+estimate the second-order polynomial function are mission specific, and is
+determined for each method from visual inspection of the SWH_RMS = f(SWH)
+function.</p>
+<p>The cycles selected to build these LUTs, the methodology and resulting
+average LUTs are described in further details <a class="reference internal" href="swh_rms_lut.html"><span class="doc std std-doc">here</span></a>.</p>
+</section>
+<section id="test-on-swh-outliers-outlier-test">
+<span id="swh-outlier-test"></span><h3><span class="section-number">4.5.4.2. </span>Test on SWH outliers (<code class="docutils literal notranslate"><span class="pre">outlier_test</span></code>)<a class="headerlink" href="#test-on-swh-outliers-outlier-test" title="Link to this heading">#</a></h3>
+<p>Above quality flags and tests are not sufficient to discard all the
+erroneous SWH data. Spurious measurements are still observed: some are
+located in the vicinity of the coast where some land can be within the
+altimeter footprint, or in areas of high scattering resulting in so-
+called sigma0 blooms (e. g. Thibaut et al. 2007). Some other individual
+spurious measurements (corresponding mainly to high values of SWH) are not
+explained. Consequently the data are filtered to eliminate these measurements.</p>
+<p>The screening is based on the analysis of the differences between successive
+along track SWH measurements, using  along track running windows, 100 km
+wide. For each measurement the along track data within 50 km each
+side are selected. This represents a maximun number of 15 (Envisat) to 19
+(Jason) selected data. Then over this segment the 2 extreme SWH data are
+discarded, and the mean value (m) and standard deviation (s) are estimated
+over the residual data set. If the SWH value is outside the interval defined
+by m ± 4s, then this data is considered as erroneous and is discarded. Up
+to 3 iterative passes were empirically adjusted for the processing.</p>
+</section>
+</section>
+<section id="ancillary-data">
+<h2><span class="section-number">4.5.5. </span>Ancillary data<a class="headerlink" href="#ancillary-data" title="Link to this heading">#</a></h2>
+<p>The base L2 compressed files are enriched with additional external sources
+information.</p>
+<section id="ancillary-atmospheric-model-variables">
+<h3><span class="section-number">4.5.5.1. </span>Ancillary atmospheric model variables<a class="headerlink" href="#ancillary-atmospheric-model-variables" title="Link to this heading">#</a></h3>
+<p>Complementary ocean or atmospheric variables are taken from ECMWF ERA5
+reanalysis, using spatial and temporal linear interpolation at measurement
+point.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="ancillary-era5">
+<caption><span class="caption-number">Table 4.8 </span><span class="caption-text">ERA5 atmospheric model variables added to each 1 Hz measurement in L2P</span><a class="headerlink" href="#ancillary-era5" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>tclw</p></td>
+<td><p>Total column cloud liquid water</p></td>
+</tr>
+<tr class="row-odd"><td><p>t2m</p></td>
+<td><p>2 metre temperature</p></td>
+</tr>
+<tr class="row-even"><td><p>sst</p></td>
+<td><p>Sea surface temperature</p></td>
+</tr>
+<tr class="row-odd"><td><p>u10</p></td>
+<td><p>10 metre U wind component</p></td>
+</tr>
+<tr class="row-even"><td><p>v10</p></td>
+<td><p>10 metre V wind component</p></td>
+</tr>
+<tr class="row-odd"><td><p>sp</p></td>
+<td><p>Surface pressure</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="ancillary-wave-model-variables">
+<h3><span class="section-number">4.5.5.2. </span>Ancillary wave model variables<a class="headerlink" href="#ancillary-wave-model-variables" title="Link to this heading">#</a></h3>
+<p>Complementary sea state variables are taken from ECMWF ERA5 reanalysis (WAM
+model for waves) and Ifremer Wave Watch 3 hindcast run, using spatial and
+temporal linear interpolation at measurement point.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="ancillary-era5wam">
+<caption><span class="caption-number">Table 4.9 </span><span class="caption-text">ERA5/WAM wave model variables added to each 1 Hz measurement in L2P</span><a class="headerlink" href="#ancillary-era5wam" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>swh</p></td>
+<td><p>Significant height of combined wind waves and swell</p></td>
+</tr>
+<tr class="row-odd"><td><p>pp1d</p></td>
+<td><p>Peak wave period</p></td>
+</tr>
+<tr class="row-even"><td><p>p1ps</p></td>
+<td><p>Mean wave period based on first moment of swell</p></td>
+</tr>
+<tr class="row-odd"><td><p>p140121</p></td>
+<td><p>Significant wave height of first swell partition</p></td>
+</tr>
+<tr class="row-even"><td><p>p140122</p></td>
+<td><p>Mean wave direction of first swell partition</p></td>
+</tr>
+<tr class="row-odd"><td><p>mwp</p></td>
+<td><p>Mean wave period</p></td>
+</tr>
+<tr class="row-even"><td><p>mwd</p></td>
+<td><p>Mean wave direction</p></td>
+</tr>
+<tr class="row-odd"><td><p>shww</p></td>
+<td><p>Significant height of wind waves</p></td>
+</tr>
+<tr class="row-even"><td><p>mdww</p></td>
+<td><p>Mean direction of wind waves</p></td>
+</tr>
+<tr class="row-odd"><td><p>mpww</p></td>
+<td><p>Mean period of wind waves</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="pst-scrollable-table-container"><table class="table" id="ancillary-ifrww3">
+<caption><span class="caption-number">Table 4.10 </span><span class="caption-text">Ifremer/WW3 hindcast wave model variables added to each 1 Hz measurement in L2P</span><a class="headerlink" href="#ancillary-ifrww3" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>uwnd</p></td>
+<td><p>10 metre U wind component</p></td>
+</tr>
+<tr class="row-odd"><td><p>vwnd</p></td>
+<td><p>10 metre V wind component</p></td>
+</tr>
+<tr class="row-even"><td><p>hs</p></td>
+<td><p>Significant height of wind and swell waves</p></td>
+</tr>
+<tr class="row-odd"><td><p>t02</p></td>
+<td><p>Mean period T02</p></td>
+</tr>
+<tr class="row-even"><td><p>t0m1</p></td>
+<td><p>Mean period T0m1</p></td>
+</tr>
+<tr class="row-odd"><td><p>1/fp</p></td>
+<td><p>Wave peak frequency</p></td>
+</tr>
+<tr class="row-even"><td><p>dir</p></td>
+<td><p>Wave mean direction</p></td>
+</tr>
+<tr class="row-odd"><td><p>skw</p></td>
+<td><p>skewness</p></td>
+</tr>
+<tr class="row-even"><td><p>qkk</p></td>
+<td><p>k-peakedness</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The WW3 model configuration ran for this ancillary source uses surface currents
+(from CMEMS) and icebergs computed from altimetry and only available from 1993.
+The configuration used for the years 1991-1992 is therefore different and not
+full consistent with the model configuration used from 1993 onward.</p>
+</div>
+</section>
+<section id="ancillary-sea-ice-concentration">
+<span id="sea-ice"></span><h3><span class="section-number">4.5.5.3. </span>Ancillary sea ice concentration<a class="headerlink" href="#ancillary-sea-ice-concentration" title="Link to this heading">#</a></h3>
+<p>Different sources are combined for sea ice concentration, as the best
+resolution datasets (25 km) do not cover the full CCI Sea State temporal
+coverage. For each source, we use the closest in time concentration map, up to
+three days apart in case it is missing for a given day, before switching to the
+next source in line.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="ancillary-sic">
+<caption><span class="caption-number">Table 4.11 </span><span class="caption-text">sources for sea ice concentration (SIC) CDR, by order of priority</span><a class="headerlink" href="#ancillary-sic" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>Variable</p></th>
+<th class="head"><p>Temporal Coverage</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>OSISAF-AMSR-CDR-v3p0</p></td>
+<td><p>ice_conc</p></td>
+<td><p>2002-2020 (ext: 2024)</p></td>
+<td><p>AMSR Sea Ice Concentration Climate Data Record from OSI SAF (doi: 10.15770/EUM_SAF_OSI_0015)</p></td>
+</tr>
+<tr class="row-odd"><td><p>SICCI-HR-SIC</p></td>
+<td><p>ice_conc</p></td>
+<td><p>1991-2020</p></td>
+<td><p>High(er) Resolution Sea Ice Concentration Climate Data Record Version 3 from CCI Sea Ice+ (SSM/I and SSMIS) (doi: 10.5285/eade27004395466aaa006135e1b2ad1a)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="bathymetry">
+<h3><span class="section-number">4.5.5.4. </span>Bathymetry<a class="headerlink" href="#bathymetry" title="Link to this heading">#</a></h3>
+<p>The bathymetry depth is taken from the 15 arc-second resolution General
+Bathymetric Chart of the Oceans (GEBCO), 2024 (
+<a class="reference external" href="https://doi.org/10.5285/1c44ce99-0a0d-5f4f-e063-7086abc0ea0f">https://doi.org/10.5285/1c44ce99-0a0d-5f4f-e063-7086abc0ea0f</a>) which can be
+found at: <a class="reference external" href="https://www.gebco.net/">https://www.gebco.net/</a>.</p>
+<p>It is resampled on each L2P measurement location using closest neighbour.</p>
+</section>
+<section id="distance-to-coast">
+<h3><span class="section-number">4.5.5.5. </span>Distance to coast<a class="headerlink" href="#distance-to-coast" title="Link to this heading">#</a></h3>
+<p>The distance to closest shoreline is taken from the gridded data set of
+distances from the nearest coastline available at PacIOOS
+(<a class="reference external" href="https://www.pacioos.hawaii.edu/metadata/dist2coast_1deg.html">https://www.pacioos.hawaii.edu/metadata/dist2coast_1deg.html</a>) . Negative
+distances represent locations over land (including land-locked bodies of
+water), while positive distances represent the ocean. NASA’s Ocean Biology
+Processing Group (OBPG) generated this data set using the Generic Mapping
+Tools (GMT) software package. Distances were computed with GMT using its
+intermediate-resolution coastline and then gridded globally at a spatial
+resolution of 0.04 degrees. Bilinear interpolation was then applied to
+increase the spatial resolution to 0.01 degrees. There is an uncertainty of
+up to 1 km in the computed distance at any given point.</p>
+<p>It is resampled on each L2P measurement location using closest neighbour.</p>
+</section>
+</section>
+<section id="swh-bias-correction">
+<span id="bias-correction"></span><h2><span class="section-number">4.5.6. </span>SWH bias correction<a class="headerlink" href="#swh-bias-correction" title="Link to this heading">#</a></h2>
+<p>The bias correction method implemented for the Sea State CCI version4
+dataset (hereafter CCI v4) includes two main components. The first component
+is the SWH cross-mission intercalibration, which aims at reducing the
+inter-mission bias. The second component is the SWH absolute calibration,
+which aims at reducing the bias between altimeter missions and in situ SWH
+measurement from a global wave buoy network. As implemented in the CCI v4,
+the method is based on three types of dataset:</p>
+<ul class="simple">
+<li><p>collocated SWH records from two reference missions (see definition)
+sharing the same orbit during their tandem phases (hereafter called tandem
+records);</p></li>
+<li><p>collocated measurements between a reference mission and a non-reference
+mission at their crossover locations (crossover records);</p></li>
+<li><p>collocated measurements between reference missions and in situ buoy SWH
+measurements (buoy matchup records).</p></li>
+</ul>
+<div class="note admonition">
+<p class="admonition-title">Reference missions</p>
+<p>Altimetry <strong>reference missions</strong> are satellite missions that provide
+high-accuracy, continuous measurements of sea surface height from a stable
+reference orbit, forming the backbone of global sea level monitoring. These
+missions include carefully coordinated tandem phases, during which a new
+satellite flies closely behind its predecessor to enable cross-calibration
+and ensure data continuity across successive missions. In this document
+reference altimetry missions refers to the current altimetry mission
+Sentinel-6 Michael Freilich and the four historical altimetry missions
+Topex-Poseidon, Jason-1, Jason-2, and Jason-3.</p>
+</div>
+<p>The general organization of the bias correction methodology is made of the
+following steps:</p>
+<ul class="simple">
+<li><p>the five reference missions are intercalibrated using tandem SWH records.
+For this purpose, Jason-3 SWH records are considered as unbiased and the
+four other missions are aligned to its records;</p></li>
+<li><p>the five intercalibrated reference missions are calibrated against in situ
+measurements (absolute calibration) using buoy matchups. For this purpose,
+it is assumed that all reference missions, once intercalibrated with each
+other, present similar bias patterns with respect to in situ data so that
+a single bias-correction function can be derived for all missions. This
+assumption allows to increase the number of altimeter-buoy data pairs and<br />
+extend the validity range of the calibration ;</p></li>
+<li><p>the non-reference missions are intercalibrated against reference missions
+based on crossover records with the reference mission presenting the
+longest overlap with them;</p></li>
+</ul>
+<section id="description-of-the-correction-method">
+<h3><span class="section-number">4.5.6.1. </span>Description of the correction method<a class="headerlink" href="#description-of-the-correction-method" title="Link to this heading">#</a></h3>
+<p>Here, the correction method refers to any of the tandem-based,
+crossover-based or matchup-based corrections, either used for cross-mission
+intercalibration or absolute calibration of the reference missions. Building
+up on developments carried out during the first phase of the Sea State CCI
+project (Dodet et al. 2020), the correction method is based on data binning
+technique and results in Look Up Tables (LUT) that can accommodate for
+SWH-dependent error structures. First, the median values of the SWH
+residuals between uncorrected and reference dataset (see Table 1) are
+computed for 0.20m-SWH bin width, with a 0.05 m increment, over the full SWH
+range. When the number of data pairs within a given bin is too low (below 50)
+, a Not-a-Number (NaN) value is assigned to this particular bin. This
+systematically occurs at the low and high ends of the SWH distribution. In
+order to avoid abrupt change in the bias-corrected SWH field, the
+corrections are extrapolated at the low end using the first non-NaN value.
+For SWH above 10m, the corrections are extrapolated using the correction at
+SWH=10m. <a class="reference internal" href="#swh-correction-1"><span class="std std-numref">Fig. 4.5</span></a> gives an illustration of the method for the
+intercalibration step between Sentinel-6A and Jason-3 missions during their
+tandem phase.</p>
+<figure class="align-default" id="swh-correction-1">
+<img alt="../_images/swh_correction_1.png" src="../_images/swh_correction_1.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 4.5 </span><span class="caption-text">Median of the differences between SWH (tandem) records from Sentinel-6A/MF and Jason-3 computed over SWH bins of 0.2m and shifted by 0.05m. Grey dots show each data pair differences (22,442,832 records), blue dots show the median value for each bin, ligh and dark shaded region indicate the [25-75%] and [5-95%] limits of the distribution for each bin, and magenta dots show the final Look Up Table after extrapolation of the correction above 10m.</span><a class="headerlink" href="#swh-correction-1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>However, for most of the non-tandem cases, the number of data pairs is
+generally too low between 5 to 10m so that the correction LUT contains NaN
+values or appear noisy overt this range. In such cases, a robust linear
+regression is fitted through the median of the residuals over a mission-specific
+SWH range (generally between 2 to 7m) to model the error function above a
+specific threshold. <a class="reference internal" href="#swh-correction-2"><span class="std std-numref">Fig. 4.6</span></a> provides such an example with the
+intercalibration between Sentinel-3A and Jason-3. These thresholds and ranges
+are estimated by visual inspection of the data in order to ensure an accurate
+representation of the bias structure and a smooth transition between the
+non-linear corrections for low-to-medium sea state conditions and the linear
+corrections for medium-to-high sea state conditions. Finally, a 5-point
+moving average is applied to the corrections in order to reduce small scale
+oscillations.</p>
+<figure class="align-default" id="swh-correction-2">
+<img alt="../_images/swh_correction_2.png" src="../_images/swh_correction_2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 4.6 </span><span class="caption-text">Median of the differences between SWH (crossover) records from Sentinel-3A and Jason-3 computed over SWH bins of 0.2m and shifted by 0.05m. Grey dots show each data pair differences (14,224 records), blue dots show the median value for each bin, ligh and dark shaded region indicate the [25-75%] and [5-95%] limits of the distribution for each bin, and magenta dots show the final Look Up Table after extrapolation of the correction above 10m.</span><a class="headerlink" href="#swh-correction-2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="selection-of-in-situ-platforms-for-absolute-calibration">
+<h3><span class="section-number">4.5.6.2. </span>Selection of in situ platforms for absolute calibration<a class="headerlink" href="#selection-of-in-situ-platforms-for-absolute-calibration" title="Link to this heading">#</a></h3>
+<p>The CMEMS In Situ Thematic Assembly Center (CMEMS INSTAC) is a component of the European Marine Copernicus Service and its role is to ensure consistent and reliable access to a range of in situ data for service production and validation. For this purpose, CMEMS INSTAC collects multi-source/multiplatform data, and performs consistent quality control before distributing the data in a common format to the CMEMS Marine Forecasting Centres (MFC). The data can be found at <a class="reference external" href="http://www.marineinsitu.eu/">http://www.marineinsitu.eu/</a>. For the absolute calibration of the SWH records from the reference missions, we have considered all altimeter-in situ matchups for which the the altimeter records was located at a minimum distance of 50 km from the shore, a maximum distance of 50 from the buoy, and  with a maximum time difference of 30min with the buoy records.
+In order to ensure that only good quality measurements are selected, a number of tests have been applied:</p>
+<ul class="simple">
+<li><p>stationarity: rejecting SWH buoy measurements having a constant SWH value
+over more than 48 hr;</p></li>
+<li><p>location: rejecting SWH buoy measurements over unrealistic position change
+within a short period of time;</p></li>
+<li><p>CMEMS quality check: using the CMEMS native quality flags on time, location
+and SWH to reject bad or suspect SWH buoy measurements;</p></li>
+<li><p>precision: detecting and rejecting SWH buoy measurements having a precision
+equal or larger than 0.5 meters;</p></li>
+<li><p>range: rejecting SWH buoy measurements out of the 0-30 meter range;</p></li>
+<li><p>Matchups between altimeter and in situ platform measurements were computed within 100-km distance and 1-h time window. The in situ SWH observations were smoothed with a 1-h running average, in order to reduce high-frequency variability.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note on the drift correction of TOPEX Side A SWH
+The TOPEX altimeter was the primary sensor for the TOPEX/POSEIDON mission. It is a redundant instrument, with the two sides designated Side A and Side B. The TOPEX Side A altimeter was activated soon after launch. It began to show signs of change/degradation in early 1997. In particular, changes in the Side A point target response were observed as an apparent drift in the measured significant wave heights and instrument range RMS, and as a result Side A was turned off on February 10, 1999 and Side B turned on, becoming the new primary operational altimeter (Rosmorduc et al., 2023). The TOPEX Side A and Side B SWH records are therefore considered as two separate dataset. In the CCI v4, we use the latest CNES/JPL reprocessing : TOPEX/POSEIDON GDR-F Products. As detailed in the product handbook (Rosmorduc et al. 2023), the TOPEX altimeter data processing used for this product is based upon a numerical retracking approach, which introduces the instrument Point Target Response (PTR) to obtain an echo model that better reflects the characteristics of the altimeter. Unlike the classical analytical MLE solution, no instrument corrections are needed with the numerical retracking approach for range, SWH and sigma0 as a function of SWH and off nadir angle (i.e., Look Up Tables are not required or applied). In addition, the use of the measured PTR compensates for the impact of the altimeter evolution on the range, SWH and sigma0 measurements without having to introduce external corrections. In particular, this approach allows for much more stable SWH measurements when compared to the original TOPEX dataset. Given the objective of long-term cross mission consistency of the CCI v4, intercalibration was deemed necessary and a LUT was also derived for this mission. However, since TOPEX Side A was turned off before the launch of the subsequent reference mission (Jason-1), its SWH intercalibration is based on crossover records with ERS-2. Time consistency of TOPEX Side A was assessed through comparisons with the Ifremer WW3 and ECMWF ERA-5 wave model hindcasts, which revealed a slightly decreasing trend of the SWH records over the period July 1994 to February 1999. This trend was linearly corrected using model results interpolated along the track.</p>
+</div>
+<div class="note admonition">
+<p class="admonition-title">References</p>
+<p>Dodet, G., Piolle, J.-F., Quilfen, Y., Abdalla, S., Accensi, M., Ardhuin, F.,
+Ash, E., Bidlot, J.-R., Gommenginger, C., Marechal, G., Passaro, M.,
+Quartly, G., Stopa, J., Timmermans, B., Young, I., Cipollini, P., Donlon, C.
+, 2020. The Sea State CCI dataset v1: towards a sea state climate data
+record based on satellite observations. Earth System Science Data 12,
+1929–1951. <a class="reference external" href="https://doi.org/10.5194/essd-12-1929-2020">https://doi.org/10.5194/essd-12-1929-2020</a></p>
+<p>Queffeulou, P., 2016. Validation of Jason-3 altimeter wave height
+measurements. Presented at the OSTST.</p>
+<p>Rosmorduc, V., Roinard, H., Desai, S., Desjonqueres, J.-D., Callahan, P.S.,
+Bignalet-Cazalet, F., 2023. TOPEX/POSEIDON GDR-F Products Handbook (No.
+SALP-MU-MAO-OP-17607-CN).</p>
+<p>Sepulveda, H., Queffeulou, P., Ardhuin, F., 2015. Assessment of SARAL/AltiKa
+Wave Height Measurements Relative to Buoy, Jason-2, and Cryosat-2 Data.<br />
+Marine Geodesy 38, 449–465. <a class="reference external" href="https://doi.org/10.1080/01490419.2014.1000470">https://doi.org/10.1080/01490419.2014.1000470</a></p>
+</div>
+</section>
+</section>
+<section id="denoising">
+<span id="id3"></span><h2><span class="section-number">4.5.7. </span>Denoising<a class="headerlink" href="#denoising" title="Link to this heading">#</a></h2>
+<p>A non-parametric denoising method based on Empirical Mode Decomposition (EMD,
+Huang et al., 1998) and inspired by wavelet thresholding is applied to the
+bias corrected variable <code class="docutils literal notranslate"><span class="pre">swh_adjusted</span></code> and stored in <code class="docutils literal notranslate"><span class="pre">swh_denoised</span></code> (see
+Kopsinis and McLaughlin, 2009, Quilfen et al., 2018 and Quilfen and Chapron,
+2019ab).</p>
+<p>A detailed description of the method can be found in Quilfen and Chapron, 2019b.</p>
+<p>For a given noisy, input signal, the SNR and robustness of the denoised signal
+(e.g. to mitigate for result uncertainties associated with signal fluctuations
+close to the applied thresholds) are increased by estimating the final result
+as an ensemble average of several denoised signals. For that, the noise n1(t)
+is first removed from the noisy signal x(t), then a set of k new noisy signals
+is generated by adding random realisations of n1(t), providing after denoising
+a set of k denoised signals whose average gives the resulting denoised SWH
+<code class="docutils literal notranslate"><span class="pre">swh_denoised</span></code> and whose standard deviation gives the uncertainty attached to
+the denoised SWH (<code class="docutils literal notranslate"><span class="pre">swh_emd_uncertainty</span></code>). The uncertainty parameter
+<code class="docutils literal notranslate"><span class="pre">swh_emd_uncertainty</span></code> therefore accounts for the noise characteristics of the
+noisy signal (function of the altimeter sensor, SWH etc), as well as for the
+local SNR (which is scale-dependent) and for uncertainties attached to the
+denoising process.</p>
+<div class="note admonition">
+<p class="admonition-title">References</p>
+<p>Huang, N.E., Shen, Z., Long, S.R., Wu, M.C., Shih, H.H., Zheng, Q., Yen, N.-C., Tung, C.C.,
+Liu, H.H., 1998. The empirical mode decomposition and the Hilbert spectrum for nonlinear
+and non-stationary time series analysis. Proceedings of the Royal Society of London A:
+Mathematical, Physical and Engineering Sciences 454, 903–995.
+<a class="reference external" href="https://doi.org/10.1098/rspa.1998.0193">https://doi.org/10.1098/rspa.1998.0193</a></p>
+<p>Kopsinis, Y., McLaughlin, S., 2009. Development of EMD-Based Denoising Methods Inspired
+by Wavelet Thresholding. IEEE Transactions on Signal Processing 57, 1351–1362.
+<a class="reference external" href="https://doi.org/10.1109/TSP.2009.2013885">https://doi.org/10.1109/TSP.2009.2013885</a></p>
+<p>Quilfen, Y., Yurovskaya, M., Chapron, B., Ardhuin, F., 2018. Storm waves focusing and
+steepening in the Agulhas current: Satellite observations and modeling. Remote Sensing Of
+Environment 216, 561–571. <a class="reference external" href="https://doi.org/10.1016/j.rse.2018.07.020">https://doi.org/10.1016/j.rse.2018.07.020</a></p>
+<p>Quilfen, Y., and Chapron, B., 2019. Ocean Surface Wave-Current Signatures From Satellite
+Altimeter Measurements. Geophysical Research Letters 46, 253–261.
+<a class="reference external" href="https://doi.org/10.1029/2018GL081029">https://doi.org/10.1029/2018GL081029</a></p>
+<p>Quilfen Y., Chapron B. (2020). On denoising satellite altimeter
+measurements for high-resolution geophysical signal analysis.
+Advances in Space Research, 68. <a class="reference external" href="https://doi.org/10.1016/j.asr.2020.01.005">https://doi.org/10.1016/j.asr.2020.01.005</a>]</p>
+</div>
+</section>
+<section id="uncertainties">
+<h2><span class="section-number">4.5.8. </span>Uncertainties<a class="headerlink" href="#uncertainties" title="Link to this heading">#</a></h2>
+<p>The L2P files contain two different and complementary estimates of uncertainty:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">swh_emd_uncertainty</span></code>: this is based on the “noise” estimated from the
+along-track variability of the EMD denoising applied on the 1 Hz data. It
+is an estimate of the uncertainty of the debiased and denoised significant
+wave height.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">swh_uncertainty</span></code>: this is a theoretical estimate of the uncertainty
+caused by speckle noise and sampling in 1-Hz averaged SWH values. Note
+that SWH sampling errors at 1Hz can be correlated (e.g. De Carlo et al.
+2023), so that the average over n 1~Hz values can have an uncertainty
+larger than 1/sqrt(n) times the 1 Hz uncertainty.</p></li>
+</ul>
+<p>For the largest wave heights (Hs &gt; 15 m) we advise to make a distinction
+between Hs and SWH: SWH is an average of local wave heights, and it contains
+fluctuations due to sampling uncertainty (i.e. wave groups), and the true
+significant wave height Hs can only be estimated by averaging or denoising.
+We find that the uncertainty on Hs estimated from a 7-point running average
+and applying the theoretical uncertainty model for 7 s averages is close to
+the EMD denoising uncertainty estimate.</p>
+<p>The theoretical uncertainty is fully described in De Carlo and Ardhuin (2024),
+and the variance is the sum of a variance caused by speckle noise and
+sampling (wave group effect).</p>
+<p>For speckle noise, it is a function of the wave height Hs, the number of
+pulses averaged <span class="math notranslate nohighlight">\(n_a\)</span>, and the retracking method: Maximum Likelihood (ML),
+WHALES or Least Squares (LS), and a variance caused by sampling (wave group
+effect) which is a function of the wave height Hs, the satellite altitude h
+and the spectral shape quantified by the peakedness <span class="math notranslate nohighlight">\(Q_{kk}\)</span>).</p>
+<p>The processing algorithm sets the value of s0 which gives the effect of
+speckle noise:  it is lowest for ML (s0=1 m), intermediate for WHALES (s0 ~
+2 m) and largest for LS (s0=5 m).</p>
+<p>The <code class="xref std std-numref docutils literal notranslate"><span class="pre">all_sat_uncertainties</span></code> shows estimated of (a) the effective spatial resolution of
+the along-track altimeter data: this is roughly the Chelton et al. (1989)
+radius <span class="math notranslate nohighlight">\(\rho_c\)</span>=sqrt(2 h Hs) divided by 1.5, this is smallest for CFOSAT
+because of the much lower orbit (b) the uncertainty of the data at the
+native rate (4.5 Hz for CFOSAT, 40 Hz for SARAL and 20 Hz for all others)
+and (c) the uncertainty of SWH averaged over 1 Hz. Note that there was a
+mistake in a similar figure of De Carlo and Ardhuin (2024) for CFOSAT (the
+native data rate was not properly taken to be 4.5 Hz)</p>
+<figure class="align-default" id="all-sat-uncertainties">
+<img alt="../_images/all_sat_uncertainties.png" src="../_images/all_sat_uncertainties.png" />
+</figure>
+<p>Different spectral shapes are considered: <span class="math notranslate nohighlight">\(Q_{kk}\)</span> = 2 Hs is typical of a wind
+sea, whereas swell-dominated conditions often have <span class="math notranslate nohighlight">\(Q_{kk}\)</span> &gt; 60 m.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./altimetry"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="missions.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">4.4. </span>Altimetry missions</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="l2p.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">4.6. </span>L2P</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sgdr-input-data">4.5.1. SGDR input data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retracking">4.5.2. Retracking</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compression-to-1-hz">4.5.3. Compression to 1 Hz</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#editing">4.5.4. Editing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-on-swh-rms-swh-rms-outlier">4.5.4.1. Test on SWH RMS (<code class="docutils literal notranslate"><span class="pre">swh_rms_outlier</span></code>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-on-swh-outliers-outlier-test">4.5.4.2. Test on SWH outliers (<code class="docutils literal notranslate"><span class="pre">outlier_test</span></code>)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ancillary-data">4.5.5. Ancillary data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ancillary-atmospheric-model-variables">4.5.5.1. Ancillary atmospheric model variables</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ancillary-wave-model-variables">4.5.5.2. Ancillary wave model variables</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ancillary-sea-ice-concentration">4.5.5.3. Ancillary sea ice concentration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bathymetry">4.5.5.4. Bathymetry</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distance-to-coast">4.5.5.5. Distance to coast</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#swh-bias-correction">4.5.6. SWH bias correction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#description-of-the-correction-method">4.5.6.1. Description of the correction method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-of-in-situ-platforms-for-absolute-calibration">4.5.6.2. Selection of in situ platforms for absolute calibration</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#denoising">4.5.7. Denoising</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uncertainties">4.5.8. Uncertainties</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The CCI Sea State system development team
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

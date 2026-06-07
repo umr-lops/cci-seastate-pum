@@ -1,0 +1,1604 @@
+<!DOCTYPE html>
+<html lang="en" data-content_root="../" data-mode="auto" data-theme="light" class="fontawesome-i2svg-active fontawesome-i2svg-complete"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Using THREDDS/Opendap to subset CCI Sea State L4 dataset — CCI Sea State System Documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <style type="text/css">:host,:root{--fa-font-solid:normal 900 1em/1 "Font Awesome 6 Solid";--fa-font-regular:normal 400 1em/1 "Font Awesome 6 Regular";--fa-font-light:normal 300 1em/1 "Font Awesome 6 Light";--fa-font-thin:normal 100 1em/1 "Font Awesome 6 Thin";--fa-font-duotone:normal 900 1em/1 "Font Awesome 6 Duotone";--fa-font-sharp-solid:normal 900 1em/1 "Font Awesome 6 Sharp";--fa-font-sharp-regular:normal 400 1em/1 "Font Awesome 6 Sharp";--fa-font-sharp-light:normal 300 1em/1 "Font Awesome 6 Sharp";--fa-font-sharp-thin:normal 100 1em/1 "Font Awesome 6 Sharp";--fa-font-brands:normal 400 1em/1 "Font Awesome 6 Brands"}svg:not(:host).svg-inline--fa,svg:not(:root).svg-inline--fa{overflow:visible;box-sizing:content-box}.svg-inline--fa{display:var(--fa-display,inline-block);height:1em;overflow:visible;vertical-align:-.125em}.svg-inline--fa.fa-2xs{vertical-align:.1em}.svg-inline--fa.fa-xs{vertical-align:0}.svg-inline--fa.fa-sm{vertical-align:-.0714285705em}.svg-inline--fa.fa-lg{vertical-align:-.2em}.svg-inline--fa.fa-xl{vertical-align:-.25em}.svg-inline--fa.fa-2xl{vertical-align:-.3125em}.svg-inline--fa.fa-pull-left{margin-right:var(--fa-pull-margin,.3em);width:auto}.svg-inline--fa.fa-pull-right{margin-left:var(--fa-pull-margin,.3em);width:auto}.svg-inline--fa.fa-li{width:var(--fa-li-width,2em);top:.25em}.svg-inline--fa.fa-fw{width:var(--fa-fw-width,1.25em)}.fa-layers svg.svg-inline--fa{bottom:0;left:0;margin:auto;position:absolute;right:0;top:0}.fa-layers-counter,.fa-layers-text{display:inline-block;position:absolute;text-align:center}.fa-layers{display:inline-block;height:1em;position:relative;text-align:center;vertical-align:-.125em;width:1em}.fa-layers svg.svg-inline--fa{-webkit-transform-origin:center center;transform-origin:center center}.fa-layers-text{left:50%;top:50%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%);-webkit-transform-origin:center center;transform-origin:center center}.fa-layers-counter{background-color:var(--fa-counter-background-color,#ff253a);border-radius:var(--fa-counter-border-radius,1em);box-sizing:border-box;color:var(--fa-inverse,#fff);line-height:var(--fa-counter-line-height,1);max-width:var(--fa-counter-max-width,5em);min-width:var(--fa-counter-min-width,1.5em);overflow:hidden;padding:var(--fa-counter-padding,.25em .5em);right:var(--fa-right,0);text-overflow:ellipsis;top:var(--fa-top,0);-webkit-transform:scale(var(--fa-counter-scale,.25));transform:scale(var(--fa-counter-scale,.25));-webkit-transform-origin:top right;transform-origin:top right}.fa-layers-bottom-right{bottom:var(--fa-bottom,0);right:var(--fa-right,0);top:auto;-webkit-transform:scale(var(--fa-layers-scale,.25));transform:scale(var(--fa-layers-scale,.25));-webkit-transform-origin:bottom right;transform-origin:bottom right}.fa-layers-bottom-left{bottom:var(--fa-bottom,0);left:var(--fa-left,0);right:auto;top:auto;-webkit-transform:scale(var(--fa-layers-scale,.25));transform:scale(var(--fa-layers-scale,.25));-webkit-transform-origin:bottom left;transform-origin:bottom left}.fa-layers-top-right{top:var(--fa-top,0);right:var(--fa-right,0);-webkit-transform:scale(var(--fa-layers-scale,.25));transform:scale(var(--fa-layers-scale,.25));-webkit-transform-origin:top right;transform-origin:top right}.fa-layers-top-left{left:var(--fa-left,0);right:auto;top:var(--fa-top,0);-webkit-transform:scale(var(--fa-layers-scale,.25));transform:scale(var(--fa-layers-scale,.25));-webkit-transform-origin:top left;transform-origin:top left}.fa-1x{font-size:1em}.fa-2x{font-size:2em}.fa-3x{font-size:3em}.fa-4x{font-size:4em}.fa-5x{font-size:5em}.fa-6x{font-size:6em}.fa-7x{font-size:7em}.fa-8x{font-size:8em}.fa-9x{font-size:9em}.fa-10x{font-size:10em}.fa-2xs{font-size:.625em;line-height:.1em;vertical-align:.225em}.fa-xs{font-size:.75em;line-height:.0833333337em;vertical-align:.125em}.fa-sm{font-size:.875em;line-height:.0714285718em;vertical-align:.0535714295em}.fa-lg{font-size:1.25em;line-height:.05em;vertical-align:-.075em}.fa-xl{font-size:1.5em;line-height:.0416666682em;vertical-align:-.125em}.fa-2xl{font-size:2em;line-height:.03125em;vertical-align:-.1875em}.fa-fw{text-align:center;width:1.25em}.fa-ul{list-style-type:none;margin-left:var(--fa-li-margin,2.5em);padding-left:0}.fa-ul>li{position:relative}.fa-li{left:calc(var(--fa-li-width,2em) * -1);position:absolute;text-align:center;width:var(--fa-li-width,2em);line-height:inherit}.fa-border{border-color:var(--fa-border-color,#eee);border-radius:var(--fa-border-radius,.1em);border-style:var(--fa-border-style,solid);border-width:var(--fa-border-width,.08em);padding:var(--fa-border-padding,.2em .25em .15em)}.fa-pull-left{float:left;margin-right:var(--fa-pull-margin,.3em)}.fa-pull-right{float:right;margin-left:var(--fa-pull-margin,.3em)}.fa-beat{-webkit-animation-name:fa-beat;animation-name:fa-beat;-webkit-animation-delay:var(--fa-animation-delay,0s);animation-delay:var(--fa-animation-delay,0s);-webkit-animation-direction:var(--fa-animation-direction,normal);animation-direction:var(--fa-animation-direction,normal);-webkit-animation-duration:var(--fa-animation-duration,1s);animation-duration:var(--fa-animation-duration,1s);-webkit-animation-iteration-count:var(--fa-animation-iteration-count,infinite);animation-iteration-count:var(--fa-animation-iteration-count,infinite);-webkit-animation-timing-function:var(--fa-animation-timing,ease-in-out);animation-timing-function:var(--fa-animation-timing,ease-in-out)}.fa-bounce{-webkit-animation-name:fa-bounce;animation-name:fa-bounce;-webkit-animation-delay:var(--fa-animation-delay,0s);animation-delay:var(--fa-animation-delay,0s);-webkit-animation-direction:var(--fa-animation-direction,normal);animation-direction:var(--fa-animation-direction,normal);-webkit-animation-duration:var(--fa-animation-duration,1s);animation-duration:var(--fa-animation-duration,1s);-webkit-animation-iteration-count:var(--fa-animation-iteration-count,infinite);animation-iteration-count:var(--fa-animation-iteration-count,infinite);-webkit-animation-timing-function:var(--fa-animation-timing,cubic-bezier(.28,.84,.42,1));animation-timing-function:var(--fa-animation-timing,cubic-bezier(.28,.84,.42,1))}.fa-fade{-webkit-animation-name:fa-fade;animation-name:fa-fade;-webkit-animation-delay:var(--fa-animation-delay,0s);animation-delay:var(--fa-animation-delay,0s);-webkit-animation-direction:var(--fa-animation-direction,normal);animation-direction:var(--fa-animation-direction,normal);-webkit-animation-duration:var(--fa-animation-duration,1s);animation-duration:var(--fa-animation-duration,1s);-webkit-animation-iteration-count:var(--fa-animation-iteration-count,infinite);animation-iteration-count:var(--fa-animation-iteration-count,infinite);-webkit-animation-timing-function:var(--fa-animation-timing,cubic-bezier(.4,0,.6,1));animation-timing-function:var(--fa-animation-timing,cubic-bezier(.4,0,.6,1))}.fa-beat-fade{-webkit-animation-name:fa-beat-fade;animation-name:fa-beat-fade;-webkit-animation-delay:var(--fa-animation-delay,0s);animation-delay:var(--fa-animation-delay,0s);-webkit-animation-direction:var(--fa-animation-direction,normal);animation-direction:var(--fa-animation-direction,normal);-webkit-animation-duration:var(--fa-animation-duration,1s);animation-duration:var(--fa-animation-duration,1s);-webkit-animation-iteration-count:var(--fa-animation-iteration-count,infinite);animation-iteration-count:var(--fa-animation-iteration-count,infinite);-webkit-animation-timing-function:var(--fa-animation-timing,cubic-bezier(.4,0,.6,1));animation-timing-function:var(--fa-animation-timing,cubic-bezier(.4,0,.6,1))}.fa-flip{-webkit-animation-name:fa-flip;animation-name:fa-flip;-webkit-animation-delay:var(--fa-animation-delay,0s);animation-delay:var(--fa-animation-delay,0s);-webkit-animation-direction:var(--fa-animation-direction,normal);animation-direction:var(--fa-animation-direction,normal);-webkit-animation-duration:var(--fa-animation-duration,1s);animation-duration:var(--fa-animation-duration,1s);-webkit-animation-iteration-count:var(--fa-animation-iteration-count,infinite);animation-iteration-count:var(--fa-animation-iteration-count,infinite);-webkit-animation-timing-function:var(--fa-animation-timing,ease-in-out);animation-timing-function:var(--fa-animation-timing,ease-in-out)}.fa-shake{-webkit-animation-name:fa-shake;animation-name:fa-shake;-webkit-animation-delay:var(--fa-animation-delay,0s);animation-delay:var(--fa-animation-delay,0s);-webkit-animation-direction:var(--fa-animation-direction,normal);animation-direction:var(--fa-animation-direction,normal);-webkit-animation-duration:var(--fa-animation-duration,1s);animation-duration:var(--fa-animation-duration,1s);-webkit-animation-iteration-count:var(--fa-animation-iteration-count,infinite);animation-iteration-count:var(--fa-animation-iteration-count,infinite);-webkit-animation-timing-function:var(--fa-animation-timing,linear);animation-timing-function:var(--fa-animation-timing,linear)}.fa-spin{-webkit-animation-name:fa-spin;animation-name:fa-spin;-webkit-animation-delay:var(--fa-animation-delay,0s);animation-delay:var(--fa-animation-delay,0s);-webkit-animation-direction:var(--fa-animation-direction,normal);animation-direction:var(--fa-animation-direction,normal);-webkit-animation-duration:var(--fa-animation-duration,2s);animation-duration:var(--fa-animation-duration,2s);-webkit-animation-iteration-count:var(--fa-animation-iteration-count,infinite);animation-iteration-count:var(--fa-animation-iteration-count,infinite);-webkit-animation-timing-function:var(--fa-animation-timing,linear);animation-timing-function:var(--fa-animation-timing,linear)}.fa-spin-reverse{--fa-animation-direction:reverse}.fa-pulse,.fa-spin-pulse{-webkit-animation-name:fa-spin;animation-name:fa-spin;-webkit-animation-direction:var(--fa-animation-direction,normal);animation-direction:var(--fa-animation-direction,normal);-webkit-animation-duration:var(--fa-animation-duration,1s);animation-duration:var(--fa-animation-duration,1s);-webkit-animation-iteration-count:var(--fa-animation-iteration-count,infinite);animation-iteration-count:var(--fa-animation-iteration-count,infinite);-webkit-animation-timing-function:var(--fa-animation-timing,steps(8));animation-timing-function:var(--fa-animation-timing,steps(8))}@media (prefers-reduced-motion:reduce){.fa-beat,.fa-beat-fade,.fa-bounce,.fa-fade,.fa-flip,.fa-pulse,.fa-shake,.fa-spin,.fa-spin-pulse{-webkit-animation-delay:-1ms;animation-delay:-1ms;-webkit-animation-duration:1ms;animation-duration:1ms;-webkit-animation-iteration-count:1;animation-iteration-count:1;-webkit-transition-delay:0s;transition-delay:0s;-webkit-transition-duration:0s;transition-duration:0s}}@-webkit-keyframes fa-beat{0%,90%{-webkit-transform:scale(1);transform:scale(1)}45%{-webkit-transform:scale(var(--fa-beat-scale,1.25));transform:scale(var(--fa-beat-scale,1.25))}}@keyframes fa-beat{0%,90%{-webkit-transform:scale(1);transform:scale(1)}45%{-webkit-transform:scale(var(--fa-beat-scale,1.25));transform:scale(var(--fa-beat-scale,1.25))}}@-webkit-keyframes fa-bounce{0%{-webkit-transform:scale(1,1) translateY(0);transform:scale(1,1) translateY(0)}10%{-webkit-transform:scale(var(--fa-bounce-start-scale-x,1.1),var(--fa-bounce-start-scale-y,.9)) translateY(0);transform:scale(var(--fa-bounce-start-scale-x,1.1),var(--fa-bounce-start-scale-y,.9)) translateY(0)}30%{-webkit-transform:scale(var(--fa-bounce-jump-scale-x,.9),var(--fa-bounce-jump-scale-y,1.1)) translateY(var(--fa-bounce-height,-.5em));transform:scale(var(--fa-bounce-jump-scale-x,.9),var(--fa-bounce-jump-scale-y,1.1)) translateY(var(--fa-bounce-height,-.5em))}50%{-webkit-transform:scale(var(--fa-bounce-land-scale-x,1.05),var(--fa-bounce-land-scale-y,.95)) translateY(0);transform:scale(var(--fa-bounce-land-scale-x,1.05),var(--fa-bounce-land-scale-y,.95)) translateY(0)}57%{-webkit-transform:scale(1,1) translateY(var(--fa-bounce-rebound,-.125em));transform:scale(1,1) translateY(var(--fa-bounce-rebound,-.125em))}64%{-webkit-transform:scale(1,1) translateY(0);transform:scale(1,1) translateY(0)}100%{-webkit-transform:scale(1,1) translateY(0);transform:scale(1,1) translateY(0)}}@keyframes fa-bounce{0%{-webkit-transform:scale(1,1) translateY(0);transform:scale(1,1) translateY(0)}10%{-webkit-transform:scale(var(--fa-bounce-start-scale-x,1.1),var(--fa-bounce-start-scale-y,.9)) translateY(0);transform:scale(var(--fa-bounce-start-scale-x,1.1),var(--fa-bounce-start-scale-y,.9)) translateY(0)}30%{-webkit-transform:scale(var(--fa-bounce-jump-scale-x,.9),var(--fa-bounce-jump-scale-y,1.1)) translateY(var(--fa-bounce-height,-.5em));transform:scale(var(--fa-bounce-jump-scale-x,.9),var(--fa-bounce-jump-scale-y,1.1)) translateY(var(--fa-bounce-height,-.5em))}50%{-webkit-transform:scale(var(--fa-bounce-land-scale-x,1.05),var(--fa-bounce-land-scale-y,.95)) translateY(0);transform:scale(var(--fa-bounce-land-scale-x,1.05),var(--fa-bounce-land-scale-y,.95)) translateY(0)}57%{-webkit-transform:scale(1,1) translateY(var(--fa-bounce-rebound,-.125em));transform:scale(1,1) translateY(var(--fa-bounce-rebound,-.125em))}64%{-webkit-transform:scale(1,1) translateY(0);transform:scale(1,1) translateY(0)}100%{-webkit-transform:scale(1,1) translateY(0);transform:scale(1,1) translateY(0)}}@-webkit-keyframes fa-fade{50%{opacity:var(--fa-fade-opacity,.4)}}@keyframes fa-fade{50%{opacity:var(--fa-fade-opacity,.4)}}@-webkit-keyframes fa-beat-fade{0%,100%{opacity:var(--fa-beat-fade-opacity,.4);-webkit-transform:scale(1);transform:scale(1)}50%{opacity:1;-webkit-transform:scale(var(--fa-beat-fade-scale,1.125));transform:scale(var(--fa-beat-fade-scale,1.125))}}@keyframes fa-beat-fade{0%,100%{opacity:var(--fa-beat-fade-opacity,.4);-webkit-transform:scale(1);transform:scale(1)}50%{opacity:1;-webkit-transform:scale(var(--fa-beat-fade-scale,1.125));transform:scale(var(--fa-beat-fade-scale,1.125))}}@-webkit-keyframes fa-flip{50%{-webkit-transform:rotate3d(var(--fa-flip-x,0),var(--fa-flip-y,1),var(--fa-flip-z,0),var(--fa-flip-angle,-180deg));transform:rotate3d(var(--fa-flip-x,0),var(--fa-flip-y,1),var(--fa-flip-z,0),var(--fa-flip-angle,-180deg))}}@keyframes fa-flip{50%{-webkit-transform:rotate3d(var(--fa-flip-x,0),var(--fa-flip-y,1),var(--fa-flip-z,0),var(--fa-flip-angle,-180deg));transform:rotate3d(var(--fa-flip-x,0),var(--fa-flip-y,1),var(--fa-flip-z,0),var(--fa-flip-angle,-180deg))}}@-webkit-keyframes fa-shake{0%{-webkit-transform:rotate(-15deg);transform:rotate(-15deg)}4%{-webkit-transform:rotate(15deg);transform:rotate(15deg)}24%,8%{-webkit-transform:rotate(-18deg);transform:rotate(-18deg)}12%,28%{-webkit-transform:rotate(18deg);transform:rotate(18deg)}16%{-webkit-transform:rotate(-22deg);transform:rotate(-22deg)}20%{-webkit-transform:rotate(22deg);transform:rotate(22deg)}32%{-webkit-transform:rotate(-12deg);transform:rotate(-12deg)}36%{-webkit-transform:rotate(12deg);transform:rotate(12deg)}100%,40%{-webkit-transform:rotate(0);transform:rotate(0)}}@keyframes fa-shake{0%{-webkit-transform:rotate(-15deg);transform:rotate(-15deg)}4%{-webkit-transform:rotate(15deg);transform:rotate(15deg)}24%,8%{-webkit-transform:rotate(-18deg);transform:rotate(-18deg)}12%,28%{-webkit-transform:rotate(18deg);transform:rotate(18deg)}16%{-webkit-transform:rotate(-22deg);transform:rotate(-22deg)}20%{-webkit-transform:rotate(22deg);transform:rotate(22deg)}32%{-webkit-transform:rotate(-12deg);transform:rotate(-12deg)}36%{-webkit-transform:rotate(12deg);transform:rotate(12deg)}100%,40%{-webkit-transform:rotate(0);transform:rotate(0)}}@-webkit-keyframes fa-spin{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@keyframes fa-spin{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}.fa-rotate-90{-webkit-transform:rotate(90deg);transform:rotate(90deg)}.fa-rotate-180{-webkit-transform:rotate(180deg);transform:rotate(180deg)}.fa-rotate-270{-webkit-transform:rotate(270deg);transform:rotate(270deg)}.fa-flip-horizontal{-webkit-transform:scale(-1,1);transform:scale(-1,1)}.fa-flip-vertical{-webkit-transform:scale(1,-1);transform:scale(1,-1)}.fa-flip-both,.fa-flip-horizontal.fa-flip-vertical{-webkit-transform:scale(-1,-1);transform:scale(-1,-1)}.fa-rotate-by{-webkit-transform:rotate(var(--fa-rotate-angle,0));transform:rotate(var(--fa-rotate-angle,0))}.fa-stack{display:inline-block;vertical-align:middle;height:2em;position:relative;width:2.5em}.fa-stack-1x,.fa-stack-2x{bottom:0;left:0;margin:auto;position:absolute;right:0;top:0;z-index:var(--fa-stack-z-index,auto)}.svg-inline--fa.fa-stack-1x{height:1em;width:1.25em}.svg-inline--fa.fa-stack-2x{height:2em;width:2.5em}.fa-inverse{color:var(--fa-inverse,#fff)}.fa-sr-only,.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0}.fa-sr-only-focusable:not(:focus),.sr-only-focusable:not(:focus){position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0}.svg-inline--fa .fa-primary{fill:var(--fa-primary-color,currentColor);opacity:var(--fa-primary-opacity,1)}.svg-inline--fa .fa-secondary{fill:var(--fa-secondary-color,currentColor);opacity:var(--fa-secondary-opacity,.4)}.svg-inline--fa.fa-swap-opacity .fa-primary{opacity:var(--fa-secondary-opacity,.4)}.svg-inline--fa.fa-swap-opacity .fa-secondary{opacity:var(--fa-primary-opacity,1)}.svg-inline--fa mask .fa-primary,.svg-inline--fa mask .fa-secondary{fill:#000}.fa-duotone.fa-inverse,.fad.fa-inverse{color:var(--fa-inverse,#fff)}</style><link href="tutorial_thredds_files/theme.css" rel="stylesheet">
+<link href="tutorial_thredds_files/bootstrap.css" rel="stylesheet">
+<link href="tutorial_thredds_files/pydata-sphinx-theme.css" rel="stylesheet">
+
+  
+  <link href="tutorial_thredds_files/all.min.css" rel="stylesheet">
+  <link rel="preload" as="font" type="font/woff2" crossorigin="" href="https://cciseastate.gitlab-pages.ifremer.fr/ccidoc/_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin="" href="https://cciseastate.gitlab-pages.ifremer.fr/ccidoc/_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin="" href="https://cciseastate.gitlab-pages.ifremer.fr/ccidoc/_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="tutorial_thredds_files/pygments.css">
+    <link rel="stylesheet" type="text/css" href="tutorial_thredds_files/sphinx-book-theme.css">
+    <link rel="stylesheet" type="text/css" href="tutorial_thredds_files/togglebutton.css">
+    <link rel="stylesheet" type="text/css" href="tutorial_thredds_files/copybutton.css">
+    <link rel="stylesheet" type="text/css" href="tutorial_thredds_files/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe824.css">
+    <link rel="stylesheet" type="text/css" href="tutorial_thredds_files/sphinx-thebe.css">
+    <link rel="stylesheet" type="text/css" href="tutorial_thredds_files/sphinx-design.min.css">
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="tutorial_thredds_files/bootstrap.js">
+<link rel="preload" as="script" href="tutorial_thredds_files/pydata-sphinx-theme.js">
+  <script src="tutorial_thredds_files/all.min.js"></script>
+
+    <script src="tutorial_thredds_files/documentation_options.js"></script>
+    <script src="tutorial_thredds_files/doctools.js"></script>
+    <script src="tutorial_thredds_files/sphinx_highlight.js"></script>
+    <script src="tutorial_thredds_files/clipboard.min.js"></script>
+    <script src="tutorial_thredds_files/copybutton.js"></script>
+    <script src="tutorial_thredds_files/sphinx-book-theme.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="tutorial_thredds_files/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="tutorial_thredds_files/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="tutorial_thredds_files/sphinx-thebe.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/tutorial_thredds';</script>
+    <link rel="index" title="Index" href="https://cciseastate.gitlab-pages.ifremer.fr/ccidoc/genindex.html">
+    <link rel="search" title="Search" href="https://cciseastate.gitlab-pages.ifremer.fr/ccidoc/search.html">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="docsearch:language" content="en">
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="" class="scrolled">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top" style="display: none;">
+    <svg class="svg-inline--fa fa-arrow-up" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="arrow-up" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" data-fa-i2svg=""><path fill="currentColor" d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"></path></svg><!-- <i class="fa-solid fa-arrow-up"></i> Font Awesome fontawesome.com -->Back to top</button>
+
+  
+  <input type="checkbox" class="sidebar-toggle" id="pst-primary-sidebar-checkbox">
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox" class="sidebar-toggle" id="pst-secondary-sidebar-checkbox">
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <svg class="svg-inline--fa fa-magnifying-glass" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="magnifying-glass" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"></path></svg><!-- <i class="fa-solid fa-magnifying-glass"></i> Font Awesome fontawesome.com -->
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer" style="height: auto;">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none noprint">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar noprint">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="https://cciseastate.gitlab-pages.ifremer.fr/ccidoc/intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="tutorial_thredds_files/logo.png" class="logo__image only-light" alt="CCI Sea State System Documentation - Home">
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="CCI Sea State System Documentation - Home"/>`);</script><img src="tutorial_thredds_files/logo.png" class="logo__image only-dark" alt="CCI Sea State System Documentation - Home">
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+   <button class="btn search-button-field search-button__button" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip" data-bs-original-title="Search">
+    <svg class="svg-inline--fa fa-magnifying-glass" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="magnifying-glass" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"></path></svg><!-- <i class="fa-solid fa-magnifying-glass"></i> Font Awesome fontawesome.com -->
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ </div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="https://cciseastate.gitlab-pages.ifremer.fr/ccidoc/intro.html">
+                    CCI Sea State Product User Guide
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="https://cciseastate.gitlab-pages.ifremer.fr/ccidoc/quickintro.html">1. ESA Sea State CCI datasets in a nutshell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://cciseastate.gitlab-pages.ifremer.fr/ccidoc/project.html">2. The CCI Sea State project</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="https://cciseastate.gitlab-pages.ifremer.fr/ccidoc/conventions.html">3. Format conventions</a><details><summary><span class="toctree-toggle" role="presentation"><svg class="svg-inline--fa fa-chevron-down" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"></path></svg><!-- <i class="fa-solid fa-chevron-down"></i> Font Awesome fontawesome.com --></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://cciseastate.gitlab-pages.ifremer.fr/ccidoc/naming.html">3.1. Naming conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://cciseastate.gitlab-pages.ifremer.fr/ccidoc/coordinates.html">3.2. Coordinate variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://cciseastate.gitlab-pages.ifremer.fr/ccidoc/attributes.html">3.3. Global attributes</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="https://cciseastate.gitlab-pages.ifremer.fr/ccidoc/altimetry.html">4. Nadir-altimetry datasets</a><details><summary><span class="toctree-toggle" role="presentation"><svg class="svg-inline--fa fa-chevron-down" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"></path></svg><!-- <i class="fa-solid fa-chevron-down"></i> Font Awesome fontawesome.com --></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://cciseastate.gitlab-pages.ifremer.fr/ccidoc/altimetry/missions.html">4.4. Altimetry missions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://cciseastate.gitlab-pages.ifremer.fr/ccidoc/altimetry/baseline.html">4.5. Processing details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://cciseastate.gitlab-pages.ifremer.fr/ccidoc/altimetry/l2p.html">4.6. L2P</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://cciseastate.gitlab-pages.ifremer.fr/ccidoc/altimetry/l3.html">4.7. L3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://cciseastate.gitlab-pages.ifremer.fr/ccidoc/altimetry/l4.html">4.8. L4</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="https://cciseastate.gitlab-pages.ifremer.fr/ccidoc/sar.html">5. SAR datasets</a><details><summary><span class="toctree-toggle" role="presentation"><svg class="svg-inline--fa fa-chevron-down" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"></path></svg><!-- <i class="fa-solid fa-chevron-down"></i> Font Awesome fontawesome.com --></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://cciseastate.gitlab-pages.ifremer.fr/ccidoc/sar/missions.html">5.4. SAR missions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://cciseastate.gitlab-pages.ifremer.fr/ccidoc/sar/SAR-SeaStaR.html">5.5. SAR processing details</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="https://cciseastate.gitlab-pages.ifremer.fr/ccidoc/sar/sar_dlr_l2p.html">5.8. L2P SAR WV &amp; IW/EW by DLR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://cciseastate.gitlab-pages.ifremer.fr/ccidoc/sar/sar_wv_quach.html">5.9. L2P SAR WV by Ifremer</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="https://cciseastate.gitlab-pages.ifremer.fr/ccidoc/access.html">6. Data access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://cciseastate.gitlab-pages.ifremer.fr/ccidoc/changes.html">7. Changes</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none noprint">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" data-bs-placement="bottom" data-bs-toggle="tooltip" aria-label="Toggle primary sidebar" data-bs-original-title="Toggle primary sidebar">
+  <svg class="svg-inline--fa fa-bars" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bars" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"></path></svg><!-- <span class="fa-solid fa-bars"></span> Font Awesome fontawesome.com -->
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <svg class="svg-inline--fa fa-gitlab" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="gitlab" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M503.5 204.6L502.8 202.8L433.1 21.02C431.7 17.45 429.2 14.43 425.9 12.38C423.5 10.83 420.8 9.865 417.9 9.57C415 9.275 412.2 9.653 409.5 10.68C406.8 11.7 404.4 13.34 402.4 15.46C400.5 17.58 399.1 20.13 398.3 22.9L351.3 166.9H160.8L113.7 22.9C112.9 20.13 111.5 17.59 109.6 15.47C107.6 13.35 105.2 11.72 102.5 10.7C99.86 9.675 96.98 9.295 94.12 9.587C91.26 9.878 88.51 10.83 86.08 12.38C82.84 14.43 80.33 17.45 78.92 21.02L9.267 202.8L8.543 204.6C-1.484 230.8-2.72 259.6 5.023 286.6C12.77 313.5 29.07 337.3 51.47 354.2L51.74 354.4L52.33 354.8L158.3 434.3L210.9 474L242.9 498.2C246.6 500.1 251.2 502.5 255.9 502.5C260.6 502.5 265.2 500.1 268.9 498.2L300.9 474L353.5 434.3L460.2 354.4L460.5 354.1C482.9 337.2 499.2 313.5 506.1 286.6C514.7 259.6 513.5 230.8 503.5 204.6z"></path></svg><!-- <i class="fab fa-gitlab"></i> Font Awesome fontawesome.com -->
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://gitlab.ifremer.fr/cciseastate/ccidoc" target="_blank" class="btn btn-sm btn-source-repository-button dropdown-item" data-bs-placement="left" data-bs-toggle="tooltip" data-bs-original-title="Source repository">
+  
+
+<span class="btn__icon-container">
+  <svg class="svg-inline--fa fa-gitlab" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="gitlab" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M503.5 204.6L502.8 202.8L433.1 21.02C431.7 17.45 429.2 14.43 425.9 12.38C423.5 10.83 420.8 9.865 417.9 9.57C415 9.275 412.2 9.653 409.5 10.68C406.8 11.7 404.4 13.34 402.4 15.46C400.5 17.58 399.1 20.13 398.3 22.9L351.3 166.9H160.8L113.7 22.9C112.9 20.13 111.5 17.59 109.6 15.47C107.6 13.35 105.2 11.72 102.5 10.7C99.86 9.675 96.98 9.295 94.12 9.587C91.26 9.878 88.51 10.83 86.08 12.38C82.84 14.43 80.33 17.45 78.92 21.02L9.267 202.8L8.543 204.6C-1.484 230.8-2.72 259.6 5.023 286.6C12.77 313.5 29.07 337.3 51.47 354.2L51.74 354.4L52.33 354.8L158.3 434.3L210.9 474L242.9 498.2C246.6 500.1 251.2 502.5 255.9 502.5C260.6 502.5 265.2 500.1 268.9 498.2L300.9 474L353.5 434.3L460.2 354.4L460.5 354.1C482.9 337.2 499.2 313.5 506.1 286.6C514.7 259.6 513.5 230.8 503.5 204.6z"></path></svg><!-- <i class="fab fa-gitlab"></i> Font Awesome fontawesome.com -->
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://gitlab.ifremer.fr/cciseastate/ccidoc/-/issues/new?issue[title]=Issue%20on%20page%20%2Fnotebooks/tutorial_thredds.html&amp;issue[description]=Your%20issue%20content%20here." target="_blank" class="btn btn-sm btn-source-issues-button dropdown-item" data-bs-placement="left" data-bs-toggle="tooltip" data-bs-original-title="Open an issue">
+  
+
+<span class="btn__icon-container">
+  <svg class="svg-inline--fa fa-lightbulb" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="lightbulb" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" data-fa-i2svg=""><path fill="currentColor" d="M272 384c9.6-31.9 29.5-59.1 49.2-86.2l0 0c5.2-7.1 10.4-14.2 15.4-21.4c19.8-28.5 31.4-63 31.4-100.3C368 78.8 289.2 0 192 0S16 78.8 16 176c0 37.3 11.6 71.9 31.4 100.3c5 7.2 10.2 14.3 15.4 21.4l0 0c19.8 27.1 39.7 54.4 49.2 86.2H272zM192 512c44.2 0 80-35.8 80-80V416H112v16c0 44.2 35.8 80 80 80zM112 176c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-61.9 50.1-112 112-112c8.8 0 16 7.2 16 16s-7.2 16-16 16c-44.2 0-80 35.8-80 80z"></path></svg><!-- <i class="fas fa-lightbulb"></i> Font Awesome fontawesome.com -->
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <svg class="svg-inline--fa fa-download" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="download" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"></path></svg><!-- <i class="fas fa-download"></i> Font Awesome fontawesome.com -->
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://cciseastate.gitlab-pages.ifremer.fr/ccidoc/_sources/notebooks/tutorial_thredds.ipynb" target="_blank" class="btn btn-sm btn-download-source-button dropdown-item" data-bs-placement="left" data-bs-toggle="tooltip" data-bs-original-title="Download source file">
+  
+
+<span class="btn__icon-container">
+  <svg class="svg-inline--fa fa-file" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="file" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" data-fa-i2svg=""><path fill="currentColor" d="M0 64C0 28.7 28.7 0 64 0H224V128c0 17.7 14.3 32 32 32H384V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V64zm384 64H256V0L384 128z"></path></svg><!-- <i class="fas fa-file"></i> Font Awesome fontawesome.com -->
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()" class="btn btn-sm btn-download-pdf-button dropdown-item" data-bs-placement="left" data-bs-toggle="tooltip" data-bs-original-title="Print to PDF">
+  
+
+<span class="btn__icon-container">
+  <svg class="svg-inline--fa fa-file-pdf" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="file-pdf" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M0 64C0 28.7 28.7 0 64 0L224 0l0 128c0 17.7 14.3 32 32 32l128 0 0 144-208 0c-35.3 0-64 28.7-64 64l0 144-48 0c-35.3 0-64-28.7-64-64L0 64zm384 64l-128 0L256 0 384 128zM176 352l32 0c30.9 0 56 25.1 56 56s-25.1 56-56 56l-16 0 0 32c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-48 0-80c0-8.8 7.2-16 16-16zm32 80c13.3 0 24-10.7 24-24s-10.7-24-24-24l-16 0 0 48 16 0zm96-80l32 0c26.5 0 48 21.5 48 48l0 64c0 26.5-21.5 48-48 48l-32 0c-8.8 0-16-7.2-16-16l0-128c0-8.8 7.2-16 16-16zm32 128c8.8 0 16-7.2 16-16l0-64c0-8.8-7.2-16-16-16l-16 0 0 96 16 0zm80-112c0-8.8 7.2-16 16-16l48 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-32 0 0 32 32 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-32 0 0 48c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-64 0-64z"></path></svg><!-- <i class="fas fa-file-pdf"></i> Font Awesome fontawesome.com -->
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()" class="btn btn-sm btn-fullscreen-button" data-bs-placement="bottom" data-bs-toggle="tooltip" aria-label="Fullscreen mode" data-bs-original-title="Fullscreen mode">
+  
+
+<span class="btn__icon-container">
+  <svg class="svg-inline--fa fa-expand" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="expand" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M32 32C14.3 32 0 46.3 0 64v96c0 17.7 14.3 32 32 32s32-14.3 32-32V96h64c17.7 0 32-14.3 32-32s-14.3-32-32-32H32zM64 352c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7 14.3 32 32 32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H64V352zM320 32c-17.7 0-32 14.3-32 32s14.3 32 32 32h64v64c0 17.7 14.3 32 32 32s32-14.3 32-32V64c0-17.7-14.3-32-32-32H320zM448 352c0-17.7-14.3-32-32-32s-32 14.3-32 32v64H320c-17.7 0-32 14.3-32 32s14.3 32 32 32h96c17.7 0 32-14.3 32-32V352z"></path></svg><!-- <i class="fas fa-expand"></i> Font Awesome fontawesome.com -->
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip" data-bs-original-title="light/dark">
+    <svg class="svg-inline--fa fa-sun theme-switch fa-lg" data-mode="light" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="sun" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M361.5 1.2c5 2.1 8.6 6.6 9.6 11.9L391 121l107.9 19.8c5.3 1 9.8 4.6 11.9 9.6s1.5 10.7-1.6 15.2L446.9 256l62.3 90.3c3.1 4.5 3.7 10.2 1.6 15.2s-6.6 8.6-11.9 9.6L391 391 371.1 498.9c-1 5.3-4.6 9.8-9.6 11.9s-10.7 1.5-15.2-1.6L256 446.9l-90.3 62.3c-4.5 3.1-10.2 3.7-15.2 1.6s-8.6-6.6-9.6-11.9L121 391 13.1 371.1c-5.3-1-9.8-4.6-11.9-9.6s-1.5-10.7 1.6-15.2L65.1 256 2.8 165.7c-3.1-4.5-3.7-10.2-1.6-15.2s6.6-8.6 11.9-9.6L121 121 140.9 13.1c1-5.3 4.6-9.8 9.6-11.9s10.7-1.5 15.2 1.6L256 65.1 346.3 2.8c4.5-3.1 10.2-3.7 15.2-1.6zM160 256a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zm224 0a128 128 0 1 0 -256 0 128 128 0 1 0 256 0z"></path></svg><!-- <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i> Font Awesome fontawesome.com -->
+    <svg class="svg-inline--fa fa-moon theme-switch fa-lg" data-mode="dark" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="moon" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" data-fa-i2svg=""><path fill="currentColor" d="M223.5 32C100 32 0 132.3 0 256S100 480 223.5 480c60.6 0 115.5-24.2 155.8-63.4c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6c-96.9 0-175.5-78.8-175.5-176c0-65.8 36-123.1 89.3-153.3c6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z"></path></svg><!-- <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i> Font Awesome fontawesome.com -->
+    <svg class="svg-inline--fa fa-circle-half-stroke theme-switch fa-lg" data-mode="auto" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="circle-half-stroke" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M448 256c0-106-86-192-192-192V448c106 0 192-86 192-192zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256z"></path></svg><!-- <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i> Font Awesome fontawesome.com -->
+  </button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip" data-bs-original-title="Search">
+    <svg class="svg-inline--fa fa-magnifying-glass fa-lg" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="magnifying-glass" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"></path></svg><!-- <i class="fa-solid fa-magnifying-glass fa-lg"></i> Font Awesome fontawesome.com -->
+  </button>
+
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Using THREDDS/Opendap to subset CCI Sea State L4 dataset</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="using-thredds-opendap-to-subset-cci-sea-state-l4-dataset">
+<h1>Using THREDDS/Opendap to subset CCI Sea State L4 dataset<a class="headerlink" href="#using-thredds-opendap-to-subset-cci-sea-state-l4-dataset" title="Link to this heading">#</a></h1>
+<p>A <strong>THREDDS Data Server</strong> (TDS, <a class="reference external" href="https://www.unidata.ucar.edu/software/tds">https://www.unidata.ucar.edu/software/tds</a>)
+ provides catalog, metadata, and data access services for scientific 
+data. Every TDS publishes THREDDS catalogs that advertise the datasets 
+and services it makes available. The available remote data access 
+protocols include OPeNDAP, OGC WCS, OGC WMS, and HTTP.</p>
+<p>The TDS also supports several dataset collection services including 
+some sophisticated dataset aggregation capabilities. This allows the TDS
+ to aggregate a collection of datasets into a single virtual dataset, 
+greatly simplifying user access to that data collection.</p>
+<p>In CCI Sea State, we provide access through a THREDDS server to the 
+Altimeter L4 dataset (gridded monthly statistics of SWH). All monthly 
+files are nicely aggregated by THREDDS into a 3-dimensional data array 
+(time, lat, lon) that can be remotely subsetted and read through <strong>OpenDAP</strong> API.</p>
+<p>The end-point to read remotely the CCI Sea State L4 dataset is: <a class="reference external" href="https://tds0.ifremer.fr/thredds/dodsC/ESACCI-SEASTATE-L4-SWH-MULTI_1M">https://tds0.ifremer.fr/thredds/dodsC/ESACCI-SEASTATE-L4-SWH-MULTI_1M</a></p>
+<p>In this tutorial, we give you an example on how to use it from python
+ (but libraries are available in other languages for OpenDAP).</p>
+<p>Let’s first import <code class="docutils literal notranslate"><span class="pre">xarray</span></code>, this is the only package you need to read remotely data through OPENDAP:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre id="codecell0" tabindex="-1"><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+</pre><button class="copybtn o-tooltip--left" data-tooltip="Copy" data-clipboard-target="#codecell0">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copy" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <title>Copy to clipboard</title>
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+  <rect x="8" y="8" width="12" height="12" rx="2"></rect>
+  <path d="M16 8v-2a2 2 0 0 0 -2 -2h-8a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h2"></path>
+</svg>
+    </button></div>
+</div>
+</div>
+</div>
+<p>Open the OpenDAP end-point as you would open a file on local storage. We see the result as a 3-dimensional Dataset object:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre id="codecell1" tabindex="0"><span></span><span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s1">'https://tds0.ifremer.fr/thredds/dodsC/ESACCI-SEASTATE-L4-SWH-MULTI_1M'</span><span class="p">)</span>
+<span class="n">ds</span>
+</pre><button class="copybtn o-tooltip--left" data-tooltip="Copy" data-clipboard-target="#codecell1">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copy" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <title>Copy to clipboard</title>
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+  <rect x="8" y="8" width="12" height="12" rx="2"></rect>
+  <path d="M16 8v-2a2 2 0 0 0 -2 -2h-8a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h2"></path>
+</svg>
+    </button></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html" tabindex="-1"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme="dark"],
+html[data-theme="dark"],
+body[data-theme="dark"],
+body.vscode-dark {
+  --xr-font-color0: rgba(255, 255, 255, 1);
+  --xr-font-color2: rgba(255, 255, 255, 0.54);
+  --xr-font-color3: rgba(255, 255, 255, 0.38);
+  --xr-border-color: #1f1f1f;
+  --xr-disabled-color: #515151;
+  --xr-background-color: #111111;
+  --xr-background-color-row-even: #111111;
+  --xr-background-color-row-odd: #313131;
+}
+
+.xr-wrap {
+  display: block !important;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 0 20px 0 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: inline-block;
+  opacity: 0;
+  height: 0;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:focus + label {
+  border: 2px solid var(--xr-font-color0);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: "►";
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: "▼";
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: "(";
+}
+
+.xr-dim-list:after {
+  content: ")";
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ",";
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-index-preview {
+  grid-column: 2 / 5;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data,
+.xr-index-data-in:checked ~ .xr-index-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-index-name div,
+.xr-index-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2,
+.xr-no-icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><pre class="xr-text-repr-fallback" tabindex="-1">&lt;xarray.Dataset&gt; Size: 3GB
+Dimensions:                       (lat: 160, nv: 2, lon: 360, time: 385)
+Coordinates:
+  * lat                           (lat) float32 640B -79.5 -78.5 ... 78.5 79.5
+  * lon                           (lon) float32 1kB -179.5 -178.5 ... 179.5
+  * time                          (time) |S64 25kB b'1992-01-01T00:00:00Z' .....
+Dimensions without coordinates: nv
+Data variables: (12/23)
+    crs                           int32 4B ...
+    lat_bnds                      (lat, nv) float64 3kB ...
+    lon_bnds                      (lon, nv) float64 6kB ...
+    time_bnds                     (nv) datetime64[ns] 16B ...
+    swh_mean                      (time, lat, lon) float64 177MB ...
+    swh_rms                       (time, lat, lon) float64 177MB ...
+    ...                            ...
+    swh_count_greater_than_3.50   (time, lat, lon) float64 177MB ...
+    swh_count_greater_than_4.00   (time, lat, lon) float64 177MB ...
+    swh_count_greater_than_5.00   (time, lat, lon) float64 177MB ...
+    swh_count_greater_than_6.00   (time, lat, lon) float64 177MB ...
+    swh_count_greater_than_8.00   (time, lat, lon) float64 177MB ...
+    swh_count_greater_than_10.00  (time, lat, lon) float64 177MB ...
+Attributes: (12/61)
+    Conventions:                   CF-1.7, ACDD-1.3, ISO 8601
+    title:                         ESA CCI Sea State L4
+    id:                            ESACCI-SEASTATE-L4-SWH
+    institution:                   Institut Francais de Recherche pour l'Expl...
+    institution_abbreviation:      Ifremer/Cersat, ESA
+    source:                        CCI Sea State L4 Processor
+    ...                            ...
+    time_coverage_end:             2024-01-01T00:00:00Z
+    uuid:                          0e51c5e1-25f4-4e27-b279-5e3dc689aa09
+    Metadata_Conventions:          Climate and Forecast (CF) 1.7, Attribute C...
+    processing_software:           Cersat/Cerbere 1.0
+    geospatial_vertical_units:     meters above mean sea level
+    geospatial_vertical_positive:  up</pre><div class="xr-wrap" style="display:none"><div class="xr-header"><div class="xr-obj-type">xarray.Dataset</div></div><ul class="xr-sections"><li class="xr-section-item"><input id="section-b5ce6408-3fa5-4982-8ec7-c2eec35a2e88" class="xr-section-summary-in" type="checkbox" disabled="disabled"><label for="section-b5ce6408-3fa5-4982-8ec7-c2eec35a2e88" class="xr-section-summary" title="Expand/collapse section">Dimensions:</label><div class="xr-section-inline-details"><ul class="xr-dim-list"><li><span class="xr-has-index">lat</span>: 160</li><li><span>nv</span>: 2</li><li><span class="xr-has-index">lon</span>: 360</li><li><span class="xr-has-index">time</span>: 385</li></ul></div><div class="xr-section-details"></div></li><li class="xr-section-item"><input id="section-3039a247-8cc9-4317-a898-a03769ae4d32" class="xr-section-summary-in" type="checkbox" checked="checked"><label for="section-3039a247-8cc9-4317-a898-a03769ae4d32" class="xr-section-summary">Coordinates: <span>(3)</span></label><div class="xr-section-inline-details"></div><div class="xr-section-details"><ul class="xr-var-list"><li class="xr-var-item"><div class="xr-var-name"><span class="xr-has-index">lat</span></div><div class="xr-var-dims">(lat)</div><div class="xr-var-dtype">float32</div><div class="xr-var-preview xr-preview">-79.5 -78.5 -77.5 ... 78.5 79.5</div><input id="attrs-38db0211-71e7-437e-8711-1c333bf0ee12" class="xr-var-attrs-in" type="checkbox"><label for="attrs-38db0211-71e7-437e-8711-1c333bf0ee12" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use xlink:href="#icon-file-text2"></use></svg></label><input id="data-dc7f4156-f073-4fcf-a505-83842101bdbc" class="xr-var-data-in" type="checkbox"><label for="data-dc7f4156-f073-4fcf-a505-83842101bdbc" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use xlink:href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degree_north</dd><dt><span>long_name :</span></dt><dd>latitude</dd><dt><span>authority :</span></dt><dd>CF-1.11, ACDD-1.3</dd><dt><span>axis :</span></dt><dd>Y</dd><dt><span>bounds :</span></dt><dd>lat_bnds</dd><dt><span>valid_range :</span></dt><dd>[-90.  90.]</dd><dt><span>_ChunkSizes :</span></dt><dd>160</dd></dl></div><div class="xr-var-data"><pre tabindex="-1">array([-79.5, -78.5, -77.5, -76.5, -75.5, -74.5, -73.5, -72.5, -71.5, -70.5,
+       -69.5, -68.5, -67.5, -66.5, -65.5, -64.5, -63.5, -62.5, -61.5, -60.5,
+       -59.5, -58.5, -57.5, -56.5, -55.5, -54.5, -53.5, -52.5, -51.5, -50.5,
+       -49.5, -48.5, -47.5, -46.5, -45.5, -44.5, -43.5, -42.5, -41.5, -40.5,
+       -39.5, -38.5, -37.5, -36.5, -35.5, -34.5, -33.5, -32.5, -31.5, -30.5,
+       -29.5, -28.5, -27.5, -26.5, -25.5, -24.5, -23.5, -22.5, -21.5, -20.5,
+       -19.5, -18.5, -17.5, -16.5, -15.5, -14.5, -13.5, -12.5, -11.5, -10.5,
+        -9.5,  -8.5,  -7.5,  -6.5,  -5.5,  -4.5,  -3.5,  -2.5,  -1.5,  -0.5,
+         0.5,   1.5,   2.5,   3.5,   4.5,   5.5,   6.5,   7.5,   8.5,   9.5,
+        10.5,  11.5,  12.5,  13.5,  14.5,  15.5,  16.5,  17.5,  18.5,  19.5,
+        20.5,  21.5,  22.5,  23.5,  24.5,  25.5,  26.5,  27.5,  28.5,  29.5,
+        30.5,  31.5,  32.5,  33.5,  34.5,  35.5,  36.5,  37.5,  38.5,  39.5,
+        40.5,  41.5,  42.5,  43.5,  44.5,  45.5,  46.5,  47.5,  48.5,  49.5,
+        50.5,  51.5,  52.5,  53.5,  54.5,  55.5,  56.5,  57.5,  58.5,  59.5,
+        60.5,  61.5,  62.5,  63.5,  64.5,  65.5,  66.5,  67.5,  68.5,  69.5,
+        70.5,  71.5,  72.5,  73.5,  74.5,  75.5,  76.5,  77.5,  78.5,  79.5],
+      dtype=float32)</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span class="xr-has-index">lon</span></div><div class="xr-var-dims">(lon)</div><div class="xr-var-dtype">float32</div><div class="xr-var-preview xr-preview">-179.5 -178.5 ... 178.5 179.5</div><input id="attrs-664911e8-864c-43c1-9958-778941802389" class="xr-var-attrs-in" type="checkbox"><label for="attrs-664911e8-864c-43c1-9958-778941802389" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use xlink:href="#icon-file-text2"></use></svg></label><input id="data-56abf076-5290-4dff-a07a-6bb18ff1c2ec" class="xr-var-data-in" type="checkbox"><label for="data-56abf076-5290-4dff-a07a-6bb18ff1c2ec" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use xlink:href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degree_east</dd><dt><span>long_name :</span></dt><dd>longitude</dd><dt><span>authority :</span></dt><dd>CF-1.11, ACDD-1.3</dd><dt><span>axis :</span></dt><dd>X</dd><dt><span>bounds :</span></dt><dd>lon_bnds</dd><dt><span>valid_range :</span></dt><dd>[-180.  180.]</dd><dt><span>_ChunkSizes :</span></dt><dd>360</dd></dl></div><div class="xr-var-data"><pre tabindex="-1">array([-179.5, -178.5, -177.5, ...,  177.5,  178.5,  179.5], dtype=float32)</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span class="xr-has-index">time</span></div><div class="xr-var-dims">(time)</div><div class="xr-var-dtype">|S64</div><div class="xr-var-preview xr-preview">b'1992-01-01T00:00:00Z' ... b'20...</div><input id="attrs-19c39dad-a24b-4d63-8044-c8ae4a1e42ec" class="xr-var-attrs-in" type="checkbox"><label for="attrs-19c39dad-a24b-4d63-8044-c8ae4a1e42ec" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use xlink:href="#icon-file-text2"></use></svg></label><input id="data-93e1d8b1-990e-49ee-bd5a-af21e237a00c" class="xr-var-data-in" type="checkbox"><label for="data-93e1d8b1-990e-49ee-bd5a-af21e237a00c" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use xlink:href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>_CoordinateAxisType :</span></dt><dd>Time</dd><dt><span>long_name :</span></dt><dd>time coordinate</dd><dt><span>standard_name :</span></dt><dd>time</dd></dl></div><div class="xr-var-data"><pre tabindex="-1">array([b'1992-01-01T00:00:00Z', b'1992-02-01T00:00:00Z',
+       b'1992-03-01T00:00:00Z', ..., b'2023-11-01T00:00:00Z',
+       b'2023-12-01T00:00:00Z', b'2024-01-01T00:00:00Z'], dtype='|S64')</pre></div></li></ul></div></li><li class="xr-section-item"><input id="section-6e275f95-7fc9-4ad1-9881-5a5508576583" class="xr-section-summary-in" type="checkbox"><label for="section-6e275f95-7fc9-4ad1-9881-5a5508576583" class="xr-section-summary">Data variables: <span>(23)</span></label><div class="xr-section-inline-details"></div><div class="xr-section-details"><ul class="xr-var-list"><li class="xr-var-item"><div class="xr-var-name"><span>crs</span></div><div class="xr-var-dims">()</div><div class="xr-var-dtype">int32</div><div class="xr-var-preview xr-preview">...</div><input id="attrs-cb9aa71c-81c4-4b11-88c5-912daabb7b24" class="xr-var-attrs-in" type="checkbox"><label for="attrs-cb9aa71c-81c4-4b11-88c5-912daabb7b24" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use xlink:href="#icon-file-text2"></use></svg></label><input id="data-24e64905-882f-4aa2-bdf2-47fbb238eb0a" class="xr-var-data-in" type="checkbox"><label for="data-24e64905-882f-4aa2-bdf2-47fbb238eb0a" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use xlink:href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>grid_mapping_name :</span></dt><dd>latitude_longitude</dd><dt><span>semi_major_axis :</span></dt><dd>6371000.0</dd><dt><span>inverse_flattening :</span></dt><dd>0.0</dd></dl></div><div class="xr-var-data"><pre tabindex="-1">[1 values with dtype=int32]</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>lat_bnds</span></div><div class="xr-var-dims">(lat, nv)</div><div class="xr-var-dtype">float64</div><div class="xr-var-preview xr-preview">...</div><input id="attrs-2f2bb56e-9f33-4a6b-a074-dd6aeafe5786" class="xr-var-attrs-in" type="checkbox"><label for="attrs-2f2bb56e-9f33-4a6b-a074-dd6aeafe5786" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use xlink:href="#icon-file-text2"></use></svg></label><input id="data-e107a8d2-73cc-4184-9cb1-b5cc1d8fc85f" class="xr-var-data-in" type="checkbox"><label for="data-e107a8d2-73cc-4184-9cb1-b5cc1d8fc85f" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use xlink:href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>_ChunkSizes :</span></dt><dd>[160   2]</dd></dl></div><div class="xr-var-data"><pre tabindex="-1">[320 values with dtype=float64]</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>lon_bnds</span></div><div class="xr-var-dims">(lon, nv)</div><div class="xr-var-dtype">float64</div><div class="xr-var-preview xr-preview">...</div><input id="attrs-f23e4ee5-8834-4b63-9cb8-46ea125e6032" class="xr-var-attrs-in" type="checkbox"><label for="attrs-f23e4ee5-8834-4b63-9cb8-46ea125e6032" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use xlink:href="#icon-file-text2"></use></svg></label><input id="data-1d3a9fd0-b4ef-43f7-9ca7-b086d3b0255d" class="xr-var-data-in" type="checkbox"><label for="data-1d3a9fd0-b4ef-43f7-9ca7-b086d3b0255d" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use xlink:href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>_ChunkSizes :</span></dt><dd>[360   2]</dd></dl></div><div class="xr-var-data"><pre tabindex="-1">[720 values with dtype=float64]</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>time_bnds</span></div><div class="xr-var-dims">(nv)</div><div class="xr-var-dtype">datetime64[ns]</div><div class="xr-var-preview xr-preview">...</div><input id="attrs-3952b32c-0c42-4a80-a750-52167f384ff5" class="xr-var-attrs-in" type="checkbox"><label for="attrs-3952b32c-0c42-4a80-a750-52167f384ff5" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use xlink:href="#icon-file-text2"></use></svg></label><input id="data-577d961a-93f6-4d0a-ace5-26df106bd36e" class="xr-var-data-in" type="checkbox"><label for="data-577d961a-93f6-4d0a-ace5-26df106bd36e" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use xlink:href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>_ChunkSizes :</span></dt><dd>2</dd></dl></div><div class="xr-var-data"><pre tabindex="-1">[2 values with dtype=datetime64[ns]]</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>swh_mean</span></div><div class="xr-var-dims">(time, lat, lon)</div><div class="xr-var-dtype">float64</div><div class="xr-var-preview xr-preview">...</div><input id="attrs-4f019c85-92df-4d1d-98b4-8c13a8fc9c1e" class="xr-var-attrs-in" type="checkbox"><label for="attrs-4f019c85-92df-4d1d-98b4-8c13a8fc9c1e" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use xlink:href="#icon-file-text2"></use></svg></label><input id="data-6d9b607a-a476-4d64-9f7f-65475981378e" class="xr-var-data-in" type="checkbox"><label for="data-6d9b607a-a476-4d64-9f7f-65475981378e" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use xlink:href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>long_name :</span></dt><dd>mean of median significant wave height values</dd><dt><span>coverage_content_type :</span></dt><dd>physicalMeasurement</dd><dt><span>source :</span></dt><dd>swh_denoised</dd><dt><span>grid_mapping :</span></dt><dd>crs</dd><dt><span>cell_method :</span></dt><dd>lat: lon: median (interval: 0.1 degree_N interval: 0.1 degree_E comment: median per bin and satellite pass) time: mean over days</dd><dt><span>units :</span></dt><dd>m</dd><dt><span>_ChunkSizes :</span></dt><dd>[  1 160 360]</dd></dl></div><div class="xr-var-data"><pre tabindex="-1">[22176000 values with dtype=float64]</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>swh_rms</span></div><div class="xr-var-dims">(time, lat, lon)</div><div class="xr-var-dtype">float64</div><div class="xr-var-preview xr-preview">...</div><input id="attrs-36fae1b5-ac08-4b45-b258-113d3499ddb1" class="xr-var-attrs-in" type="checkbox"><label for="attrs-36fae1b5-ac08-4b45-b258-113d3499ddb1" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use xlink:href="#icon-file-text2"></use></svg></label><input id="data-6fc2fd99-8c5b-4e4f-b1f9-544d8cb1f795" class="xr-var-data-in" type="checkbox"><label for="data-6fc2fd99-8c5b-4e4f-b1f9-544d8cb1f795" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use xlink:href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>units :</span></dt><dd>m</dd><dt><span>long_name :</span></dt><dd>rms of median significant wave height values</dd><dt><span>coverage_content_type :</span></dt><dd>physicalMeasurement</dd><dt><span>source :</span></dt><dd>swh_denoised</dd><dt><span>grid_mapping :</span></dt><dd>crs</dd><dt><span>cell_method :</span></dt><dd>lat: lon: median (interval: 0.1 degree_N interval: 0.1 degree_E comment: median per bin and satellite pass) time: root_mean_square over days</dd><dt><span>_ChunkSizes :</span></dt><dd>[  1 160 360]</dd></dl></div><div class="xr-var-data"><pre tabindex="-1">[22176000 values with dtype=float64]</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>swh_sum</span></div><div class="xr-var-dims">(time, lat, lon)</div><div class="xr-var-dtype">float64</div><div class="xr-var-preview xr-preview">...</div><input id="attrs-d2c2ddd2-3bca-4119-830c-865496968e08" class="xr-var-attrs-in" type="checkbox"><label for="attrs-d2c2ddd2-3bca-4119-830c-865496968e08" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use xlink:href="#icon-file-text2"></use></svg></label><input id="data-127fbe8f-f35b-4518-baf3-080c89b894fa" class="xr-var-data-in" type="checkbox"><label for="data-127fbe8f-f35b-4518-baf3-080c89b894fa" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use xlink:href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>units :</span></dt><dd>m</dd><dt><span>long_name :</span></dt><dd>total of median significant wave height values</dd><dt><span>coverage_content_type :</span></dt><dd>physicalMeasurement</dd><dt><span>source :</span></dt><dd>swh_denoised</dd><dt><span>grid_mapping :</span></dt><dd>crs</dd><dt><span>cell_method :</span></dt><dd>lat: lon: median (interval: 0.1 degree_N interval: 0.1 degree_E comment: median per bin and satellite pass) time: sum over days</dd><dt><span>_ChunkSizes :</span></dt><dd>[  1 160 360]</dd></dl></div><div class="xr-var-data"><pre tabindex="-1">[22176000 values with dtype=float64]</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>swh_squared_sum</span></div><div class="xr-var-dims">(time, lat, lon)</div><div class="xr-var-dtype">float64</div><div class="xr-var-preview xr-preview">...</div><input id="attrs-1b92b1ab-2777-4169-84b5-5ad358c011c2" class="xr-var-attrs-in" type="checkbox"><label for="attrs-1b92b1ab-2777-4169-84b5-5ad358c011c2" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use xlink:href="#icon-file-text2"></use></svg></label><input id="data-5b3e7b6a-6d75-4fb7-9ca7-8e9055415ffd" class="xr-var-data-in" type="checkbox"><label for="data-5b3e7b6a-6d75-4fb7-9ca7-8e9055415ffd" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use xlink:href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>units :</span></dt><dd>m2</dd><dt><span>long_name :</span></dt><dd>total of median significant wave height squared values</dd><dt><span>coverage_content_type :</span></dt><dd>physicalMeasurement</dd><dt><span>source :</span></dt><dd>swh_denoised</dd><dt><span>grid_mapping :</span></dt><dd>crs</dd><dt><span>cell_method :</span></dt><dd>lat: lon: median (interval: 0.1 degree_N interval: 0.1 degree_E comment: median per bin and satellite pass) time: sum_of_squares over days</dd><dt><span>_ChunkSizes :</span></dt><dd>[  1 160 360]</dd></dl></div><div class="xr-var-data"><pre tabindex="-1">[22176000 values with dtype=float64]</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>swh_log_sum</span></div><div class="xr-var-dims">(time, lat, lon)</div><div class="xr-var-dtype">float64</div><div class="xr-var-preview xr-preview">...</div><input id="attrs-e77888af-fc99-46de-beca-c03be98d7bf2" class="xr-var-attrs-in" type="checkbox"><label for="attrs-e77888af-fc99-46de-beca-c03be98d7bf2" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use xlink:href="#icon-file-text2"></use></svg></label><input id="data-ced20459-1775-4593-888c-a6f43ac36343" class="xr-var-data-in" type="checkbox"><label for="data-ced20459-1775-4593-888c-a6f43ac36343" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use xlink:href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>cell_method :</span></dt><dd>lat: lon: median (interval: 0.1 degree_N interval: 0.1 degree_E comment: median per bin and satellite pass) time: sum_of_log over days</dd><dt><span>long_name :</span></dt><dd>total of median significant wave height log values</dd><dt><span>source :</span></dt><dd>swh_denoised</dd><dt><span>grid_mapping :</span></dt><dd>crs</dd><dt><span>units :</span></dt><dd>m</dd><dt><span>coverage_content_type :</span></dt><dd>physicalMeasurement</dd><dt><span>_ChunkSizes :</span></dt><dd>[  1 160 360]</dd></dl></div><div class="xr-var-data"><pre tabindex="-1">[22176000 values with dtype=float64]</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>swh_log_squared_sum</span></div><div class="xr-var-dims">(time, lat, lon)</div><div class="xr-var-dtype">float64</div><div class="xr-var-preview xr-preview">...</div><input id="attrs-d5642af3-e120-43a4-95e2-9d3e5400f626" class="xr-var-attrs-in" type="checkbox"><label for="attrs-d5642af3-e120-43a4-95e2-9d3e5400f626" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use xlink:href="#icon-file-text2"></use></svg></label><input id="data-1bb1a77f-54d4-4178-a3b2-5af9519a7b21" class="xr-var-data-in" type="checkbox"><label for="data-1bb1a77f-54d4-4178-a3b2-5af9519a7b21" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use xlink:href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>long_name :</span></dt><dd>total of median significant wave height log squared values</dd><dt><span>coverage_content_type :</span></dt><dd>physicalMeasurement</dd><dt><span>source :</span></dt><dd>swh_denoised</dd><dt><span>grid_mapping :</span></dt><dd>crs</dd><dt><span>cell_method :</span></dt><dd>lat: lon: median (interval: 0.1 degree_N interval: 0.1 degree_E comment: median per bin and satellite pass) time: sum_of_log_squares over days</dd><dt><span>units :</span></dt><dd>m2</dd><dt><span>_ChunkSizes :</span></dt><dd>[  1 160 360]</dd></dl></div><div class="xr-var-data"><pre tabindex="-1">[22176000 values with dtype=float64]</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>swh_max</span></div><div class="xr-var-dims">(time, lat, lon)</div><div class="xr-var-dtype">float64</div><div class="xr-var-preview xr-preview">...</div><input id="attrs-5a4f2469-e439-41c7-a34a-7ca7cb9a23b2" class="xr-var-attrs-in" type="checkbox"><label for="attrs-5a4f2469-e439-41c7-a34a-7ca7cb9a23b2" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use xlink:href="#icon-file-text2"></use></svg></label><input id="data-48dcbc96-41c3-4e9b-8040-293ffd62b333" class="xr-var-data-in" type="checkbox"><label for="data-48dcbc96-41c3-4e9b-8040-293ffd62b333" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use xlink:href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>units :</span></dt><dd>m</dd><dt><span>long_name :</span></dt><dd>maximum median significant wave height value</dd><dt><span>coverage_content_type :</span></dt><dd>physicalMeasurement</dd><dt><span>source :</span></dt><dd>swh_denoised</dd><dt><span>grid_mapping :</span></dt><dd>crs</dd><dt><span>cell_method :</span></dt><dd>lat: lon: median (interval: 0.1 degree_N interval: 0.1 degree_E comment: median per bin and satellite pass) time: maximum over days</dd><dt><span>_ChunkSizes :</span></dt><dd>[  1 160 360]</dd></dl></div><div class="xr-var-data"><pre tabindex="-1">[22176000 values with dtype=float64]</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>swh_count_greater_than_0.50</span></div><div class="xr-var-dims">(time, lat, lon)</div><div class="xr-var-dtype">float64</div><div class="xr-var-preview xr-preview">...</div><input id="attrs-8f5510fc-3469-4317-945b-9879ed6815ca" class="xr-var-attrs-in" type="checkbox"><label for="attrs-8f5510fc-3469-4317-945b-9879ed6815ca" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use xlink:href="#icon-file-text2"></use></svg></label><input id="data-68cbdd5f-e584-45e5-a388-8e1d9346a04f" class="xr-var-data-in" type="checkbox"><label for="data-68cbdd5f-e584-45e5-a388-8e1d9346a04f" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use xlink:href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>long_name :</span></dt><dd>number of median significant wave height values greater than 0.5m</dd><dt><span>coverage_content_type :</span></dt><dd>physicalMeasurement</dd><dt><span>source :</span></dt><dd>swh_denoised</dd><dt><span>grid_mapping :</span></dt><dd>crs</dd><dt><span>cell_method :</span></dt><dd>lat: lon: median (interval: 0.1 degree_N interval: 0.1 degree_E comment: median per bin and satellite pass) time: count (interval:  over days</dd><dt><span>units :</span></dt><dd>1</dd><dt><span>_ChunkSizes :</span></dt><dd>[  1 160 360]</dd></dl></div><div class="xr-var-data"><pre tabindex="-1">[22176000 values with dtype=float64]</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>swh_count_greater_than_1.00</span></div><div class="xr-var-dims">(time, lat, lon)</div><div class="xr-var-dtype">float64</div><div class="xr-var-preview xr-preview">...</div><input id="attrs-2a082dc1-09fc-422b-9216-8778d2964b6d" class="xr-var-attrs-in" type="checkbox"><label for="attrs-2a082dc1-09fc-422b-9216-8778d2964b6d" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use xlink:href="#icon-file-text2"></use></svg></label><input id="data-e0ac5306-3d6b-4904-a24a-64164f452512" class="xr-var-data-in" type="checkbox"><label for="data-e0ac5306-3d6b-4904-a24a-64164f452512" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use xlink:href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>units :</span></dt><dd>1</dd><dt><span>long_name :</span></dt><dd>number of median significant wave height values greater than 1.0m</dd><dt><span>coverage_content_type :</span></dt><dd>physicalMeasurement</dd><dt><span>source :</span></dt><dd>swh_denoised</dd><dt><span>grid_mapping :</span></dt><dd>crs</dd><dt><span>cell_method :</span></dt><dd>lat: lon: median (interval: 0.1 degree_N interval: 0.1 degree_E comment: median per bin and satellite pass) time: count over days</dd><dt><span>_ChunkSizes :</span></dt><dd>[  1 160 360]</dd></dl></div><div class="xr-var-data"><pre tabindex="-1">[22176000 values with dtype=float64]</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>swh_count_greater_than_1.50</span></div><div class="xr-var-dims">(time, lat, lon)</div><div class="xr-var-dtype">float64</div><div class="xr-var-preview xr-preview">...</div><input id="attrs-b0ccb54e-b967-4c2e-8c38-92d6905b5e09" class="xr-var-attrs-in" type="checkbox"><label for="attrs-b0ccb54e-b967-4c2e-8c38-92d6905b5e09" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use xlink:href="#icon-file-text2"></use></svg></label><input id="data-71539774-039e-41bf-87aa-f7caf3d4595b" class="xr-var-data-in" type="checkbox"><label for="data-71539774-039e-41bf-87aa-f7caf3d4595b" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use xlink:href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>cell_method :</span></dt><dd>lat: lon: median (interval: 0.1 degree_N interval: 0.1 degree_E comment: median per bin and satellite pass) time: count over days</dd><dt><span>units :</span></dt><dd>1</dd><dt><span>long_name :</span></dt><dd>number of median significant wave height values greater than 1.5m</dd><dt><span>coverage_content_type :</span></dt><dd>physicalMeasurement</dd><dt><span>source :</span></dt><dd>swh_denoised</dd><dt><span>grid_mapping :</span></dt><dd>crs</dd><dt><span>_ChunkSizes :</span></dt><dd>[  1 160 360]</dd></dl></div><div class="xr-var-data"><pre tabindex="-1">[22176000 values with dtype=float64]</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>swh_count_greater_than_2.00</span></div><div class="xr-var-dims">(time, lat, lon)</div><div class="xr-var-dtype">float64</div><div class="xr-var-preview xr-preview">...</div><input id="attrs-693c082e-a42f-4d52-be46-47413ac87078" class="xr-var-attrs-in" type="checkbox"><label for="attrs-693c082e-a42f-4d52-be46-47413ac87078" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use xlink:href="#icon-file-text2"></use></svg></label><input id="data-c2eeba6a-e1e9-4e49-a43e-c33389a059b8" class="xr-var-data-in" type="checkbox"><label for="data-c2eeba6a-e1e9-4e49-a43e-c33389a059b8" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use xlink:href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>long_name :</span></dt><dd>number of median significant wave height values greater than 2.0m</dd><dt><span>coverage_content_type :</span></dt><dd>physicalMeasurement</dd><dt><span>source :</span></dt><dd>swh_denoised</dd><dt><span>grid_mapping :</span></dt><dd>crs</dd><dt><span>cell_method :</span></dt><dd>lat: lon: median (interval: 0.1 degree_N interval: 0.1 degree_E comment: median per bin and satellite pass) time: count over days</dd><dt><span>units :</span></dt><dd>1</dd><dt><span>_ChunkSizes :</span></dt><dd>[  1 160 360]</dd></dl></div><div class="xr-var-data"><pre tabindex="-1">[22176000 values with dtype=float64]</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>swh_count_greater_than_2.50</span></div><div class="xr-var-dims">(time, lat, lon)</div><div class="xr-var-dtype">float64</div><div class="xr-var-preview xr-preview">...</div><input id="attrs-02d1fec6-c191-44fd-bd85-d5e51162dacd" class="xr-var-attrs-in" type="checkbox"><label for="attrs-02d1fec6-c191-44fd-bd85-d5e51162dacd" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use xlink:href="#icon-file-text2"></use></svg></label><input id="data-8d9e4156-315c-4143-a927-ee625467bebe" class="xr-var-data-in" type="checkbox"><label for="data-8d9e4156-315c-4143-a927-ee625467bebe" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use xlink:href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>cell_method :</span></dt><dd>lat: lon: median (interval: 0.1 degree_N interval: 0.1 degree_E comment: median per bin and satellite pass) time: count over days</dd><dt><span>units :</span></dt><dd>1</dd><dt><span>long_name :</span></dt><dd>number of median significant wave height values greater than 2.5m</dd><dt><span>coverage_content_type :</span></dt><dd>physicalMeasurement</dd><dt><span>source :</span></dt><dd>swh_denoised</dd><dt><span>grid_mapping :</span></dt><dd>crs</dd><dt><span>_ChunkSizes :</span></dt><dd>[  1 160 360]</dd></dl></div><div class="xr-var-data"><pre tabindex="-1">[22176000 values with dtype=float64]</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>swh_count_greater_than_3.00</span></div><div class="xr-var-dims">(time, lat, lon)</div><div class="xr-var-dtype">float64</div><div class="xr-var-preview xr-preview">...</div><input id="attrs-b2ebcd05-f144-40ec-a37a-9b8295913129" class="xr-var-attrs-in" type="checkbox"><label for="attrs-b2ebcd05-f144-40ec-a37a-9b8295913129" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use xlink:href="#icon-file-text2"></use></svg></label><input id="data-3f85c4f2-1087-411b-8491-c76290ecd336" class="xr-var-data-in" type="checkbox"><label for="data-3f85c4f2-1087-411b-8491-c76290ecd336" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use xlink:href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>long_name :</span></dt><dd>number of median significant wave height values greater than 3.0m</dd><dt><span>coverage_content_type :</span></dt><dd>physicalMeasurement</dd><dt><span>source :</span></dt><dd>swh_denoised</dd><dt><span>grid_mapping :</span></dt><dd>crs</dd><dt><span>cell_method :</span></dt><dd>lat: lon: median (interval: 0.1 degree_N interval: 0.1 degree_E comment: median per bin and satellite pass) time: count over days</dd><dt><span>units :</span></dt><dd>1</dd><dt><span>_ChunkSizes :</span></dt><dd>[  1 160 360]</dd></dl></div><div class="xr-var-data"><pre tabindex="-1">[22176000 values with dtype=float64]</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>swh_count_greater_than_3.50</span></div><div class="xr-var-dims">(time, lat, lon)</div><div class="xr-var-dtype">float64</div><div class="xr-var-preview xr-preview">...</div><input id="attrs-5c789079-3ec7-4eea-af7c-232413d0a27a" class="xr-var-attrs-in" type="checkbox"><label for="attrs-5c789079-3ec7-4eea-af7c-232413d0a27a" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use xlink:href="#icon-file-text2"></use></svg></label><input id="data-ea50cefc-f5fe-4423-a62c-cf3d2b2e7345" class="xr-var-data-in" type="checkbox"><label for="data-ea50cefc-f5fe-4423-a62c-cf3d2b2e7345" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use xlink:href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>grid_mapping :</span></dt><dd>crs</dd><dt><span>cell_method :</span></dt><dd>lat: lon: median (interval: 0.1 degree_N interval: 0.1 degree_E comment: median per bin and satellite pass) time: count over days</dd><dt><span>units :</span></dt><dd>1</dd><dt><span>long_name :</span></dt><dd>number of median significant wave height values greater than 3.5m</dd><dt><span>coverage_content_type :</span></dt><dd>physicalMeasurement</dd><dt><span>source :</span></dt><dd>swh_denoised</dd><dt><span>_ChunkSizes :</span></dt><dd>[  1 160 360]</dd></dl></div><div class="xr-var-data"><pre tabindex="-1">[22176000 values with dtype=float64]</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>swh_count_greater_than_4.00</span></div><div class="xr-var-dims">(time, lat, lon)</div><div class="xr-var-dtype">float64</div><div class="xr-var-preview xr-preview">...</div><input id="attrs-0a19a20f-b4c0-4466-8f8a-a70f49ee9f3a" class="xr-var-attrs-in" type="checkbox"><label for="attrs-0a19a20f-b4c0-4466-8f8a-a70f49ee9f3a" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use xlink:href="#icon-file-text2"></use></svg></label><input id="data-c85375ad-5ca1-4d3f-8834-7d771809dfd9" class="xr-var-data-in" type="checkbox"><label for="data-c85375ad-5ca1-4d3f-8834-7d771809dfd9" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use xlink:href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>long_name :</span></dt><dd>number of median significant wave height values greater than 4.0m</dd><dt><span>coverage_content_type :</span></dt><dd>physicalMeasurement</dd><dt><span>grid_mapping :</span></dt><dd>crs</dd><dt><span>cell_method :</span></dt><dd>lat: lon: median (interval: 0.1 degree_N interval: 0.1 degree_E comment: median per bin and satellite pass) time: count over days</dd><dt><span>units :</span></dt><dd>1</dd><dt><span>source :</span></dt><dd>swh_denoised</dd><dt><span>_ChunkSizes :</span></dt><dd>[  1 160 360]</dd></dl></div><div class="xr-var-data"><pre tabindex="-1">[22176000 values with dtype=float64]</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>swh_count_greater_than_5.00</span></div><div class="xr-var-dims">(time, lat, lon)</div><div class="xr-var-dtype">float64</div><div class="xr-var-preview xr-preview">...</div><input id="attrs-0e3a7770-2342-43a3-83dc-e09e5cfd8d68" class="xr-var-attrs-in" type="checkbox"><label for="attrs-0e3a7770-2342-43a3-83dc-e09e5cfd8d68" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use xlink:href="#icon-file-text2"></use></svg></label><input id="data-12f55f99-cd32-4669-9db7-ffe87db06105" class="xr-var-data-in" type="checkbox"><label for="data-12f55f99-cd32-4669-9db7-ffe87db06105" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use xlink:href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>grid_mapping :</span></dt><dd>crs</dd><dt><span>cell_method :</span></dt><dd>lat: lon: median (interval: 0.1 degree_N interval: 0.1 degree_E comment: median per bin and satellite pass) time: count over days</dd><dt><span>long_name :</span></dt><dd>number of median significant wave height values greater than 5.0m</dd><dt><span>source :</span></dt><dd>swh_denoised</dd><dt><span>units :</span></dt><dd>1</dd><dt><span>coverage_content_type :</span></dt><dd>physicalMeasurement</dd><dt><span>_ChunkSizes :</span></dt><dd>[  1 160 360]</dd></dl></div><div class="xr-var-data"><pre tabindex="-1">[22176000 values with dtype=float64]</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>swh_count_greater_than_6.00</span></div><div class="xr-var-dims">(time, lat, lon)</div><div class="xr-var-dtype">float64</div><div class="xr-var-preview xr-preview">...</div><input id="attrs-1784b507-96d5-4986-b1c6-01f0c956670f" class="xr-var-attrs-in" type="checkbox"><label for="attrs-1784b507-96d5-4986-b1c6-01f0c956670f" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use xlink:href="#icon-file-text2"></use></svg></label><input id="data-e3884496-af2f-46d0-a8ff-a723a7e3f83f" class="xr-var-data-in" type="checkbox"><label for="data-e3884496-af2f-46d0-a8ff-a723a7e3f83f" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use xlink:href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>long_name :</span></dt><dd>number of median significant wave height values greater than 6.0m</dd><dt><span>coverage_content_type :</span></dt><dd>physicalMeasurement</dd><dt><span>source :</span></dt><dd>swh_denoised</dd><dt><span>grid_mapping :</span></dt><dd>crs</dd><dt><span>cell_method :</span></dt><dd>lat: lon: median (interval: 0.1 degree_N interval: 0.1 degree_E comment: median per bin and satellite pass) time: count over days</dd><dt><span>units :</span></dt><dd>1</dd><dt><span>_ChunkSizes :</span></dt><dd>[  1 160 360]</dd></dl></div><div class="xr-var-data"><pre tabindex="-1">[22176000 values with dtype=float64]</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>swh_count_greater_than_8.00</span></div><div class="xr-var-dims">(time, lat, lon)</div><div class="xr-var-dtype">float64</div><div class="xr-var-preview xr-preview">...</div><input id="attrs-5ca595ff-73b5-44ac-a7bb-b3c64cf982f3" class="xr-var-attrs-in" type="checkbox"><label for="attrs-5ca595ff-73b5-44ac-a7bb-b3c64cf982f3" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use xlink:href="#icon-file-text2"></use></svg></label><input id="data-a786c6e8-44cb-4e6f-a0a1-54d2d6763716" class="xr-var-data-in" type="checkbox"><label for="data-a786c6e8-44cb-4e6f-a0a1-54d2d6763716" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use xlink:href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>long_name :</span></dt><dd>number of median significant wave height values greater than 8.0m</dd><dt><span>source :</span></dt><dd>swh_denoised</dd><dt><span>grid_mapping :</span></dt><dd>crs</dd><dt><span>cell_method :</span></dt><dd>lat: lon: median (interval: 0.1 degree_N interval: 0.1 degree_E comment: median per bin and satellite pass) time: count over days</dd><dt><span>units :</span></dt><dd>1</dd><dt><span>coverage_content_type :</span></dt><dd>physicalMeasurement</dd><dt><span>_ChunkSizes :</span></dt><dd>[  1 160 360]</dd></dl></div><div class="xr-var-data"><pre tabindex="-1">[22176000 values with dtype=float64]</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>swh_count_greater_than_10.00</span></div><div class="xr-var-dims">(time, lat, lon)</div><div class="xr-var-dtype">float64</div><div class="xr-var-preview xr-preview">...</div><input id="attrs-669e2daa-c604-495a-87ea-9d06367dd9eb" class="xr-var-attrs-in" type="checkbox"><label for="attrs-669e2daa-c604-495a-87ea-9d06367dd9eb" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use xlink:href="#icon-file-text2"></use></svg></label><input id="data-f8756167-7111-46f1-9d6f-1e390af2e832" class="xr-var-data-in" type="checkbox"><label for="data-f8756167-7111-46f1-9d6f-1e390af2e832" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use xlink:href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>coverage_content_type :</span></dt><dd>physicalMeasurement</dd><dt><span>source :</span></dt><dd>swh_denoised</dd><dt><span>grid_mapping :</span></dt><dd>crs</dd><dt><span>cell_method :</span></dt><dd>lat: lon: median (interval: 0.1 degree_N interval: 0.1 degree_E comment: median per bin and satellite pass) time: count over days</dd><dt><span>units :</span></dt><dd>1</dd><dt><span>long_name :</span></dt><dd>number of median significant wave height values greater than 10.0m</dd><dt><span>_ChunkSizes :</span></dt><dd>[  1 160 360]</dd></dl></div><div class="xr-var-data"><pre tabindex="-1">[22176000 values with dtype=float64]</pre></div></li></ul></div></li><li class="xr-section-item"><input id="section-7550b1b8-b6ea-4252-acb6-87d99265aa80" class="xr-section-summary-in" type="checkbox"><label for="section-7550b1b8-b6ea-4252-acb6-87d99265aa80" class="xr-section-summary">Indexes: <span>(3)</span></label><div class="xr-section-inline-details"></div><div class="xr-section-details"><ul class="xr-var-list"><li class="xr-var-item"><div class="xr-index-name"><div>lat</div></div><div class="xr-index-preview">PandasIndex</div><input type="checkbox" disabled="disabled"><label></label><input id="index-ebbfe763-8c31-4730-8251-9a0961616ac2" class="xr-index-data-in" type="checkbox"><label for="index-ebbfe763-8c31-4730-8251-9a0961616ac2" title="Show/Hide index repr"><svg class="icon xr-icon-database"><use xlink:href="#icon-database"></use></svg></label><div class="xr-index-data"><pre tabindex="-1">PandasIndex(Index([-79.5, -78.5, -77.5, -76.5, -75.5, -74.5, -73.5, -72.5, -71.5, -70.5,
+       ...
+        70.5,  71.5,  72.5,  73.5,  74.5,  75.5,  76.5,  77.5,  78.5,  79.5],
+      dtype='float32', name='lat', length=160))</pre></div></li><li class="xr-var-item"><div class="xr-index-name"><div>lon</div></div><div class="xr-index-preview">PandasIndex</div><input type="checkbox" disabled="disabled"><label></label><input id="index-c21f347d-c508-4870-a513-9d9f9e2aa6e8" class="xr-index-data-in" type="checkbox"><label for="index-c21f347d-c508-4870-a513-9d9f9e2aa6e8" title="Show/Hide index repr"><svg class="icon xr-icon-database"><use xlink:href="#icon-database"></use></svg></label><div class="xr-index-data"><pre tabindex="-1">PandasIndex(Index([-179.5, -178.5, -177.5, -176.5, -175.5, -174.5, -173.5, -172.5, -171.5,
+       -170.5,
+       ...
+        170.5,  171.5,  172.5,  173.5,  174.5,  175.5,  176.5,  177.5,  178.5,
+        179.5],
+      dtype='float32', name='lon', length=360))</pre></div></li><li class="xr-var-item"><div class="xr-index-name"><div>time</div></div><div class="xr-index-preview">PandasIndex</div><input type="checkbox" disabled="disabled"><label></label><input id="index-36b193a5-b6f7-481c-bc16-f11cfef20f1c" class="xr-index-data-in" type="checkbox"><label for="index-36b193a5-b6f7-481c-bc16-f11cfef20f1c" title="Show/Hide index repr"><svg class="icon xr-icon-database"><use xlink:href="#icon-database"></use></svg></label><div class="xr-index-data"><pre tabindex="-1">PandasIndex(Index([b'1992-01-01T00:00:00Z', b'1992-02-01T00:00:00Z',
+       b'1992-03-01T00:00:00Z', b'1992-04-01T00:00:00Z',
+       b'1992-05-01T00:00:00Z', b'1992-06-01T00:00:00Z',
+       b'1992-07-01T00:00:00Z', b'1992-08-01T00:00:00Z',
+       b'1992-09-01T00:00:00Z', b'1992-10-01T00:00:00Z',
+       ...
+       b'2023-04-01T00:00:00Z', b'2023-05-01T00:00:00Z',
+       b'2023-06-01T00:00:00Z', b'2023-07-01T00:00:00Z',
+       b'2023-08-01T00:00:00Z', b'2023-09-01T00:00:00Z',
+       b'2023-10-01T00:00:00Z', b'2023-11-01T00:00:00Z',
+       b'2023-12-01T00:00:00Z', b'2024-01-01T00:00:00Z'],
+      dtype='object', name='time', length=385))</pre></div></li></ul></div></li><li class="xr-section-item"><input id="section-001e8498-432e-4270-8766-a4cd06e26e4c" class="xr-section-summary-in" type="checkbox"><label for="section-001e8498-432e-4270-8766-a4cd06e26e4c" class="xr-section-summary">Attributes: <span>(61)</span></label><div class="xr-section-inline-details"></div><div class="xr-section-details"><dl class="xr-attrs"><dt><span>Conventions :</span></dt><dd>CF-1.7, ACDD-1.3, ISO 8601</dd><dt><span>title :</span></dt><dd>ESA CCI Sea State L4</dd><dt><span>id :</span></dt><dd>ESACCI-SEASTATE-L4-SWH</dd><dt><span>institution :</span></dt><dd>Institut Francais de Recherche pour l'Exploitation de la mer / CERSAT, European Space Agency</dd><dt><span>institution_abbreviation :</span></dt><dd>Ifremer/Cersat, ESA</dd><dt><span>source :</span></dt><dd>CCI Sea State L4 Processor</dd><dt><span>source_version :</span></dt><dd>4.0</dd><dt><span>history :</span></dt><dd>2025-09-18 16:34:47.533718 - Creation</dd><dt><span>references :</span></dt><dd>CCI Sea State Product Specification Document (PSD), v1.1</dd><dt><span>product_version :</span></dt><dd>4.0</dd><dt><span>summary :</span></dt><dd>This dataset contains gridded statistics of significant wave height from multiple altimeters, denoised and cross-calibrated.</dd><dt><span>keywords :</span></dt><dd>Oceans &gt; Ocean Waves &gt; Significant Wave Height, Oceans &gt; Ocean Waves &gt; Sea State</dd><dt><span>keywords_vocabulary :</span></dt><dd>NASA Global Change Master Directory (GCMD) Science Keywords</dd><dt><span>naming_authority :</span></dt><dd>fr.ifremer.cersat</dd><dt><span>cdm_data_type :</span></dt><dd>grid</dd><dt><span>featureType :</span></dt><dd>Grid</dd><dt><span>comment :</span></dt><dd>These data were produced at ESACCI as part of the ESA SST CCI project.</dd><dt><span>creator_name :</span></dt><dd>Cersat</dd><dt><span>creator_url :</span></dt><dd>http://cersat.ifremer.fr</dd><dt><span>creator_email :</span></dt><dd>cersat@ifremer.fr</dd><dt><span>creator_institution :</span></dt><dd>Ifremer / Cersat</dd><dt><span>project :</span></dt><dd>Climate Change Initiative - European Space Agency</dd><dt><span>geospatial_lat_min :</span></dt><dd>-80.0</dd><dt><span>geospatial_lat_max :</span></dt><dd>80.0</dd><dt><span>geospatial_lat_units :</span></dt><dd>degree_north</dd><dt><span>geospatial_lon_min :</span></dt><dd>-180.0</dd><dt><span>geospatial_lon_max :</span></dt><dd>180.0</dd><dt><span>geospatial_lon_units :</span></dt><dd>degree_east</dd><dt><span>time_coverage_resolution :</span></dt><dd>1M</dd><dt><span>standard_name_vocabulary :</span></dt><dd>NetCDF Climate and Forecast (CF) Metadata Convention version 1.7</dd><dt><span>license :</span></dt><dd>ESA CCI Data Policy: free and open access</dd><dt><span>platform :</span></dt><dd>CryoSat-2, Sentinel-3A, Sentinel-3B, Jason-3, Saral, Sentinel-6A</dd><dt><span>platform_type :</span></dt><dd>low earth orbit satellite</dd><dt><span>platform_vocabulary :</span></dt><dd>CCI</dd><dt><span>instrument :</span></dt><dd>SIRAL, SRAL, SRAL, Poseidon-3b, AltiKa, Poseidon-4</dd><dt><span>instrument_type :</span></dt><dd>altimeter</dd><dt><span>instrument_vocabulary :</span></dt><dd>CCI</dd><dt><span>spatial_resolution :</span></dt><dd>1 degree</dd><dt><span>netcdf_version_id :</span></dt><dd>4.8.1 of Aug  4 2023 13:11:12 $</dd><dt><span>acknowledgement :</span></dt><dd>Please acknowledge the use of these data with the following statement: these data were obtained from the ESA CCI Sea State project</dd><dt><span>format_version :</span></dt><dd>Data Standards v2.1</dd><dt><span>processing_level :</span></dt><dd>L4</dd><dt><span>track_id :</span></dt><dd>0e51c5e1-25f4-4e27-b279-5e3dc689aa09</dd><dt><span>publisher_name :</span></dt><dd>CERSAT</dd><dt><span>publisher_url :</span></dt><dd>cersat.ifremer.fr</dd><dt><span>publisher_email :</span></dt><dd>cersat@ifremer.fr</dd><dt><span>publisher_institution :</span></dt><dd>Ifremer / Cersat</dd><dt><span>scientific_support_contact :</span></dt><dd>Guillaume.Dodet@ifremer.fr</dd><dt><span>technical_support_contact :</span></dt><dd>cersat@ifremer.fr</dd><dt><span>key_variables :</span></dt><dd>swh_mean</dd><dt><span>bbox :</span></dt><dd>POLYGON ((180 -80, 180 80, -180 80, -180 -80, 180 -80))</dd><dt><span>date_created :</span></dt><dd>2025-09-18T16:34:35</dd><dt><span>date_modified :</span></dt><dd>2025-09-18T16:34:35</dd><dt><span>band :</span></dt><dd>Ku, Ku, Ku, Ku, Ka, Ku</dd><dt><span>time_coverage_start :</span></dt><dd>2023-12-01T00:00:00Z</dd><dt><span>time_coverage_end :</span></dt><dd>2024-01-01T00:00:00Z</dd><dt><span>uuid :</span></dt><dd>0e51c5e1-25f4-4e27-b279-5e3dc689aa09</dd><dt><span>Metadata_Conventions :</span></dt><dd>Climate and Forecast (CF) 1.7, Attribute Convention for Data Discovery (ACDD) 1.3</dd><dt><span>processing_software :</span></dt><dd>Cersat/Cerbere 1.0</dd><dt><span>geospatial_vertical_units :</span></dt><dd>meters above mean sea level</dd><dt><span>geospatial_vertical_positive :</span></dt><dd>up</dd></dl></div></li></ul></div></div></div></div>
+</div>
+<p>THREDDS convert datetime information to strings.We can convert them back to numpy <code class="docutils literal notranslate"><span class="pre">datetime64</span></code> data type:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre id="codecell2" tabindex="-1"><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="n">ds</span><span class="p">[</span><span class="s1">'time'</span><span class="p">]</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[</span><span class="s1">'time'</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">datetime64</span><span class="p">)</span>
+</pre><button class="copybtn o-tooltip--left" data-tooltip="Copy" data-clipboard-target="#codecell2">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copy" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <title>Copy to clipboard</title>
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+  <rect x="8" y="8" width="12" height="12" rx="2"></rect>
+  <path d="M16 8v-2a2 2 0 0 0 -2 -2h-8a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h2"></path>
+</svg>
+    </button></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate" tabindex="-1"><div class="highlight"><pre id="codecell3" tabindex="0"><span></span>/home/jfpiolle/mambaforge/envs/cciseastate/lib/python3.10/site-packages/xarray/core/duck_array_ops.py:226: UserWarning: no explicit representation of timezones available for np.datetime64
+  return data.astype(dtype, **kwargs)
+/tmp/ipykernel_12784/2712952193.py:2: UserWarning: Converting non-nanosecond precision datetime values to nanosecond precision. This behavior can eventually be relaxed in xarray, as it is an artifact from pandas which is now beginning to support non-nanosecond precision values. This warning is caused by passing non-nanosecond np.datetime64 or np.timedelta64 values to the DataArray or Variable constructor; it can be silenced by converting the values to nanosecond precision ahead of time.
+  ds['time'] = ds['time'].astype(np.datetime64)
+</pre><button class="copybtn o-tooltip--left" data-tooltip="Copy" data-clipboard-target="#codecell3">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copy" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <title>Copy to clipboard</title>
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+  <rect x="8" y="8" width="12" height="12" rx="2"></rect>
+  <path d="M16 8v-2a2 2 0 0 0 -2 -2h-8a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h2"></path>
+</svg>
+    </button></div>
+</div>
+</div>
+</div>
+<p>Let’s now read a full time series of the mean significant wave height (<code class="docutils literal notranslate"><span class="pre">swh_mean</span></code>
+ variable) at a given point (longitude=-4.5, latitude=46.5). Note that 
+you must provide latitude and longitude that exist in the dataset 
+coordinates (it won’t approximate to the closest grid point but raise an
+ error instead).</p>
+<p>This is a lazy operation so <code class="docutils literal notranslate"><span class="pre">compute()</span></code> must be executed to actully donwload the data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre id="codecell4" tabindex="-1"><span></span><span class="o">%%time</span>
+<span class="n">swh</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">lon</span><span class="o">=-</span><span class="mf">4.5</span><span class="p">,</span> <span class="n">lat</span><span class="o">=</span><span class="mf">46.5</span><span class="p">)</span><span class="o">.</span><span class="n">swh_mean</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+<span class="n">swh</span>
+</pre><button class="copybtn o-tooltip--left" data-tooltip="Copy" data-clipboard-target="#codecell4">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copy" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <title>Copy to clipboard</title>
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+  <rect x="8" y="8" width="12" height="12" rx="2"></rect>
+  <path d="M16 8v-2a2 2 0 0 0 -2 -2h-8a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h2"></path>
+</svg>
+    </button></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate" tabindex="-1"><div class="highlight"><pre id="codecell5" tabindex="-1"><span></span>CPU times: user 7.45 ms, sys: 178 μs, total: 7.63 ms
+Wall time: 1.6 s
+</pre><button class="copybtn o-tooltip--left" data-tooltip="Copy" data-clipboard-target="#codecell5">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copy" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <title>Copy to clipboard</title>
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+  <rect x="8" y="8" width="12" height="12" rx="2"></rect>
+  <path d="M16 8v-2a2 2 0 0 0 -2 -2h-8a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h2"></path>
+</svg>
+    </button></div>
+</div>
+<div class="output text_html" tabindex="-1"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme="dark"],
+html[data-theme="dark"],
+body[data-theme="dark"],
+body.vscode-dark {
+  --xr-font-color0: rgba(255, 255, 255, 1);
+  --xr-font-color2: rgba(255, 255, 255, 0.54);
+  --xr-font-color3: rgba(255, 255, 255, 0.38);
+  --xr-border-color: #1f1f1f;
+  --xr-disabled-color: #515151;
+  --xr-background-color: #111111;
+  --xr-background-color-row-even: #111111;
+  --xr-background-color-row-odd: #313131;
+}
+
+.xr-wrap {
+  display: block !important;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 0 20px 0 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: inline-block;
+  opacity: 0;
+  height: 0;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:focus + label {
+  border: 2px solid var(--xr-font-color0);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: "►";
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: "▼";
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: "(";
+}
+
+.xr-dim-list:after {
+  content: ")";
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ",";
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-index-preview {
+  grid-column: 2 / 5;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data,
+.xr-index-data-in:checked ~ .xr-index-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-index-name div,
+.xr-index-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2,
+.xr-no-icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><pre class="xr-text-repr-fallback" tabindex="-1">&lt;xarray.DataArray 'swh_mean' (time: 385)&gt; Size: 3kB
+array([       nan,        nan,        nan, 4.00450426, 1.62691911,
+       1.24697002, 1.3029859 , 1.50505987, 2.18745876, 2.34864877,
+       3.2429453 , 2.70808264, 3.2269475 , 1.7091934 , 2.27961412,
+       1.70520235, 1.5360816 , 1.74151158, 1.21884926, 1.42713626,
+       1.64242598, 2.04116045, 2.84221559, 3.9666163 , 4.01187164,
+       3.28822174, 2.52787344, 2.77239112, 2.00729516, 1.60391777,
+       1.10071689, 1.34837175, 1.72866878, 2.27606631, 2.30940734,
+       3.03387914, 3.80585203, 3.40922392, 3.25843354, 1.96121485,
+       1.86991446, 1.39997749, 1.27701873, 1.25161052, 2.35178804,
+       2.13346882, 2.55027794, 2.68054916, 3.4820124 , 2.59531694,
+       1.66874813, 1.37940835, 1.57848261, 1.80074884, 1.33871966,
+       1.20363036, 1.73856507, 2.98850127, 3.15688764, 1.73939929,
+       2.04401594, 4.12882286, 2.15799582, 1.21848055, 1.94160772,
+       1.7497309 , 0.93379005, 1.52699131, 1.18560366, 1.7167616 ,
+       3.86040353, 3.02544485, 5.87604816, 2.36852326, 2.23780139,
+       2.90962846, 1.36346188, 1.69388749, 1.2581888 , 1.05794619,
+       2.47796821, 2.73849594, 2.6274398 , 3.21895235, 3.60331313,
+       2.9014477 , 1.89698654, 2.23708634, 1.62149218, 1.77085799,
+       1.1437007 , 0.82534729, 2.26334428, 2.46453583, 2.31015149,
+       2.76807197, 2.53901978, 3.54513545, 1.70660192, 2.25389407,
+...
+       1.90443473, 3.19246921, 3.76968188, 4.10989197, 3.34623366,
+       3.24178148, 1.88427015, 1.30877978, 1.60106146, 1.29961134,
+       1.67250635, 1.83547264, 1.86065132, 2.25850796, 2.97591842,
+       1.58013757, 3.08947928, 3.09359741, 1.1529683 , 1.42852911,
+       1.99433253, 1.46497282, 1.24758751, 2.34346398, 2.31391591,
+       2.30283605, 3.30655726, 3.90634757, 3.37303667, 3.35758164,
+       2.62189812, 1.43600052, 1.27824349, 1.35431232, 0.93619615,
+       1.31802339, 2.46810752, 3.29364591, 3.92897153, 3.12446053,
+       3.00341383, 2.54351677, 2.39996573, 1.96422478, 1.05279995,
+       1.17435423, 1.07161592, 2.82019531, 2.53626033, 3.84303466,
+       2.03860543, 3.34978516, 4.17224908, 3.84301884, 1.46344154,
+       0.99613456, 1.03533343, 1.57199356, 0.90201581, 0.89629134,
+       3.49006741, 2.12503559, 2.94891507, 1.82977975, 4.13881985,
+       2.63710605, 1.43094772, 2.49416234, 1.39797937, 1.21968721,
+       1.06979261, 1.44802638, 2.36858676, 2.02747083, 3.61933511,
+       2.45399883, 3.4845588 , 2.44099592, 2.02804653, 1.469723  ,
+       1.63536963, 1.1023473 , 1.34039651, 1.50924365, 2.33420492,
+       4.30596076, 2.723619  , 3.12852402, 2.19517799, 3.79751674,
+       2.28613093, 1.43639394, 1.03385503, 1.38734283, 1.50247639,
+       1.77777736, 2.64260491, 2.83453299, 3.91160095, 5.23718649])
+Coordinates:
+    lat      float32 4B 46.5
+    lon      float32 4B -4.5
+  * time     (time) datetime64[ns] 3kB 1992-01-01 1992-02-01 ... 2024-01-01
+Attributes:
+    long_name:              mean of median significant wave height values
+    coverage_content_type:  physicalMeasurement
+    source:                 swh_denoised
+    grid_mapping:           crs
+    cell_method:            lat: lon: median (interval: 0.1 degree_N interval...
+    units:                  m
+    _ChunkSizes:            [  1 160 360]</pre><div class="xr-wrap" style="display:none"><div class="xr-header"><div class="xr-obj-type">xarray.DataArray</div><div class="xr-array-name">'swh_mean'</div><ul class="xr-dim-list"><li><span class="xr-has-index">time</span>: 385</li></ul></div><ul class="xr-sections"><li class="xr-section-item"><div class="xr-array-wrap"><input id="section-29b2109f-232d-489c-8ab5-26e7bb3428ad" class="xr-array-in" type="checkbox" checked="checked"><label for="section-29b2109f-232d-489c-8ab5-26e7bb3428ad" title="Show/hide data repr"><svg class="icon xr-icon-database"><use xlink:href="#icon-database"></use></svg></label><div class="xr-array-preview xr-preview"><span>nan nan nan 4.005 1.627 1.247 ... 1.502 1.778 2.643 2.835 3.912 5.237</span></div><div class="xr-array-data"><pre tabindex="-1">array([       nan,        nan,        nan, 4.00450426, 1.62691911,
+       1.24697002, 1.3029859 , 1.50505987, 2.18745876, 2.34864877,
+       3.2429453 , 2.70808264, 3.2269475 , 1.7091934 , 2.27961412,
+       1.70520235, 1.5360816 , 1.74151158, 1.21884926, 1.42713626,
+       1.64242598, 2.04116045, 2.84221559, 3.9666163 , 4.01187164,
+       3.28822174, 2.52787344, 2.77239112, 2.00729516, 1.60391777,
+       1.10071689, 1.34837175, 1.72866878, 2.27606631, 2.30940734,
+       3.03387914, 3.80585203, 3.40922392, 3.25843354, 1.96121485,
+       1.86991446, 1.39997749, 1.27701873, 1.25161052, 2.35178804,
+       2.13346882, 2.55027794, 2.68054916, 3.4820124 , 2.59531694,
+       1.66874813, 1.37940835, 1.57848261, 1.80074884, 1.33871966,
+       1.20363036, 1.73856507, 2.98850127, 3.15688764, 1.73939929,
+       2.04401594, 4.12882286, 2.15799582, 1.21848055, 1.94160772,
+       1.7497309 , 0.93379005, 1.52699131, 1.18560366, 1.7167616 ,
+       3.86040353, 3.02544485, 5.87604816, 2.36852326, 2.23780139,
+       2.90962846, 1.36346188, 1.69388749, 1.2581888 , 1.05794619,
+       2.47796821, 2.73849594, 2.6274398 , 3.21895235, 3.60331313,
+       2.9014477 , 1.89698654, 2.23708634, 1.62149218, 1.77085799,
+       1.1437007 , 0.82534729, 2.26334428, 2.46453583, 2.31015149,
+       2.76807197, 2.53901978, 3.54513545, 1.70660192, 2.25389407,
+...
+       1.90443473, 3.19246921, 3.76968188, 4.10989197, 3.34623366,
+       3.24178148, 1.88427015, 1.30877978, 1.60106146, 1.29961134,
+       1.67250635, 1.83547264, 1.86065132, 2.25850796, 2.97591842,
+       1.58013757, 3.08947928, 3.09359741, 1.1529683 , 1.42852911,
+       1.99433253, 1.46497282, 1.24758751, 2.34346398, 2.31391591,
+       2.30283605, 3.30655726, 3.90634757, 3.37303667, 3.35758164,
+       2.62189812, 1.43600052, 1.27824349, 1.35431232, 0.93619615,
+       1.31802339, 2.46810752, 3.29364591, 3.92897153, 3.12446053,
+       3.00341383, 2.54351677, 2.39996573, 1.96422478, 1.05279995,
+       1.17435423, 1.07161592, 2.82019531, 2.53626033, 3.84303466,
+       2.03860543, 3.34978516, 4.17224908, 3.84301884, 1.46344154,
+       0.99613456, 1.03533343, 1.57199356, 0.90201581, 0.89629134,
+       3.49006741, 2.12503559, 2.94891507, 1.82977975, 4.13881985,
+       2.63710605, 1.43094772, 2.49416234, 1.39797937, 1.21968721,
+       1.06979261, 1.44802638, 2.36858676, 2.02747083, 3.61933511,
+       2.45399883, 3.4845588 , 2.44099592, 2.02804653, 1.469723  ,
+       1.63536963, 1.1023473 , 1.34039651, 1.50924365, 2.33420492,
+       4.30596076, 2.723619  , 3.12852402, 2.19517799, 3.79751674,
+       2.28613093, 1.43639394, 1.03385503, 1.38734283, 1.50247639,
+       1.77777736, 2.64260491, 2.83453299, 3.91160095, 5.23718649])</pre></div></div></li><li class="xr-section-item"><input id="section-c6bea0ee-58fd-43e3-a183-5e41d426b810" class="xr-section-summary-in" type="checkbox" checked="checked"><label for="section-c6bea0ee-58fd-43e3-a183-5e41d426b810" class="xr-section-summary">Coordinates: <span>(3)</span></label><div class="xr-section-inline-details"></div><div class="xr-section-details"><ul class="xr-var-list"><li class="xr-var-item"><div class="xr-var-name"><span>lat</span></div><div class="xr-var-dims">()</div><div class="xr-var-dtype">float32</div><div class="xr-var-preview xr-preview">46.5</div><input id="attrs-9ccea9de-5b01-4521-b8b0-b31cc67269de" class="xr-var-attrs-in" type="checkbox"><label for="attrs-9ccea9de-5b01-4521-b8b0-b31cc67269de" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use xlink:href="#icon-file-text2"></use></svg></label><input id="data-c7205b7e-99f9-444e-836c-0ebd056ceef2" class="xr-var-data-in" type="checkbox"><label for="data-c7205b7e-99f9-444e-836c-0ebd056ceef2" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use xlink:href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degree_north</dd><dt><span>long_name :</span></dt><dd>latitude</dd><dt><span>authority :</span></dt><dd>CF-1.11, ACDD-1.3</dd><dt><span>axis :</span></dt><dd>Y</dd><dt><span>bounds :</span></dt><dd>lat_bnds</dd><dt><span>valid_range :</span></dt><dd>[-90.  90.]</dd><dt><span>_ChunkSizes :</span></dt><dd>160</dd></dl></div><div class="xr-var-data"><pre tabindex="-1">array(46.5, dtype=float32)</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>lon</span></div><div class="xr-var-dims">()</div><div class="xr-var-dtype">float32</div><div class="xr-var-preview xr-preview">-4.5</div><input id="attrs-cae41ad2-18e0-4cd6-829e-6b6f9f13d914" class="xr-var-attrs-in" type="checkbox"><label for="attrs-cae41ad2-18e0-4cd6-829e-6b6f9f13d914" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use xlink:href="#icon-file-text2"></use></svg></label><input id="data-143cd03b-f528-4e35-b4f6-c76727482e5f" class="xr-var-data-in" type="checkbox"><label for="data-143cd03b-f528-4e35-b4f6-c76727482e5f" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use xlink:href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degree_east</dd><dt><span>long_name :</span></dt><dd>longitude</dd><dt><span>authority :</span></dt><dd>CF-1.11, ACDD-1.3</dd><dt><span>axis :</span></dt><dd>X</dd><dt><span>bounds :</span></dt><dd>lon_bnds</dd><dt><span>valid_range :</span></dt><dd>[-180.  180.]</dd><dt><span>_ChunkSizes :</span></dt><dd>360</dd></dl></div><div class="xr-var-data"><pre tabindex="-1">array(-4.5, dtype=float32)</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span class="xr-has-index">time</span></div><div class="xr-var-dims">(time)</div><div class="xr-var-dtype">datetime64[ns]</div><div class="xr-var-preview xr-preview">1992-01-01 ... 2024-01-01</div><input id="attrs-059a8403-bc3f-4762-b0ea-c421a93247c4" class="xr-var-attrs-in" type="checkbox"><label for="attrs-059a8403-bc3f-4762-b0ea-c421a93247c4" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use xlink:href="#icon-file-text2"></use></svg></label><input id="data-430fe17e-bb35-42cb-a6dd-9d399dc9e4da" class="xr-var-data-in" type="checkbox"><label for="data-430fe17e-bb35-42cb-a6dd-9d399dc9e4da" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use xlink:href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>_CoordinateAxisType :</span></dt><dd>Time</dd><dt><span>long_name :</span></dt><dd>time coordinate</dd><dt><span>standard_name :</span></dt><dd>time</dd></dl></div><div class="xr-var-data"><pre tabindex="-1">array(['1992-01-01T00:00:00.000000000', '1992-02-01T00:00:00.000000000',
+       '1992-03-01T00:00:00.000000000', ..., '2023-11-01T00:00:00.000000000',
+       '2023-12-01T00:00:00.000000000', '2024-01-01T00:00:00.000000000'],
+      dtype='datetime64[ns]')</pre></div></li></ul></div></li><li class="xr-section-item"><input id="section-ea129539-fe93-4991-a25f-6592b94c1665" class="xr-section-summary-in" type="checkbox"><label for="section-ea129539-fe93-4991-a25f-6592b94c1665" class="xr-section-summary">Indexes: <span>(1)</span></label><div class="xr-section-inline-details"></div><div class="xr-section-details"><ul class="xr-var-list"><li class="xr-var-item"><div class="xr-index-name"><div>time</div></div><div class="xr-index-preview">PandasIndex</div><input type="checkbox" disabled="disabled"><label></label><input id="index-90120503-93d2-457e-a5f4-63a4e995baf8" class="xr-index-data-in" type="checkbox"><label for="index-90120503-93d2-457e-a5f4-63a4e995baf8" title="Show/Hide index repr"><svg class="icon xr-icon-database"><use xlink:href="#icon-database"></use></svg></label><div class="xr-index-data"><pre tabindex="-1">PandasIndex(DatetimeIndex(['1992-01-01', '1992-02-01', '1992-03-01', '1992-04-01',
+               '1992-05-01', '1992-06-01', '1992-07-01', '1992-08-01',
+               '1992-09-01', '1992-10-01',
+               ...
+               '2023-04-01', '2023-05-01', '2023-06-01', '2023-07-01',
+               '2023-08-01', '2023-09-01', '2023-10-01', '2023-11-01',
+               '2023-12-01', '2024-01-01'],
+              dtype='datetime64[ns]', name='time', length=385, freq=None))</pre></div></li></ul></div></li><li class="xr-section-item"><input id="section-144fe4e8-1cc0-4d00-9d16-e563ca02a262" class="xr-section-summary-in" type="checkbox" checked="checked"><label for="section-144fe4e8-1cc0-4d00-9d16-e563ca02a262" class="xr-section-summary">Attributes: <span>(7)</span></label><div class="xr-section-inline-details"></div><div class="xr-section-details"><dl class="xr-attrs"><dt><span>long_name :</span></dt><dd>mean of median significant wave height values</dd><dt><span>coverage_content_type :</span></dt><dd>physicalMeasurement</dd><dt><span>source :</span></dt><dd>swh_denoised</dd><dt><span>grid_mapping :</span></dt><dd>crs</dd><dt><span>cell_method :</span></dt><dd>lat: lon: median (interval: 0.1 degree_N interval: 0.1 degree_E comment: median per bin and satellite pass) time: mean over days</dd><dt><span>units :</span></dt><dd>m</dd><dt><span>_ChunkSizes :</span></dt><dd>[  1 160 360]</dd></dl></div></li></ul></div></div></div></div>
+</div>
+<p>We can now display the returned time series:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre id="codecell6" tabindex="-1"><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">swh</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre><button class="copybtn o-tooltip--left" data-tooltip="Copy" data-clipboard-target="#codecell6">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copy" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <title>Copy to clipboard</title>
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+  <rect x="8" y="8" width="12" height="12" rx="2"></rect>
+  <path d="M16 8v-2a2 2 0 0 0 -2 -2h-8a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h2"></path>
+</svg>
+    </button></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate" tabindex="-1"><div class="highlight"><pre id="codecell7" tabindex="-1"><span></span>[&lt;matplotlib.lines.Line2D at 0x7fa0d2ff8eb0&gt;]
+</pre><button class="copybtn o-tooltip--left" data-tooltip="Copy" data-clipboard-target="#codecell7">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copy" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <title>Copy to clipboard</title>
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+  <rect x="8" y="8" width="12" height="12" rx="2"></rect>
+  <path d="M16 8v-2a2 2 0 0 0 -2 -2h-8a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h2"></path>
+</svg>
+    </button></div>
+</div>
+<img alt="../_images/4be258e279dc5fc1ab55f8692252a1c4e512355c36c13df4613cb58a572f16e7.png" src="tutorial_thredds_files/4be258e279dc5fc1ab55f8692252a1c4e512355c36c13df4613cb58a572f.png">
+</div>
+</div>
+<p>To read a subset over an area instead of at a single point, just use slices in the selection call:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre id="codecell8" tabindex="-1"><span></span><span class="o">%%time</span>
+<span class="n">swh_area</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">lon</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="o">-</span><span class="mf">6.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.5</span><span class="p">),</span> <span class="n">lat</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mf">44.5</span><span class="p">,</span> <span class="mf">48.5</span><span class="p">))</span><span class="o">.</span><span class="n">swh_mean</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+<span class="n">swh_area</span><span class="o">.</span><span class="n">shape</span>
+</pre><button class="copybtn o-tooltip--left" data-tooltip="Copy" data-clipboard-target="#codecell8">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copy" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <title>Copy to clipboard</title>
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+  <rect x="8" y="8" width="12" height="12" rx="2"></rect>
+  <path d="M16 8v-2a2 2 0 0 0 -2 -2h-8a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h2"></path>
+</svg>
+    </button></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate" tabindex="-1"><div class="highlight"><pre id="codecell9" tabindex="-1"><span></span>CPU times: user 11 ms, sys: 310 μs, total: 11.3 ms
+Wall time: 3.28 s
+</pre><button class="copybtn o-tooltip--left" data-tooltip="Copy" data-clipboard-target="#codecell9">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copy" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <title>Copy to clipboard</title>
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+  <rect x="8" y="8" width="12" height="12" rx="2"></rect>
+  <path d="M16 8v-2a2 2 0 0 0 -2 -2h-8a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h2"></path>
+</svg>
+    </button></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate" tabindex="-1"><div class="highlight"><pre id="codecell10" tabindex="-1"><span></span>(385, 5, 4)
+</pre><button class="copybtn o-tooltip--left" data-tooltip="Copy" data-clipboard-target="#codecell10">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copy" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <title>Copy to clipboard</title>
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+  <rect x="8" y="8" width="12" height="12" rx="2"></rect>
+  <path d="M16 8v-2a2 2 0 0 0 -2 -2h-8a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h2"></path>
+</svg>
+    </button></div>
+</div>
+</div>
+</div>
+<p>We can no display a time series of the mean value of <code class="docutils literal notranslate"><span class="pre">swh_mean</span></code> over the selected area (<code class="docutils literal notranslate"><span class="pre">swh.mean(dim=['lon','lat'])</span></code>):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre id="codecell11" tabindex="-1"><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+
+<span class="n">swh_area</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="s1">'lon'</span><span class="p">,</span><span class="s1">'lat'</span><span class="p">])</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre><button class="copybtn o-tooltip--left" data-tooltip="Copy" data-clipboard-target="#codecell11">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copy" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <title>Copy to clipboard</title>
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+  <rect x="8" y="8" width="12" height="12" rx="2"></rect>
+  <path d="M16 8v-2a2 2 0 0 0 -2 -2h-8a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h2"></path>
+</svg>
+    </button></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate" tabindex="-1"><div class="highlight"><pre id="codecell12" tabindex="-1"><span></span>[&lt;matplotlib.lines.Line2D at 0x7fa0c88ec820&gt;]
+</pre><button class="copybtn o-tooltip--left" data-tooltip="Copy" data-clipboard-target="#codecell12">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copy" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <title>Copy to clipboard</title>
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+  <rect x="8" y="8" width="12" height="12" rx="2"></rect>
+  <path d="M16 8v-2a2 2 0 0 0 -2 -2h-8a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h2"></path>
+</svg>
+    </button></div>
+</div>
+<img alt="../_images/b207f9ca2425714a607c9b4446480c3ab0638b4b7b56563f3324784cadd23398.png" src="tutorial_thredds_files/b207f9ca2425714a607c9b4446480c3ab0638b4b7b56563f3324784cadd2.png">
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "cciseastate"
+        },
+        kernelOptions: {
+            name: "cciseastate",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'cciseastate'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content noprint">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The CCI Sea State system development team
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="tutorial_thredds_files/bootstrap.js"></script>
+<script src="tutorial_thredds_files/pydata-sphinx-theme.js"></script>
+
+  <footer class="bd-footer noprint">
+  </footer>
+  
+</body></html>
