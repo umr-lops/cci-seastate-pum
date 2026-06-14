@@ -1,0 +1,2874 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>4.6. L2P SWH &#8212; CCI Sea State System Documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'altimetry/l2p';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="4.7. L2P Wind" href="l2p_wind.html" />
+    <link rel="prev" title="4.5. Processing details" href="baseline.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="CCI Sea State System Documentation - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="CCI Sea State System Documentation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    CCI Sea State version 5 Product User Guide
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../quickintro.html">1. ESA Sea State CCI datasets in a nutshell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../project.html">2. The CCI Sea State project</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../conventions.html">3. Format conventions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../naming.html">3.1. Naming conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../coordinates.html">3.2. Coordinate variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../attributes.html">3.3. Global attributes</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../altimetry.html">4. Nadir-altimetry datasets</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="missions.html">4.4. Altimetry missions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="baseline.html">4.5. Processing details</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">4.6. L2P SWH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="l2p_wind.html">4.7. L2P Wind</a></li>
+<li class="toctree-l2"><a class="reference internal" href="l3.html">4.8. L3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="l4.html">4.9. L4</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../sar.html">5. SAR datasets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../sar/missions.html">5.4. SAR missions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sar/SAR-SeaStaR.html">5.5. SAR processing details</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../sar/sar_dlr_l2p.html">5.8. L2P SAR WV &amp; IW/EW by DLR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sar/sar_wv_quach.html">5.9. L2P “Quach” SAR WV by Ifremer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sar/sar_partition_parameters.html">5.10. Sentinel-1 A/B WV SAR wave partition parameters dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sar/sar_wv_sarwave.html">5.11. L2P “SARWAVE” SAR Wave Mode by Ifremer</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../access.html">6. Data access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changes.html">7. Changes</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-gitlab"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://gitlab.ifremer.fr/cciseastate/ccidoc" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-gitlab"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://gitlab.ifremer.fr/cciseastate/ccidoc/-/issues/new?issue[title]=Issue%20on%20page%20%2Faltimetry/l2p.html&issue[description]=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/altimetry/l2p.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>L2P SWH</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#l2p-geophysical-data-record-format-specification">4.6.1. L2P geophysical data record format specification</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#swh">4.6.1.1. <code class="docutils literal notranslate"><span class="pre">swh</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#swh-rms">4.6.1.2. <code class="docutils literal notranslate"><span class="pre">swh_rms</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#swh-num-valid">4.6.1.3. <code class="docutils literal notranslate"><span class="pre">swh_num_valid</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#swh-adjusted">4.6.1.4. <code class="docutils literal notranslate"><span class="pre">swh_adjusted</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#swh-denoised">4.6.1.5. <code class="docutils literal notranslate"><span class="pre">swh_denoised</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#swh-uncertainty">4.6.1.6. <code class="docutils literal notranslate"><span class="pre">swh_uncertainty</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#swh-quality-level">4.6.1.7. <code class="docutils literal notranslate"><span class="pre">swh_quality_level</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#swh-rejection-flags">4.6.1.8. <code class="docutils literal notranslate"><span class="pre">swh_rejection_flags</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#swh-emd-noise">4.6.1.9. <code class="docutils literal notranslate"><span class="pre">swh_emd_noise</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#swh-emd-imf1">4.6.1.10. <code class="docutils literal notranslate"><span class="pre">swh_emd_imf1</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#swh-emd-uncertainty">4.6.1.11. <code class="docutils literal notranslate"><span class="pre">swh_emd_uncertainty</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#l2p-instrumental-data-record-format-specification">4.6.2. L2P instrumental data record format specification</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sigma0-ku">4.6.2.1. <code class="docutils literal notranslate"><span class="pre">sigma0_ku</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sigma0-ku-rms">4.6.2.2. <code class="docutils literal notranslate"><span class="pre">sigma0_ku_rms</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sigma0-ku-numval">4.6.2.3. <code class="docutils literal notranslate"><span class="pre">sigma0_ku_numval</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sigma0-ku-quality-level">4.6.2.4. <code class="docutils literal notranslate"><span class="pre">sigma0_ku_quality_level</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sigma0-ku-rejection-flags">4.6.2.5. <code class="docutils literal notranslate"><span class="pre">sigma0_ku_rejection_flags</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sigma0-c">4.6.2.6. <code class="docutils literal notranslate"><span class="pre">sigma0_c</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sigma0-c-rms">4.6.2.7. <code class="docutils literal notranslate"><span class="pre">sigma0_c_rms</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sigma0-c-numval">4.6.2.8. <code class="docutils literal notranslate"><span class="pre">sigma0_c_numval</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sigma0-c-quality-level">4.6.2.9. <code class="docutils literal notranslate"><span class="pre">sigma0_c_quality_level</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sigma0-c-rejection-flags">4.6.2.10. <code class="docutils literal notranslate"><span class="pre">sigma0_c_rejection_flags</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#l2p-auxiliary-data-record-format-specification">4.6.3. L2P auxiliary data record format specification</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distance-to-coast">4.6.3.1. <code class="docutils literal notranslate"><span class="pre">distance_to_coast</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bathymetry">4.6.3.2. <code class="docutils literal notranslate"><span class="pre">bathymetry</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sea-ice-fraction">4.6.3.3. <code class="docutils literal notranslate"><span class="pre">sea_ice_fraction</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#era5-total-column-cloud-liquid-water">4.6.3.4. <code class="docutils literal notranslate"><span class="pre">era5_total_column_cloud_liquid_water</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#era5-2m-air-temperature">4.6.3.5. <code class="docutils literal notranslate"><span class="pre">era5_2m_air_temperature</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#era5-sea-surface-temperature">4.6.3.6. <code class="docutils literal notranslate"><span class="pre">era5_sea_surface_temperature</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#era5-wind-eastward">4.6.3.7. <code class="docutils literal notranslate"><span class="pre">era5_wind_eastward</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#era5-wind-northward">4.6.3.8. <code class="docutils literal notranslate"><span class="pre">era5_wind_northward</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#era5-surface-pressure">4.6.3.9. <code class="docutils literal notranslate"><span class="pre">era5_surface_pressure</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#era5-swh">4.6.3.10. <code class="docutils literal notranslate"><span class="pre">era5_swh</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#era5-peak-wave-period">4.6.3.11. <code class="docutils literal notranslate"><span class="pre">era5_peak_wave_period</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#era5-swell-mean-period">4.6.3.12. <code class="docutils literal notranslate"><span class="pre">era5_swell_mean_period</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#era5-swell-swh">4.6.3.13. <code class="docutils literal notranslate"><span class="pre">era5_swell_swh</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#era5-swell-direction">4.6.3.14. <code class="docutils literal notranslate"><span class="pre">era5_swell_direction</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#era5-mean-wave-period">4.6.3.15. <code class="docutils literal notranslate"><span class="pre">era5_mean_wave_period</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#era5-mean-wave-direction">4.6.3.16. <code class="docutils literal notranslate"><span class="pre">era5_mean_wave_direction</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#era5-windwave-swh">4.6.3.17. <code class="docutils literal notranslate"><span class="pre">era5_windwave_swh</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#era5-windwave-direction">4.6.3.18. <code class="docutils literal notranslate"><span class="pre">era5_windwave_direction</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#era5-windwave-period">4.6.3.19. <code class="docutils literal notranslate"><span class="pre">era5_windwave_period</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ww3-swh">4.6.3.20. <code class="docutils literal notranslate"><span class="pre">ww3_swh</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ww3-mean-wave-period">4.6.3.21. <code class="docutils literal notranslate"><span class="pre">ww3_mean_wave_period</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ww3-mean-wave-period-t0m1">4.6.3.22. <code class="docutils literal notranslate"><span class="pre">ww3_mean_wave_period_t0m1</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ww3-emb">4.6.3.23. <code class="docutils literal notranslate"><span class="pre">ww3_emb</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ww3-peak-wave-period">4.6.3.24. <code class="docutils literal notranslate"><span class="pre">ww3_peak_wave_period</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ww3-mean-wave-direction">4.6.3.25. <code class="docutils literal notranslate"><span class="pre">ww3_mean_wave_direction</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ww3-wave-skewness">4.6.3.26. <code class="docutils literal notranslate"><span class="pre">ww3_wave_skewness</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ww3-wavenumber-peakdness">4.6.3.27. <code class="docutils literal notranslate"><span class="pre">ww3_wavenumber_peakdness</span></code></a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="l2p-swh">
+<span id="l2p"></span><h1><span class="section-number">4.6. </span>L2P SWH<a class="headerlink" href="#l2p-swh" title="Link to this heading">#</a></h1>
+<p>The altimeter L2P SWH products are along-track files, usually corresponding
+to a satellite pass, processed from each mission data provider’s L1B product
+(usually referred to as SGDR) containing the waveforms. A retracking
+algorithm is applied to retrieve significant wave height from the instrument
+waveforms.</p>
+<p>Additional post-processing is performed, like quality control, adjustment of
+significant wave height to a common reference, uncertainty estimation, etc… and
+complementary variables are also computed or added from other model or satellite
+sources. The content is fully consistent and standardised for each mission
+included in this dataset.</p>
+<p>For altimeters, only the Ku band measurements are considered, when available
+(the only current exception being SARAL for which only Ka band is provided).</p>
+<p>This section describes in detail the specific content of the version 5 L2P
+for Sea State CCI, configured as shown in the table
+<a class="reference internal" href="#l2p-content-summary"><span class="std std-numref">Table 4.16</span></a>, which can be used to locate appropriate
+information in this document.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="l2p-content-summary">
+<caption><span class="caption-number">Table 4.16 </span><span class="caption-text">Summary description of the contents of a CCI Sea State L2P data product</span><a class="headerlink" href="#l2p-content-summary" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>netCDF File Contents</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Coordinate variables</strong></p></td>
+<td><p>Information to permit locating data on non-orthogonal grids, as defined in <a class="reference internal" href="../coordinates.html#coordinate-variables-all"><span class="std std-numref">Section 3.2</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Geophysical data record variables</strong></p></td>
+<td><p>environmental variables for 1st band altimeter (usually Ku) as defined in <a class="reference internal" href="#l2p-variables-environmental"><span class="std std-numref">Section 4.6.1</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Instrumental data record variables</strong></p></td>
+<td><p>instrumental variables for 1st band altimeter (usually Ku) as defined in <a class="reference internal" href="#l2p-variables-instrumental"><span class="std std-numref">Section 4.6.2</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Auxiliary data record variables</strong></p></td>
+<td><p>auxiliary variables as defined in <a class="reference internal" href="#l2p-variables-auxiliary"><span class="std std-numref">Section 4.6.3</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Global Attributes</strong></p></td>
+<td><p>A collection of required global attributes describing general characteristics of the file, as defined in section <a class="reference internal" href="../attributes.html#global-attributes"><span class="std std-numref">Section 3.3</span></a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="l2p-geophysical-data-record-format-specification">
+<span id="l2p-variables-environmental"></span><h2><span class="section-number">4.6.1. </span>L2P geophysical data record format specification<a class="headerlink" href="#l2p-geophysical-data-record-format-specification" title="Link to this heading">#</a></h2>
+<p>The <a class="reference internal" href="#table-l2p-variables-environmental"><span class="std std-numref">Table 4.17</span></a> provides an overview of the CCI
+Sea State L2P environment (geophysical) data record within a L2P file. In the
+following sections, each variable within the L2P data file is described in detail.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="table-l2p-variables-environmental">
+<caption><span class="caption-number">Table 4.17 </span><span class="caption-text">Summary description of CCI Sea State L2P geophysical data records</span><a class="headerlink" href="#table-l2p-variables-environmental" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Units</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#id1"><span class="std std-ref">swh</span></a></p></td>
+<td><p>Significant wave height, as retrieved from the altimeter retracker, averaged over 1 Hz cells, without bias correction.</p></td>
+<td><p>m</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#l2p-swh-rms"><span class="std std-ref">swh_rms</span></a></p></td>
+<td><p>RMS of the full resolution Hs measurements in <code class="docutils literal notranslate"><span class="pre">swh</span></code> variable, within 1Hz cells</p></td>
+<td><p>m</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#l2p-swh-num-valid"><span class="std std-ref">swh_num_valid</span></a></p></td>
+<td><p>number of valid full resolution Hs measurements used to compute the Hs in <code class="docutils literal notranslate"><span class="pre">swh</span></code> variable, within 1Hz cells</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#l2p-swh-adjusted"><span class="std std-ref">swh_adjusted</span></a></p></td>
+<td><p>Significant wave height, averaged over 1 Hz cells, with cross-mission bias correction.</p></td>
+<td><p>m</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#l2p-swh-denoised"><span class="std std-ref">swh_denoised</span></a></p></td>
+<td><p>Significant wave height, averaged over 1 Hz cells, with cross-mission bias correction and denoising.</p></td>
+<td><p>m</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#l2p-swh-uncertainty"><span class="std std-ref">swh_uncertainty</span></a></p></td>
+<td><p>Uncertainty of the significant wave height averaged over 1 Hz cells</p></td>
+<td><p>m</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#l2p-swh-quality-level"><span class="std std-ref">swh_quality_level</span></a></p></td>
+<td><p>Quality level (from 0 - worst to 3 - best) of the significant wave height averaged over 1 Hz cells</p></td>
+<td><p>code</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#l2p-swh-rejection-flags"><span class="std std-ref">swh_rejection_flags</span></a></p></td>
+<td><p>flag specifying the  editing criteria on which a 1 Hz significant wave height measurement was rejected (meaning its quality level is not set to “good”).</p></td>
+<td><p>bit mask</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#l2p-swh-emd-noise"><span class="std std-ref">swh_emd_noise</span></a></p></td>
+<td><p>high-frequency noise attached to swh_adjusted, from EMD filter</p></td>
+<td><p>m</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#l2p-swh-emd-imf1"><span class="std std-ref">swh_emd_imf1</span></a></p></td>
+<td><p>first IMF attached to the denoising of swh_adjusted, from EMD filter</p></td>
+<td><p>m</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#l2p-swh-emd-uncertainty"><span class="std std-ref">swh_emd_uncertainty</span></a></p></td>
+<td><p>uncertainty estimated by EMD filter</p></td>
+<td><p>m</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="swh">
+<span id="id1"></span><h3><span class="section-number">4.6.1.1. </span><code class="docutils literal notranslate"><span class="pre">swh</span></code><a class="headerlink" href="#swh" title="Link to this heading">#</a></h3>
+<p>The <strong>significant wave height (SWH)</strong>, within 1 Hz cells, averaged from
+groups of full resolution 20 Hz (40 Hz for Saral, 18 Hz for Envisat)
+measurements calculated from the altimeter retracking, without any
+cross-mission bias correction.</p>
+<p>For ERS-1, ERS-2, TOPEX, Sentinel-3 A &amp; B and Sentinel-6, the 1 Hz
+measurements were estimated from the full resolution SWH measurements
+provided in the source Agency’s GDR &amp; SGDR products. Refer to the processing
+details <a class="reference internal" href="baseline.html#whales"><span class="std std-numref">Section 4.5.2</span></a> for the specific source used for these missions.</p>
+<p>For Jason-1, Jason-2, Jason-3, Envisat, SARAL and CryoSat-2, a specific
+retracking was performed, using the WHALES nadir altimetry retracker
+selected by the CCI Sea State experts. For more details on the WHALES
+retracker, refer to the processing details <a class="reference internal" href="baseline.html#whales"><span class="std std-numref">Section 4.5.2</span></a>.</p>
+<p>For all missions, the groups of full resolution measurements used to calculate
+the 1 Hz values are exactly the same as in the source Agency’s GDR &amp; SGDR products.
+Both CCI and Agency files can be compared one to one, have the same number
+of measurements, and the same latitude, longitude, time for each 1 Hz
+measurement. A minimal number of 6 (12 for SARAL) valid points is required
+to estimate a valid 1 Hz measurement. For more information on how the full
+resolution measurements are compressed into 1 Hz values, refer to the
+processing details <a class="reference internal" href="baseline.html#compression"><span class="std std-numref">Section 4.5.3</span></a>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">swh</span></code> variable in a L2P product follows the format shown in table <a class="reference internal" href="#id2"><span class="std std-numref">Table 4.18</span></a>.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id2">
+<caption><span class="caption-number">Table 4.18 </span><span class="caption-text">CDL example description of <strong><span style="font-family:courier;">swh</span></strong> variable</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Storage type</strong></p></th>
+<th class="head"><p><strong>Name</strong></p></th>
+<th class="head"><p><strong>Unit</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>float</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">swh</span></code></p></td>
+<td><p>m (meter)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>double swh(time) ;
+	swh:_FillValue = 1.e+20 ;
+	swh:band = &quot;Ku&quot; ;
+	swh:long_name = &quot;significant wave height, as estimated by the altimeter retracker, without any cross-mission bias correction&quot; ;
+	swh:standard_name = &quot;sea_surface_wave_significant_height&quot; ;
+	swh:coverage_content_type = &quot;physicalMeasurement&quot; ;
+	swh:units = &quot;m&quot; ;
+	swh:ancillary_variables = &quot;swh_quality swh_rejection_flags&quot; ;
+	swh:coordinates = &quot;lon lat&quot; ;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="swh-rms">
+<span id="l2p-swh-rms"></span><h3><span class="section-number">4.6.1.2. </span><code class="docutils literal notranslate"><span class="pre">swh_rms</span></code><a class="headerlink" href="#swh-rms" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table" id="id3">
+<caption><span class="caption-number">Table 4.19 </span><span class="caption-text">CDL example description of <strong><span style="font-family:courier;">swh_rms</span></strong> variable</span><a class="headerlink" href="#id3" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Storage type</strong></p></th>
+<th class="head"><p><strong>Name</strong></p></th>
+<th class="head"><p><strong>Unit</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>float</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">swh_rms</span></code></p></td>
+<td><p>m (meter)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>double swh_rms(time) ;
+	swh_rms:_FillValue = 1.e+20 ;
+	swh_rms:band = &quot;Ku&quot; ;
+	swh_rms:long_name = &quot;RMS of the full resolution significant wave height with a 1 Hz compressed measurement&quot; ;
+	swh_rms:standard_name\&#39; = &quot;sea_surface_wave_significant_height standard_error&quot; ;
+	swh_rms:coverage_content_type = &quot;auxiliaryMeasurement&quot; ;
+	swh_rms:units = &quot;m&quot; ;
+	swh_rms:coordinates = &quot;lon lat&quot; ;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="swh-num-valid">
+<span id="l2p-swh-num-valid"></span><h3><span class="section-number">4.6.1.3. </span><code class="docutils literal notranslate"><span class="pre">swh_num_valid</span></code><a class="headerlink" href="#swh-num-valid" title="Link to this heading">#</a></h3>
+<p>The number of valid points used to compute the significant wave height (SWH),
+within 1 Hz cells, from the full resolution measurements calculated
+from each altimeter waveform by the retracker.</p>
+<p>The groups of full resolution SWH measurements used to calculate the 1 Hz
+values are exactly the same as in the source Agency’s GDR &amp; SGDR products. Both
+CCI Sea State and Agency files can be compared one to one, have the same
+number of measurements, and the same latitude, longitude, time for each 1 Hz
+measurement.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id4">
+<caption><span class="caption-number">Table 4.20 </span><span class="caption-text">CDL example description of <strong><span style="font-family:courier;">swh_num_valid</span></strong> variable</span><a class="headerlink" href="#id4" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Storage type</strong></p></th>
+<th class="head"><p><strong>Name</strong></p></th>
+<th class="head"><p><strong>Unit</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>int</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">swh_num_valid</span></code></p></td>
+<td><p>1 (dimensionless)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;byte swh_numval(time) ;&#39;,
+ &#39;\tswh_numval:band = &quot;Ku&quot; ;&#39;,
+ &#39;\tswh_numval:long_name = &quot;number of full resolution valid points used to compute the 1 Hz significant wave height value&quot; ;&#39;,
+ &#39;\tswh_numval:standard_name = &quot;sea_surface_wave_significant_height number_of_observations&quot; ;&#39;,
+ &#39;\tswh_numval:coverage_content_type = &quot;auxiliaryMeasurement&quot; ;&#39;,
+ &#39;\tswh_numval:units = &quot;1&quot; ;&#39;,
+ &#39;\tswh_numval:coordinates = &quot;lon lat&quot; ;&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="swh-adjusted">
+<span id="l2p-swh-adjusted"></span><h3><span class="section-number">4.6.1.4. </span><code class="docutils literal notranslate"><span class="pre">swh_adjusted</span></code><a class="headerlink" href="#swh-adjusted" title="Link to this heading">#</a></h3>
+<p>The <strong>bias-corrected significant wave height</strong>, in meters. The correction is
+based on cross-mission intercalibration as described in <a class="reference internal" href="baseline.html#bias-correction"><span class="std std-numref">Section 4.5.6</span></a>.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id5">
+<caption><span class="caption-number">Table 4.21 </span><span class="caption-text">CDL example description of <strong><span style="font-family:courier;">swh_adjusted</span></strong> variable</span><a class="headerlink" href="#id5" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Storage type</strong></p></th>
+<th class="head"><p><strong>Name</strong></p></th>
+<th class="head"><p><strong>Unit</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>float</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">swh_adjusted</span></code></p></td>
+<td><p>m (meter)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>double swh_adjusted(time) ;
+	swh_adjusted:_FillValue = 1.e+20 ;
+	swh_adjusted:band = &quot;Ku&quot; ;
+	swh_adjusted:long_name = &quot;significant wave height, bias corrected&quot; ;
+	swh_adjusted:standard_name = &quot;sea_surface_wave_significant_height&quot; ;
+	swh_adjusted:coverage_content_type = &quot;physicalMeasurement&quot; ;
+	swh_adjusted:units = &quot;m&quot; ;
+	swh_adjusted:ancillary_variables = &quot;swh_quality swh_rejection_flags&quot; ;
+	swh_adjusted:coordinates = &quot;lat lon&quot; ;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="swh-denoised">
+<span id="l2p-swh-denoised"></span><h3><span class="section-number">4.6.1.5. </span><code class="docutils literal notranslate"><span class="pre">swh_denoised</span></code><a class="headerlink" href="#swh-denoised" title="Link to this heading">#</a></h3>
+<p>The <strong>bias-corrected and denoised significant wave height</strong>, in meters.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This is the recommended significant wave height variable to be used for most
+applications.</p>
+</div>
+<p>A non-parametric denoising method based on Empirical Mode Decomposition (EMD, Huang
+et al., 1998) and inspired by wavelet thresholding is applied to the
+variable <code class="docutils literal notranslate"><span class="pre">swh_adjusted</span></code> to estimate the denoised significant wave height
+(see Kopsinis and McLaughlin, 2009, Quilfen et al., 2018 and Quilfen and
+Chapron, 2019ab), as detailed in <a class="reference internal" href="baseline.html#denoising"><span class="std std-numref">Section 4.5.7</span></a>.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id6">
+<caption><span class="caption-number">Table 4.22 </span><span class="caption-text">CDL example description of <strong><span style="font-family:courier;">swh_denoised</span></strong> variable</span><a class="headerlink" href="#id6" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Storage type</strong></p></th>
+<th class="head"><p><strong>Name</strong></p></th>
+<th class="head"><p><strong>Unit</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>float</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">swh_denoised</span></code></p></td>
+<td><p>m (meter)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>double swh_denoised(time) ;
+	swh_denoised:_FillValue = 1.e+20 ;
+	swh_denoised:units = &quot;m&quot; ;
+	swh_denoised:long_name = &quot;significant wave height, bias corrected and denoised&quot; ;
+	swh_denoised:standard_name = &quot;sea_surface_wave_significant_height&quot; ;
+	swh_denoised:comment = &quot;EMD denoising by Quilfen et al.&quot; ;
+	swh_denoised:coordinates = &quot;lat lon&quot; ;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="swh-uncertainty">
+<span id="l2p-swh-uncertainty"></span><h3><span class="section-number">4.6.1.6. </span><code class="docutils literal notranslate"><span class="pre">swh_uncertainty</span></code><a class="headerlink" href="#swh-uncertainty" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table" id="id7">
+<caption><span class="caption-number">Table 4.23 </span><span class="caption-text">CDL example description of <strong><span style="font-family:courier;">swh_uncertainty</span></strong> variable</span><a class="headerlink" href="#id7" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Storage type</strong></p></th>
+<th class="head"><p><strong>Name</strong></p></th>
+<th class="head"><p><strong>Unit</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>float</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">swh_uncertainty</span></code></p></td>
+<td><p>m (meter)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>double swh_uncertainty(time) ;
+	swh_uncertainty:_FillValue = 1.e+20 ;
+	swh_uncertainty:units = &quot;m&quot; ;
+	swh_uncertainty:long_name = &quot;theoretical estimate of the uncertainty caused by speckle noise and sampling in 1-Hz averaged SWH values&quot; ;
+	swh_uncertainty:standard_name = &quot;sea_surface_wave_significant_height&quot; ;
+	swh_uncertainty:comment = &quot;EMD denoising by Quilfen et al.&quot; ;
+	swh_uncertainty:coordinates = &quot;lat lon&quot; ;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="swh-quality-level">
+<span id="l2p-swh-quality-level"></span><h3><span class="section-number">4.6.1.7. </span><code class="docutils literal notranslate"><span class="pre">swh_quality_level</span></code><a class="headerlink" href="#swh-quality-level" title="Link to this heading">#</a></h3>
+<p>Quality control of individual altimeter measurements is performed with checks
+over the calculated 1 Hz values and ancillary variables. As a result, the
+estimated significant wave height comes with a quality level provided in the
+<code class="docutils literal notranslate"><span class="pre">swh_quality_level</span></code> variable. Its meaning is defined as described in
+<a class="reference internal" href="#quality-levels"><span class="std std-numref">Table 4.24</span></a>.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="quality-levels">
+<caption><span class="caption-number">Table 4.24 </span><span class="caption-text">Definition of the quality levels of significant wave height measurements</span><a class="headerlink" href="#quality-levels" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>value</p></th>
+<th class="head"><p>meaning</p></th>
+<th class="head"><p>description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>undefined</p></td>
+<td><p>the measurement value is not defined or relevant (missing value, etc…), no quality check was applied.</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>bad</p></td>
+<td><p>the measurement was qualified as not usable after quality check.</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>acceptable</p></td>
+<td><p>the measurement may still be usable for some application or the quality check could not fully assess if it is a bad or good value (suspect).</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>good</p></td>
+<td><p>the measurement is usable.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>For more details on how the quality level is set for a significant wave
+height measurement, refer to the processing details
+<a class="reference internal" href="baseline.html#swh-quality-level"><span class="std std-numref">Section 4.5.4</span></a>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">swh_quality_level</span></code> variable in a L2P product follows the format shown in
+table <a class="reference internal" href="#id8"><span class="std std-numref">Table 4.25</span></a>.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id8">
+<caption><span class="caption-number">Table 4.25 </span><span class="caption-text">CDL example description of <strong><span style="font-family:courier;">swh_quality_level</span></strong> variable</span><a class="headerlink" href="#id8" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Storage type</strong></p></th>
+<th class="head"><p><strong>Name</strong></p></th>
+<th class="head"><p><strong>Unit</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>float</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">swh_quality_level</span></code></p></td>
+<td><p>bit code</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>byte swh_quality_level(time) ;
+	swh_quality_level:band = &quot;Ku&quot; ;
+	swh_quality_level:flag_values = 0b, 1b, 2b, 3b ;
+	swh_quality_level:flag_meanings = &quot;undefined bad acceptable good&quot; ;
+	swh_quality_level:long_name = &quot;quality of significant wave height measurement&quot; ;
+	swh_quality_level:standard_name = &quot;sea_surface_wave_significant_height status_flag&quot; ;
+	swh_quality_level:coverage_content_type = &quot;qualityInformation&quot; ;
+	swh_quality_level:coordinates = &quot;lat lon&quot; ;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="swh-rejection-flags">
+<span id="l2p-swh-rejection-flags"></span><h3><span class="section-number">4.6.1.8. </span><code class="docutils literal notranslate"><span class="pre">swh_rejection_flags</span></code><a class="headerlink" href="#swh-rejection-flags" title="Link to this heading">#</a></h3>
+<p>When SWH measurements were rejected as bad, the reason (quality test) for
+which they were rejected is reported in the related <code class="docutils literal notranslate"><span class="pre">swh_rejection_flags</span></code>
+variable. Refer to <a class="reference internal" href="baseline.html#id2"><span class="std std-numref">Table 4.8</span></a> for details on the tests performed for
+the quality check of the measurements.</p>
+<p><a class="reference internal" href="#swh-flags"><span class="std std-numref">Table 4.26</span></a> provides the meaning of each flag possibly raised,
+stored as a specific bit of an integer.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="swh-flags">
+<caption><span class="caption-number">Table 4.26 </span><span class="caption-text">Definition of the rejection flags of significant wave height measurements</span><a class="headerlink" href="#swh-flags" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>bit</p></th>
+<th class="head"><p>meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>nb_of_valid_swh_too_low</p></td>
+<td><p>the measurement was considered as invalid as there are indications of unsuitable waveforms for a proper SWH calculation. In particular there was no remaining 20 Hz values after all checks (such as distance to the closest shoreline) and outlier tests.</p></td>
+</tr>
+<tr class="row-odd"><td><p>sea_ice</p></td>
+<td><p>the measurement has possible ice contamination. The sea ice fraction is taken from an external source (such as the CCI Sea Ice microwave based daily maps). Sea ice contamination is defined as areas where the sea ice fraction is greater than a minimal threshold (corresponding to 10% of ice in the current configuration).</p></td>
+</tr>
+<tr class="row-even"><td><p>swh_validity</p></td>
+<td><p>the SWH measurement was considered as invalid (out of the ]0, 30] meter range for instance).</p></td>
+</tr>
+<tr class="row-odd"><td><p>swh_rms_outlier</p></td>
+<td><p>the measurement was considered as invalid when the RMS of the SWH measurements used to estimate each 1 Hz SWH measurement was beyond the acceptable threshold for a given range of SWH.</p></td>
+</tr>
+<tr class="row-even"><td><p>outlier</p></td>
+<td><p>the measurement was considered as invalid when performing the SWH outlier test, based on the neighbouring measurements within a 100 km window.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">swh_rejection_flags</span></code> variable in a L2P product follows the format shown in
+table <a class="reference internal" href="#id9"><span class="std std-numref">Table 4.27</span></a>.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id9">
+<caption><span class="caption-number">Table 4.27 </span><span class="caption-text">CDL example description of <strong><span style="font-family:courier;">swh_rejection_flags</span></strong> variable</span><a class="headerlink" href="#id9" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Storage type</strong></p></th>
+<th class="head"><p><strong>Name</strong></p></th>
+<th class="head"><p><strong>Unit</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>float</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">rejection_flags</span></code></p></td>
+<td><p>bit mask</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>byte swh_rejection_flags(time) ;
+	swh_rejection_flags:band = &quot;Ku&quot; ;
+	swh_rejection_flags:flag_masks = 1b, 2b, 4b, 8b, 16b ;
+	swh_rejection_flags:flag_meanings = &quot;nb_of_valid_swh_too_low swh_validity sea_ice swh_rms_outlier outlier_test&quot; ;
+	swh_rejection_flags:long_name = &quot;consolidated instrument and sanity check flags raised when downgrading the swh quality level&quot; ;
+	swh_rejection_flags:standard_name = &quot;sea_surface_wave_significant_height status_flag&quot; ;
+	swh_rejection_flags:coverage_content_type = &quot;qualityInformation&quot; ;
+	swh_rejection_flags:coordinates = &quot;lat lon&quot; ;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="swh-emd-noise">
+<span id="l2p-swh-emd-noise"></span><h3><span class="section-number">4.6.1.9. </span><code class="docutils literal notranslate"><span class="pre">swh_emd_noise</span></code><a class="headerlink" href="#swh-emd-noise" title="Link to this heading">#</a></h3>
+<p>The <strong>high-frequency noise of SWH</strong> returned by the application of the
+Empirical Mode Decomposition (EMD, Huang et al., 1998) to the bias-corrected
+significant wave height (<code class="docutils literal notranslate"><span class="pre">swh_adjusted</span></code>), in meters. See <a class="reference internal" href="baseline.html#denoising"><span class="std std-numref">Section 4.5.7</span></a>
+for more details on the SWH denoising.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id10">
+<caption><span class="caption-number">Table 4.28 </span><span class="caption-text">CDL example description of <strong><span style="font-family:courier;">swh_emd_noise</span></strong> variable</span><a class="headerlink" href="#id10" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Storage type</strong></p></th>
+<th class="head"><p><strong>Name</strong></p></th>
+<th class="head"><p><strong>Unit</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>float</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">swh_emd_noise</span></code></p></td>
+<td><p>m (meter)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>double swh_emd_noise(time) ;
+	swh_emd_noise:_FillValue = 1.e+20 ;
+	swh_emd_noise:units = &quot;m&quot; ;
+	swh_emd_noise:long_name = &quot;standard deviation of the ensemble of noisy signals used to estimate swh_denoised&quot; ;
+	swh_emd_noise:comment = &quot;EMD denoising by Quilfen et al.&quot; ;
+	swh_emd_noise:coordinates = &quot;lat lon&quot; ;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="swh-emd-imf1">
+<span id="l2p-swh-emd-imf1"></span><h3><span class="section-number">4.6.1.10. </span><code class="docutils literal notranslate"><span class="pre">swh_emd_imf1</span></code><a class="headerlink" href="#swh-emd-imf1" title="Link to this heading">#</a></h3>
+<p>The <strong>first Intrinsic Mode Function of SWH</strong> returned by the application of the
+Empirical Mode Decomposition (EMD, Huang et al., 1998) to the bias-corrected
+significant wave height (<code class="docutils literal notranslate"><span class="pre">swh_adjusted</span></code>), in meters. See <a class="reference internal" href="baseline.html#denoising"><span class="std std-numref">Section 4.5.7</span></a>
+for more details on the SWH denoising.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id11">
+<caption><span class="caption-number">Table 4.29 </span><span class="caption-text">CDL example description of <strong><span style="font-family:courier;">swh_emd_imf1</span></strong> variable</span><a class="headerlink" href="#id11" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Storage type</strong></p></th>
+<th class="head"><p><strong>Name</strong></p></th>
+<th class="head"><p><strong>Unit</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>float</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">swh_emd_imf1</span></code></p></td>
+<td><p>m (meter)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>double swh_emd_imf1(time) ;
+	swh_emd_imf1:_FillValue = 1.e+20 ;
+	swh_emd_imf1:units = &quot;m&quot; ;
+	swh_emd_imf1:long_name = &quot;first IMF attached to swh_adjusted&quot; ;
+	swh_emd_imf1:comment = &quot;EMD denoising by Quilfen et al.&quot; ;
+	swh_emd_imf1:coordinates = &quot;lat lon&quot; ;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="swh-emd-uncertainty">
+<span id="l2p-swh-emd-uncertainty"></span><h3><span class="section-number">4.6.1.11. </span><code class="docutils literal notranslate"><span class="pre">swh_emd_uncertainty</span></code><a class="headerlink" href="#swh-emd-uncertainty" title="Link to this heading">#</a></h3>
+<p>The <strong>SWH uncertainty</strong> returned by the application of the
+Empirical Mode Decomposition (EMD, Huang et al., 1998) to the bias-corrected
+significant wave height (<code class="docutils literal notranslate"><span class="pre">swh_adjusted</span></code>), in meters. See <a class="reference internal" href="baseline.html#denoising"><span class="std std-numref">Section 4.5.7</span></a>
+for more details on the SWH denoising.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id12">
+<caption><span class="caption-number">Table 4.30 </span><span class="caption-text">CDL example description of <strong><span style="font-family:courier;">swh_emd_uncertainty</span></strong> variable</span><a class="headerlink" href="#id12" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Storage type</strong></p></th>
+<th class="head"><p><strong>Name</strong></p></th>
+<th class="head"><p><strong>Unit</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>float</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">swh_emd_uncertainty</span></code></p></td>
+<td><p>m (meter)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>double swh_emd_uncertainty(time) ;
+	swh_emd_uncertainty:_FillValue = 1.e+20 ;
+	swh_emd_uncertainty:units = &quot;m&quot; ;
+	swh_emd_uncertainty:long_name = &quot;uncertainty attached to swh_adjusted&quot; ;
+	swh_emd_uncertainty:standard_name = &quot;sea_surface_wave_significant_height standard_error&quot; ;
+	swh_emd_uncertainty:comment = &quot;EMD denoising by Quilfen et al.&quot; ;
+	swh_emd_uncertainty:coordinates = &quot;lat lon&quot; ;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="l2p-instrumental-data-record-format-specification">
+<span id="l2p-variables-instrumental"></span><h2><span class="section-number">4.6.2. </span>L2P instrumental data record format specification<a class="headerlink" href="#l2p-instrumental-data-record-format-specification" title="Link to this heading">#</a></h2>
+<p>The <a class="reference internal" href="#table-l2p-variables-instrumental"><span class="std std-numref">Table 4.31</span></a> provides an overview of the CCI
+Sea State L2P instrumental data record within a L2P file, mainly the
+altimeter backscatter in available sensing bands (Ku, C, and Ka for SARAL).
+In the following sections, each variable within the L2P data file is described
+in detail.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Altimeters do not have all the same sensing bands and some of these
+variables may therefore be missing for some missions.</p>
+</div>
+<div class="pst-scrollable-table-container"><table class="table" id="table-l2p-variables-instrumental">
+<caption><span class="caption-number">Table 4.31 </span><span class="caption-text">Summary description of CCI Sea State L2P instrumental data records</span><a class="headerlink" href="#table-l2p-variables-instrumental" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Units</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#l2p-sigma0-ku"><span class="std std-ref">sigma0_ku</span></a></p></td>
+<td><p>Ku band backscatter coefficient, as calculated from the retracking</p></td>
+<td><p>dB</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#l2p-sigma0-ku-rms"><span class="std std-ref">sigma0_ku_rms</span></a></p></td>
+<td><p>RMS of the Ku band backscatter coefficient, within 1Hz cells, of the 20 Hz measurements calculated from the retracking</p></td>
+<td><p>dB</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#l2p-sigma0-ku-num-valid"><span class="std std-ref">sigma0_ku_num_valid</span></a></p></td>
+<td><p>number of valid points used to compute Ku band backscatter coefficient, within 1Hz cells, of the 20 Hz measurements calculated from the retracking</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#l2p-sigma0-ku-quality-level"><span class="std std-ref">sigma0_ku_quality_level</span></a></p></td>
+<td><p>Quality level (from 0 - worst to 3 - best) of the Ku band sigma0 averaged over 1 Hz cells</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#l2p-sigma0-ku-rejection-flags"><span class="std std-ref">sigma0_ku_rejection_flags</span></a></p></td>
+<td><p>flag specifying the editing criteria on which a 1 Hz Ku band sigma0 measurement was rejected (meaning its quality level is not set to “good”).</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#l2p-sigma0-c"><span class="std std-ref">sigma0_c</span></a></p></td>
+<td><p>C band backscatter coefficient, as calculated from the retracking</p></td>
+<td><p>dB</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#l2p-sigma0-c-rms"><span class="std std-ref">sigma0_c_rms</span></a></p></td>
+<td><p>RMS of the C band backscatter coefficient, within 1Hz cells, of the 20 Hz measurements calculated from the retracking</p></td>
+<td><p>dB</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#l2p-sigma0-c-num-valid"><span class="std std-ref">sigma0_c_num_valid</span></a></p></td>
+<td><p>number of valid points used to compute C band backscatter coefficient, within 1Hz cells, of the 20 Hz measurements calculated from the retracking</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#l2p-sigma0-c-quality-level"><span class="std std-ref">sigma0_c_quality_level</span></a></p></td>
+<td><p>Quality level (from 0 - worst to 3 - best) of the C band sigma0 averaged over 1 Hz cells</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#l2p-sigma0-c-rejection-flags"><span class="std std-ref">sigma0_c_rejection_flags</span></a></p></td>
+<td><p>flag specifying the editing criteria on which a 1 Hz C band sigma0 measurement was rejected (meaning its quality level is not set to “good”).</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="sigma0-ku">
+<span id="l2p-sigma0-ku"></span><h3><span class="section-number">4.6.2.1. </span><code class="docutils literal notranslate"><span class="pre">sigma0_ku</span></code><a class="headerlink" href="#sigma0-ku" title="Link to this heading">#</a></h3>
+<p>The <strong>Ku-band backscatter coefficients (sigma0)</strong>, within 1 Hz cells, averaged from
+groups of full resolution 20 Hz (18 Hz for Topex) measurements calculated from
+the altimeter retracking, without any cross-mission bias correction. The Ku-band
+sigma0 is only provided for Ku-band altimeters (excluding SARAL/AltiKa for instance).</p>
+<p>The 1 Hz measurements were estimated from the full resolution sigma0 measurements
+provided in the source Agency’s GDR &amp; SGDR products, including when SWH was
+estimated with the CCI Sea State selected retracker (WHALES). Refer to the processing
+details <a class="reference internal" href="baseline.html#whales"><span class="std std-numref">Section 4.5.2</span></a> for the specific source used for each mission.</p>
+<p>For all missions, the groups of full resolution measurements used to calculate
+the 1 Hz values are exactly the same as in the source Agency’s GDR &amp; SGDR products.
+Both CCI and Agency files can be compared one to one, have the same number
+of measurements, and the same latitude, longitude, time for each 1 Hz
+measurement. A minimal number of 6 valid points is required
+to estimate a valid 1 Hz measurement. For more information on how the full
+resolution measurements are compressed into 1 Hz values, refer to the
+processing details <a class="reference internal" href="baseline.html#compression"><span class="std std-numref">Section 4.5.3</span></a>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">sigma0_ku</span></code> variable in a L2P product follows the format shown in table
+<a class="reference internal" href="#id13"><span class="std std-numref">Table 4.32</span></a>.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id13">
+<caption><span class="caption-number">Table 4.32 </span><span class="caption-text">CDL example description of <strong><span style="font-family:courier;">sigma0_ku</span></strong> variable</span><a class="headerlink" href="#id13" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Storage type</strong></p></th>
+<th class="head"><p><strong>Name</strong></p></th>
+<th class="head"><p><strong>Unit</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>float</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sigma0_ku</span></code></p></td>
+<td><p>dB</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>double sigma0_ku(time) ;
+	sigma0_ku:_FillValue = 1.e+20 ;
+	sigma0_ku:band = &quot;Ku&quot; ;
+	sigma0_ku:long_name = &quot;backscatter coefficient&quot; ;
+	sigma0_ku:standard_name = &quot;surface_backwards_scattering_coefficient_of_radar_wave&quot; ;
+	sigma0_ku:coverage_content_type = &quot;physicalMeasurement&quot; ;
+	sigma0_ku:units = &quot;dB&quot; ;
+	sigma0_ku:coordinates = &quot;lon lat&quot; ;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="sigma0-ku-rms">
+<span id="l2p-sigma0-ku-rms"></span><h3><span class="section-number">4.6.2.2. </span><code class="docutils literal notranslate"><span class="pre">sigma0_ku_rms</span></code><a class="headerlink" href="#sigma0-ku-rms" title="Link to this heading">#</a></h3>
+</section>
+<section id="sigma0-ku-numval">
+<span id="l2p-sigma0-ku-num-valid"></span><h3><span class="section-number">4.6.2.3. </span><code class="docutils literal notranslate"><span class="pre">sigma0_ku_numval</span></code><a class="headerlink" href="#sigma0-ku-numval" title="Link to this heading">#</a></h3>
+<p>The number of valid points used to compute the Ku band backscatter coefficient
+(sigma0), within 1 Hz cells, from the full resolution measurements calculated
+from each altimeter waveform by the source Agency’s retracker.</p>
+<p>The groups of full resolution sigma0 measurements used to calculate the 1 Hz
+values are exactly the same as in the source Agency’s GDR &amp; SGDR products. Both
+CCI Sea State and Agency files can be compared one to one, have the same
+number of measurements, and the same latitude, longitude, time for each 1 Hz
+measurement.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id14">
+<caption><span class="caption-number">Table 4.33 </span><span class="caption-text">CDL example description of <strong><span style="font-family:courier;">sigma0_ku_numval</span></strong> variable</span><a class="headerlink" href="#id14" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Storage type</strong></p></th>
+<th class="head"><p><strong>Name</strong></p></th>
+<th class="head"><p><strong>Unit</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>float</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sigma0_ku_numval</span></code></p></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>byte sigma0_ku_numval(time) ;
+	sigma0_ku_numval:band = &quot;Ku&quot; ;
+	sigma0_ku_numval:long_name = &quot;number of full resolution valid points used to compute backscatter coefficient&quot; ;
+	sigma0_ku_numval:standard_name = &quot;surface_backwards_scattering_coefficient_of_radar_wave number_of_observations&quot; ;
+	sigma0_ku_numval:coverage_content_type = &quot;auxiliaryMeasurement&quot; ;
+	sigma0_ku_numval:units = &quot;1&quot; ;
+	sigma0_ku_numval:coordinates = &quot;lon lat&quot; ;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="sigma0-ku-quality-level">
+<span id="l2p-sigma0-ku-quality-level"></span><h3><span class="section-number">4.6.2.4. </span><code class="docutils literal notranslate"><span class="pre">sigma0_ku_quality_level</span></code><a class="headerlink" href="#sigma0-ku-quality-level" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table" id="id15">
+<caption><span class="caption-number">Table 4.34 </span><span class="caption-text">CDL example description of <strong><span style="font-family:courier;">sigma0_ku_quality_level</span></strong> variable</span><a class="headerlink" href="#id15" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Storage type</strong></p></th>
+<th class="head"><p><strong>Name</strong></p></th>
+<th class="head"><p><strong>Unit</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>float</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sigma0_ku_quality_level</span></code></p></td>
+<td><p>enumerate</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>byte sigma0_ku_quality_level(time) ;
+	sigma0_ku_quality_level:band = &quot;Ku&quot; ;
+	sigma0_ku_quality_level:flag_values = 0b, 1b, 2b, 3b ;
+	sigma0_ku_quality_level:flag_meanings = &quot;undefined bad acceptable good&quot; ;
+	sigma0_ku_quality_level:long_name\&#39; = &quot;quality of compressed backscatter coefficient&quot; ;
+	sigma0_ku_quality_level:standard_name = &quot;surface_backwards_scattering_coefficient_of_radar_wave status_flag&quot; ;
+	sigma0_ku_quality_level:coverage_content_type = &quot;qualityInformation&quot; ;
+	sigma0_ku_quality_level:coordinates = &quot;lat lon&quot; ;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="sigma0-ku-rejection-flags">
+<span id="l2p-sigma0-ku-rejection-flags"></span><h3><span class="section-number">4.6.2.5. </span><code class="docutils literal notranslate"><span class="pre">sigma0_ku_rejection_flags</span></code><a class="headerlink" href="#sigma0-ku-rejection-flags" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table" id="id16">
+<caption><span class="caption-number">Table 4.35 </span><span class="caption-text">CDL example description of <strong><span style="font-family:courier;">sigma0_ku_rejection_flags</span></strong> variable</span><a class="headerlink" href="#id16" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Storage type</strong></p></th>
+<th class="head"><p><strong>Name</strong></p></th>
+<th class="head"><p><strong>Unit</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>float</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sigma0_ku_rejection_flags</span></code></p></td>
+<td><p>bit code</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>byte sigma0_ku_rejection_flags(time) ;
+	sigma0_ku_rejection_flags:band = &quot;Ku&quot; ;
+	sigma0_ku_rejection_flags:flag_masks = 1b, 2b, 4b ;
+	sigma0_ku_rejection_flags:flag_meanings = &quot;nb_of_valid_sigma0_too_low sigma0_validity sea_ice&quot; ;
+	sigma0_ku_rejection_flags:long_name = &quot;consolidated instrument and sanity check flags raised when downgrading backscatter coefficient quality level&quot; ;
+	sigma0_ku_rejection_flags:standard_name = &quot;surface_backwards_scattering_coefficient_of_radar_wave  status_flag\n&quot; ;
+	sigma0_ku_rejection_flags:coverage_content_type = &quot;qualityInformation&quot; ;
+	sigma0_ku_rejection_flags:coordinates = &quot;lon lat&quot; ;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="sigma0-c">
+<span id="l2p-sigma0-c"></span><h3><span class="section-number">4.6.2.6. </span><code class="docutils literal notranslate"><span class="pre">sigma0_c</span></code><a class="headerlink" href="#sigma0-c" title="Link to this heading">#</a></h3>
+<p>The <strong>C-band backscatter coefficients (sigma0)</strong>, within 1 Hz cells, averaged from
+groups of full resolution 20 Hz (18 Hz for Topex) measurements calculated from
+the altimeter retracking, without any cross-mission bias correction. The C-band
+sigma0 is only provided for some altimeters, and therefore is an optional variable.</p>
+<p>The 1 Hz measurements were estimated from the full resolution sigma0 measurements
+provided in the source Agency’s GDR &amp; SGDR products. Refer to the processing
+details <a class="reference internal" href="baseline.html#whales"><span class="std std-numref">Section 4.5.2</span></a> for the specific source used for each mission.</p>
+<p>For all missions, the groups of full resolution measurements used to calculate
+the 1 Hz values are exactly the same as in the source Agency’s GDR &amp; SGDR products.
+Both CCI and Agency files can be compared one to one, have the same number
+of measurements, and the same latitude, longitude, time for each 1 Hz
+measurement. A minimal number of 6 valid points is required
+to estimate a valid 1 Hz measurement. For more information on how the full
+resolution measurements are compressed into 1 Hz values, refer to the
+processing details <a class="reference internal" href="baseline.html#compression"><span class="std std-numref">Section 4.5.3</span></a>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">sigma0_c</span></code> variable in a L2P product follows the format shown in table
+<a class="reference internal" href="#id17"><span class="std std-numref">Table 4.36</span></a>.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id17">
+<caption><span class="caption-number">Table 4.36 </span><span class="caption-text">CDL example description of <strong><span style="font-family:courier;">sigma0_c</span></strong> variable</span><a class="headerlink" href="#id17" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Storage type</strong></p></th>
+<th class="head"><p><strong>Name</strong></p></th>
+<th class="head"><p><strong>Unit</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>float</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sigma0_c</span></code></p></td>
+<td><p>dB</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>double sigma0_c(time) ;
+	sigma0_c:_FillValue = 1.e+20 ;
+	sigma0_c:band = &quot;C&quot; ;
+	sigma0_c:long_name = &quot;backscatter coefficient&quot; ;
+	sigma0_c:standard_name = &quot;surface_backwards_scattering_coefficient_of_radar_wave&quot; ;
+	sigma0_c:coverage_content_type = &quot;physicalMeasurement&quot; ;
+	sigma0_c:units = &quot;dB&quot; ;
+	sigma0_c:coordinates = &quot;lon lat&quot; ;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="sigma0-c-rms">
+<span id="l2p-sigma0-c-rms"></span><h3><span class="section-number">4.6.2.7. </span><code class="docutils literal notranslate"><span class="pre">sigma0_c_rms</span></code><a class="headerlink" href="#sigma0-c-rms" title="Link to this heading">#</a></h3>
+</section>
+<section id="sigma0-c-numval">
+<span id="l2p-sigma0-c-num-valid"></span><h3><span class="section-number">4.6.2.8. </span><code class="docutils literal notranslate"><span class="pre">sigma0_c_numval</span></code><a class="headerlink" href="#sigma0-c-numval" title="Link to this heading">#</a></h3>
+<p>The number of valid points used to compute the C band backscatter coefficient
+(sigma0), within 1 Hz cells, from the full resolution measurements calculated
+from each altimeter waveform by the source Agency’s retracker.</p>
+<p>The groups of full resolution sigma0 measurements used to calculate the 1 Hz
+values are exactly the same as in the source Agency’s GDR &amp; SGDR products. Both
+CCI Sea State and Agency files can be compared one to one, have the same
+number of measurements, and the same latitude, longitude, time for each 1 Hz
+measurement.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id18">
+<caption><span class="caption-number">Table 4.37 </span><span class="caption-text">CDL example description of <strong><span style="font-family:courier;">sigma0_c_numval</span></strong> variable</span><a class="headerlink" href="#id18" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Storage type</strong></p></th>
+<th class="head"><p><strong>Name</strong></p></th>
+<th class="head"><p><strong>Unit</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>float</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sigma0_c_numval</span></code></p></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>byte sigma0_c_numval(time) ;
+	sigma0_c_numval:band = &quot;C&quot; ;
+	sigma0_c_numval:long_name = &quot;number of full resolution valid points used to compute backscatter coefficient&quot; ;
+	sigma0_c_numval:standard_name = &quot;surface_backwards_scattering_coefficient_of_radar_wave number_of_observations&quot; ;
+	sigma0_c_numval:coverage_content_type = &quot;auxiliaryMeasurement&quot; ;
+	sigma0_c_numval:units = &quot;1&quot; ;
+	sigma0_c_numval:coordinates = &quot;lon lat&quot; ;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="sigma0-c-quality-level">
+<span id="l2p-sigma0-c-quality-level"></span><h3><span class="section-number">4.6.2.9. </span><code class="docutils literal notranslate"><span class="pre">sigma0_c_quality_level</span></code><a class="headerlink" href="#sigma0-c-quality-level" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table" id="id19">
+<caption><span class="caption-number">Table 4.38 </span><span class="caption-text">CDL example description of <strong><span style="font-family:courier;">sigma0_c_quality_level</span></strong> variable</span><a class="headerlink" href="#id19" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Storage type</strong></p></th>
+<th class="head"><p><strong>Name</strong></p></th>
+<th class="head"><p><strong>Unit</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>float</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sigma0_c_quality_level</span></code></p></td>
+<td><p>enumerate</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>byte sigma0_c_quality_level(time) ;
+	sigma0_c_quality_level:band = &quot;C&quot; ;
+	sigma0_c_quality_level:flag_values = 0b, 1b, 2b, 3b ;
+	sigma0_c_quality_level:flag_meanings = &quot;undefined bad acceptable good&quot; ;
+	sigma0_c_quality_level:long_name\&#39; = &quot;quality of compressed backscatter coefficient&quot; ;
+	sigma0_c_quality_level:standard_name = &quot;surface_backwards_scattering_coefficient_of_radar_wave status_flag&quot; ;
+	sigma0_c_quality_level:coverage_content_type = &quot;qualityInformation&quot; ;
+	sigma0_c_quality_level:coordinates = &quot;lat lon&quot; ;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="sigma0-c-rejection-flags">
+<span id="l2p-sigma0-c-rejection-flags"></span><h3><span class="section-number">4.6.2.10. </span><code class="docutils literal notranslate"><span class="pre">sigma0_c_rejection_flags</span></code><a class="headerlink" href="#sigma0-c-rejection-flags" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table" id="id20">
+<caption><span class="caption-number">Table 4.39 </span><span class="caption-text">CDL example description of <strong><span style="font-family:courier;">sigma0_c_rejection_flags</span></strong> variable</span><a class="headerlink" href="#id20" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Storage type</strong></p></th>
+<th class="head"><p><strong>Name</strong></p></th>
+<th class="head"><p><strong>Unit</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>float</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sigma0_c_rejection_flags</span></code></p></td>
+<td><p>bit code</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>byte sigma0_c_rejection_flags(time) ;
+	sigma0_c_rejection_flags:band = &quot;C&quot; ;
+	sigma0_c_rejection_flags:flag_masks = 1b, 2b, 4b ;
+	sigma0_c_rejection_flags:flag_meanings = &quot;nb_of_valid_sigma0_too_low sigma0_validity sea_ice&quot; ;
+	sigma0_c_rejection_flags:long_name = &quot;consolidated instrument and sanity check flags raised when downgrading backscatter coefficient quality level&quot; ;
+	sigma0_c_rejection_flags:standard_name = &quot;surface_backwards_scattering_coefficient_of_radar_wave  status_flag\n&quot; ;
+	sigma0_c_rejection_flags:coverage_content_type = &quot;qualityInformation&quot; ;
+	sigma0_c_rejection_flags:coordinates = &quot;lon lat&quot; ;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="l2p-auxiliary-data-record-format-specification">
+<span id="l2p-variables-auxiliary"></span><h2><span class="section-number">4.6.3. </span>L2P auxiliary data record format specification<a class="headerlink" href="#l2p-auxiliary-data-record-format-specification" title="Link to this heading">#</a></h2>
+<p>The <a class="reference internal" href="#table-l2p-variables-auxiliary"><span class="std std-numref">Table 4.40</span></a> provides an overview of the CCI
+Sea State L2P auxiliary data records within a L2P file. In the
+following sections, each variable within this table is described in detail.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="table-l2p-variables-auxiliary">
+<caption><span class="caption-number">Table 4.40 </span><span class="caption-text">Summary description of CCI Sea State L2P ancillary data records</span><a class="headerlink" href="#table-l2p-variables-auxiliary" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Units</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#l2p-distance-to-coast"><span class="std std-ref">distance_to_coast</span></a></p></td>
+<td><p>Distance to the nearest shoreline</p></td>
+<td><p>m</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#l2p-bathymetry"><span class="std std-ref">bathymetry</span></a></p></td>
+<td><p>Water depth to sea floor</p></td>
+<td><p>m</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#l2p-sea-ice-fraction"><span class="std std-ref">sea_ice_fraction</span></a></p></td>
+<td><p>Water depth to sea floor</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#l2p-era5-tclw"><span class="std std-ref">era5_total_column_cloud_liquid_water</span></a></p></td>
+<td><p>Total column cloud liquid water</p></td>
+<td><p>kg m-2</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#l2p-era5-t2m"><span class="std std-ref">era5_2m_air_temperature</span></a></p></td>
+<td><p>2 metre temperature</p></td>
+<td><p>K</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#l2p-era5-sst"><span class="std std-ref">era5_sea_surface_temperature</span></a></p></td>
+<td><p>Sea surface temperature</p></td>
+<td><p>K</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#l2p-era5-u10"><span class="std std-ref">era5_wind_eastward</span></a></p></td>
+<td><p>10 metre U wind component</p></td>
+<td><p>m s-1</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#l2p-era5-v10"><span class="std std-ref">era5_wind_northward</span></a></p></td>
+<td><p>10 metre V wind component</p></td>
+<td><p>m s-1</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#l2p-era5-sp"><span class="std std-ref">era5_surface_pressure</span></a></p></td>
+<td><p>Surface pressure</p></td>
+<td><p>Pa</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#l2p-era5-swh"><span class="std std-ref">era5_swh</span></a></p></td>
+<td><p>Significant height of combined wind waves and swell</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#l2p-era5-pp1d"><span class="std std-ref">era5_peak_wave_period</span></a></p></td>
+<td><p>Peak wave period</p></td>
+<td><p>s</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#l2p-era5-p1ps"><span class="std std-ref">era5_swell_mean_period</span></a></p></td>
+<td><p>Mean wave period based on first moment of swell</p></td>
+<td><p>s</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#l2p-era5-p140121"><span class="std std-ref">era5_swell_swh</span></a></p></td>
+<td><p>Significant wave height of first swell partition</p></td>
+<td><p>m</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#l2p-era5-p140122"><span class="std std-ref">era5_swell_direction</span></a></p></td>
+<td><p>Mean wave direction of first swell partition</p></td>
+<td><p>degree</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#l2p-era5-mwp"><span class="std std-ref">era5_mean_wave_period</span></a></p></td>
+<td><p>Mean wave period</p></td>
+<td><p>s</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#l2p-era5-mwd"><span class="std std-ref">era5_mean_wave_direction</span></a></p></td>
+<td><p>Mean wave direction</p></td>
+<td><p>degree</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#l2p-era5-shww"><span class="std std-ref">era5_windwave_swh</span></a></p></td>
+<td><p>Significant height of wind waves</p></td>
+<td><p>m</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#l2p-era5-mdww"><span class="std std-ref">era5_windwave_direction</span></a></p></td>
+<td><p>Mean direction of wind waves</p></td>
+<td><p>degree</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#l2p-era5-mpww"><span class="std std-ref">era5_windwave_period</span></a></p></td>
+<td><p>Mean period of wind waves</p></td>
+<td><p>s</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#l2p-ww3-hs"><span class="std std-ref">ww3_swh</span></a></p></td>
+<td><p>Significant height of wind and swell waves</p></td>
+<td><p>m</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#l2p-ww3-t02"><span class="std std-ref">ww3_mean_wave_period</span></a></p></td>
+<td><p>Mean period T02</p></td>
+<td><p>s</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#l2p-ww3-t0m1"><span class="std std-ref">ww3_mean_wave_period_t0m1</span></a></p></td>
+<td><p>Mean period T0m1</p></td>
+<td><p>s</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#l2p-ww3-emb"><span class="std std-ref">ww3_emb</span></a></p></td>
+<td><p>Electromagnetic bias coefficient</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#l2p-ww3-fp"><span class="std std-ref">ww3_peak_wave_period</span></a></p></td>
+<td><p>Wave peak frequency</p></td>
+<td><p>s-1</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#l2p-ww3-dir"><span class="std std-ref">ww3_mean_wave_direction</span></a></p></td>
+<td><p>Wave mean direction (from)</p></td>
+<td><p>degree</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#l2p-ww3-skw"><span class="std std-ref">ww3_wave_skewness</span></a></p></td>
+<td><p>skewness of P(z,sx,sy=0)</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#l2p-ww3-qkk"><span class="std std-ref">ww3_wavenumber_peakdness</span></a></p></td>
+<td><p>2D wavenumber peakedness</p></td>
+<td><p>m rad-1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="distance-to-coast">
+<span id="l2p-distance-to-coast"></span><h3><span class="section-number">4.6.3.1. </span><code class="docutils literal notranslate"><span class="pre">distance_to_coast</span></code><a class="headerlink" href="#distance-to-coast" title="Link to this heading">#</a></h3>
+<p>The distance to the nearest coastline for each ocean measurement was extracted from the
+Distance to Nearest Coastline grid at 0.01 degree resolution, provided by the NASA
+Goddard Space Flight Center (GSFC) Ocean Color Group and available at:
+<a class="reference external" href="http://www.pacioos.hawaii.edu/metadata/dist2coast_1deg.html">http://www.pacioos.hawaii.edu/metadata/dist2coast_1deg.html</a></p>
+<div class="pst-scrollable-table-container"><table class="table" id="id21">
+<caption><span class="caption-number">Table 4.41 </span><span class="caption-text">CDL example description of <strong><span style="font-family:courier;">distance_to_coast</span></strong> variable</span><a class="headerlink" href="#id21" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Storage type</strong></p></th>
+<th class="head"><p><strong>Name</strong></p></th>
+<th class="head"><p><strong>Unit</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>float</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">distance_to_coast</span></code></p></td>
+<td><p>m</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>double distance_to_coast(time) ;
+	distance_to_coast:_FillValue = 1.e+20 ;
+	distance_to_coast:units = &quot;m&quot; ;
+	distance_to_coast:source = &quot;GSFC&quot; ;
+	distance_to_coast:coordinates = &quot;lat lon&quot; ;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="bathymetry">
+<span id="l2p-bathymetry"></span><h3><span class="section-number">4.6.3.2. </span><code class="docutils literal notranslate"><span class="pre">bathymetry</span></code><a class="headerlink" href="#bathymetry" title="Link to this heading">#</a></h3>
+<p>The same bathymetry source was used for all mission to get the ocean sea
+floor depth. We selected the 15 arc second General Bathymetric Chart of the
+Oceans (GEBCO), 2024 (<a class="reference external" href="https://doi.org/10.5285/1c44ce99-0a0d-5f4f-e063-7086abc0ea0f">https://doi.org/10.5285/1c44ce99-0a0d-5f4f-e063-7086abc0ea0f</a>),
+available at: <a class="reference external" href="https://www.gebco.net">https://www.gebco.net</a>.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id22">
+<caption><span class="caption-number">Table 4.42 </span><span class="caption-text">CDL example description of <strong><span style="font-family:courier;">bathymetry</span></strong> variable</span><a class="headerlink" href="#id22" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Storage type</strong></p></th>
+<th class="head"><p><strong>Name</strong></p></th>
+<th class="head"><p><strong>Unit</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>float</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bathymetry</span></code></p></td>
+<td><p>m</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>double bathymetry(time) ;
+	bathymetry:_FillValue = 1.e+20 ;
+	bathymetry:long_name = &quot;ocean depth&quot; ;
+	bathymetry:standard_name = &quot;sea_floor_depth_below_mean_sea_level&quot; ;
+	bathymetry:units = &quot;m&quot; ;
+	bathymetry:coverage_content_type = &quot;auxiliaryInformation&quot; ;
+	bathymetry:source = &quot;The GEBCO_2024 Grid, www.gebco.net,  doi: 10.5285/1c44ce99-0a0d-5f4f-e063-7086abc0ea0f&quot; ;
+	bathymetry:institution = &quot;BODC&quot; ;
+	bathymetry:positive = &quot;up&quot; ;
+	bathymetry:coordinates = &quot;lon lat&quot; ;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="sea-ice-fraction">
+<span id="l2p-sea-ice-fraction"></span><h3><span class="section-number">4.6.3.3. </span><code class="docutils literal notranslate"><span class="pre">sea_ice_fraction</span></code><a class="headerlink" href="#sea-ice-fraction" title="Link to this heading">#</a></h3>
+<p>Sea ice concentration is provided as an ancillary variable but also used in
+the SWH editing procedure. We use an external sea ice concentration product
+to discard possibly ice contaminated measurements. Because no products
+provides a complete temporal coverage (missed acquisitions, non continuities
+between different microwave radiometer missions, infrequent updates of some
+datasets), we had to use different sources, as reported in <a class="reference internal" href="baseline.html#sea-ice"><span class="std std-numref">Section 4.5.5.3</span></a>.</p>
+<p>The sea ice concentration is expressed as a fraction.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id23">
+<caption><span class="caption-number">Table 4.43 </span><span class="caption-text">CDL example description of <strong><span style="font-family:courier;">sea_ice_fraction</span></strong> variable</span><a class="headerlink" href="#id23" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Storage type</strong></p></th>
+<th class="head"><p><strong>Name</strong></p></th>
+<th class="head"><p><strong>Unit</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>float</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sea_ice_fraction</span></code></p></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>double sea_ice_fraction(time) ;
+	sea_ice_fraction:_FillValue = 1.e+20 ;
+	sea_ice_fraction:units = &quot;1&quot; ;
+	sea_ice_fraction:long_name = &quot;fraction of sea ice in water&quot; ;
+	sea_ice_fraction:standard_name = &quot;sea_ice_fraction&quot; ;
+	sea_ice_fraction:source = &quot;&quot; ;
+	sea_ice_fraction:coverage_content_type = &quot;auxiliaryInformation&quot; ;
+	sea_ice_fraction:institution = &quot;&quot; ;
+	string sea_ice_fraction:source_files = &quot;ice_conc_nh_ease2-250_icdr-amsr2_202210271200.nc&quot;, &quot;ice_conc_sh_ease2-250_icdr-amsr2_202210271200.nc&quot; ;
+	sea_ice_fraction:coordinates = &quot;lat lon&quot; ;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="era5-total-column-cloud-liquid-water">
+<span id="l2p-era5-tclw"></span><h3><span class="section-number">4.6.3.4. </span><code class="docutils literal notranslate"><span class="pre">era5_total_column_cloud_liquid_water</span></code><a class="headerlink" href="#era5-total-column-cloud-liquid-water" title="Link to this heading">#</a></h3>
+<p>The total column cloud liquid water in the atmosphere, from ERA5 model
+reanalysis (<code class="docutils literal notranslate"><span class="pre">tclw</span></code> variable), in kg per m2.</p>
+<p>This parameter is the amount of liquid water contained within cloud droplets in
+a column extending from the surface of the Earth to the top of the atmosphere.
+Rain water droplets, which are much larger in size (and mass), are not included
+in this parameter. This parameter represents the area averaged value for a model
+grid box. Clouds contain a continuum of different sized water droplets and ice
+particles. The ECMWF Integrated Forecasting System (IFS) cloud scheme simplifies
+this to represent a number of discrete cloud droplets/particles including: cloud
+water droplets, raindrops, ice crystals and snow (aggregated ice crystals).
+The processes of droplet formation, phase transition and aggregation are also
+highly simplified in the IFS.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id24">
+<caption><span class="caption-number">Table 4.44 </span><span class="caption-text">CDL example description of <strong><span style="font-family:courier;">era5_total_column_cloud_liquid_water</span></strong> variable</span><a class="headerlink" href="#id24" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Storage type</strong></p></th>
+<th class="head"><p><strong>Name</strong></p></th>
+<th class="head"><p><strong>Unit</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>float</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">era5_total_column_cloud_liquid_water</span></code></p></td>
+<td><p>kg m-2</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>float era5_total_column_cloud_liquid_water(time) ;
+	era5_total_column_cloud_liquid_water:_FillValue = 1.e+20f ;
+	era5_total_column_cloud_liquid_water:units = &quot;kg m-2&quot; ;
+	era5_total_column_cloud_liquid_water:long_name = &quot;Total column cloud liquid water&quot; ;
+	era5_total_column_cloud_liquid_water:source = &quot;ECWMF ERA5 Reanalysis&quot; ;
+	era5_total_column_cloud_liquid_water:source_variable = &quot;tclw&quot; ;
+	era5_total_column_cloud_liquid_water:coordinates = &quot;lat lon&quot; ;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="era5-2m-air-temperature">
+<span id="l2p-era5-t2m"></span><h3><span class="section-number">4.6.3.5. </span><code class="docutils literal notranslate"><span class="pre">era5_2m_air_temperature</span></code><a class="headerlink" href="#era5-2m-air-temperature" title="Link to this heading">#</a></h3>
+<p>The air temperature at 2 meter height, from ERA5 model reanalysis (<code class="docutils literal notranslate"><span class="pre">t2m</span></code>
+variable), in Kelvin.</p>
+<p>This parameter is the temperature of air at 2m above the surface of land, sea
+or inland waters. 2m temperature is calculated by interpolating between the
+lowest model level and the Earth’s surface, taking account of the atmospheric
+conditions. This parameter has units of kelvin (K). Temperature measured in
+kelvin can be converted to degrees Celsius (°C) by subtracting 273.15.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id25">
+<caption><span class="caption-number">Table 4.45 </span><span class="caption-text">CDL example description of <strong><span style="font-family:courier;">era5_2m_air_temperature</span></strong> variable</span><a class="headerlink" href="#id25" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Storage type</strong></p></th>
+<th class="head"><p><strong>Name</strong></p></th>
+<th class="head"><p><strong>Unit</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>float</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">era5_2m_air_temperature</span></code></p></td>
+<td><p>K</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>float era5_2m_air_temperature(time) ;
+	era5_2m_air_temperature:_FillValue = 1.e+20f ;
+	era5_2m_air_temperature:units = &quot;K&quot; ;
+	era5_2m_air_temperature:long_name = &quot;2 metre temperature&quot; ;
+	era5_2m_air_temperature:source = &quot;ECWMF ERA5 Reanalysis&quot; ;
+	era5_2m_air_temperature:source_variable = &quot;t2m&quot; ;
+	era5_2m_air_temperature:coordinates = &quot;lat lon&quot; ;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="era5-sea-surface-temperature">
+<span id="l2p-era5-sst"></span><h3><span class="section-number">4.6.3.6. </span><code class="docutils literal notranslate"><span class="pre">era5_sea_surface_temperature</span></code><a class="headerlink" href="#era5-sea-surface-temperature" title="Link to this heading">#</a></h3>
+<p>The sea surface temperature, from ERA5 model reanalysis (<code class="docutils literal notranslate"><span class="pre">sst</span></code> variable), in
+Kelvin.</p>
+<p>This parameter (SST) is the temperature of sea water near the surface. In ERA5,
+this parameter is a foundation SST, which means there are no variations due to
+the daily cycle of the sun (diurnal variations). SST, in ERA5, is given by two
+external providers. Before September 2007, SST from the HadISST2 dataset is
+used and from September 2007 onwards, the OSTIA dataset is used. This parameter
+has units of kelvin (K). Temperature measured in kelvin can be converted to
+degrees Celsius (°C) by subtracting 273.15.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id26">
+<caption><span class="caption-number">Table 4.46 </span><span class="caption-text">CDL example description of <strong><span style="font-family:courier;">era5_sea_surface_temperature</span></strong> variable</span><a class="headerlink" href="#id26" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Storage type</strong></p></th>
+<th class="head"><p><strong>Name</strong></p></th>
+<th class="head"><p><strong>Unit</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>float</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">era5_sea_surface_temperature</span></code></p></td>
+<td><p>K</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>float era5_sea_surface_temperature(time) ;
+	era5_sea_surface_temperature:_FillValue = 1.e+20f ;
+	era5_sea_surface_temperature:units = &quot;K&quot; ;
+	era5_sea_surface_temperature:long_name = &quot;Sea surface temperature&quot; ;
+	era5_sea_surface_temperature:source = &quot;ECWMF ERA5 Reanalysis&quot; ;
+	era5_sea_surface_temperature:source_variable = &quot;sst&quot; ;
+	era5_sea_surface_temperature:coordinates = &quot;lat lon&quot; ;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="era5-wind-eastward">
+<span id="l2p-era5-u10"></span><h3><span class="section-number">4.6.3.7. </span><code class="docutils literal notranslate"><span class="pre">era5_wind_eastward</span></code><a class="headerlink" href="#era5-wind-eastward" title="Link to this heading">#</a></h3>
+<p>The zonal wind speed at 10 meter height, from ERA5 model reanalysis (<code class="docutils literal notranslate"><span class="pre">u10</span></code>
+variable), in meter per second.</p>
+<p>This parameter is the eastward component of the 10m wind. It is the horizontal
+speed of air moving towards the east, at a height of ten metres above the
+surface of the Earth, in metres per second. Care should be taken when
+comparing this parameter with observations, because wind observations vary on
+small space and time scales and are affected by the local terrain, vegetation
+and buildings that are represented only on average in the ECMWF Integrated
+Forecasting System (IFS). This parameter can be combined with the V component
+of 10m wind to give the speed and direction of the horizontal 10m wind.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id27">
+<caption><span class="caption-number">Table 4.47 </span><span class="caption-text">CDL example description of <strong><span style="font-family:courier;">era5_wind_eastward</span></strong> variable</span><a class="headerlink" href="#id27" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Storage type</strong></p></th>
+<th class="head"><p><strong>Name</strong></p></th>
+<th class="head"><p><strong>Unit</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>float</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">era5_wind_eastward</span></code></p></td>
+<td><p>m s-1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>float era5_wind_eastward(time) ;
+	era5_wind_eastward:_FillValue = 1.e+20f ;
+	era5_wind_eastward:units = &quot;m s-1&quot; ;
+	era5_wind_eastward:long_name = &quot;10 metre U wind component&quot; ;
+	era5_wind_eastward:source = &quot;ECWMF ERA5 Reanalysis&quot; ;
+	era5_wind_eastward:source_variable = &quot;u10&quot; ;
+	era5_wind_eastward:standard_name = &quot;eastward_wind&quot; ;
+	era5_wind_eastward:coordinates = &quot;lat lon&quot; ;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="era5-wind-northward">
+<span id="l2p-era5-v10"></span><h3><span class="section-number">4.6.3.8. </span><code class="docutils literal notranslate"><span class="pre">era5_wind_northward</span></code><a class="headerlink" href="#era5-wind-northward" title="Link to this heading">#</a></h3>
+<p>The meridian wind speed at 10 meter height, from ERA5 model reanalysis (<code class="docutils literal notranslate"><span class="pre">v10</span></code>
+variable), in meter per second.</p>
+<p>This parameter is the northward component of the 10m wind. It is the horizontal
+speed of air moving towards the north, at a height of ten metres above the
+surface of the Earth, in metres per second. Care should be taken when comparing
+this parameter with observations, because wind observations vary on small space
+and time scales and are affected by the local terrain, vegetation and buildings
+that are represented only on average in the ECMWF Integrated Forecasting System
+(IFS). This parameter can be combined with the U component of 10m wind to give
+the speed and direction of the horizontal 10m wind.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id28">
+<caption><span class="caption-number">Table 4.48 </span><span class="caption-text">CDL example description of <strong><span style="font-family:courier;">era5_wind_northward</span></strong> variable</span><a class="headerlink" href="#id28" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Storage type</strong></p></th>
+<th class="head"><p><strong>Name</strong></p></th>
+<th class="head"><p><strong>Unit</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>float</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">era5_wind_northward</span></code></p></td>
+<td><p>m s-1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>float era5_wind_northward(time) ;
+	era5_wind_northward:_FillValue = 1.e+20f ;
+	era5_wind_northward:units = &quot;m -1&quot; ;
+	era5_wind_northward:long_name = &quot;10 metre V wind component&quot; ;
+	era5_wind_northward:source = &quot;ECWMF ERA5 Reanalysis&quot; ;
+	era5_wind_northward:source_variable = &quot;v10&quot; ;
+	era5_wind_northward:standard_name = &quot;northward_wind&quot; ;
+	era5_wind_northward:coordinates = &quot;lat lon&quot; ;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="era5-surface-pressure">
+<span id="l2p-era5-sp"></span><h3><span class="section-number">4.6.3.9. </span><code class="docutils literal notranslate"><span class="pre">era5_surface_pressure</span></code><a class="headerlink" href="#era5-surface-pressure" title="Link to this heading">#</a></h3>
+<p>The atmospheric pressure at sea level, from ERA5 model reanalysis (<code class="docutils literal notranslate"><span class="pre">sp</span></code>
+variable), in Pascal.</p>
+<p>This parameter is the pressure (force per unit area) of the atmosphere at the
+surface of land, sea and inland water. It is a measure of the weight of all the
+air in a column vertically above a point on the Earth’s surface. Surface
+pressure is often used in combination with temperature to calculate air density.
+The strong variation of pressure with altitude makes it difficult to see the low
+and high pressure weather systems over mountainous areas, so mean sea level
+pressure, rather than surface pressure, is normally used for this purpose.
+The units of this parameter are Pascals (Pa). Surface pressure is often measured
+in hPa and sometimes is presented in the old units of millibars, mb
+(1 hPa = 1 mb= 100 Pa).</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id29">
+<caption><span class="caption-number">Table 4.49 </span><span class="caption-text">CDL example description of <strong><span style="font-family:courier;">era5_surface_pressure</span></strong> variable</span><a class="headerlink" href="#id29" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Storage type</strong></p></th>
+<th class="head"><p><strong>Name</strong></p></th>
+<th class="head"><p><strong>Unit</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>float</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">era5_surface_pressure</span></code></p></td>
+<td><p>Pa</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>float era5_surface_pressure(time) ;
+	era5_surface_pressure:_FillValue = 1.e+20f ;
+	era5_surface_pressure:units = &quot;Pa&quot; ;
+	era5_surface_pressure:long_name = &quot;Surface pressure&quot; ;
+	era5_surface_pressure:standard_name = &quot;surface_air_pressure&quot; ;
+	era5_surface_pressure:source = &quot;ECWMF ERA5 Reanalysis&quot; ;
+	era5_surface_pressure:source_variable = &quot;sp&quot; ;
+	era5_surface_pressure:coordinates = &quot;lat lon&quot; ;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="era5-swh">
+<span id="l2p-era5-swh"></span><h3><span class="section-number">4.6.3.10. </span><code class="docutils literal notranslate"><span class="pre">era5_swh</span></code><a class="headerlink" href="#era5-swh" title="Link to this heading">#</a></h3>
+<p>The significant height of combined wind waves and swell, from ERA5/WAM model
+reanalysis (<code class="docutils literal notranslate"><span class="pre">swh</span></code> variable), in meters.</p>
+<p>This parameter represents the average height of the highest third of surface
+ocean/sea waves generated by wind and swell. It represents the vertical distance
+between the wave crest and the wave trough. The ocean/sea surface wave field
+consists of a combination of waves with different heights, lengths and
+directions (known as the two-dimensional wave spectrum). The wave spectrum can
+be decomposed into wind-sea waves, which are directly affected by local winds,
+and swell, the waves that were generated by the wind at a different location
+and time. This parameter takes account of both. More strictly, this parameter
+is four times the square root of the integral over all directions and all
+frequencies of the two-dimensional wave spectrum. This parameter can be used to
+assess sea state and swell. For example, engineers use significant wave height
+to calculate the load on structures in the open ocean, such as oil platforms,
+or in coastal applications.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note that ERA5 WAM model assimilates altimeter data. For
+a fully independent SWH estimate, use the WW3 SWH (see <a class="reference internal" href="#l2p-ww3-hs"><span class="std std-numref">Section 4.6.3.20</span></a>).</p>
+</div>
+<div class="pst-scrollable-table-container"><table class="table" id="id30">
+<caption><span class="caption-number">Table 4.50 </span><span class="caption-text">CDL example description of <strong><span style="font-family:courier;">era5_swh</span></strong> variable</span><a class="headerlink" href="#id30" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Storage type</strong></p></th>
+<th class="head"><p><strong>Name</strong></p></th>
+<th class="head"><p><strong>Unit</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>float</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">era5_swh</span></code></p></td>
+<td><p>m</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>float era5_swh(time) ;
+	era5_swh:_FillValue = 1.e+20f ;
+	era5_swh:units = &quot;m&quot; ;
+	era5_swh:long_name = &quot;Significant height of combined wind waves and swell&quot; ;
+	era5_swh:source = &quot;ECMWF ERA5 / WAM Reanalysis&quot; ;
+	era5_swh:source_variable = &quot;swh&quot; ;
+	era5_swh:standard_name = &quot;sea_surface_wave_significant_height&quot; ;
+	era5_swh:coordinates = &quot;lat lon&quot; ;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="era5-peak-wave-period">
+<span id="l2p-era5-pp1d"></span><h3><span class="section-number">4.6.3.11. </span><code class="docutils literal notranslate"><span class="pre">era5_peak_wave_period</span></code><a class="headerlink" href="#era5-peak-wave-period" title="Link to this heading">#</a></h3>
+<p>The peak wave period of combined wind waves and swell, from ERA5/WAM model
+reanalysis (<code class="docutils literal notranslate"><span class="pre">pp1d</span></code> variable), in seconds.</p>
+<p>This parameter represents the period of the most energetic ocean waves generated
+by local winds and associated with swell. The wave period is the average time
+it takes for two consecutive wave crests, on the surface of the ocean/sea, to
+pass through a fixed point. The ocean/sea surface wave field consists of a
+combination of waves with different heights, lengths and directions (known as
+the two-dimensional wave spectrum). This parameter is calculated from the
+reciprocal of the frequency corresponding to the largest value (peak) of the
+frequency wave spectrum. The frequency wave spectrum is obtained by integrating
+the two-dimensional wave spectrum over all directions. The wave spectrum can be
+decomposed into wind-sea waves, which are directly affected by local winds, and
+swell, the waves that were generated by the wind at a different location and
+time. This parameter takes account of both.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id31">
+<caption><span class="caption-number">Table 4.51 </span><span class="caption-text">CDL example description of <strong><span style="font-family:courier;">era5_peak_wave_period</span></strong> variable</span><a class="headerlink" href="#id31" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Storage type</strong></p></th>
+<th class="head"><p><strong>Name</strong></p></th>
+<th class="head"><p><strong>Unit</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>float</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">era5_peak_wave_period</span></code></p></td>
+<td><p>s</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>float era5_peak_wave_period(time) ;
+	era5_peak_wave_period:_FillValue = 1.e+20f ;
+	era5_peak_wave_period:units = &quot;s&quot; ;
+	era5_peak_wave_period:long_name = &quot;Peak wave period&quot; ;
+	era5_peak_wave_period:source = &quot;ECMWF ERA5 / WAM Reanalysis&quot; ;
+	era5_peak_wave_period:source_variable = &quot;pp1d&quot; ;
+	era5_peak_wave_period:standard_name = &quot;sea_surface_wave_period_at_variance_spectral_density_maximum&quot; ;
+	era5_peak_wave_period:coordinates = &quot;lat lon&quot; ;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="era5-swell-mean-period">
+<span id="l2p-era5-p1ps"></span><h3><span class="section-number">4.6.3.12. </span><code class="docutils literal notranslate"><span class="pre">era5_swell_mean_period</span></code><a class="headerlink" href="#era5-swell-mean-period" title="Link to this heading">#</a></h3>
+<p>The mean wave period of swell based on first moment for swell, from ERA5/WAM
+model reanalysis (<code class="docutils literal notranslate"><span class="pre">p1ps</span></code> variable), in seconds.</p>
+<p>This parameter is the reciprocal of the mean frequency of the wave components
+associated with swell. All wave components have been averaged proportionally to
+their respective amplitude. This parameter can be used to estimate the magnitude
+of Stokes drift transport in deep water associated with swell. The ocean/sea
+surface wave field consists of a combination of waves with different heights,
+lengths and directions (known as the two-dimensional wave spectrum). The wave
+spectrum can be decomposed into wind-sea waves, which are directly affected by
+local winds, and swell, the waves that were generated by the wind at a different
+location and time. This parameter takes account of all swell only. Moments are
+statistical quantities derived from the two-dimensional wave spectrum.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id32">
+<caption><span class="caption-number">Table 4.52 </span><span class="caption-text">CDL example description of <strong><span style="font-family:courier;">era5_swell_mean_period</span></strong> variable</span><a class="headerlink" href="#id32" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Storage type</strong></p></th>
+<th class="head"><p><strong>Name</strong></p></th>
+<th class="head"><p><strong>Unit</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>float</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">era5_swell_mean_period</span></code></p></td>
+<td><p>s</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>float era5_swell_mean_period(time) ;
+	era5_swell_mean_period:_FillValue = 1.e+20f ;
+	era5_swell_mean_period:units = &quot;s&quot; ;
+	era5_swell_mean_period:long_name = &quot;Mean wave period based on first moment for swell&quot; ;
+	era5_swell_mean_period:source = &quot;ECMWF ERA5 / WAM Reanalysis&quot; ;
+	era5_swell_mean_period:source_variable = &quot;p1ps&quot; ;
+	era5_swell_mean_period:standard_name = &quot;sea_surface_primary_swell_mean_period_from_variance_spectral_density_second_frequency_moment&quot; ;
+	era5_swell_mean_period:coordinates = &quot;lat lon&quot; ;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="era5-swell-swh">
+<span id="l2p-era5-p140121"></span><h3><span class="section-number">4.6.3.13. </span><code class="docutils literal notranslate"><span class="pre">era5_swell_swh</span></code><a class="headerlink" href="#era5-swell-swh" title="Link to this heading">#</a></h3>
+<p>The significant wave height of first swell partition, from ERA5/WAM
+model reanalysis (<code class="docutils literal notranslate"><span class="pre">p140121</span></code> variable), in meters.</p>
+<p>This parameter represents the average height of the highest third of surface
+ocean/sea waves associated with the first swell partition. Wave height
+represents the vertical distance between the wave crest and the wave trough.
+The ocean/sea surface wave field consists of a combination of waves with
+different heights, lengths and directions (known as the two-dimensional wave
+spectrum). The wave spectrum can be decomposed into wind-sea waves, which are
+directly affected by local winds, and swell, the waves that were generated by
+the wind at a different location and time. In many situations, swell can be made
+up of different swell systems, for example, from two distant and separate storms.
+To account for this, the swell spectrum is partitioned into up to three parts.
+The swell partitions are labelled first, second and third based on their
+respective wave height. Therefore, there is no guarantee of spatial coherence
+(the first might be from one system at one location and another system at the
+neighbouring location). More strictly, this parameter is four times the square
+root of the integral over all directions and all frequencies of the first swell
+partition of the two-dimensional swell spectrum. The swell spectrum is obtained
+by only considering the components of the two-dimensional wave spectrum that are
+not under the influence of the local wind. This parameter can be used to assess
+swell. For example, engineers use significant wave height to calculate the load
+on structures in the open ocean, such as oil platforms, or in coastal
+applications.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id33">
+<caption><span class="caption-number">Table 4.53 </span><span class="caption-text">CDL example description of <strong><span style="font-family:courier;">era5_swell_swh</span></strong> variable</span><a class="headerlink" href="#id33" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Storage type</strong></p></th>
+<th class="head"><p><strong>Name</strong></p></th>
+<th class="head"><p><strong>Unit</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>float</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">era5_swell_swh</span></code></p></td>
+<td><p>m</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>float era5_swell_swh(time) ;
+	era5_swell_swh:_FillValue = 1.e+20f ;
+	era5_swell_swh:units = &quot;m&quot; ;
+	era5_swell_swh:long_name = &quot;Significant wave height of first swell partition&quot; ;
+	era5_swell_swh:source = &quot;ECMWF ERA5 / WAM Reanalysis&quot; ;
+	era5_swell_swh:source_variable = &quot;p140121&quot; ;
+	era5_swell_swh:standard_name = &quot;sea_surface_primary_swell_wave_significant_height&quot; ;
+	era5_swell_swh:coordinates = &quot;lat lon&quot; ;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="era5-swell-direction">
+<span id="l2p-era5-p140122"></span><h3><span class="section-number">4.6.3.14. </span><code class="docutils literal notranslate"><span class="pre">era5_swell_direction</span></code><a class="headerlink" href="#era5-swell-direction" title="Link to this heading">#</a></h3>
+<p>The mean wave direction of first swell partition, from ERA5/WAM
+model reanalysis (<code class="docutils literal notranslate"><span class="pre">p140122</span></code> variable), in degrees.</p>
+<p>This parameter is the mean direction of waves in the first swell partition. The
+ocean/sea surface wave field consists of a combination of waves with different
+heights, lengths and directions (known as the two-dimensional wave spectrum).
+The wave spectrum can be decomposed into wind-sea waves, which are directly
+affected by local winds, and swell, the waves that were generated by the wind at
+a different location and time. In many situations, swell can be made up of
+different swell systems, for example, from two distant and separate storms. To
+account for this, the swell spectrum is partitioned into up to three parts. The
+swell partitions are labelled first, second and third based on their respective
+wave height. Therefore, there is no guarantee of spatial coherence (the first
+swell partition might be from one system at one location and a different system
+at the neighbouring location). The units are degrees true, which means the
+direction relative to the geographic location of the north pole. It is the
+direction that waves are coming from, so 0 degrees means “coming from the north”
+and 90 degrees means “coming from the east”.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id34">
+<caption><span class="caption-number">Table 4.54 </span><span class="caption-text">CDL example description of <strong><span style="font-family:courier;">era5_swell_direction</span></strong> variable</span><a class="headerlink" href="#id34" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Storage type</strong></p></th>
+<th class="head"><p><strong>Name</strong></p></th>
+<th class="head"><p><strong>Unit</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>float</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">era5_swell_direction</span></code></p></td>
+<td><p>degree</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>float era5_swell_direction(time) ;
+	era5_swell_direction:_FillValue = 1.e+20f ;
+	era5_swell_direction:units = &quot;degrees&quot; ;
+	era5_swell_direction:long_name = &quot;Mean wave direction of first swell partition&quot; ;
+	era5_swell_direction:source = &quot;ECMWF ERA5 / WAM Reanalysis&quot; ;
+	era5_swell_direction:source_variable = &quot;p140122&quot; ;
+	era5_swell_direction:standard_name = &quot;sea_surface_primary_swell_wave_from_direction&quot; ;
+	era5_swell_direction:coordinates = &quot;lat lon&quot; ;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="era5-mean-wave-period">
+<span id="l2p-era5-mwp"></span><h3><span class="section-number">4.6.3.15. </span><code class="docutils literal notranslate"><span class="pre">era5_mean_wave_period</span></code><a class="headerlink" href="#era5-mean-wave-period" title="Link to this heading">#</a></h3>
+<p>The mean wave period, from ERA5/WAM model reanalysis (<code class="docutils literal notranslate"><span class="pre">mwp</span></code> variable), in
+seconds.</p>
+<p>This parameter is the average time it takes for two consecutive wave crests, on
+the surface of the ocean/sea, to pass through a fixed point. The ocean/sea
+surface wave field consists of a combination of waves with different heights,
+lengths and directions (known as the two-dimensional wave spectrum). This
+parameter is a mean over all frequencies and directions of the two-dimensional
+wave spectrum. The wave spectrum can be decomposed into wind-sea waves, which
+are directly affected by local winds, and swell, the waves that were generated
+by the wind at a different location and time. This parameter takes account of
+both. This parameter can be used to assess sea state and swell. For example,
+engineers use such wave information when designing structures in the open ocean,
+such as oil platforms, or in coastal applications.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id35">
+<caption><span class="caption-number">Table 4.55 </span><span class="caption-text">CDL example description of <strong><span style="font-family:courier;">era5_mean_wave_period</span></strong> variable</span><a class="headerlink" href="#id35" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Storage type</strong></p></th>
+<th class="head"><p><strong>Name</strong></p></th>
+<th class="head"><p><strong>Unit</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>float</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">era5_mean_wave_period</span></code></p></td>
+<td><p>s</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>float era5_mean_wave_period(time) ;
+	era5_mean_wave_period:_FillValue = 1.e+20f ;
+	era5_mean_wave_period:units = &quot;s&quot; ;
+	era5_mean_wave_period:long_name = &quot;Mean wave period&quot; ;
+	era5_mean_wave_period:source = &quot;ECMWF ERA5 / WAM Reanalysis&quot; ;
+	era5_mean_wave_period:source_variable = &quot;mwp&quot; ;
+	era5_mean_wave_period:standard_name = &quot;sea_surface_wave_mean_period_from_variance_spectral_density_second_frequency_moment&quot; ;
+	era5_mean_wave_period:coordinates = &quot;lat lon&quot; ;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="era5-mean-wave-direction">
+<span id="l2p-era5-mwd"></span><h3><span class="section-number">4.6.3.16. </span><code class="docutils literal notranslate"><span class="pre">era5_mean_wave_direction</span></code><a class="headerlink" href="#era5-mean-wave-direction" title="Link to this heading">#</a></h3>
+<p>The mean wave direction, from ERA5/WAM model reanalysis (<code class="docutils literal notranslate"><span class="pre">mwd</span></code> variable), in
+degrees.</p>
+<p>This parameter is the mean direction of ocean/sea surface waves. The ocean/sea
+surface wave field consists of a combination of waves with different heights,
+lengths and directions (known as the two-dimensional wave spectrum). This
+parameter is a mean over all frequencies and directions of the two-dimensional
+wave spectrum. The wave spectrum can be decomposed into wind-sea waves, which
+are directly affected by local winds, and swell, the waves that were generated
+by the wind at a different location and time. This parameter takes account of
+both. This parameter can be used to assess sea state and swell. For example,
+engineers use this type of wave information when designing structures in the
+open ocean, such as oil platforms, or in coastal applications. The units are
+degrees true, which means the direction relative to the geographic location of
+the north pole. It is the direction that waves are coming from, so 0 degrees
+means “coming from the north” and 90 degrees means “coming from the east”.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id36">
+<caption><span class="caption-number">Table 4.56 </span><span class="caption-text">CDL example description of <strong><span style="font-family:courier;">era5_mean_wave_direction</span></strong> variable</span><a class="headerlink" href="#id36" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Storage type</strong></p></th>
+<th class="head"><p><strong>Name</strong></p></th>
+<th class="head"><p><strong>Unit</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>float</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">era5_mean_wave_direction</span></code></p></td>
+<td><p>degree</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>float era5_mean_wave_direction(time) ;
+	era5_mean_wave_direction:_FillValue = 1.e+20f ;
+	era5_mean_wave_direction:units = &quot;Degree true&quot; ;
+	era5_mean_wave_direction:long_name = &quot;Mean wave direction&quot; ;
+	era5_mean_wave_direction:source = &quot;ECMWF ERA5 / WAM Reanalysis&quot; ;
+	era5_mean_wave_direction:source_variable = &quot;mwd&quot; ;
+	era5_mean_wave_direction:standard_name = &quot;sea_surface_wave_mean_period&quot; ;
+	era5_mean_wave_direction:coordinates = &quot;lat lon&quot; ;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="era5-windwave-swh">
+<span id="l2p-era5-shww"></span><h3><span class="section-number">4.6.3.17. </span><code class="docutils literal notranslate"><span class="pre">era5_windwave_swh</span></code><a class="headerlink" href="#era5-windwave-swh" title="Link to this heading">#</a></h3>
+<p>The significant height of wind waves, from ERA5/WAM model reanalysis (<code class="docutils literal notranslate"><span class="pre">shww</span></code>
+variable), in meters.</p>
+<p>This parameter represents the average height of the highest third of surface
+ocean/sea waves generated by the local wind. It represents the vertical distance
+between the wave crest and the wave trough. The ocean/sea surface wave field
+consists of a combination of waves with different heights, lengths and
+directions (known as the two-dimensional wave spectrum). The wave spectrum can
+be decomposed into wind-sea waves, which are directly affected by local winds,
+and swell, the waves that were generated by the wind at a different location and
+time. This parameter takes account of wind-sea waves only. More strictly, this
+parameter is four times the square root of the integral over all directions and
+all frequencies of the two-dimensional wind-sea wave spectrum. The wind-sea wave
+spectrum is obtained by only considering the components of the two-dimensional
+wave spectrum that are still under the influence of the local wind. This
+parameter can be used to assess wind-sea waves. For example, engineers use
+significant wave height to calculate the load on structures in the open ocean,
+such as oil platforms, or in coastal applications.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id37">
+<caption><span class="caption-number">Table 4.57 </span><span class="caption-text">CDL example description of <strong><span style="font-family:courier;">era5_windwave_swh</span></strong> variable</span><a class="headerlink" href="#id37" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Storage type</strong></p></th>
+<th class="head"><p><strong>Name</strong></p></th>
+<th class="head"><p><strong>Unit</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>float</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">era5_windwave_swh</span></code></p></td>
+<td><p>m</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>float era5_windwave_swh(time) ;
+	era5_windwave_swh:_FillValue = 1.e+20f ;
+	era5_windwave_swh:units = &quot;m&quot; ;
+	era5_windwave_swh:long_name = &quot;Significant height of wind waves&quot; ;
+	era5_windwave_swh:source = &quot;ECMWF ERA5 / WAM Reanalysis&quot; ;
+	era5_windwave_swh:source_variable = &quot;shww&quot; ;
+	era5_windwave_swh:standard_name = &quot;sea_surface_wind_wave_significant_height&quot; ;
+	era5_windwave_swh:coordinates = &quot;lat lon&quot; ;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="era5-windwave-direction">
+<span id="l2p-era5-mdww"></span><h3><span class="section-number">4.6.3.18. </span><code class="docutils literal notranslate"><span class="pre">era5_windwave_direction</span></code><a class="headerlink" href="#era5-windwave-direction" title="Link to this heading">#</a></h3>
+<p>The mean direction of wind waves, from ERA5/WAM model reanalysis (<code class="docutils literal notranslate"><span class="pre">mdww</span></code>
+variable), in degrees.</p>
+<p>The mean direction of waves generated by local winds. The ocean/sea surface wave
+field consists of a combination of waves with different heights, lengths and
+directions (known as the two-dimensional wave spectrum). The wave spectrum can
+be decomposed into wind-sea waves, which are directly affected by local winds,
+and swell, the waves that were generated by the wind at a different location and
+time. This parameter takes account of wind-sea waves only. It is the mean over
+all frequencies and directions of the total wind-sea wave spectrum. The units
+are degrees true, which means the direction relative to the geographic location
+of the north pole. It is the direction that waves are coming from, so 0 degrees
+means “coming from the north” and 90 degrees means “coming from the east”.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id38">
+<caption><span class="caption-number">Table 4.58 </span><span class="caption-text">CDL example description of <strong><span style="font-family:courier;">era5_windwave_direction</span></strong> variable</span><a class="headerlink" href="#id38" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Storage type</strong></p></th>
+<th class="head"><p><strong>Name</strong></p></th>
+<th class="head"><p><strong>Unit</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>float</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">era5_windwave_direction</span></code></p></td>
+<td><p>degree</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>float era5_windwave_direction(time) ;
+	era5_windwave_direction:_FillValue = 1.e+20f ;
+	era5_windwave_direction:units = &quot;degrees&quot; ;
+	era5_windwave_direction:long_name = &quot;Mean direction of wind waves&quot; ;
+	era5_windwave_direction:source = &quot;ECMWF ERA5 / WAM Reanalysis&quot; ;
+	era5_windwave_direction:source_variable = &quot;mdww&quot; ;
+	era5_windwave_direction:standard_name = &quot;sea_surface_wind_wave_from_direction&quot; ;
+	era5_windwave_direction:coordinates = &quot;lat lon&quot; ;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="era5-windwave-period">
+<span id="l2p-era5-mpww"></span><h3><span class="section-number">4.6.3.19. </span><code class="docutils literal notranslate"><span class="pre">era5_windwave_period</span></code><a class="headerlink" href="#era5-windwave-period" title="Link to this heading">#</a></h3>
+<p>The mean period of wind waves, from ERA5/WAM model reanalysis (<code class="docutils literal notranslate"><span class="pre">mpww</span></code>
+variable), in seconds.</p>
+<p>This parameter is the average time it takes for two consecutive wave crests, on
+the surface of the ocean/sea generated by local winds, to pass through a fixed
+point. The ocean/sea surface wave field consists of a combination of waves with
+different heights, lengths and directions (known as the two-dimensional wave
+spectrum). The wave spectrum can be decomposed into wind-sea waves, which are
+directly affected by local winds, and swell, the waves that were generated by
+the wind at a different location and time. This parameter takes account of
+wind-sea waves only. It is the mean over all frequencies and directions of the
+total wind-sea spectrum.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id39">
+<caption><span class="caption-number">Table 4.59 </span><span class="caption-text">CDL example description of <strong><span style="font-family:courier;">era5_windwave_period</span></strong> variable</span><a class="headerlink" href="#id39" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Storage type</strong></p></th>
+<th class="head"><p><strong>Name</strong></p></th>
+<th class="head"><p><strong>Unit</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>float</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">era5_windwave_period</span></code></p></td>
+<td><p>s</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>float era5_windwave_period(time) ;
+	era5_windwave_period:_FillValue = 1.e+20f ;
+	era5_windwave_period:units = &quot;s&quot; ;
+	era5_windwave_period:long_name = &quot;Mean period of wind waves&quot; ;
+	era5_windwave_period:source = &quot;ECMWF ERA5 / WAM Reanalysis&quot; ;
+	era5_windwave_period:source_variable = &quot;mpww&quot; ;
+	era5_windwave_period:standard_name = &quot;sea_surface_wind_wave_mean_period&quot; ;
+	era5_windwave_period:coordinates = &quot;lat lon&quot; ;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="ww3-swh">
+<span id="l2p-ww3-hs"></span><h3><span class="section-number">4.6.3.20. </span><code class="docutils literal notranslate"><span class="pre">ww3_swh</span></code><a class="headerlink" href="#ww3-swh" title="Link to this heading">#</a></h3>
+<p>The significant height of combined wind waves and swell, from Ifremer WW3 model
+hindcast (<code class="docutils literal notranslate"><span class="pre">hs</span></code> variable), in meters.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note that Ifremer WW3 hindcast does not assimilate altimeter data and is
+therefore a fully independent SWH estimate, contrary to ERA5 reanalysis.</p>
+</div>
+<div class="pst-scrollable-table-container"><table class="table" id="id40">
+<caption><span class="caption-number">Table 4.60 </span><span class="caption-text">CDL example description of <strong><span style="font-family:courier;">ww3_swh</span></strong> variable</span><a class="headerlink" href="#id40" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Storage type</strong></p></th>
+<th class="head"><p><strong>Name</strong></p></th>
+<th class="head"><p><strong>Unit</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>float</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ww3_swh</span></code></p></td>
+<td><p>m</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>float ww3_swh(time) ;
+	ww3_swh:_FillValue = 1.e+20f ;
+	ww3_swh:long_name = &quot;significant height of wind and swell waves&quot; ;
+	ww3_swh:standard_name = &quot;sea_surface_wave_significant_height&quot; ;
+	ww3_swh:units = &quot;m&quot; ;
+	ww3_swh:source = &quot;Ifremer WW3 Hindcast&quot; ;
+	ww3_swh:source_variable = &quot;hs&quot; ;
+	ww3_swh:coordinates = &quot;lat lon&quot; ;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="ww3-mean-wave-period">
+<span id="l2p-ww3-t02"></span><h3><span class="section-number">4.6.3.21. </span><code class="docutils literal notranslate"><span class="pre">ww3_mean_wave_period</span></code><a class="headerlink" href="#ww3-mean-wave-period" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table" id="id41">
+<caption><span class="caption-number">Table 4.61 </span><span class="caption-text">CDL example description of <strong><span style="font-family:courier;">ww3_mean_wave_period</span></strong> variable</span><a class="headerlink" href="#id41" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Storage type</strong></p></th>
+<th class="head"><p><strong>Name</strong></p></th>
+<th class="head"><p><strong>Unit</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>float</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ww3_mean_wave_period</span></code></p></td>
+<td><p>s</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>float ww3_mean_wave_period(time) ;
+	ww3_mean_wave_period:_FillValue = 1.e+20f ;
+	ww3_mean_wave_period:long_name = &quot;mean period T02&quot; ;
+	ww3_mean_wave_period:standard_name = &quot;sea_surface_mean_wave_mean_period_from_variance_spectral_density_second_frequency_moment&quot; ;
+	ww3_mean_wave_period:units = &quot;s&quot; ;
+	ww3_mean_wave_period:source = &quot;Ifremer WW3 Hindcast&quot; ;
+	ww3_mean_wave_period:source_variable = &quot;t02&quot; ;
+	ww3_mean_wave_period:coordinates = &quot;lat lon&quot; ;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="ww3-mean-wave-period-t0m1">
+<span id="l2p-ww3-t0m1"></span><h3><span class="section-number">4.6.3.22. </span><code class="docutils literal notranslate"><span class="pre">ww3_mean_wave_period_t0m1</span></code><a class="headerlink" href="#ww3-mean-wave-period-t0m1" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table" id="id42">
+<caption><span class="caption-number">Table 4.62 </span><span class="caption-text">CDL example description of <strong><span style="font-family:courier;">ww3_mean_wave_period_t0m1</span></strong> variable</span><a class="headerlink" href="#id42" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Storage type</strong></p></th>
+<th class="head"><p><strong>Name</strong></p></th>
+<th class="head"><p><strong>Unit</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>float</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ww3_mean_wave_period_t0m1</span></code></p></td>
+<td><p>s</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>float ww3_mean_wave_period_t0m1(time) ;
+	ww3_mean_wave_period_t0m1:_FillValue = 1.e+20f ;
+	ww3_mean_wave_period_t0m1:long_name = &quot;mean period T01&quot; ;
+	ww3_mean_wave_period_t0m1:standard_name = &quot;sea_surface_mean_wave_mean_period_from_variance_spectral_density_inverse_frequency_moment&quot; ;
+	ww3_mean_wave_period_t0m1:units = &quot;s&quot; ;
+	ww3_mean_wave_period_t0m1:source = &quot;Ifremer WW3 Hindcast&quot; ;
+	ww3_mean_wave_period_t0m1:source_variable = &quot;t01&quot; ;
+	ww3_mean_wave_period_t0m1:coordinates = &quot;lat lon&quot; ;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="ww3-emb">
+<span id="l2p-ww3-emb"></span><h3><span class="section-number">4.6.3.23. </span><code class="docutils literal notranslate"><span class="pre">ww3_emb</span></code><a class="headerlink" href="#ww3-emb" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table" id="id43">
+<caption><span class="caption-number">Table 4.63 </span><span class="caption-text">CDL example description of <strong><span style="font-family:courier;">ww3_emb</span></strong> variable</span><a class="headerlink" href="#id43" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Storage type</strong></p></th>
+<th class="head"><p><strong>Name</strong></p></th>
+<th class="head"><p><strong>Unit</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>float</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ww3_emb</span></code></p></td>
+<td><p>s</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>float ww3_emb(time) ;
+	ww3_emb:_FillValue = 1.e+20f ;
+	ww3_emb:long_name = &quot;EM-bias&quot; ;
+	ww3_emb:units = &quot;1&quot; ;
+	ww3_emb:comment = &quot;EM bias coefficient&quot; ;
+	ww3_emb:source = &quot;Ifremer WW3 Hindcast&quot; ;
+	ww3_emb:source_variable = &quot;emb&quot; ;
+	ww3_emb:coordinates = &quot;lat lon&quot; ;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="ww3-peak-wave-period">
+<span id="l2p-ww3-fp"></span><h3><span class="section-number">4.6.3.24. </span><code class="docutils literal notranslate"><span class="pre">ww3_peak_wave_period</span></code><a class="headerlink" href="#ww3-peak-wave-period" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table" id="id44">
+<caption><span class="caption-number">Table 4.64 </span><span class="caption-text">CDL example description of <strong><span style="font-family:courier;">ww3_peak_wave_period</span></strong> variable</span><a class="headerlink" href="#id44" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Storage type</strong></p></th>
+<th class="head"><p><strong>Name</strong></p></th>
+<th class="head"><p><strong>Unit</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>float</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ww3_peak_wave_period</span></code></p></td>
+<td><p>s</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>float ww3_peak_wave_period(time) ;
+	ww3_peak_wave_period:_FillValue = 1.e+20f ;
+	ww3_peak_wave_period:units = &quot;s&quot; ;
+	ww3_peak_wave_period:standard_name = &quot;sea_surface_wave_period_at_variance_spectral_density_maximum&quot; ;
+	ww3_peak_wave_period:coordinates = &quot;lat lon&quot; ;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="ww3-mean-wave-direction">
+<span id="l2p-ww3-dir"></span><h3><span class="section-number">4.6.3.25. </span><code class="docutils literal notranslate"><span class="pre">ww3_mean_wave_direction</span></code><a class="headerlink" href="#ww3-mean-wave-direction" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table" id="id45">
+<caption><span class="caption-number">Table 4.65 </span><span class="caption-text">CDL example description of <strong><span style="font-family:courier;">ww3_mean_wave_direction</span></strong> variable</span><a class="headerlink" href="#id45" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Storage type</strong></p></th>
+<th class="head"><p><strong>Name</strong></p></th>
+<th class="head"><p><strong>Unit</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>float</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ww3_mean_wave_direction</span></code></p></td>
+<td><p>degree</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>float ww3_mean_wave_direction(time) ;
+	ww3_mean_wave_direction:_FillValue = 1.e+20f ;
+	ww3_mean_wave_direction:long_name = &quot;wave mean direction&quot; ;
+	ww3_mean_wave_direction:standard_name = &quot;sea_surface_wave_from_mean_direction&quot; ;
+	ww3_mean_wave_direction:units = &quot;degree&quot; ;
+	ww3_mean_wave_direction:source = &quot;Ifremer WW3 Hindcast&quot; ;
+	ww3_mean_wave_direction:source_variable = &quot;dir&quot; ;
+	ww3_mean_wave_direction:coordinates = &quot;lat lon&quot; ;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="ww3-wave-skewness">
+<span id="l2p-ww3-skw"></span><h3><span class="section-number">4.6.3.26. </span><code class="docutils literal notranslate"><span class="pre">ww3_wave_skewness</span></code><a class="headerlink" href="#ww3-wave-skewness" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table" id="id46">
+<caption><span class="caption-number">Table 4.66 </span><span class="caption-text">CDL example description of <strong><span style="font-family:courier;">ww3_wave_skewness</span></strong> variable</span><a class="headerlink" href="#id46" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Storage type</strong></p></th>
+<th class="head"><p><strong>Name</strong></p></th>
+<th class="head"><p><strong>Unit</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>float</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ww3_wave_skewness</span></code></p></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>float ww3_wave_skewness(time) ;
+	ww3_wave_skewness:_FillValue = 1.e+20f ;
+	ww3_wave_skewness:long_name = &quot;skewness&quot; ;
+	ww3_wave_skewness:units = &quot;1&quot; ;
+	ww3_wave_skewness:comment = &quot;skewness of P(z,sx,sy=0)&quot; ;
+	ww3_wave_skewness:source = &quot;Ifremer WW3 Hindcast&quot; ;
+	ww3_wave_skewness:source_variable = &quot;skw&quot; ;
+	ww3_wave_skewness:coordinates = &quot;lat lon&quot; ;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="ww3-wavenumber-peakdness">
+<span id="l2p-ww3-qkk"></span><h3><span class="section-number">4.6.3.27. </span><code class="docutils literal notranslate"><span class="pre">ww3_wavenumber_peakdness</span></code><a class="headerlink" href="#ww3-wavenumber-peakdness" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table" id="id47">
+<caption><span class="caption-number">Table 4.67 </span><span class="caption-text">CDL example description of <strong><span style="font-family:courier;">ww3_wavenumber_peakdness</span></strong> variable</span><a class="headerlink" href="#id47" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Storage type</strong></p></th>
+<th class="head"><p><strong>Name</strong></p></th>
+<th class="head"><p><strong>Unit</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>float</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ww3_wavenumber_peakdness</span></code></p></td>
+<td><p>m rad-1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>float ww3_wavenumber_peakdness(time) ;
+	ww3_wavenumber_peakdness:_FillValue = 1.e+20f ;
+	ww3_wavenumber_peakdness:long_name = &quot;k-peakedness&quot; ;
+	ww3_wavenumber_peakdness:units = &quot;m/rad&quot; ;
+	ww3_wavenumber_peakdness:comment = &quot;2D wavenumber peakedness&quot; ;
+	ww3_wavenumber_peakdness:source = &quot;Ifremer WW3 Hindcast&quot; ;
+	ww3_wavenumber_peakdness:source_variable = &quot;qkk&quot; ;
+	ww3_wavenumber_peakdness:coordinates = &quot;lat lon&quot; ;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./altimetry"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="baseline.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">4.5. </span>Processing details</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="l2p_wind.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">4.7. </span>L2P Wind</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#l2p-geophysical-data-record-format-specification">4.6.1. L2P geophysical data record format specification</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#swh">4.6.1.1. <code class="docutils literal notranslate"><span class="pre">swh</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#swh-rms">4.6.1.2. <code class="docutils literal notranslate"><span class="pre">swh_rms</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#swh-num-valid">4.6.1.3. <code class="docutils literal notranslate"><span class="pre">swh_num_valid</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#swh-adjusted">4.6.1.4. <code class="docutils literal notranslate"><span class="pre">swh_adjusted</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#swh-denoised">4.6.1.5. <code class="docutils literal notranslate"><span class="pre">swh_denoised</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#swh-uncertainty">4.6.1.6. <code class="docutils literal notranslate"><span class="pre">swh_uncertainty</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#swh-quality-level">4.6.1.7. <code class="docutils literal notranslate"><span class="pre">swh_quality_level</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#swh-rejection-flags">4.6.1.8. <code class="docutils literal notranslate"><span class="pre">swh_rejection_flags</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#swh-emd-noise">4.6.1.9. <code class="docutils literal notranslate"><span class="pre">swh_emd_noise</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#swh-emd-imf1">4.6.1.10. <code class="docutils literal notranslate"><span class="pre">swh_emd_imf1</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#swh-emd-uncertainty">4.6.1.11. <code class="docutils literal notranslate"><span class="pre">swh_emd_uncertainty</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#l2p-instrumental-data-record-format-specification">4.6.2. L2P instrumental data record format specification</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sigma0-ku">4.6.2.1. <code class="docutils literal notranslate"><span class="pre">sigma0_ku</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sigma0-ku-rms">4.6.2.2. <code class="docutils literal notranslate"><span class="pre">sigma0_ku_rms</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sigma0-ku-numval">4.6.2.3. <code class="docutils literal notranslate"><span class="pre">sigma0_ku_numval</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sigma0-ku-quality-level">4.6.2.4. <code class="docutils literal notranslate"><span class="pre">sigma0_ku_quality_level</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sigma0-ku-rejection-flags">4.6.2.5. <code class="docutils literal notranslate"><span class="pre">sigma0_ku_rejection_flags</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sigma0-c">4.6.2.6. <code class="docutils literal notranslate"><span class="pre">sigma0_c</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sigma0-c-rms">4.6.2.7. <code class="docutils literal notranslate"><span class="pre">sigma0_c_rms</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sigma0-c-numval">4.6.2.8. <code class="docutils literal notranslate"><span class="pre">sigma0_c_numval</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sigma0-c-quality-level">4.6.2.9. <code class="docutils literal notranslate"><span class="pre">sigma0_c_quality_level</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sigma0-c-rejection-flags">4.6.2.10. <code class="docutils literal notranslate"><span class="pre">sigma0_c_rejection_flags</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#l2p-auxiliary-data-record-format-specification">4.6.3. L2P auxiliary data record format specification</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distance-to-coast">4.6.3.1. <code class="docutils literal notranslate"><span class="pre">distance_to_coast</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bathymetry">4.6.3.2. <code class="docutils literal notranslate"><span class="pre">bathymetry</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sea-ice-fraction">4.6.3.3. <code class="docutils literal notranslate"><span class="pre">sea_ice_fraction</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#era5-total-column-cloud-liquid-water">4.6.3.4. <code class="docutils literal notranslate"><span class="pre">era5_total_column_cloud_liquid_water</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#era5-2m-air-temperature">4.6.3.5. <code class="docutils literal notranslate"><span class="pre">era5_2m_air_temperature</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#era5-sea-surface-temperature">4.6.3.6. <code class="docutils literal notranslate"><span class="pre">era5_sea_surface_temperature</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#era5-wind-eastward">4.6.3.7. <code class="docutils literal notranslate"><span class="pre">era5_wind_eastward</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#era5-wind-northward">4.6.3.8. <code class="docutils literal notranslate"><span class="pre">era5_wind_northward</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#era5-surface-pressure">4.6.3.9. <code class="docutils literal notranslate"><span class="pre">era5_surface_pressure</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#era5-swh">4.6.3.10. <code class="docutils literal notranslate"><span class="pre">era5_swh</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#era5-peak-wave-period">4.6.3.11. <code class="docutils literal notranslate"><span class="pre">era5_peak_wave_period</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#era5-swell-mean-period">4.6.3.12. <code class="docutils literal notranslate"><span class="pre">era5_swell_mean_period</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#era5-swell-swh">4.6.3.13. <code class="docutils literal notranslate"><span class="pre">era5_swell_swh</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#era5-swell-direction">4.6.3.14. <code class="docutils literal notranslate"><span class="pre">era5_swell_direction</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#era5-mean-wave-period">4.6.3.15. <code class="docutils literal notranslate"><span class="pre">era5_mean_wave_period</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#era5-mean-wave-direction">4.6.3.16. <code class="docutils literal notranslate"><span class="pre">era5_mean_wave_direction</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#era5-windwave-swh">4.6.3.17. <code class="docutils literal notranslate"><span class="pre">era5_windwave_swh</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#era5-windwave-direction">4.6.3.18. <code class="docutils literal notranslate"><span class="pre">era5_windwave_direction</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#era5-windwave-period">4.6.3.19. <code class="docutils literal notranslate"><span class="pre">era5_windwave_period</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ww3-swh">4.6.3.20. <code class="docutils literal notranslate"><span class="pre">ww3_swh</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ww3-mean-wave-period">4.6.3.21. <code class="docutils literal notranslate"><span class="pre">ww3_mean_wave_period</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ww3-mean-wave-period-t0m1">4.6.3.22. <code class="docutils literal notranslate"><span class="pre">ww3_mean_wave_period_t0m1</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ww3-emb">4.6.3.23. <code class="docutils literal notranslate"><span class="pre">ww3_emb</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ww3-peak-wave-period">4.6.3.24. <code class="docutils literal notranslate"><span class="pre">ww3_peak_wave_period</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ww3-mean-wave-direction">4.6.3.25. <code class="docutils literal notranslate"><span class="pre">ww3_mean_wave_direction</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ww3-wave-skewness">4.6.3.26. <code class="docutils literal notranslate"><span class="pre">ww3_wave_skewness</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ww3-wavenumber-peakdness">4.6.3.27. <code class="docutils literal notranslate"><span class="pre">ww3_wavenumber_peakdness</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The CCI Sea State system development team
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
